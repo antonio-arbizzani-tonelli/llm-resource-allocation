@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-resource-allocation"
+version = "0.1.0"
+description = "Joint resource allocation for SLO-constrained LLM inference in heterogeneous GPU clouds"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
