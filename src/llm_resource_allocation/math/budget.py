@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from math import isfinite
 
-from fastllm_replication.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance
 
 from .objective import (
     compute_data_storage_cost,

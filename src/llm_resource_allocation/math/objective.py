@@ -12,7 +12,7 @@ from enum import Enum
 from types import MappingProxyType
 from typing import Mapping
 
-from fastllm_replication.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance
 
 
 ModelTierKey = tuple[str, str]

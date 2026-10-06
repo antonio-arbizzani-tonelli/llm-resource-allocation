@@ -2,14 +2,14 @@
 
 from dataclasses import replace
 
-from fastllm_replication.domain.types import (
+from llm_resource_allocation.domain.types import (
     FoundationModel,
     GpuTier,
     ProblemInstance,
     QueryType,
 )
-from fastllm_replication.domain.units import kilobytes_to_gigabytes
-from fastllm_replication.domain.validation import validate_problem_instance
+from llm_resource_allocation.domain.units import kilobytes_to_gigabytes
+from llm_resource_allocation.domain.validation import validate_problem_instance
 
 
 def make_minimal_tiny_instance() -> ProblemInstance:

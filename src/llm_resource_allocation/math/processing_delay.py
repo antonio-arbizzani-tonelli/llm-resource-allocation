@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from math import fsum, isfinite
 
-from fastllm_replication.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance
 
 from .latency import compute_configuration_delay_seconds
 from .placement import PlacementDecisionState, validate_placement_decision_domains

@@ -6,54 +6,54 @@ from math import isfinite
 from types import MappingProxyType
 from typing import Mapping
 
-from fastllm_replication.domain import InstanceValidationError, ProblemInstance
-from fastllm_replication.math.budget import (
+from llm_resource_allocation.domain import InstanceValidationError, ProblemInstance
+from llm_resource_allocation.math.budget import (
     BudgetDiagnostic,
     compute_budget_residual,
 )
-from fastllm_replication.math.compute_capacity import (
+from llm_resource_allocation.math.compute_capacity import (
     ComputeCapacityDiagnostic,
     compute_compute_capacity_diagnostics,
 )
-from fastllm_replication.math.parallelism import (
+from llm_resource_allocation.math.parallelism import (
     ConfigurationSelectionDiagnostic,
     GpuCountLinkingDiagnostic,
     compute_configuration_selection_residuals,
     compute_gpu_count_linking_residuals,
 )
-from fastllm_replication.math.routing import (
+from llm_resource_allocation.math.routing import (
     DecisionDomainError,
     DemandBalanceDiagnostic,
     RoutingConsistencyDiagnostic,
     compute_demand_balance_residuals,
     compute_routing_consistency_residuals,
 )
-from fastllm_replication.math.processing_delay import (
+from llm_resource_allocation.math.processing_delay import (
     DelaySloDiagnostic,
     compute_delay_slo_residuals,
     compute_processing_delays_seconds,
 )
-from fastllm_replication.math.error_slo import (
+from llm_resource_allocation.math.error_slo import (
     ErrorSloDiagnostic,
     compute_error_slo_residuals,
 )
-from fastllm_replication.math.gpu_memory import (
+from llm_resource_allocation.math.gpu_memory import (
     GpuMemoryDiagnostic,
     compute_gpu_memory_residuals,
 )
-from fastllm_replication.math.placement import (
+from llm_resource_allocation.math.placement import (
     McCormickConsistencyDiagnostic,
     PlacementDecisionState,
     compute_mccormick_consistency_diagnostics,
     validate_placement_decision_domains,
 )
-from fastllm_replication.math.objective import (
+from llm_resource_allocation.math.objective import (
     ObjectiveBreakdown,
     ObjectiveState,
     PaperVersion,
     compute_objective_breakdown,
 )
-from fastllm_replication.math.storage_capacity import (
+from llm_resource_allocation.math.storage_capacity import (
     QueryStorageCapacityDiagnostic,
     compute_storage_capacity_residuals,
 )

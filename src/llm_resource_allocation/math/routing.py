@@ -9,7 +9,7 @@ from math import fsum, isfinite
 from types import MappingProxyType
 from typing import Mapping
 
-from fastllm_replication.domain import ProblemInstance, validate_problem_instance
+from llm_resource_allocation.domain import ProblemInstance, validate_problem_instance
 
 
 ModelTierKey = tuple[str, str]

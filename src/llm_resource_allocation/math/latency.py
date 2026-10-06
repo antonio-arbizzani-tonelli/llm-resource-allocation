@@ -5,7 +5,7 @@
 Both coefficients are in seconds/token; returned delays are in seconds.
 """
 
-from fastllm_replication.domain import ParallelismConfig, QueryType
+from llm_resource_allocation.domain import ParallelismConfig, QueryType
 
 
 def compute_ttft_seconds(
