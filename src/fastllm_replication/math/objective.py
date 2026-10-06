@@ -76,7 +76,12 @@ class ObjectiveBreakdown:
 
     @property
     def total(self) -> float:
-        """Return ``C1 + C2 + C3 + C4 + C5`` (v2 Eq. 8a; v1 Eq. 5a)."""
+        """Return ``C1 + C2 + C3 + C4 + C5`` (v2 Eq. 8a; v1 Eq. 5a).
+
+        Unit caveat: C3 retains the horizon/rate ambiguity; C4 uses seconds
+        with a per-millisecond coefficient. This is the printed objective,
+        without implicit unit corrections; a consistent USD total is unresolved.
+        """
 
         return (
             self.gpu_rental_cost
@@ -211,6 +216,8 @@ def compute_objective_breakdown(
 
     ``state`` supplies y, z, x, u, and D_proc; ``paper_version`` selects C5
     scaling. Evaluation consumes already validated decisions.
+    Unit caveat: ``total`` preserves C3's horizon/rate ambiguity and C4's
+    seconds/milliseconds mismatch, without implicit unit corrections.
     """
 
     return ObjectiveBreakdown(
