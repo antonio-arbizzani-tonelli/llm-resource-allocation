@@ -58,7 +58,7 @@ class ParallelismDecisionState:
 
 
 @dataclass(frozen=True, slots=True)
-class ConfigurationSelectionResidual:
+class ConfigurationSelectionDiagnostic:
     """Record configuration selection for one model/tier pair (v2 Eq. 8d).
 
     ``selected_configuration_count = sum_(n,m) w[j,k,n,m]``;
@@ -92,7 +92,7 @@ class ConfigurationSelectionResidual:
 
 
 @dataclass(frozen=True, slots=True)
-class GpuCountLinkingResidual:
+class GpuCountLinkingDiagnostic:
     """Record GPU-count linking for one model/tier pair (v2 Eq. 8e).
 
     ``allocated_gpu_count = y[j,k]``;
@@ -252,7 +252,7 @@ def validate_parallelism_decision_domains(
 def compute_configuration_selection_residuals(
     instance: ProblemInstance,
     state: ParallelismDecisionState,
-) -> tuple[ConfigurationSelectionResidual, ...]:
+) -> tuple[ConfigurationSelectionDiagnostic, ...]:
     """Compute the selection residual for each model/tier pair (v2 Eq. 8d).
 
     ``sum_(n,m) w[j,k,n,m] - q[j,k]`` compares the number of selected
@@ -260,7 +260,7 @@ def compute_configuration_selection_residuals(
     """
 
     validate_parallelism_decision_domains(instance, state)
-    residuals: list[ConfigurationSelectionResidual] = []
+    residuals: list[ConfigurationSelectionDiagnostic] = []
     for model_id in instance.model_ids:
         for tier in instance.gpu_tiers:
             # Exact binary terms need no numerical stabilization; ordinary
@@ -281,7 +281,7 @@ def compute_configuration_selection_residuals(
                 (model_id, tier.id), 0.0
             )
             residuals.append(
-                ConfigurationSelectionResidual(
+                ConfigurationSelectionDiagnostic(
                     model_id=model_id,
                     gpu_tier_id=tier.id,
                     selected_configuration_count=selected_count,
@@ -294,7 +294,7 @@ def compute_configuration_selection_residuals(
 def compute_gpu_count_linking_residuals(
     instance: ProblemInstance,
     state: ParallelismDecisionState,
-) -> tuple[GpuCountLinkingResidual, ...]:
+) -> tuple[GpuCountLinkingDiagnostic, ...]:
     """Compute the GPU-count residual for each model/tier pair (v2 Eq. 8e).
 
     ``y[j,k] - sum_(n,m) n*m*w[j,k,n,m]`` compares allocated GPUs with the
@@ -302,7 +302,7 @@ def compute_gpu_count_linking_residuals(
     """
 
     validate_parallelism_decision_domains(instance, state)
-    residuals: list[GpuCountLinkingResidual] = []
+    residuals: list[GpuCountLinkingDiagnostic] = []
     for model_id in instance.model_ids:
         for tier in instance.gpu_tiers:
             # Paper v2 Eq. (8e) is a direct finite sum of integer products.
@@ -323,7 +323,7 @@ def compute_gpu_count_linking_residuals(
                 (model_id, tier.id), 0.0
             )
             residuals.append(
-                GpuCountLinkingResidual(
+                GpuCountLinkingDiagnostic(
                     model_id=model_id,
                     gpu_tier_id=tier.id,
                     allocated_gpu_count=allocated_gpu_count,

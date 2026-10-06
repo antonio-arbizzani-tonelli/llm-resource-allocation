@@ -51,7 +51,7 @@ class RoutingDecisionState:
 
 
 @dataclass(frozen=True, slots=True)
-class DemandBalanceResidual:
+class DemandBalanceDiagnostic:
     """Record one query's demand balance (v2 Eq. 8b).
 
     ``routed_fraction = sum_(j,k) x[i,j,k]``; ``unmet_fraction = u[i]``;
@@ -82,7 +82,7 @@ class DemandBalanceResidual:
 
 
 @dataclass(frozen=True, slots=True)
-class RoutingConsistencyResiduals:
+class RoutingConsistencyDiagnostic:
     """Record slacks for one route's ``0 <= x <= z <= q`` (v2 Eq. 8k).
 
     ``routing_fraction = x[i,j,k]``, ``admission_indicator = z[i,j,k]``,
@@ -283,14 +283,14 @@ def validate_routing_decision_domains(
 def compute_demand_balance_residuals(
     instance: ProblemInstance,
     state: RoutingDecisionState,
-) -> tuple[DemandBalanceResidual, ...]:
+) -> tuple[DemandBalanceDiagnostic, ...]:
     """Compute ``sum_(j,k) x[i,j,k] + u[i] - 1`` per query (v2 Eq. 8b).
 
     Compare routed plus unmet demand with one; return diagnostics in query order.
     """
 
     validate_routing_decision_domains(instance, state)
-    residuals: list[DemandBalanceResidual] = []
+    residuals: list[DemandBalanceDiagnostic] = []
     for query_id in instance.query_ids:
         routing_values = tuple(
             state.routing_fractions.get((query_id, model_id, tier_id), 0.0)
@@ -303,7 +303,7 @@ def compute_demand_balance_residuals(
         # such as 0.6 + 0.3 + 0.1 solely through addition order.
         lhs = fsum((*routing_values, unmet_fraction))
         residuals.append(
-            DemandBalanceResidual(
+            DemandBalanceDiagnostic(
                 query_id=query_id,
                 routed_fraction=routed_fraction,
                 unmet_fraction=unmet_fraction,
@@ -316,7 +316,7 @@ def compute_demand_balance_residuals(
 def compute_routing_consistency_residuals(
     instance: ProblemInstance,
     state: RoutingDecisionState,
-) -> tuple[RoutingConsistencyResiduals, ...]:
+) -> tuple[RoutingConsistencyDiagnostic, ...]:
     """Compute slacks for ``0 <= x[i,j,k] <= z[i,j,k] <= q[j,k]`` (v2 Eq. 8k).
 
     Return x, z-x, and q-z for every route in query/model/tier instance order.
@@ -324,7 +324,7 @@ def compute_routing_consistency_residuals(
     """
 
     validate_routing_decision_domains(instance, state)
-    residuals: list[RoutingConsistencyResiduals] = []
+    residuals: list[RoutingConsistencyDiagnostic] = []
     for query_id in instance.query_ids:
         for model_id in instance.model_ids:
             for tier_id in instance.gpu_tier_ids:
@@ -338,7 +338,7 @@ def compute_routing_consistency_residuals(
                     pair_key, 0.0
                 )
                 residuals.append(
-                    RoutingConsistencyResiduals(
+                    RoutingConsistencyDiagnostic(
                         query_id=query_id,
                         model_id=model_id,
                         gpu_tier_id=tier_id,

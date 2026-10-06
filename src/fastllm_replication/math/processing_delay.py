@@ -10,7 +10,7 @@ from .placement import PlacementDecisionState, validate_placement_decision_domai
 
 
 @dataclass(frozen=True, slots=True)
-class DelaySloResidual:
+class DelaySloDiagnostic:
     """Record processing delay and its SLO for one query (v2 Eq. 8i).
 
     ``processing_delay = D_proc[i]``; ``delay_limit = Delta_i``.
@@ -88,7 +88,7 @@ def compute_processing_delays_seconds(
 def compute_delay_slo_residuals(
     instance: ProblemInstance,
     state: PlacementDecisionState,
-) -> tuple[DelaySloResidual, ...]:
+) -> tuple[DelaySloDiagnostic, ...]:
     """Return delay-SLO diagnostics for each query (v2 Eq. 8i).
 
     Compute ``D_proc[i]`` and pair it with ``query.delay_slo_seconds`` (Delta_i).
@@ -97,7 +97,7 @@ def compute_delay_slo_residuals(
 
     processing_delays = compute_processing_delays_seconds(instance, state)
     return tuple(
-        DelaySloResidual(
+        DelaySloDiagnostic(
             query_id=query.id,
             processing_delay=processing_delays[query.id],
             delay_limit=query.delay_slo_seconds,

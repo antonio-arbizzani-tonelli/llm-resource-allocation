@@ -1,5 +1,4 @@
-"""Reviewed mathematical primitives for heterogeneous LLM allocation.
+"""Mathematical primitives and diagnostics for Paper v2.
 
-Import functions from their individual modules. This initial publication
-contains only the reviewed subset of the project.
+Import functionality from its defining module to keep package loading independent.
 """
