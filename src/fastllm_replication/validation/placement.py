@@ -59,6 +59,10 @@ from fastllm_replication.math.storage_capacity import (
 )
 
 
+# D-0076: dimensionless residual classification; supplied decisions stay unchanged.
+DEFAULT_MCCORMICK_ABSOLUTE_TOLERANCE = 1e-10
+
+
 class ConstraintFamily(str, Enum):
     """Identify placement constraint families."""
 
@@ -80,7 +84,7 @@ class ConstraintFamily(str, Enum):
 class ValidationTolerances:
     """Per-family tolerances in each residual's native unit; domains stay exact."""
 
-    mccormick: float = 0.0
+    mccormick: float = DEFAULT_MCCORMICK_ABSOLUTE_TOLERANCE
     demand_balance: float = 0.0
     budget: float = 0.0
     configuration_selection: float = 0.0
