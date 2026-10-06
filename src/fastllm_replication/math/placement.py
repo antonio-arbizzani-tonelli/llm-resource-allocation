@@ -104,8 +104,8 @@ class McCormickConsistencyDiagnostic:
     """Record product consistency for one ``(i,j,k,n,m)`` (v2 Eqs. 7a-7b).
 
     ``routing_fraction`` is x; ``configuration_selector`` is w;
-    ``auxiliary_product`` is supplied v. ``residuals`` stores the four envelope
-    slacks computed from these values.
+    ``auxiliary_product`` is supplied v. ``residuals`` derives the four envelope
+    slacks from these values through the scalar mathematical authority.
     """
 
     query_id: str
@@ -116,7 +116,16 @@ class McCormickConsistencyDiagnostic:
     routing_fraction: float
     configuration_selector: float
     auxiliary_product: float
-    residuals: McCormickResiduals
+
+    @property
+    def residuals(self) -> McCormickResiduals:
+        """Derive the envelope slacks from the supplied x, w, and v."""
+
+        return compute_mccormick_residuals(
+            self.routing_fraction,
+            self.configuration_selector,
+            self.auxiliary_product,
+        )
 
     @property
     def minimum_residual(self) -> float:
@@ -246,9 +255,6 @@ def compute_mccormick_consistency_diagnostics(
                             routing_fraction=routing_fraction,
                             configuration_selector=selector,
                             auxiliary_product=auxiliary,
-                            residuals=compute_mccormick_residuals(
-                                routing_fraction, selector, auxiliary
-                            ),
                         )
                     )
     return tuple(diagnostics)
