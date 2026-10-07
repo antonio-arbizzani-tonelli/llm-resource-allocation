@@ -10,10 +10,11 @@ Paper v2 is the primary scientific specification. Paper v1 is retained as a requ
 The installable project is `llm-resource-allocation`; its Python package is
 `llm_resource_allocation`. The GitHub snapshot currently includes domain types,
 mathematical primitives, synthetic placement fixtures, and independent placement
-and objective validation, plus the deterministic `P_DM` problem data and Pyomo
-model builder. Publication proceeds component by component. The
+and objective validation, plus the deterministic `P_DM` problem data, Pyomo
+model builder, raw extraction, and domain normalization. Publication proceeds
+component by component. The
 implementation status, test command, and documentation map below describe the
-full local reference; extraction, solver runners, Stage-2 optimization,
+full local reference; solver adapters/runners, Stage-2 optimization,
 algorithms, experiments, tests, and documentation remain outside the published
 snapshot.
 
