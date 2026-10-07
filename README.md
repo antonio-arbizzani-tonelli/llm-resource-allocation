@@ -12,7 +12,8 @@ The installable project is `llm-resource-allocation`; its Python package is
 mathematical primitives, synthetic placement fixtures, and independent placement
 and objective validation, plus the deterministic `P_DM` problem data, Pyomo
 model builder, raw extraction, domain normalization, HiGHS/Gurobi solver adapter,
-and independently validated run records, with focused solver/run tests.
+and independently validated run records. The independent 1x1x1 enumeration
+oracle is available in `verification`, with focused solver/run/oracle tests.
 Publication proceeds component by component. The
 implementation status, test command, and documentation map below describe the
 full local reference; Stage-2 optimization, algorithms, experiments, the remaining
@@ -155,6 +156,19 @@ install `python -m pip install -e ".[gurobi]"` and configure a valid license
 separately, then select `SolverConfig(backend=SolverBackend.GUROBI)` after
 importing `SolverBackend` from the solver module. Acceptance requires independent
 feasibility and objective agreement; it does not by itself establish optimality.
+
+The independent oracle supports one query type, one model, and one GPU tier,
+with one or more TP/PP configurations:
+
+```python
+from llm_resource_allocation.verification import enumerate_tiny_pdm
+
+oracle = enumerate_tiny_pdm(problem_data)
+print(oracle.best_objective, oracle.is_unique_optimum)
+```
+
+It enumerates binary decisions and independently validates analytical routing
+endpoints. This provides tiny synthetic verification evidence.
 
 ## Tests
 
