@@ -222,7 +222,7 @@ def _extract_family(
     return extracted
 
 
-def extract_raw_pdm_solution(
+def extract_raw_pdm_solution_from_pyomo(
     model: object,
     problem_data: PdmProblemData,
 ) -> RawPdmSolution:

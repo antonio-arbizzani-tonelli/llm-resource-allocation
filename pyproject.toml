@@ -15,5 +15,8 @@ dependencies = [
     "pyomo==6.10.0",
 ]
 
+[project.optional-dependencies]
+gurobi = ["gurobipy==13.0.3"]
+
 [tool.setuptools.packages.find]
 where = ["src"]

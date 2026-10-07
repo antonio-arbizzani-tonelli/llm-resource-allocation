@@ -11,11 +11,12 @@ The installable project is `llm-resource-allocation`; its Python package is
 `llm_resource_allocation`. The GitHub snapshot currently includes domain types,
 mathematical primitives, synthetic placement fixtures, and independent placement
 and objective validation, plus the deterministic `P_DM` problem data, Pyomo
-model builder, raw extraction, and domain normalization. Publication proceeds
-component by component. The
+model builder, raw extraction, domain normalization, HiGHS/Gurobi solver adapter,
+and independently validated run records, with focused solver/run tests.
+Publication proceeds component by component. The
 implementation status, test command, and documentation map below describe the
-full local reference; solver adapters/runners, Stage-2 optimization,
-algorithms, experiments, tests, and documentation remain outside the published
+full local reference; Stage-2 optimization, algorithms, experiments, the remaining
+tests, and documentation remain outside the published
 snapshot.
 
 ## Project goals
@@ -138,6 +139,22 @@ constraints. Independent objective comparisons use `ObjectiveComparison(...)`
 directly; the former `compare_objective_values` wrapper has been removed.
 
 Both papers report Python 3.13 and Gurobi 11 for their exact optimization experiments. Development and CI also support HiGHS through Pyomo APPSI.
+
+Execute and independently validate a complete deterministic run with:
+
+```python
+from llm_resource_allocation.optimization.pdm_run import execute_and_record_pdm_run
+from llm_resource_allocation.optimization.solver import SolverConfig
+
+record = execute_and_record_pdm_run(problem_data, SolverConfig())
+print(record.accepted_run)
+```
+
+HiGHS is the default backend. Optional Gurobi support uses `gurobipy==13.0.3`:
+install `python -m pip install -e ".[gurobi]"` and configure a valid license
+separately, then select `SolverConfig(backend=SolverBackend.GUROBI)` after
+importing `SolverBackend` from the solver module. Acceptance requires independent
+feasibility and objective agreement; it does not by itself establish optimality.
 
 ## Tests
 
