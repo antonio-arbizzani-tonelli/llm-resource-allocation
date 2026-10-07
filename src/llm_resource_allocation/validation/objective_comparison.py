@@ -15,7 +15,7 @@ class ObjectiveComparison:
 
     solver_objective: float
     independent_objective: float
-    absolute_tolerance: float
+    absolute_tolerance: float = DEFAULT_OBJECTIVE_COMPARISON_ABSOLUTE_TOLERANCE
 
     def __post_init__(self) -> None:
         """Require finite values and a non-negative tolerance."""
@@ -52,17 +52,3 @@ def _finite_real(name: str, value: object) -> float:
     ):
         raise ValueError(f"{name} must be a finite real number")
     return float(value)
-
-
-def compare_objective_values(
-    solver_objective: float,
-    independent_objective: float,
-    absolute_tolerance: float = DEFAULT_OBJECTIVE_COMPARISON_ABSOLUTE_TOLERANCE,
-) -> ObjectiveComparison:
-    """Compare solver and independently recomputed objective values."""
-
-    return ObjectiveComparison(
-        solver_objective=solver_objective,
-        independent_objective=independent_objective,
-        absolute_tolerance=absolute_tolerance,
-    )

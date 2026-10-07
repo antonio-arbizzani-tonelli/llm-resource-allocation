@@ -10,10 +10,12 @@ Paper v2 is the primary scientific specification. Paper v1 is retained as a requ
 The installable project is `llm-resource-allocation`; its Python package is
 `llm_resource_allocation`. The GitHub snapshot currently includes domain types,
 mathematical primitives, synthetic placement fixtures, and independent placement
-and objective validation. Publication proceeds component by component. The
+and objective validation, plus the deterministic `P_DM` problem data and Pyomo
+model builder. Publication proceeds component by component. The
 implementation status, test command, and documentation map below describe the
-full local reference; its optimization, algorithms, experiments, tests, and
-documentation are not yet included in the published snapshot.
+full local reference; extraction, solver runners, Stage-2 optimization,
+algorithms, experiments, tests, and documentation remain outside the published
+snapshot.
 
 ## Project goals
 
@@ -119,6 +121,20 @@ from llm_resource_allocation.data.tiny_instances import make_minimal_tiny_instan
 
 instance = make_minimal_tiny_instance()
 ```
+
+The published deterministic model can be constructed directly:
+
+```python
+from llm_resource_allocation.optimization.problem_data import PdmProblemData
+from llm_resource_allocation.optimization.pyomo_pdm import build_pdm_pyomo_model
+
+problem_data = PdmProblemData(instance)
+model = build_pdm_pyomo_model(problem_data)
+```
+
+This creates an unsolved Pyomo model with ordered variables, objective, and
+constraints. Independent objective comparisons use `ObjectiveComparison(...)`
+directly; the former `compare_objective_values` wrapper has been removed.
 
 Both papers report Python 3.13 and Gurobi 11 for their exact optimization experiments. Development and CI also support HiGHS through Pyomo APPSI.
 

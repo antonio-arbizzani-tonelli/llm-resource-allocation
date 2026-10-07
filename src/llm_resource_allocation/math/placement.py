@@ -163,7 +163,7 @@ def validate_placement_decision_domains(
     validate_routing_decision_domains(instance, state.routing_decisions)
     validate_parallelism_decision_domains(instance, state.parallelism_decisions)
 
-    auxiliary_keys = {
+    auxiliary_product_keys = {
         (
             query_id,
             model_id,
@@ -187,7 +187,7 @@ def validate_placement_decision_domains(
             or not isinstance(key[3], int)
             or isinstance(key[4], bool)
             or not isinstance(key[4], int)
-            or key not in auxiliary_keys
+            or key not in auxiliary_product_keys
         )
     }
     if unknown_keys:
@@ -236,11 +236,11 @@ def compute_mccormick_consistency_diagnostics(
                         config.tensor_parallel_degree,
                         config.pipeline_parallel_depth,
                     )
-                    auxiliary_key = (query_id, *selector_key)
+                    auxiliary_product_key = (query_id, *selector_key)
                     selector = state.configuration_selectors.get(
                         selector_key, 0.0
                     )
-                    auxiliary = state.auxiliary_products.get(auxiliary_key, 0.0)
+                    auxiliary = state.auxiliary_products.get(auxiliary_product_key, 0.0)
                     diagnostics.append(
                         McCormickConsistencyDiagnostic(
                             query_id=query_id,

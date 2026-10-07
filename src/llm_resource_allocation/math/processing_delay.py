@@ -66,14 +66,14 @@ def compute_processing_delays_seconds(
             for tier in instance.gpu_tiers:
                 triple_key = (query.id, model_id, tier.id)
                 for config in tier.parallelism_configs:
-                    auxiliary_key = (
+                    auxiliary_product_key = (
                         *triple_key,
                         config.tensor_parallel_degree,
                         config.pipeline_parallel_depth,
                     )
                     # Sparse extracted v values mean exact zero. We still use
                     # the full lattice so coefficient omissions remain errors.
-                    auxiliary = state.auxiliary_products.get(auxiliary_key, 0.0)
+                    auxiliary = state.auxiliary_products.get(auxiliary_product_key, 0.0)
                     configuration_delay = compute_configuration_delay_seconds(
                         instance.compute_delay_seconds_per_token[triple_key],
                         instance.communication_delay_seconds_per_token[triple_key],
