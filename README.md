@@ -17,7 +17,8 @@ oracle is available in `verification`, with focused solver/run/oracle tests.
 The `algorithms` package now includes reviewed M1 minimum-feasible parallelism
 selection and M2 marginal-cost/effective-coverage ranking, with their focused
 test sources. M2 uses immutable `M2EvaluationInputs` and read-only configuration
-evidence. Tests for the latest interface edits are deferred until the final review.
+evidence. The current interface passes the published snapshot's 78 tests and
+the full local reference's 807-test regression.
 Publication proceeds component by component. The
 implementation status, test command, and documentation map below describe the
 full local reference; M3, GH/AGH, Stage-2 optimization, experiments, the remaining
