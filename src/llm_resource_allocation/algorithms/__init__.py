@@ -1,4 +1,4 @@
-"""M1-M3 scientific mechanisms and immutable evaluation evidence."""
+"""M1-M3 mechanisms and GH Phase-1 coverage/scoring primitives."""
 
 from .m1 import (
     M1ConfigurationDiagnostic,
@@ -28,6 +28,21 @@ from .m3 import (
     select_m3_parallelism_upgrade,
 )
 
+from .phase1 import (
+    Phase1ActivationScore,
+    Phase1CandidateEvaluation,
+    Phase1CommonConfigurationDiagnostic,
+    Phase1CommonConfigurationQueryDiagnostic,
+    Phase1CoverageResult,
+    Phase1QueryExclusionReason,
+    Phase1NonRankableReason,
+    Phase1QueryCoverageDiagnostic,
+    compute_phase1_activation_score,
+    compute_phase1_pair_coverage,
+    evaluate_phase1_candidate,
+    rank_phase1_candidates,
+)
+
 __all__ = [
     "M1ConfigurationDiagnostic",
     "M1SelectionResult",
@@ -48,4 +63,16 @@ __all__ = [
     "M3NoUpgradeReason",
     "M3UpgradeResult",
     "select_m3_parallelism_upgrade",
+    "Phase1ActivationScore",
+    "Phase1CandidateEvaluation",
+    "Phase1CommonConfigurationDiagnostic",
+    "Phase1CommonConfigurationQueryDiagnostic",
+    "Phase1CoverageResult",
+    "Phase1QueryExclusionReason",
+    "Phase1NonRankableReason",
+    "Phase1QueryCoverageDiagnostic",
+    "compute_phase1_activation_score",
+    "compute_phase1_pair_coverage",
+    "evaluate_phase1_candidate",
+    "rank_phase1_candidates",
 ]
