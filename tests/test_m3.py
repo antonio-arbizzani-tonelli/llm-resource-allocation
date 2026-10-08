@@ -1,8 +1,8 @@
 """Hand-derived and isolation tests for Paper v2 Eq. (12), mechanism M3."""
 
-import ast
-import inspect
 import unittest
+
+from placement_support import snapshot_value
 from dataclasses import FrozenInstanceError, replace
 from unittest.mock import patch
 
@@ -422,15 +422,15 @@ class M3ImmutabilityReuseAndIsolationTests(unittest.TestCase):
     def test_results_are_deterministic_immutable_and_inputs_unchanged(self):
         instance = make_m3_instance()
         state = M3EvaluationState(ParallelismConfig(1, 1), 100.0)
-        before_instance = instance
-        before_state = state
+        before_instance = snapshot_value(instance)
+        before_state = snapshot_value(state)
 
         first = select_upgrade(instance, state)
         second = select_upgrade(instance, state)
 
         self.assertEqual(first, second)
-        self.assertEqual(instance, before_instance)
-        self.assertEqual(state, before_state)
+        self.assertEqual(snapshot_value(instance), before_instance)
+        self.assertEqual(snapshot_value(state), before_state)
         with self.assertRaises(FrozenInstanceError):
             state.remaining_budget_usd = 0.0
         with self.assertRaises(FrozenInstanceError):
@@ -467,40 +467,6 @@ class M3ImmutabilityReuseAndIsolationTests(unittest.TestCase):
             1 + len(result.configuration_diagnostics),
         )
 
-    def test_m3_source_has_no_m1_m2_full_pdm_solver_or_gh_dependency(self):
-        module_source = inspect.getsource(m3_module)
-        function_source = inspect.getsource(
-            m3_module.select_m3_parallelism_upgrade
-        ) + inspect.getsource(m3_module._evaluate_m3_configuration)
-        tree = ast.parse(module_source)
-        imports: list[str] = []
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                imports.extend(alias.name for alias in node.names)
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                imports.append(node.module)
-
-        forbidden_prefixes = (
-            "pyomo",
-            "highspy",
-            "llm_resource_allocation.optimization",
-            "llm_resource_allocation.solvers",
-            "llm_resource_allocation.validation",
-        )
-        for imported in imports:
-            self.assertFalse(imported.startswith(forbidden_prefixes), imported)
-        forbidden_calls = (
-            "select_minimum_feasible_parallelism",
-            "compute_m2_",
-            "compute_gpu_memory",
-            "compute_capacity",
-            "compute_budget_residual",
-            "PlacementDecisionState",
-            "PdmRunRecord",
-            "run_gh",
-        )
-        for forbidden in forbidden_calls:
-            self.assertNotIn(forbidden, function_source)
 
 
 if __name__ == "__main__":

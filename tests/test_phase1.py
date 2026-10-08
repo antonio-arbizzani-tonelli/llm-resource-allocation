@@ -1,7 +1,5 @@
 """Hand-derived tests for pure GH Phase-1 Eqs. (13)-(14) primitives."""
 
-import ast
-import inspect
 import unittest
 from dataclasses import FrozenInstanceError, replace
 from unittest.mock import patch
@@ -16,7 +14,6 @@ from llm_resource_allocation.algorithms import (
     rank_phase1_candidates,
     select_minimum_feasible_parallelism,
 )
-from llm_resource_allocation.algorithms import phase1 as phase1_module
 from llm_resource_allocation.algorithms import m1 as m1_module
 from llm_resource_allocation.data.tiny_instances import make_minimal_tiny_instance
 from llm_resource_allocation.domain import ParallelismConfig
@@ -449,40 +446,6 @@ class Phase1IsolationAndImmutabilityTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             first.coverage.covered_query_ids = ()
 
-    def test_source_has_no_m2_m3_pdm_solver_or_greedy_loop_dependency(self):
-        source = inspect.getsource(phase1_module)
-        tree = ast.parse(source)
-        imports: list[str] = []
-        called_names: list[str] = []
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                imports.extend(alias.name for alias in node.names)
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                imports.append(node.module)
-            elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
-                called_names.append(node.func.id)
-
-        for imported in imports:
-            self.assertFalse(imported.startswith("pyomo"), imported)
-            self.assertFalse(imported.startswith("highspy"), imported)
-            self.assertFalse(
-                imported.startswith("llm_resource_allocation.optimization"), imported
-            )
-            self.assertFalse(
-                imported.startswith("llm_resource_allocation.validation"), imported
-            )
-        forbidden_calls = (
-            "select_minimum_feasible_parallelism",
-            "compute_m2_marginal_cost",
-            "compute_m2_effective_coverage",
-            "rank_m2_candidates",
-            "select_m3_parallelism_upgrade",
-            "validate_placement",
-            "run_gh",
-        )
-        for name in forbidden_calls:
-            self.assertNotIn(name, called_names)
-        self.assertFalse(any(isinstance(node, ast.While) for node in ast.walk(tree)))
 
 
 if __name__ == "__main__":

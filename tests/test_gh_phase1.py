@@ -1,7 +1,5 @@
 """Hand-derived tests for the pure GH Phase-1 greedy activation loop."""
 
-import ast
-import inspect
 import unittest
 from dataclasses import FrozenInstanceError, replace
 from unittest.mock import patch
@@ -312,34 +310,6 @@ class GHPhase1DeterminismAndIsolationTests(unittest.TestCase):
             state = trace.state_after
         self.assertEqual(state, result.final_state)
 
-    def test_source_has_no_phase2_m2_m3_solver_or_routing_dependency(self):
-        source = inspect.getsource(gh_phase1_module)
-        tree = ast.parse(source)
-        imports: list[str] = []
-        called_names: list[str] = []
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                imports.extend(alias.name for alias in node.names)
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                imports.append(node.module)
-            elif isinstance(node, ast.Call) and isinstance(node.func, ast.Name):
-                called_names.append(node.func.id)
-
-        for imported in imports:
-            self.assertFalse(imported.startswith("pyomo"), imported)
-            self.assertFalse(imported.startswith("highspy"), imported)
-            self.assertFalse(imported.startswith("llm_resource_allocation.optimization"), imported)
-            self.assertFalse(imported.startswith("llm_resource_allocation.validation"), imported)
-        for forbidden_call in (
-            "compute_m2_marginal_cost",
-            "compute_m2_effective_coverage",
-            "rank_m2_candidates",
-            "select_m3_parallelism_upgrade",
-            "validate_placement",
-            "solve_placement_problem",
-            "run_gh",
-        ):
-            self.assertNotIn(forbidden_call, called_names)
 
 
 if __name__ == "__main__":

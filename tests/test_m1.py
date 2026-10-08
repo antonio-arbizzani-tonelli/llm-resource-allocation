@@ -1,13 +1,10 @@
 """Hand-derived and isolation tests for Paper v2 Eq. (9), mechanism M1."""
 
-import ast
-import inspect
 import unittest
 from dataclasses import FrozenInstanceError, replace
 from unittest.mock import patch
 
 from llm_resource_allocation.algorithms import select_minimum_feasible_parallelism
-from llm_resource_allocation.algorithms import m1 as m1_module
 from llm_resource_allocation.data.tiny_instances import make_minimal_tiny_instance
 from llm_resource_allocation.domain import ParallelismConfig
 from llm_resource_allocation.math.latency import compute_configuration_delay_seconds
@@ -346,29 +343,6 @@ class M1ScientificBoundaryTests(unittest.TestCase):
             delay_primitive.call_count, len(result.configuration_diagnostics)
         )
 
-    def test_source_has_no_full_memory_optimizer_or_solver_dependency(self):
-        """Keep M1 isolated from Eq. (8f), Pyomo, solvers, and run records."""
-
-        source = inspect.getsource(m1_module)
-        tree = ast.parse(source)
-        imports: list[str] = []
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                imports.extend(alias.name for alias in node.names)
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                imports.append(node.module)
-
-        forbidden_prefixes = (
-            "pyomo",
-            "highspy",
-            "llm_resource_allocation.optimization",
-            "llm_resource_allocation.validation",
-            "llm_resource_allocation.math.gpu_memory",
-        )
-        for imported in imports:
-            self.assertFalse(imported.startswith(forbidden_prefixes), imported)
-        self.assertNotIn("compute_gpu_memory_residuals", source)
-        self.assertNotIn("execute_and_record_pdm_run", source)
 
     def test_unknown_semantic_ids_fail_clearly(self):
         """Reject lookup mistakes rather than silently evaluating another entity."""

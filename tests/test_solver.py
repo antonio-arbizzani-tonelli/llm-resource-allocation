@@ -15,6 +15,7 @@ from llm_resource_allocation.optimization.solver import (
     SolverBackend,
     SolverBackendAvailability,
     SolverBackendInfo,
+    SolverBackendUnavailableError,
     SolverConfig,
     SolverStatus,
     UnsupportedSolverBackendError,
@@ -194,6 +195,8 @@ class SolverFailureTransportTests(unittest.TestCase):
         )
         self.solver = Mock()
         self.solver.highs_options = {}
+        self.solver.available.return_value = solver_module.Highs.Availability.FullLicense
+        self.solver.version.return_value = ("test-version",)
         self.model = object()
         self.loader = Mock()
 
@@ -201,7 +204,8 @@ class SolverFailureTransportTests(unittest.TestCase):
         self.solver.solve.return_value = appsi_result
         self.solver.solve.side_effect = error
         with patch.object(
-            solver_module, "probe_solver_backend", return_value=self.backend_info
+            solver_module, "probe_solver_backend",
+            side_effect=AssertionError("solve must use its actual solver interface"),
         ), patch.object(
             solver_module, "Highs", return_value=self.solver
         ), patch.object(solver_module, "perf_counter", side_effect=(10.0, 10.25)):
@@ -264,6 +268,54 @@ class SolverFailureTransportTests(unittest.TestCase):
         self.assertIsNone(result.relative_gap)
         self.loader.load_vars.assert_not_called()
         self.assertFalse(self.solver.config.load_solution)
+
+    def test_solve_prepares_only_the_interface_it_uses(self) -> None:
+        appsi_result = SimpleNamespace(
+            best_feasible_objective=None,
+            best_objective_bound=None,
+            termination_condition=TerminationCondition.maxTimeLimit,
+        )
+        self.solver.solve.return_value = appsi_result
+        with (
+            patch.object(solver_module, "Highs", return_value=self.solver) as constructor,
+            patch.object(solver_module, "probe_solver_backend",
+                         side_effect=AssertionError("explicit probe is not part of solve")) as probe,
+        ):
+            result = solve_pyomo_model(self.model, SolverConfig(time_limit_seconds=1.0))
+        constructor.assert_called_once_with()
+        self.solver.available.assert_called_once_with()
+        self.solver.version.assert_called_once_with()
+        self.solver.solve.assert_called_once_with(self.model)
+        probe.assert_not_called()
+        self.assertEqual(result.raw_status_metadata["solver_version"], "test-version")
+        self.assertEqual(result.raw_status_metadata["backend_availability"], "available")
+        self.assertEqual(self.solver.highs_options, {"time_limit": 1.0})
+
+    def test_unavailable_or_unlicensed_actual_interface_rejects_before_solve(self) -> None:
+        cases = (
+            (SolverBackend.HIGHS, "Highs", solver_module.Highs.Availability.NotFound),
+            (SolverBackend.GUROBI, "Gurobi", solver_module.Gurobi.Availability.BadLicense),
+        )
+        for backend, name, availability in cases:
+            with self.subTest(backend=backend):
+                solver = Mock()
+                solver.highs_options = {}
+                solver.gurobi_options = {}
+                solver.available.return_value = availability
+                with patch.object(solver_module, name, return_value=solver):
+                    with self.assertRaisesRegex(SolverBackendUnavailableError, availability.name):
+                        solve_pyomo_model(self.model, SolverConfig(backend=backend))
+                solver.version.assert_not_called()
+                solver.solve.assert_not_called()
+
+    def test_backend_setup_exception_is_typed_and_retains_its_cause(self) -> None:
+        error = RuntimeError("license environment failed")
+        self.solver.available.side_effect = error
+        with patch.object(solver_module, "Gurobi", return_value=self.solver):
+            with self.assertRaisesRegex(SolverBackendUnavailableError, "license environment failed") as raised:
+                solve_pyomo_model(self.model, SolverConfig(backend=SolverBackend.GUROBI))
+        self.assertIs(raised.exception.__cause__, error)
+        self.solver.solve.assert_not_called()
 
 
 class ObjectiveComparisonTests(unittest.TestCase):

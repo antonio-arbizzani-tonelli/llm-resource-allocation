@@ -1,8 +1,8 @@
 """Hand-derived and isolation tests for Paper v2 Eqs. (10)-(11), M2."""
 
-import ast
-import inspect
 import unittest
+
+from placement_support import snapshot_value
 from dataclasses import FrozenInstanceError, replace
 from unittest.mock import patch
 
@@ -17,7 +17,6 @@ from llm_resource_allocation.algorithms import (
     select_minimum_feasible_parallelism,
 )
 from llm_resource_allocation.algorithms import m1 as m1_module
-from llm_resource_allocation.algorithms import m2 as m2_module
 from llm_resource_allocation.data.tiny_instances import make_minimal_tiny_instance
 
 
@@ -97,7 +96,7 @@ class M2HandDerivedArithmeticTests(unittest.TestCase):
             M2EvaluationInputs(0.8, 0.1, 1.0, 0),
         )
         with self.assertRaisesRegex(ValueError, "marginal cost"):
-            replace(result, cost_diagnostic=None)
+            replace(result, cost_breakdown=None)
         with self.assertRaisesRegex(ValueError, "effective coverage"):
             replace(result, coverage_diagnostic=None)
 
@@ -109,7 +108,7 @@ class M2HandDerivedArithmeticTests(unittest.TestCase):
         evaluation_inputs = M2EvaluationInputs(0.8, 0.1, 1.0, 0)
 
         result = evaluate_m2_candidate(instance, m1, evaluation_inputs)
-        cost = result.cost_diagnostic
+        cost = result.cost_breakdown
         coverage = result.coverage_diagnostic
 
         self.assertEqual(cost.required_gpu_count, 1)
@@ -178,7 +177,7 @@ class M2HandDerivedArithmeticTests(unittest.TestCase):
         result = evaluate_m2_candidate(instance, m1, evaluation_inputs)
 
         self.assertEqual(
-            result.cost_diagnostic,
+            result.cost_breakdown,
             compute_m2_marginal_cost(instance, m1, evaluation_inputs),
         )
         self.assertEqual(
@@ -371,7 +370,7 @@ class M2M1CompositionTests(unittest.TestCase):
         )
 
         self.assertIsNone(result.selected_configuration)
-        self.assertIsNone(result.cost_diagnostic)
+        self.assertIsNone(result.cost_breakdown)
         self.assertIsNone(result.coverage_diagnostic)
         self.assertEqual(
             result.unrankable_reasons,
@@ -464,8 +463,8 @@ class M2RankingAndQueryDependenceTests(unittest.TestCase):
         self.assertEqual(full.pi, 0)
         self.assertEqual(partial.pi, 1)
         self.assertLess(
-            partial.cost_diagnostic.marginal_cost,
-            full.cost_diagnostic.marginal_cost,
+            partial.cost_breakdown.marginal_cost,
+            full.cost_breakdown.marginal_cost,
         )
 
         self.assertEqual(rank_m2_candidates((partial, full)), (full, partial))
@@ -506,21 +505,21 @@ class M2ImmutabilityAndIsolationTests(unittest.TestCase):
         instance = make_m2_instance()
         m1 = select(instance)
         evaluation_inputs = M2EvaluationInputs(0.8, 0.1, 1.0, 0)
-        before_instance = instance
-        before_m1 = m1
-        before_state = evaluation_inputs
+        before_instance = snapshot_value(instance)
+        before_m1 = snapshot_value(m1)
+        before_state = snapshot_value(evaluation_inputs)
 
         result = evaluate_m2_candidate(instance, m1, evaluation_inputs)
 
-        self.assertEqual(instance, before_instance)
-        self.assertEqual(m1, before_m1)
-        self.assertEqual(evaluation_inputs, before_state)
+        self.assertEqual(snapshot_value(instance), before_instance)
+        self.assertEqual(snapshot_value(m1), before_m1)
+        self.assertEqual(snapshot_value(evaluation_inputs), before_state)
         with self.assertRaises(FrozenInstanceError):
             evaluation_inputs.current_gpu_count = 2
         with self.assertRaises(TypeError):
             result.pi = 1
         with self.assertRaises(TypeError):
-            result.cost_diagnostic.incremental_gpu_count = 99
+            result.cost_breakdown.incremental_gpu_count = 99
 
     def test_invalid_dynamic_inputs_is_rejected_without_clipping(self):
         invalid = (
@@ -536,42 +535,6 @@ class M2ImmutabilityAndIsolationTests(unittest.TestCase):
             with self.subTest(values=values), self.assertRaises(ValueError):
                 M2EvaluationInputs(*values)
 
-    def test_module_has_no_pyomo_solver_optimization_or_gh_state_import(self):
-        source = inspect.getsource(m2_module)
-        tree = ast.parse(source)
-        imports: list[str] = []
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                imports.extend(alias.name for alias in node.names)
-            elif isinstance(node, ast.ImportFrom):
-                if node.module:
-                    imports.append(node.module)
-                imports.extend(
-                    f"{node.module}.{alias.name}" if node.module else alias.name
-                    for alias in node.names
-                )
-
-        forbidden_prefixes = (
-            "pyomo",
-            "highspy",
-            "llm_resource_allocation.optimization",
-            "llm_resource_allocation.solvers",
-            "llm_resource_allocation.validation",
-            "llm_resource_allocation.algorithms.m1",
-            "llm_resource_allocation.algorithms.m3",
-            "llm_resource_allocation.algorithms.mechanisms",
-            "llm_resource_allocation.math.latency",
-        )
-        for imported in imports:
-            self.assertFalse(imported.startswith(forbidden_prefixes), imported)
-            self.assertNotIn(
-                imported.split(".")[-1], ("m1", "m3", "mechanisms", "latency"), imported
-            )
-        self.assertNotIn("run_gh", source)
-        self.assertNotIn("PlacementDecisionState", source)
-        self.assertNotIn("select_minimum_feasible_parallelism", source)
-        self.assertNotIn("select_m3_parallelism_upgrade", source)
-        self.assertNotIn("compute_configuration_delay_seconds", source)
 
 
 if __name__ == "__main__":

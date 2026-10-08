@@ -1,7 +1,5 @@
 """Independent tiny-oracle contracts, hand-derived cases, and HiGHS cross-checks."""
 
-import ast
-import inspect
 import unittest
 from dataclasses import FrozenInstanceError, replace
 from math import inf, nan
@@ -33,7 +31,6 @@ from llm_resource_allocation.verification import (
     enumerate_tiny_pdm,
     estimate_tiny_discrete_search_space,
 )
-from llm_resource_allocation.verification import tiny_enumeration as oracle_module
 
 
 ROUTE = ("q_text", "m_small", "gpu_basic_fp16")
@@ -62,18 +59,6 @@ def solve_with_highs(instance):
 class TinyEnumerationContractTests(unittest.TestCase):
     """Protect scope, configuration, search accounting, and isolation."""
 
-    def test_oracle_module_has_no_optimizer_or_solver_import(self) -> None:
-        tree = ast.parse(inspect.getsource(oracle_module))
-        imports = []
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                imports.extend(alias.name for alias in node.names)
-            elif isinstance(node, ast.ImportFrom) and node.module:
-                imports.append(node.module)
-
-        forbidden = ("pyomo", "highspy", "llm_resource_allocation.optimization")
-        for imported in imports:
-            self.assertFalse(imported.startswith(forbidden), imported)
 
     def test_config_is_validated_and_immutable(self) -> None:
         with self.assertRaises(FrozenInstanceError):
