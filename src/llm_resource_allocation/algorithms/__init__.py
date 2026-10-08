@@ -1,4 +1,4 @@
-"""M1-M3 mechanisms and GH Phase-1 coverage/scoring primitives."""
+"""M1-M3 mechanisms and GH Phase-1 coverage, scoring, and activation loop."""
 
 from .m1 import (
     M1ConfigurationDiagnostic,
@@ -43,6 +43,19 @@ from .phase1 import (
     rank_phase1_candidates,
 )
 
+from .gh_phase1 import (
+    GHPhase1Config,
+    GHPhase1Deployment,
+    GHPhase1IterationTrace,
+    GHPhase1Result,
+    GHPhase1State,
+    GHPhase1TerminationReason,
+    apply_gh_phase1_activation,
+    evaluate_gh_phase1_candidates,
+    initialize_gh_phase1_state,
+    run_gh_phase1,
+)
+
 __all__ = [
     "M1ConfigurationDiagnostic",
     "M1SelectionResult",
@@ -75,4 +88,14 @@ __all__ = [
     "compute_phase1_pair_coverage",
     "evaluate_phase1_candidate",
     "rank_phase1_candidates",
+    "GHPhase1Config",
+    "GHPhase1Deployment",
+    "GHPhase1IterationTrace",
+    "GHPhase1Result",
+    "GHPhase1State",
+    "GHPhase1TerminationReason",
+    "apply_gh_phase1_activation",
+    "evaluate_gh_phase1_candidates",
+    "initialize_gh_phase1_state",
+    "run_gh_phase1",
 ]

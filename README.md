@@ -17,10 +17,12 @@ oracle is available in `verification`, with focused solver/run/oracle tests.
 The `algorithms` package includes reviewed M1 minimum-feasible parallelism
 selection, M2 marginal-cost/effective-coverage ranking, and M3 minimum-GPU
 parallelism upgrades within the remaining rental budget, with focused test sources.
-GH Phase-1 pair coverage, common TP/PP diagnostics, activation scoring, and
-candidate ranking are now published with their reviewed API names.
+GH Phase-1 pair coverage, common TP/PP diagnostics, activation scoring,
+candidate ranking, and the greedy activation loop are published. The loop
+retains immutable deployment/state/iteration evidence and explicit stopping
+reasons, including the literal pre-iteration rental-cap check.
 M2 uses immutable `M2EvaluationInputs` and read-only configuration evidence.
-The publication snapshot passes all 119 tests, including 20 Phase-1 cases;
+The publication snapshot passes all 135 tests, including 36 Phase-1 cases;
 the full local reference passes 848 tests after the reviewed API renames.
 Publication proceeds component by component. The implementation status, test
 command, and documentation map below describe the full local reference; the
