@@ -329,24 +329,33 @@ def _prepare_solver(
 ) -> tuple[Highs | Gurobi, dict[str, str | None]]:
     """Check availability, configure the selected APPSI solver, and record it."""
 
-    backend_info = probe_solver_backend(config.backend)
-    if backend_info.availability is not SolverBackendAvailability.AVAILABLE:
-        raise SolverBackendUnavailableError(backend_info.detail)
-
-    if config.backend is SolverBackend.HIGHS:
-        solver = Highs()
-        solver.highs_options.update(translate_highs_options(config))
-        interface = "pyomo.contrib.appsi.solvers.Highs"
-    else:
-        solver = Gurobi()
-        solver.gurobi_options.update(translate_gurobi_options(config))
-        interface = "pyomo.contrib.appsi.solvers.Gurobi"
+    try:
+        if config.backend is SolverBackend.HIGHS:
+            solver = Highs()
+            solver.highs_options.update(translate_highs_options(config))
+            interface = "pyomo.contrib.appsi.solvers.Highs"
+        else:
+            solver = Gurobi()
+            solver.gurobi_options.update(translate_gurobi_options(config))
+            interface = "pyomo.contrib.appsi.solvers.Gurobi"
+        availability = solver.available()
+        if not bool(availability):
+            raise SolverBackendUnavailableError(
+                f"Pyomo APPSI {config.backend.value} availability: {availability.name}"
+            )
+        version = ".".join(str(component) for component in solver.version())
+    except SolverBackendUnavailableError:
+        raise
+    except Exception as error:
+        raise SolverBackendUnavailableError(
+            f"Cannot prepare {config.backend.value}: {type(error).__name__}: {error}"
+        ) from error
     solver.config.load_solution = False
     solver.config.stream_solver = config.tee
     raw_metadata = {
         "interface": interface,
-        "solver_version": backend_info.version,
-        "backend_availability": backend_info.availability.value,
+        "solver_version": version,
+        "backend_availability": SolverBackendAvailability.AVAILABLE.value,
     }
     return solver, raw_metadata
 

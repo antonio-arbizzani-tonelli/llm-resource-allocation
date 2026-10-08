@@ -177,6 +177,27 @@ class M3UpgradeResult:
         )
 
 
+def select_m3_parallelism_upgrade(
+    instance: ProblemInstance,
+    query_id: str,
+    model_id: str,
+    tier_id: str,
+    state: M3EvaluationState,
+) -> M3UpgradeResult:
+    """Select the minimum-GPU M3 upgrade on an active pair (v2 Eq. 12).
+
+    M3 applies when the current delay exceeds ``Delta_i``. Eligible shapes satisfy
+    ``n*m > y[j,k]``, ``D_cfg <= Delta_i``, and
+    ``DeltaT*p_gpu[k]*(n*m-y[j,k]) <= state.remaining_budget_usd`` (D-0034).
+    Delay is in seconds and rental cost is in USD; only incremental GPU rental
+    is charged. All tier-valid shapes retain diagnostics in tier order, and
+    exact GPU-count ties retain the first feasible shape.
+    """
+
+    validate_problem_instance(instance)
+    return _select_m3_parallelism_upgrade(instance, query_id, model_id, tier_id, state)
+
+
 def _evaluate_m3_configuration(
     instance: ProblemInstance,
     query: QueryType,
@@ -217,24 +238,15 @@ def _evaluate_m3_configuration(
     )
 
 
-def select_m3_parallelism_upgrade(
+def _select_m3_parallelism_upgrade(
     instance: ProblemInstance,
     query_id: str,
     model_id: str,
     tier_id: str,
     state: M3EvaluationState,
 ) -> M3UpgradeResult:
-    """Select the minimum-GPU M3 upgrade on an active pair (v2 Eq. 12).
+    """Select M3 on a validated instance and immutable evaluation state."""
 
-    M3 applies when the current delay exceeds ``Delta_i``. Eligible shapes satisfy
-    ``n*m > y[j,k]``, ``D_cfg <= Delta_i``, and
-    ``DeltaT*p_gpu[k]*(n*m-y[j,k]) <= state.remaining_budget_usd`` (D-0034).
-    Delay is in seconds and rental cost is in USD; only incremental GPU rental
-    is charged. All tier-valid shapes retain diagnostics in tier order, and
-    exact GPU-count ties retain the first feasible shape.
-    """
-
-    validate_problem_instance(instance)
     query = _entity_by_id(instance.queries, query_id, "query")
     model = _entity_by_id(instance.models, model_id, "model")
     tier = _entity_by_id(instance.gpu_tiers, tier_id, "GPU-tier")

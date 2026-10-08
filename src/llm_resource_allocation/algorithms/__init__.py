@@ -1,81 +1,72 @@
-"""M1-M3 mechanisms and GH Phase-1 coverage, scoring, and activation loop."""
+"""M1-M3 mechanisms and complete independently validated GH construction."""
 
-from .m1 import (
-    M1ConfigurationDiagnostic,
-    M1SelectionResult,
-    select_minimum_feasible_parallelism,
-)
+from .m1 import M1ConfigurationDiagnostic, M1SelectionResult, select_minimum_feasible_parallelism
 
-from .m2 import (
-    M2CandidateEvaluation,
-    M2ConfigurationEvidence,
-    M2CoverageLimiter,
-    M2EffectiveCoverageDiagnostic,
-    M2EvaluationInputs,
-    M2MarginalCostDiagnostic,
-    M2UnrankableReason,
-    compute_m2_effective_coverage,
-    compute_m2_marginal_cost,
-    evaluate_m2_candidate,
-    rank_m2_candidates,
-)
+from .m2 import M2CandidateEvaluation, M2ConfigurationEvidence, M2CoverageLimiter, M2EffectiveCoverageDiagnostic, M2EvaluationInputs, M2MarginalCostBreakdown, M2UnrankableReason, compute_m2_effective_coverage, compute_m2_marginal_cost, evaluate_m2_candidate, rank_m2_candidates
 
-from .m3 import (
-    M3ConfigurationDiagnostic,
-    M3EvaluationState,
-    M3NoUpgradeReason,
-    M3UpgradeResult,
-    select_m3_parallelism_upgrade,
-)
+from .m3 import M3ConfigurationDiagnostic, M3EvaluationState, M3NoUpgradeReason, M3UpgradeResult, select_m3_parallelism_upgrade
 
-from .phase1 import (
-    Phase1ActivationScore,
-    Phase1CandidateEvaluation,
-    Phase1CommonConfigurationDiagnostic,
-    Phase1CommonConfigurationQueryDiagnostic,
-    Phase1CoverageResult,
-    Phase1QueryExclusionReason,
-    Phase1NonRankableReason,
-    Phase1QueryCoverageDiagnostic,
-    compute_phase1_activation_score,
-    compute_phase1_pair_coverage,
-    evaluate_phase1_candidate,
-    rank_phase1_candidates,
-)
+from .gh_phase2 import GHPhase2CandidateEvaluation, GHPhase2CandidateRejectionReason, GHPhase2CandidateConfiguration, GHPhase2ConfigurationSource, GHPhase2Deployment, GHPhase2QueryEvaluation, GHPhase2State, evaluate_gh_phase2_query_candidates, initialize_gh_phase2_state, order_gh_phase2_queries
 
-from .gh_phase1 import (
-    GHPhase1Config,
-    GHPhase1Deployment,
-    GHPhase1IterationTrace,
-    GHPhase1Result,
-    GHPhase1State,
-    GHPhase1TerminationReason,
-    apply_gh_phase1_activation,
-    evaluate_gh_phase1_candidates,
-    initialize_gh_phase1_state,
-    run_gh_phase1,
-)
+from .gh_phase2_commit import GHPhase2BudgetComparison, GHPhase2AllocationProposal, GHPhase2CommitDiagnostic, GHPhase2CommitRejectionReason, GHPhase2CommitResult, GHPhase2ProspectiveDeployment, commit_gh_phase2_candidate, compute_gh_phase2_candidate_allocation
+
+from .gh_phase2_query import GHPhase2CandidateAttempt, GHPhase2QueryProcessResult, GHPhase2QueryTerminationReason, process_gh_phase2_query_candidates
+
+from .gh_phase2_run import GHPhase2QueryTrace, GHPhase2RunCompletionStatus, GHPhase2RunResult, run_gh_phase2
+
+from .gh import GHCanonicalBinaryCounts, GHCanonicalizationReport, GHBudgetConsistencyAudit, GHCompletionStatus, GHDemandConsistencyAudit, GHResult, GHRunIdentity, canonicalize_gh_phase2_state, run_gh
+
+from .gh_phase1 import GHPhase1Config, GHPhase1Deployment, GHPhase1IterationTrace, GHPhase1Result, GHPhase1State, GHPhase1TerminationReason, apply_gh_phase1_activation, evaluate_gh_phase1_candidates, initialize_gh_phase1_state, run_gh_phase1
+
+from .phase1 import Phase1ActivationScore, Phase1CandidateEvaluation, Phase1CommonConfigurationDiagnostic, Phase1CommonConfigurationQueryDiagnostic, Phase1CoverageResult, Phase1QueryExclusionReason, Phase1NonRankableReason, Phase1QueryCoverageDiagnostic, compute_phase1_activation_score, compute_phase1_pair_coverage, evaluate_phase1_candidate, rank_phase1_candidates
+
 
 __all__ = [
+    "GHBudgetConsistencyAudit",
+    "GHCanonicalBinaryCounts",
+    "GHCanonicalizationReport",
+    "GHCompletionStatus",
+    "GHDemandConsistencyAudit",
+    "GHPhase1Config",
+    "GHPhase1Deployment",
+    "GHPhase1IterationTrace",
+    "GHPhase1Result",
+    "GHPhase1State",
+    "GHPhase1TerminationReason",
+    "GHPhase2BudgetComparison",
+    "GHPhase2AllocationProposal",
+    "GHPhase2CandidateAttempt",
+    "GHPhase2CandidateEvaluation",
+    "GHPhase2CandidateRejectionReason",
+    "GHPhase2CommitDiagnostic",
+    "GHPhase2CommitRejectionReason",
+    "GHPhase2CommitResult",
+    "GHPhase2CandidateConfiguration",
+    "GHPhase2ConfigurationSource",
+    "GHPhase2Deployment",
+    "GHPhase2ProspectiveDeployment",
+    "GHPhase2QueryEvaluation",
+    "GHPhase2QueryProcessResult",
+    "GHPhase2QueryTerminationReason",
+    "GHPhase2QueryTrace",
+    "GHPhase2RunCompletionStatus",
+    "GHPhase2RunResult",
+    "GHPhase2State",
+    "GHResult",
+    "GHRunIdentity",
     "M1ConfigurationDiagnostic",
     "M1SelectionResult",
-    "select_minimum_feasible_parallelism",
     "M2CandidateEvaluation",
     "M2ConfigurationEvidence",
     "M2CoverageLimiter",
     "M2EffectiveCoverageDiagnostic",
     "M2EvaluationInputs",
-    "M2MarginalCostDiagnostic",
+    "M2MarginalCostBreakdown",
     "M2UnrankableReason",
-    "compute_m2_effective_coverage",
-    "compute_m2_marginal_cost",
-    "evaluate_m2_candidate",
-    "rank_m2_candidates",
     "M3ConfigurationDiagnostic",
     "M3EvaluationState",
     "M3NoUpgradeReason",
     "M3UpgradeResult",
-    "select_m3_parallelism_upgrade",
     "Phase1ActivationScore",
     "Phase1CandidateEvaluation",
     "Phase1CommonConfigurationDiagnostic",
@@ -84,18 +75,27 @@ __all__ = [
     "Phase1QueryExclusionReason",
     "Phase1NonRankableReason",
     "Phase1QueryCoverageDiagnostic",
+    "apply_gh_phase1_activation",
+    "canonicalize_gh_phase2_state",
+    "commit_gh_phase2_candidate",
+    "compute_gh_phase2_candidate_allocation",
+    "compute_m2_effective_coverage",
+    "compute_m2_marginal_cost",
     "compute_phase1_activation_score",
     "compute_phase1_pair_coverage",
-    "evaluate_phase1_candidate",
-    "rank_phase1_candidates",
-    "GHPhase1Config",
-    "GHPhase1Deployment",
-    "GHPhase1IterationTrace",
-    "GHPhase1Result",
-    "GHPhase1State",
-    "GHPhase1TerminationReason",
-    "apply_gh_phase1_activation",
     "evaluate_gh_phase1_candidates",
+    "evaluate_gh_phase2_query_candidates",
+    "evaluate_m2_candidate",
+    "evaluate_phase1_candidate",
     "initialize_gh_phase1_state",
+    "initialize_gh_phase2_state",
+    "order_gh_phase2_queries",
+    "process_gh_phase2_query_candidates",
+    "rank_m2_candidates",
+    "rank_phase1_candidates",
+    "run_gh",
     "run_gh_phase1",
+    "run_gh_phase2",
+    "select_m3_parallelism_upgrade",
+    "select_minimum_feasible_parallelism",
 ]

@@ -78,6 +78,48 @@ def compute_model_memory_usage_gb_by_pair(
     """
 
     validate_placement_decision_domains(instance, state)
+    return _compute_model_memory_usage_gb_by_pair(instance, state)
+
+
+def compute_kv_memory_printed_term_by_pair(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> dict[tuple[str, str], float]:
+    """Return the linearized KV term per pair (v2 Eq. 8f, D-0002).
+
+    ``sum_(i,n,m) beta_j/(n*m)*r_i*T_res[i,j,k]*v[i,j,k,n,m]`` uses
+    ``model.kv_cache_gb_per_token`` (beta), ``query.total_tokens`` (r),
+    ``instance.kv_cache_residency_seconds`` (T_res), and ``auxiliary_products`` (v).
+    Supplied v values are used directly.
+    Unit caveat: beta is GB/token, r counts tokens, and T_res is stored in
+    seconds; n, m, and v are dimensionless. The product retains GB*seconds,
+    not GB, so its comparison with GPU capacity is dimensionally unresolved.
+    No arrival-rate factor or implicit time/unit correction is introduced.
+    """
+
+    validate_placement_decision_domains(instance, state)
+    return _compute_kv_memory_printed_term_by_pair(instance, state)
+
+
+def compute_gpu_memory_residuals(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> tuple[GpuMemoryDiagnostic, ...]:
+    """Compare model and KV terms with ``C_gpu[k]*q[j,k]`` (v2 Eq. 8f, D-0002).
+
+    Return one diagnostic per model/tier pair in instance order, with
+    ``slack = C_gpu[k]*q[j,k] - printed_memory_lhs``. Capacity is per GPU.
+    """
+
+    validate_placement_decision_domains(instance, state)
+    return _compute_gpu_memory_residuals(instance, state)
+
+
+def _compute_model_memory_usage_gb_by_pair(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> dict[tuple[str, str], float]:
+    """Calculate from instance and decision domains validated by the caller."""
     weight_by_model = {model.id: model.weight_gb for model in instance.models}
     return {
         (model_id, tier.id): fsum(
@@ -99,23 +141,11 @@ def compute_model_memory_usage_gb_by_pair(
     }
 
 
-def compute_kv_memory_printed_term_by_pair(
+def _compute_kv_memory_printed_term_by_pair(
     instance: ProblemInstance,
     state: PlacementDecisionState,
 ) -> dict[tuple[str, str], float]:
-    """Return the linearized KV term per pair (v2 Eq. 8f, D-0002).
-
-    ``sum_(i,n,m) beta_j/(n*m)*r_i*T_res[i,j,k]*v[i,j,k,n,m]`` uses
-    ``model.kv_cache_gb_per_token`` (beta), ``query.total_tokens`` (r),
-    ``instance.kv_cache_residency_seconds`` (T_res), and ``auxiliary_products`` (v).
-    Supplied v values are used directly.
-    Unit caveat: beta is GB/token, r counts tokens, and T_res is stored in
-    seconds; n, m, and v are dimensionless. The product retains GB*seconds,
-    not GB, so its comparison with GPU capacity is dimensionally unresolved.
-    No arrival-rate factor or implicit time/unit correction is introduced.
-    """
-
-    validate_placement_decision_domains(instance, state)
+    """Calculate from instance and decision domains validated by the caller."""
     kv_by_model = {
         model.id: model.kv_cache_gb_per_token for model in instance.models
     }
@@ -145,18 +175,14 @@ def compute_kv_memory_printed_term_by_pair(
     }
 
 
-def compute_gpu_memory_residuals(
+def _compute_gpu_memory_residuals(
     instance: ProblemInstance,
     state: PlacementDecisionState,
 ) -> tuple[GpuMemoryDiagnostic, ...]:
-    """Compare model and KV terms with ``C_gpu[k]*q[j,k]`` (v2 Eq. 8f, D-0002).
+    """Calculate from instance and decision domains validated by the caller."""
 
-    Return one diagnostic per model/tier pair in instance order, with
-    ``slack = C_gpu[k]*q[j,k] - printed_memory_lhs``. Capacity is per GPU.
-    """
-
-    model_usage = compute_model_memory_usage_gb_by_pair(instance, state)
-    kv_usage = compute_kv_memory_printed_term_by_pair(instance, state)
+    model_usage = _compute_model_memory_usage_gb_by_pair(instance, state)
+    kv_usage = _compute_kv_memory_printed_term_by_pair(instance, state)
     residuals: list[GpuMemoryDiagnostic] = []
     for model_id in instance.model_ids:
         for tier in instance.gpu_tiers:

@@ -10,13 +10,13 @@ from math import isfinite
 from types import MappingProxyType
 from typing import Mapping
 
-from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance, validate_problem_instance
 
 from .routing import (
     DecisionDomainError,
     ModelTierKey,
     RoutingDecisionState,
-    validate_deployment_indicator_domains,
+    _validate_deployment_indicator_domains,
 )
 
 
@@ -187,9 +187,16 @@ def validate_parallelism_decision_domains(
     Missing known entries mean zero; domains are checked without tolerance.
     """
 
-    # Reuse the narrow q authority instead of re-declaring binary deployment
-    # semantics in this module. It also validates the scientific instance.
-    validate_deployment_indicator_domains(instance, state.deployment_indicators)
+    validate_problem_instance(instance)
+    _validate_deployment_indicator_domains(instance, state.deployment_indicators)
+    _validate_parallelism_configuration_domains(instance, state)
+
+
+def _validate_parallelism_configuration_domains(
+    instance: ProblemInstance,
+    state: ParallelismDecisionState,
+) -> None:
+    """Check w and y after the instance and shared q domains are validated."""
 
     pair_keys = {
         (model_id, tier_id)
@@ -260,6 +267,28 @@ def compute_configuration_selection_residuals(
     """
 
     validate_parallelism_decision_domains(instance, state)
+    return _compute_configuration_selection_residuals(instance, state)
+
+
+def compute_gpu_count_linking_residuals(
+    instance: ProblemInstance,
+    state: ParallelismDecisionState,
+) -> tuple[GpuCountLinkingDiagnostic, ...]:
+    """Compute the GPU-count residual for each model/tier pair (v2 Eq. 8e).
+
+    ``y[j,k] - sum_(n,m) n*m*w[j,k,n,m]`` compares allocated GPUs with the
+    count required by selected configurations. Results follow instance order.
+    """
+
+    validate_parallelism_decision_domains(instance, state)
+    return _compute_gpu_count_linking_residuals(instance, state)
+
+
+def _compute_configuration_selection_residuals(
+    instance: ProblemInstance,
+    state: ParallelismDecisionState,
+) -> tuple[ConfigurationSelectionDiagnostic, ...]:
+    """Calculate from instance and decision domains validated by the caller."""
     residuals: list[ConfigurationSelectionDiagnostic] = []
     for model_id in instance.model_ids:
         for tier in instance.gpu_tiers:
@@ -291,17 +320,11 @@ def compute_configuration_selection_residuals(
     return tuple(residuals)
 
 
-def compute_gpu_count_linking_residuals(
+def _compute_gpu_count_linking_residuals(
     instance: ProblemInstance,
     state: ParallelismDecisionState,
 ) -> tuple[GpuCountLinkingDiagnostic, ...]:
-    """Compute the GPU-count residual for each model/tier pair (v2 Eq. 8e).
-
-    ``y[j,k] - sum_(n,m) n*m*w[j,k,n,m]`` compares allocated GPUs with the
-    count required by selected configurations. Results follow instance order.
-    """
-
-    validate_parallelism_decision_domains(instance, state)
+    """Calculate from instance and decision domains validated by the caller."""
     residuals: list[GpuCountLinkingDiagnostic] = []
     for model_id in instance.model_ids:
         for tier in instance.gpu_tiers:

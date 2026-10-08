@@ -9,42 +9,42 @@ from typing import Mapping
 from llm_resource_allocation.domain import InstanceValidationError, ProblemInstance
 from llm_resource_allocation.math.budget import (
     BudgetDiagnostic,
-    compute_budget_residual,
+    _budget_residual_from_objective,
 )
 from llm_resource_allocation.math.compute_capacity import (
     ComputeCapacityDiagnostic,
-    compute_compute_capacity_diagnostics,
+    _compute_compute_capacity_diagnostics,
 )
 from llm_resource_allocation.math.parallelism import (
     ConfigurationSelectionDiagnostic,
     GpuCountLinkingDiagnostic,
-    compute_configuration_selection_residuals,
-    compute_gpu_count_linking_residuals,
+    _compute_configuration_selection_residuals,
+    _compute_gpu_count_linking_residuals,
 )
 from llm_resource_allocation.math.routing import (
     DecisionDomainError,
     DemandBalanceDiagnostic,
     RoutingConsistencyDiagnostic,
-    compute_demand_balance_residuals,
-    compute_routing_consistency_residuals,
+    _compute_demand_balance_residuals,
+    _compute_routing_consistency_residuals,
 )
 from llm_resource_allocation.math.processing_delay import (
     DelaySloDiagnostic,
-    compute_delay_slo_residuals,
-    compute_processing_delays_seconds,
+    _delay_slo_residuals_from_processing_delays,
+    _compute_processing_delays_seconds,
 )
 from llm_resource_allocation.math.error_slo import (
     ErrorSloDiagnostic,
-    compute_error_slo_residuals,
+    _compute_error_slo_residuals,
 )
 from llm_resource_allocation.math.gpu_memory import (
     GpuMemoryDiagnostic,
-    compute_gpu_memory_residuals,
+    _compute_gpu_memory_residuals,
 )
 from llm_resource_allocation.math.placement import (
     McCormickConsistencyDiagnostic,
     PlacementDecisionState,
-    compute_mccormick_consistency_diagnostics,
+    _compute_mccormick_consistency_diagnostics,
     validate_placement_decision_domains,
 )
 from llm_resource_allocation.math.objective import (
@@ -55,7 +55,7 @@ from llm_resource_allocation.math.objective import (
 )
 from llm_resource_allocation.math.storage_capacity import (
     QueryStorageCapacityDiagnostic,
-    compute_storage_capacity_residuals,
+    _compute_storage_capacity_residuals,
 )
 
 
@@ -180,6 +180,9 @@ class PlacementValidationReport:
     delay_slo_diagnostics: tuple[DelaySloDiagnostic, ...]
     error_slo_diagnostics: tuple[ErrorSloDiagnostic, ...]
     routing_consistency_diagnostics: tuple[RoutingConsistencyDiagnostic, ...]
+    _violations: tuple[ValidationViolation, ...] = field(
+        init=False, repr=False, compare=False
+    )
 
     def __post_init__(self) -> None:
         """Own immutable copies of the mapping and diagnostic sequences."""
@@ -202,10 +205,16 @@ class PlacementValidationReport:
             "routing_consistency_diagnostics",
         ):
             object.__setattr__(self, name, tuple(getattr(self, name)))
+        object.__setattr__(self, "_violations", self._collect_violations())
 
     @property
     def violations(self) -> tuple[ValidationViolation, ...]:
-        """Collect all violations in deterministic constraint-family order."""
+        """Return violations derived once in deterministic constraint-family order."""
+
+        return self._violations
+
+    def _collect_violations(self) -> tuple[ValidationViolation, ...]:
+        """Derive violation locations from the report's immutable evidence."""
 
         if not self.domain_diagnostic.is_valid:
             return (
@@ -489,7 +498,7 @@ class PlacementValidator:
             )
 
         # Derive D_proc from supplied v (v2 Eq. 6), without replacing it with x*w.
-        processing_delays = compute_processing_delays_seconds(instance, state)
+        processing_delays = _compute_processing_delays_seconds(instance, state)
         objective = compute_objective_breakdown(
             instance,
             ObjectiveState(
@@ -508,33 +517,35 @@ class PlacementValidator:
             domain_diagnostic=PlacementDomainDiagnostic(is_valid=True),
             processing_delays_seconds=processing_delays,
             objective_breakdown=objective,
-            mccormick_diagnostics=compute_mccormick_consistency_diagnostics(
+            mccormick_diagnostics=_compute_mccormick_consistency_diagnostics(
                 instance, state
             ),
-            demand_balance_diagnostics=compute_demand_balance_residuals(
+            demand_balance_diagnostics=_compute_demand_balance_residuals(
                 instance, state.routing_decisions
             ),
-            budget_diagnostic=compute_budget_residual(instance, state),
+            budget_diagnostic=_budget_residual_from_objective(instance, objective),
             configuration_selection_diagnostics=(
-                compute_configuration_selection_residuals(
+                _compute_configuration_selection_residuals(
                     instance, state.parallelism_decisions
                 )
             ),
-            gpu_count_linking_diagnostics=compute_gpu_count_linking_residuals(
+            gpu_count_linking_diagnostics=_compute_gpu_count_linking_residuals(
                 instance, state.parallelism_decisions
             ),
-            gpu_memory_diagnostics=compute_gpu_memory_residuals(instance, state),
-            compute_capacity_diagnostics=compute_compute_capacity_diagnostics(
+            gpu_memory_diagnostics=_compute_gpu_memory_residuals(instance, state),
+            compute_capacity_diagnostics=_compute_compute_capacity_diagnostics(
                 instance, state.parallelism_decisions
             ),
-            storage_capacity_diagnostics=compute_storage_capacity_residuals(
+            storage_capacity_diagnostics=_compute_storage_capacity_residuals(
                 instance, state
             ),
-            delay_slo_diagnostics=compute_delay_slo_residuals(instance, state),
-            error_slo_diagnostics=compute_error_slo_residuals(
+            delay_slo_diagnostics=_delay_slo_residuals_from_processing_delays(
+                instance, processing_delays
+            ),
+            error_slo_diagnostics=_compute_error_slo_residuals(
                 instance, state.routing_decisions
             ),
-            routing_consistency_diagnostics=compute_routing_consistency_residuals(
+            routing_consistency_diagnostics=_compute_routing_consistency_residuals(
                 instance, state.routing_decisions
             ),
         )

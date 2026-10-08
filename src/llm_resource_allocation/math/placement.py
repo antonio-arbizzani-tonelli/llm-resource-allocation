@@ -9,7 +9,7 @@ from math import isfinite
 from types import MappingProxyType
 from typing import Mapping
 
-from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance, validate_problem_instance
 
 from .mccormick import (
     McCormickResiduals,
@@ -19,14 +19,14 @@ from .mccormick import (
 from .parallelism import (
     ConfigurationSelectorKey,
     ParallelismDecisionState,
-    validate_parallelism_decision_domains,
+    _validate_parallelism_configuration_domains,
 )
 from .routing import (
     DecisionDomainError,
     ModelTierKey,
     QueryModelTierKey,
     RoutingDecisionState,
-    validate_routing_decision_domains,
+    _validate_routing_decision_domains,
 )
 
 
@@ -158,10 +158,19 @@ def validate_placement_decision_domains(
     tier configurations. Missing known entries mean zero; domains are exact.
     """
 
-    # These calls validate domains only, not Eq. (8b), (8d), or any other
-    # constraint. Keeping that distinction lets later diagnostics coexist.
-    validate_routing_decision_domains(instance, state.routing_decisions)
-    validate_parallelism_decision_domains(instance, state.parallelism_decisions)
+    validate_problem_instance(instance)
+    _validate_placement_decision_domains(instance, state)
+
+
+def _validate_placement_decision_domains(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> None:
+    """Check all decision domains after instance validation; inspect shared q once."""
+
+    # Domains alone do not establish any of Eqs. (7)-(8k).
+    _validate_routing_decision_domains(instance, state.routing_decisions)
+    _validate_parallelism_configuration_domains(instance, state.parallelism_decisions)
 
     auxiliary_product_keys = {
         (
@@ -222,6 +231,14 @@ def compute_mccormick_consistency_diagnostics(
     """
 
     validate_placement_decision_domains(instance, state)
+    return _compute_mccormick_consistency_diagnostics(instance, state)
+
+
+def _compute_mccormick_consistency_diagnostics(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> tuple[McCormickConsistencyDiagnostic, ...]:
+    """Calculate from instance and decision domains validated by the caller."""
     diagnostics: list[McCormickConsistencyDiagnostic] = []
     for query_id in instance.query_ids:
         for model_id in instance.model_ids:

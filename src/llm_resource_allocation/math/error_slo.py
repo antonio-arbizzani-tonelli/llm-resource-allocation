@@ -62,6 +62,14 @@ def compute_error_slo_residuals(
     """
 
     validate_routing_decision_domains(instance, state)
+    return _compute_error_slo_residuals(instance, state)
+
+
+def _compute_error_slo_residuals(
+    instance: ProblemInstance,
+    state: RoutingDecisionState,
+) -> tuple[ErrorSloDiagnostic, ...]:
+    """Calculate from instance and decision domains validated by the caller."""
     tier_by_id = {tier.id: tier for tier in instance.gpu_tiers}
     residuals: list[ErrorSloDiagnostic] = []
 

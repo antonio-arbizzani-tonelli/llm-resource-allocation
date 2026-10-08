@@ -116,8 +116,8 @@ class M2EvaluationInputs:
 
 
 @dataclass(frozen=True, slots=True)
-class M2MarginalCostDiagnostic:
-    """Expose every additive term in Paper v2 Eq. (10)."""
+class M2MarginalCostBreakdown:
+    """Break down GPU, storage, and delay costs in Paper v2 Eq. (10)."""
 
     current_gpu_count: int
     required_gpu_count: int
@@ -208,11 +208,11 @@ class M2CandidateEvaluation:
     model_id: str
     tier_id: str
     selected_configuration: ParallelismConfig | None
-    cost_diagnostic: M2MarginalCostDiagnostic | None
+    cost_breakdown: M2MarginalCostBreakdown | None
     coverage_diagnostic: M2EffectiveCoverageDiagnostic | None
 
     def __post_init__(self) -> None:
-        if (self.selected_configuration is None) != (self.cost_diagnostic is None):
+        if (self.selected_configuration is None) != (self.cost_breakdown is None):
             raise ValueError("M2 selection and marginal cost must occur together")
         if (self.selected_configuration is None) != (self.coverage_diagnostic is None):
             raise ValueError("M2 selection and effective coverage must occur together")
@@ -228,10 +228,10 @@ class M2CandidateEvaluation:
 
     @property
     def kappa(self) -> float | None:
-        if self.cost_diagnostic is None or self.coverage_diagnostic is None:
+        if self.cost_breakdown is None or self.coverage_diagnostic is None:
             return None
         coverage = self.coverage_diagnostic.effective_coverage
-        return self.cost_diagnostic.marginal_cost / coverage if coverage > 0.0 else None
+        return self.cost_breakdown.marginal_cost / coverage if coverage > 0.0 else None
 
     @property
     def unrankable_reasons(self) -> tuple[M2UnrankableReason, ...]:
@@ -254,6 +254,94 @@ class M2CandidateEvaluation:
         return (self.pi, self.kappa)
 
 
+def compute_m2_marginal_cost(
+    instance: ProblemInstance,
+    configuration_evidence: M2ConfigurationEvidence,
+    evaluation_inputs: M2EvaluationInputs,
+) -> M2MarginalCostBreakdown:
+    """Return M2 marginal cost from selected configuration/delay (v2 Eq. 10).
+
+    ``c = DeltaT*(p_gpu*max(n*m-y,0) + p_s*(B_j+theta_i*r_i*lambda_i))
+         + rho_i*D_cfg``.
+    ``DeltaT`` is ``instance.horizon_hours``; ``y`` is ``evaluation_inputs.current_gpu_count``.
+    Only the GPU term uses the positive part. The printed ``rho_i*D_cfg`` term
+    uses the stored delay in seconds without adding a unit conversion.
+    """
+
+    query, model, tier = _validate_m2_candidate_identity(instance, configuration_evidence)
+    configuration, delay_seconds = _require_feasible_configuration_evidence(
+        tier, configuration_evidence
+    )
+    return _compute_m2_marginal_cost(
+        instance,
+        query,
+        model,
+        tier,
+        configuration,
+        delay_seconds,
+        evaluation_inputs,
+    )
+
+
+def compute_m2_effective_coverage(
+    instance: ProblemInstance,
+    configuration_evidence: M2ConfigurationEvidence,
+    evaluation_inputs: M2EvaluationInputs,
+) -> M2EffectiveCoverageDiagnostic:
+    """Return M2 effective coverage from selected delay evidence (v2 Eq. 11).
+
+    ``x_bar = min(r_tilde_i, (epsilon_i-E_used_i)/e_bar,
+                 (Delta_i-D_used_i)/D_cfg)``.
+    Delay quantities are in seconds. D-0033 defines zero-denominator handling
+    and non-negative allocation; memory, capacity, and rental budget are later
+    commit checks.
+    """
+
+    query, model, tier = _validate_m2_candidate_identity(instance, configuration_evidence)
+    _, delay_seconds = _require_feasible_configuration_evidence(
+        tier, configuration_evidence
+    )
+    return _compute_m2_effective_coverage(
+        instance,
+        query,
+        model,
+        tier,
+        delay_seconds,
+        evaluation_inputs,
+    )
+
+
+def evaluate_m2_candidate(
+    instance: ProblemInstance,
+    configuration_evidence: M2ConfigurationEvidence,
+    evaluation_inputs: M2EvaluationInputs,
+) -> M2CandidateEvaluation:
+    """Evaluate one configuration-screened M2 candidate (v2 Eqs. 10-11).
+
+    ``pi = 1[x_bar < r_tilde_i]`` and, for positive coverage, ``kappa=c/x_bar``.
+    Missing configurations or non-positive coverage remain diagnostic evidence
+    with ``kappa=None`` and are excluded from ranking (Algorithm 1, D-0033).
+    """
+
+    validate_problem_instance(instance)
+    return _evaluate_m2_candidate(instance, configuration_evidence, evaluation_inputs)
+
+
+def rank_m2_candidates(
+    evaluations: tuple[M2CandidateEvaluation, ...],
+) -> tuple[M2CandidateEvaluation, ...]:
+    """Return rankable candidates in ascending ``(pi,kappa)`` order.
+
+    Exact ties retain supplied semantic order; unrankable candidates are omitted
+    without tolerance or secondary ID ordering (Algorithm 1, D-0033).
+    """
+
+    rankable = tuple(
+        evaluation for evaluation in evaluations if evaluation.is_rankable
+    )
+    return tuple(sorted(rankable, key=lambda evaluation: evaluation.rank_key))
+
+
 def _validate_m2_candidate_identity(
     instance: ProblemInstance,
     selection_evidence: M2ConfigurationEvidence,
@@ -261,6 +349,15 @@ def _validate_m2_candidate_identity(
     """Validate the instance and resolve one candidate's selection evidence."""
 
     validate_problem_instance(instance)
+    return _resolve_m2_candidate_identity(instance, selection_evidence)
+
+
+def _resolve_m2_candidate_identity(
+    instance: ProblemInstance,
+    selection_evidence: M2ConfigurationEvidence,
+) -> tuple[QueryType, FoundationModel, GpuTier]:
+    """Resolve candidate IDs within an already validated instance."""
+
     query = _entity_by_id(instance.queries, selection_evidence.query_id, "query")
     model = _entity_by_id(instance.models, selection_evidence.model_id, "model")
     tier = _entity_by_id(
@@ -294,7 +391,7 @@ def _compute_m2_marginal_cost(
     configuration: ParallelismConfig,
     fixed_configuration_delay_seconds: float,
     evaluation_inputs: M2EvaluationInputs,
-) -> M2MarginalCostDiagnostic:
+) -> M2MarginalCostBreakdown:
     """Evaluate the literal additive terms in Paper v2 Eq. (10)."""
 
     required_gpu_count = configuration.gpu_count
@@ -321,41 +418,12 @@ def _compute_m2_marginal_cost(
         query.delay_penalty_usd_per_millisecond_query
         * fixed_configuration_delay_seconds
     )
-    return M2MarginalCostDiagnostic(
+    return M2MarginalCostBreakdown(
         current_gpu_count=evaluation_inputs.current_gpu_count,
         required_gpu_count=required_gpu_count,
         incremental_gpu_cost=incremental_gpu_cost,
         model_and_data_storage_cost=model_and_data_storage_cost,
         delay_penalty_cost=delay_penalty_cost,
-    )
-
-
-def compute_m2_marginal_cost(
-    instance: ProblemInstance,
-    configuration_evidence: M2ConfigurationEvidence,
-    evaluation_inputs: M2EvaluationInputs,
-) -> M2MarginalCostDiagnostic:
-    """Return M2 marginal cost from selected configuration/delay (v2 Eq. 10).
-
-    ``c = DeltaT*(p_gpu*max(n*m-y,0) + p_s*(B_j+theta_i*r_i*lambda_i))
-         + rho_i*D_cfg``.
-    ``DeltaT`` is ``instance.horizon_hours``; ``y`` is ``evaluation_inputs.current_gpu_count``.
-    Only the GPU term uses the positive part. The printed ``rho_i*D_cfg`` term
-    uses the stored delay in seconds without adding a unit conversion.
-    """
-
-    query, model, tier = _validate_m2_candidate_identity(instance, configuration_evidence)
-    configuration, delay_seconds = _require_feasible_configuration_evidence(
-        tier, configuration_evidence
-    )
-    return _compute_m2_marginal_cost(
-        instance,
-        query,
-        model,
-        tier,
-        configuration,
-        delay_seconds,
-        evaluation_inputs,
     )
 
 
@@ -401,34 +469,6 @@ def _compute_m2_effective_coverage(
     )
 
 
-def compute_m2_effective_coverage(
-    instance: ProblemInstance,
-    configuration_evidence: M2ConfigurationEvidence,
-    evaluation_inputs: M2EvaluationInputs,
-) -> M2EffectiveCoverageDiagnostic:
-    """Return M2 effective coverage from selected delay evidence (v2 Eq. 11).
-
-    ``x_bar = min(r_tilde_i, (epsilon_i-E_used_i)/e_bar,
-                 (Delta_i-D_used_i)/D_cfg)``.
-    Delay quantities are in seconds. D-0033 defines zero-denominator handling
-    and non-negative allocation; memory, capacity, and rental budget are later
-    commit checks.
-    """
-
-    query, model, tier = _validate_m2_candidate_identity(instance, configuration_evidence)
-    _, delay_seconds = _require_feasible_configuration_evidence(
-        tier, configuration_evidence
-    )
-    return _compute_m2_effective_coverage(
-        instance,
-        query,
-        model,
-        tier,
-        delay_seconds,
-        evaluation_inputs,
-    )
-
-
 def _m2_unrankable_reasons(
     coverage_diagnostic: M2EffectiveCoverageDiagnostic,
 ) -> tuple[M2UnrankableReason, ...]:
@@ -456,33 +496,28 @@ def _m2_unrankable_reasons(
     return tuple(reasons)
 
 
-def evaluate_m2_candidate(
+def _evaluate_m2_candidate(
     instance: ProblemInstance,
     configuration_evidence: M2ConfigurationEvidence,
     evaluation_inputs: M2EvaluationInputs,
 ) -> M2CandidateEvaluation:
-    """Evaluate one configuration-screened M2 candidate (v2 Eqs. 10-11).
+    """Evaluate M2 using a validated instance and matching configuration evidence."""
 
-    ``pi = 1[x_bar < r_tilde_i]`` and, for positive coverage, ``kappa=c/x_bar``.
-    Missing configurations or non-positive coverage remain diagnostic evidence
-    with ``kappa=None`` and are excluded from ranking (Algorithm 1, D-0033).
-    """
-
-    query, model, tier = _validate_m2_candidate_identity(instance, configuration_evidence)
+    query, model, tier = _resolve_m2_candidate_identity(instance, configuration_evidence)
     if not configuration_evidence.is_feasible:
         return M2CandidateEvaluation(
             query_id=query.id,
             model_id=model.id,
             tier_id=tier.id,
             selected_configuration=None,
-            cost_diagnostic=None,
+            cost_breakdown=None,
             coverage_diagnostic=None,
         )
 
     configuration, delay_seconds = _require_feasible_configuration_evidence(
         tier, configuration_evidence
     )
-    cost_diagnostic = _compute_m2_marginal_cost(
+    cost_breakdown = _compute_m2_marginal_cost(
         instance,
         query,
         model,
@@ -504,21 +539,6 @@ def evaluate_m2_candidate(
         model_id=model.id,
         tier_id=tier.id,
         selected_configuration=configuration,
-        cost_diagnostic=cost_diagnostic,
+        cost_breakdown=cost_breakdown,
         coverage_diagnostic=coverage_diagnostic,
     )
-
-
-def rank_m2_candidates(
-    evaluations: tuple[M2CandidateEvaluation, ...],
-) -> tuple[M2CandidateEvaluation, ...]:
-    """Return rankable candidates in ascending ``(pi,kappa)`` order.
-
-    Exact ties retain supplied semantic order; unrankable candidates are omitted
-    without tolerance or secondary ID ordering (Algorithm 1, D-0033).
-    """
-
-    rankable = tuple(
-        evaluation for evaluation in evaluations if evaluation.is_rankable
-    )
-    return tuple(sorted(rankable, key=lambda evaluation: evaluation.rank_key))

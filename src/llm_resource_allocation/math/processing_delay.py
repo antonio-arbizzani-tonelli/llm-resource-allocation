@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from math import fsum, isfinite
+from typing import Mapping
 
 from llm_resource_allocation.domain import ProblemInstance
 
@@ -59,6 +60,44 @@ def compute_processing_delays_seconds(
     """
 
     validate_placement_decision_domains(instance, state)
+    return _compute_processing_delays_seconds(instance, state)
+
+
+def compute_delay_slo_residuals(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> tuple[DelaySloDiagnostic, ...]:
+    """Return delay-SLO diagnostics for each query (v2 Eq. 8i).
+
+    Compute ``D_proc[i]`` and pair it with ``query.delay_slo_seconds`` (Delta_i).
+    Each diagnostic exposes ``slack = Delta_i - D_proc[i]`` in seconds.
+    """
+
+    processing_delays = compute_processing_delays_seconds(instance, state)
+    return _delay_slo_residuals_from_processing_delays(instance, processing_delays)
+
+
+def _delay_slo_residuals_from_processing_delays(
+    instance: ProblemInstance,
+    processing_delays: Mapping[str, float],
+) -> tuple[DelaySloDiagnostic, ...]:
+    """Pair already computed delays with query SLOs without repeating Eq. (6)."""
+
+    return tuple(
+        DelaySloDiagnostic(
+            query_id=query.id,
+            processing_delay=processing_delays[query.id],
+            delay_limit=query.delay_slo_seconds,
+        )
+        for query in instance.queries
+    )
+
+
+def _compute_processing_delays_seconds(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> dict[str, float]:
+    """Calculate from instance and decision domains validated by the caller."""
     delays: dict[str, float] = {}
     for query in instance.queries:
         terms: list[float] = []
@@ -83,24 +122,3 @@ def compute_processing_delays_seconds(
                     terms.append(auxiliary * configuration_delay)
         delays[query.id] = fsum(terms)
     return delays
-
-
-def compute_delay_slo_residuals(
-    instance: ProblemInstance,
-    state: PlacementDecisionState,
-) -> tuple[DelaySloDiagnostic, ...]:
-    """Return delay-SLO diagnostics for each query (v2 Eq. 8i).
-
-    Compute ``D_proc[i]`` and pair it with ``query.delay_slo_seconds`` (Delta_i).
-    Each diagnostic exposes ``slack = Delta_i - D_proc[i]`` in seconds.
-    """
-
-    processing_delays = compute_processing_delays_seconds(instance, state)
-    return tuple(
-        DelaySloDiagnostic(
-            query_id=query.id,
-            processing_delay=processing_delays[query.id],
-            delay_limit=query.delay_slo_seconds,
-        )
-        for query in instance.queries
-    )

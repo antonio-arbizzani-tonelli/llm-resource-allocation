@@ -207,6 +207,15 @@ def validate_deployment_indicator_domains(
     """
 
     validate_problem_instance(instance)
+    _validate_deployment_indicator_domains(instance, deployment_indicators)
+
+
+def _validate_deployment_indicator_domains(
+    instance: ProblemInstance,
+    deployment_indicators: Mapping[ModelTierKey, float],
+) -> None:
+    """Check q domains after the caller has validated the instance."""
+
     errors: list[str] = []
     _append_deployment_indicator_errors(instance, deployment_indicators, errors)
     if errors:
@@ -227,6 +236,15 @@ def validate_routing_decision_domains(
     """
 
     validate_problem_instance(instance)
+    _validate_routing_decision_domains(instance, state)
+
+
+def _validate_routing_decision_domains(
+    instance: ProblemInstance,
+    state: RoutingDecisionState,
+) -> None:
+    """Check x, z, q and u domains after instance validation."""
+
     query_ids = set(instance.query_ids)
     triple_keys = {
         (query_id, model_id, tier_id)
@@ -290,6 +308,28 @@ def compute_demand_balance_residuals(
     """
 
     validate_routing_decision_domains(instance, state)
+    return _compute_demand_balance_residuals(instance, state)
+
+
+def compute_routing_consistency_residuals(
+    instance: ProblemInstance,
+    state: RoutingDecisionState,
+) -> tuple[RoutingConsistencyDiagnostic, ...]:
+    """Compute slacks for ``0 <= x[i,j,k] <= z[i,j,k] <= q[j,k]`` (v2 Eq. 8k).
+
+    Return x, z-x, and q-z for every route in query/model/tier instance order.
+    Non-negative slacks satisfy the respective inequalities.
+    """
+
+    validate_routing_decision_domains(instance, state)
+    return _compute_routing_consistency_residuals(instance, state)
+
+
+def _compute_demand_balance_residuals(
+    instance: ProblemInstance,
+    state: RoutingDecisionState,
+) -> tuple[DemandBalanceDiagnostic, ...]:
+    """Calculate from instance and decision domains validated by the caller."""
     residuals: list[DemandBalanceDiagnostic] = []
     for query_id in instance.query_ids:
         routing_values = tuple(
@@ -313,17 +353,11 @@ def compute_demand_balance_residuals(
     return tuple(residuals)
 
 
-def compute_routing_consistency_residuals(
+def _compute_routing_consistency_residuals(
     instance: ProblemInstance,
     state: RoutingDecisionState,
 ) -> tuple[RoutingConsistencyDiagnostic, ...]:
-    """Compute slacks for ``0 <= x[i,j,k] <= z[i,j,k] <= q[j,k]`` (v2 Eq. 8k).
-
-    Return x, z-x, and q-z for every route in query/model/tier instance order.
-    Non-negative slacks satisfy the respective inequalities.
-    """
-
-    validate_routing_decision_domains(instance, state)
+    """Calculate from instance and decision domains validated by the caller."""
     residuals: list[RoutingConsistencyDiagnostic] = []
     for query_id in instance.query_ids:
         for model_id in instance.model_ids:

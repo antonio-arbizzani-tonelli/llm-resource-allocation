@@ -73,18 +73,7 @@ def compute_model_storage_usage_by_query(
     """
 
     validate_placement_decision_domains(instance, state)
-    weight_by_model = {model.id: model.weight_gb for model in instance.models}
-    return {
-        query_id: fsum(
-            weight_by_model[model_id]
-            * state.admission_indicators.get(
-                (query_id, model_id, tier_id), 0.0
-            )
-            for model_id in instance.model_ids
-            for tier_id in instance.gpu_tier_ids
-        )
-        for query_id in instance.query_ids
-    }
+    return _compute_model_storage_usage_by_query(instance, state)
 
 
 def compute_data_storage_rate_by_query(
@@ -99,6 +88,49 @@ def compute_data_storage_rate_by_query(
     """
 
     validate_placement_decision_domains(instance, state)
+    return _compute_data_storage_rate_by_query(instance, state)
+
+
+def compute_storage_capacity_residuals(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> tuple[QueryStorageCapacityDiagnostic, ...]:
+    """Return storage-capacity diagnostics per query (v2 Eq. 8h, D-0016).
+
+    Compute ``model_storage_usage_gb = sum_(j,k) B_j*z[i,j,k]`` and
+    ``data_storage_rate_gb_per_hour = sum_(j,k) theta_i*r_i*lambda_i*x[i,j,k]``.
+    Each diagnostic stores both terms and ``storage_limit_gb = C_s``, deriving
+    ``slack = C_s - printed_storage_lhs``. The GB + GB/hour mismatch is preserved.
+    """
+
+    validate_placement_decision_domains(instance, state)
+    return _compute_storage_capacity_residuals(instance, state)
+
+
+def _compute_model_storage_usage_by_query(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> dict[str, float]:
+    """Calculate from instance and decision domains validated by the caller."""
+    weight_by_model = {model.id: model.weight_gb for model in instance.models}
+    return {
+        query_id: fsum(
+            weight_by_model[model_id]
+            * state.admission_indicators.get(
+                (query_id, model_id, tier_id), 0.0
+            )
+            for model_id in instance.model_ids
+            for tier_id in instance.gpu_tier_ids
+        )
+        for query_id in instance.query_ids
+    }
+
+
+def _compute_data_storage_rate_by_query(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> dict[str, float]:
+    """Calculate from instance and decision domains validated by the caller."""
     return {
         query.id: fsum(
             query.storage_gb_per_token
@@ -114,20 +146,14 @@ def compute_data_storage_rate_by_query(
     }
 
 
-def compute_storage_capacity_residuals(
+def _compute_storage_capacity_residuals(
     instance: ProblemInstance,
     state: PlacementDecisionState,
 ) -> tuple[QueryStorageCapacityDiagnostic, ...]:
-    """Return storage-capacity diagnostics per query (v2 Eq. 8h, D-0016).
+    """Calculate from instance and decision domains validated by the caller."""
 
-    Compute ``model_storage_usage_gb = sum_(j,k) B_j*z[i,j,k]`` and
-    ``data_storage_rate_gb_per_hour = sum_(j,k) theta_i*r_i*lambda_i*x[i,j,k]``.
-    Each diagnostic stores both terms and ``storage_limit_gb = C_s``, deriving
-    ``slack = C_s - printed_storage_lhs``. The GB + GB/hour mismatch is preserved.
-    """
-
-    model_usage = compute_model_storage_usage_by_query(instance, state)
-    data_rate = compute_data_storage_rate_by_query(instance, state)
+    model_usage = _compute_model_storage_usage_by_query(instance, state)
+    data_rate = _compute_data_storage_rate_by_query(instance, state)
     residuals: list[QueryStorageCapacityDiagnostic] = []
     for query_id in instance.query_ids:
         residuals.append(

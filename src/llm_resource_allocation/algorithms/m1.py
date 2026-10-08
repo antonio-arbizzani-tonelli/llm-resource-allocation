@@ -98,6 +98,25 @@ class M1SelectionResult:
         )
 
 
+def select_minimum_feasible_parallelism(
+    instance: ProblemInstance,
+    query_id: str,
+    model_id: str,
+    tier_id: str,
+) -> M1SelectionResult:
+    """Select the minimum ``n*m`` satisfying M1 for ``(i,j,k)`` (v2 Eq. 9).
+
+    The checks are ``B_j/(n*m) <= C_gpu[k]`` in GB and ``D_cfg <= Delta_i``
+    in seconds. Delay uses ``compute_configuration_delay_seconds``; the printed
+    weight term omits ``nu_k``. Only ``tier.parallelism_configs`` are evaluated.
+    Exact GPU-count ties retain tier order; no feasible shape returns ``None``
+    with every diagnostic retained (D-0032).
+    """
+
+    validate_problem_instance(instance)
+    return _select_minimum_feasible_parallelism(instance, query_id, model_id, tier_id)
+
+
 def _evaluate_m1_configuration(
     instance: ProblemInstance,
     query: QueryType,
@@ -124,22 +143,14 @@ def _evaluate_m1_configuration(
     )
 
 
-def select_minimum_feasible_parallelism(
+def _select_minimum_feasible_parallelism(
     instance: ProblemInstance,
     query_id: str,
     model_id: str,
     tier_id: str,
 ) -> M1SelectionResult:
-    """Select the minimum ``n*m`` satisfying M1 for ``(i,j,k)`` (v2 Eq. 9).
+    """Select M1 on an already validated instance; retain ID checks."""
 
-    The checks are ``B_j/(n*m) <= C_gpu[k]`` in GB and ``D_cfg <= Delta_i``
-    in seconds. Delay uses ``compute_configuration_delay_seconds``; the printed
-    weight term omits ``nu_k``. Only ``tier.parallelism_configs`` are evaluated.
-    Exact GPU-count ties retain tier order; no feasible shape returns ``None``
-    with every diagnostic retained (D-0032).
-    """
-
-    validate_problem_instance(instance)
     query = _entity_by_id(instance.queries, query_id, "query")
     model = _entity_by_id(instance.models, model_id, "model")
     tier = _entity_by_id(instance.gpu_tiers, tier_id, "GPU-tier")

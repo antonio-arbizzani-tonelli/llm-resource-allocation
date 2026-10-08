@@ -6,6 +6,7 @@ from math import isfinite
 from llm_resource_allocation.domain import ProblemInstance
 
 from .objective import (
+    ObjectiveBreakdown,
     compute_data_storage_cost,
     compute_gpu_rental_cost,
     compute_model_storage_cost,
@@ -76,6 +77,14 @@ def compute_budget_residual(
     """
 
     validate_placement_decision_domains(instance, state)
+    return _compute_budget_residual(instance, state)
+
+
+def _compute_budget_residual(
+    instance: ProblemInstance,
+    state: PlacementDecisionState,
+) -> BudgetDiagnostic:
+    """Calculate from instance and decision domains validated by the caller."""
 
     # Keep the objective module authoritative for all three printed cost terms;
     # this diagnostic owns only their budget-specific composition.
@@ -90,5 +99,19 @@ def compute_budget_residual(
         gpu_rental_cost=gpu_rental_cost,
         model_storage_cost=model_storage_cost,
         data_storage_cost=data_storage_cost,
+        budget_limit=instance.cost_budget_usd,
+    )
+
+
+def _budget_residual_from_objective(
+    instance: ProblemInstance,
+    objective: ObjectiveBreakdown,
+) -> BudgetDiagnostic:
+    """Reuse C1-C3 from an independently recomputed objective for Eq. (8c)."""
+
+    return BudgetDiagnostic(
+        gpu_rental_cost=objective.gpu_rental_cost,
+        model_storage_cost=objective.model_storage_cost,
+        data_storage_cost=objective.data_storage_cost,
         budget_limit=instance.cost_budget_usd,
     )

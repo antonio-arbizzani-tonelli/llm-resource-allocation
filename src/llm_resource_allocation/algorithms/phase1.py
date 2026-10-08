@@ -213,6 +213,71 @@ class Phase1CandidateEvaluation:
         return self.activation.is_rankable
 
 
+def compute_phase1_pair_coverage(
+    instance: ProblemInstance,
+    model_id: str,
+    tier_id: str,
+    uncovered_query_ids: tuple[str, ...],
+    m1_selections: tuple[M1SelectionResult, ...],
+) -> Phase1CoverageResult:
+    """Compute Eq. (13) coverage and common TP/PP diagnostics for one model-tier pair.
+
+    Reuse M1 evidence and check each query's error SLO, preserving query order.
+    The result selects the first tier-ordered configuration at the Eq. (14)
+    GPU count that passes all covered queries' M1 checks (D-0035).
+    Keep the coverage set unchanged if no common configuration exists.
+    """
+
+    validate_problem_instance(instance)
+    return _compute_phase1_pair_coverage(instance, model_id, tier_id, uncovered_query_ids, m1_selections)
+
+
+def compute_phase1_activation_score(
+    instance: ProblemInstance,
+    coverage: Phase1CoverageResult,
+) -> Phase1ActivationScore:
+    """Return ``Cost = DeltaT*p_gpu[k]*max_i(n_i*m_i)`` and ``|F|/Cost``.
+
+    This is Eq. (14) rental cost in USD. ``DeltaT`` is ``instance.horizon_hours``;
+    ``p_gpu`` is ``tier.hourly_rental_usd``. Empty coverage or a missing D-0035
+    common shape is non-rankable; nonempty zero-cost coverage has infinite ratio.
+    """
+
+    validate_problem_instance(instance)
+    return _compute_phase1_activation_score(instance, coverage)
+
+
+def evaluate_phase1_candidate(
+    instance: ProblemInstance,
+    model_id: str,
+    tier_id: str,
+    uncovered_query_ids: tuple[str, ...],
+    m1_selections: tuple[M1SelectionResult, ...],
+) -> Phase1CandidateEvaluation:
+    """Compose coverage and activation scoring for one static ``(j,k)`` pair."""
+
+    validate_problem_instance(instance)
+    return _evaluate_phase1_candidate(instance, model_id, tier_id, uncovered_query_ids, m1_selections)
+
+
+def rank_phase1_candidates(
+    evaluations: tuple[Phase1CandidateEvaluation, ...],
+) -> tuple[Phase1CandidateEvaluation, ...]:
+    """Return rankable candidates by descending ``|F|/Cost`` (Algorithm 1).
+
+    Exact ties retain supplied semantic order (D-0035).
+    """
+
+    rankable = tuple(evaluation for evaluation in evaluations if evaluation.is_rankable)
+    return tuple(
+        sorted(
+            rankable,
+            key=lambda evaluation: evaluation.activation.coverage_per_cost,
+            reverse=True,
+        )
+    )
+
+
 def _entity_by_id(
     entities: tuple[EntityT, ...],
     entity_id: str,
@@ -307,22 +372,15 @@ def _m1_diagnostic_for_configuration(
     )
 
 
-def compute_phase1_pair_coverage(
+def _compute_phase1_pair_coverage(
     instance: ProblemInstance,
     model_id: str,
     tier_id: str,
     uncovered_query_ids: tuple[str, ...],
     m1_selections: tuple[M1SelectionResult, ...],
 ) -> Phase1CoverageResult:
-    """Compute Eq. (13) coverage and common TP/PP diagnostics for one model-tier pair.
+    """Reuse matching M1 results on a validated instance to derive pair coverage."""
 
-    Reuse M1 evidence and check each query's error SLO, preserving query order.
-    The result selects the first tier-ordered configuration at the Eq. (14)
-    GPU count that passes all covered queries' M1 checks (D-0035).
-    Keep the coverage set unchanged if no common configuration exists.
-    """
-
-    validate_problem_instance(instance)
     model = _entity_by_id(instance.models, model_id, "model")
     tier = _entity_by_id(instance.gpu_tiers, tier_id, "GPU-tier")
     uncovered = _validate_uncovered_query_ids(instance, uncovered_query_ids)
@@ -394,18 +452,12 @@ def compute_phase1_pair_coverage(
     )
 
 
-def compute_phase1_activation_score(
+def _compute_phase1_activation_score(
     instance: ProblemInstance,
     coverage: Phase1CoverageResult,
 ) -> Phase1ActivationScore:
-    """Return ``Cost = DeltaT*p_gpu[k]*max_i(n_i*m_i)`` and ``|F|/Cost``.
+    """Derive rental cost from checked coverage on a validated instance."""
 
-    This is Eq. (14) rental cost in USD. ``DeltaT`` is ``instance.horizon_hours``;
-    ``p_gpu`` is ``tier.hourly_rental_usd``. Empty coverage or a missing D-0035
-    common shape is non-rankable; nonempty zero-cost coverage has infinite ratio.
-    """
-
-    validate_problem_instance(instance)
     tier = _entity_by_id(instance.gpu_tiers, coverage.tier_id, "GPU-tier")
     _entity_by_id(instance.models, coverage.model_id, "model")
     coverage_count = len(coverage.covered_query_ids)
@@ -442,16 +494,16 @@ def compute_phase1_activation_score(
     )
 
 
-def evaluate_phase1_candidate(
+def _evaluate_phase1_candidate(
     instance: ProblemInstance,
     model_id: str,
     tier_id: str,
     uncovered_query_ids: tuple[str, ...],
     m1_selections: tuple[M1SelectionResult, ...],
 ) -> Phase1CandidateEvaluation:
-    """Compose coverage and activation scoring for one static ``(j,k)`` pair."""
+    """Combine coverage and rental score without revalidating the instance."""
 
-    coverage = compute_phase1_pair_coverage(
+    coverage = _compute_phase1_pair_coverage(
         instance,
         model_id,
         tier_id,
@@ -460,23 +512,5 @@ def evaluate_phase1_candidate(
     )
     return Phase1CandidateEvaluation(
         coverage=coverage,
-        activation=compute_phase1_activation_score(instance, coverage),
-    )
-
-
-def rank_phase1_candidates(
-    evaluations: tuple[Phase1CandidateEvaluation, ...],
-) -> tuple[Phase1CandidateEvaluation, ...]:
-    """Return rankable candidates by descending ``|F|/Cost`` (Algorithm 1).
-
-    Exact ties retain supplied semantic order (D-0035).
-    """
-
-    rankable = tuple(evaluation for evaluation in evaluations if evaluation.is_rankable)
-    return tuple(
-        sorted(
-            rankable,
-            key=lambda evaluation: evaluation.activation.coverage_per_cost,
-            reverse=True,
-        )
+        activation=_compute_phase1_activation_score(instance, coverage),
     )

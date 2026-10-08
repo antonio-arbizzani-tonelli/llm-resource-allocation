@@ -8,6 +8,7 @@ from llm_resource_allocation.domain import ProblemInstance
 from .parallelism import (
     ParallelismDecisionState,
     validate_parallelism_decision_domains,
+    _validate_parallelism_configuration_domains,
 )
 from .routing import RoutingDecisionState, validate_routing_decision_domains
 
@@ -63,6 +64,46 @@ def compute_required_compute_tflops_per_hour(
     """
 
     validate_routing_decision_domains(instance, state)
+    return _compute_required_compute_tflops_per_hour(instance, state)
+
+
+def compute_available_compute_tflops_per_hour(
+    instance: ProblemInstance,
+    state: ParallelismDecisionState,
+) -> dict[tuple[str, str], float]:
+    """Return ``(j,k) -> eta*T_conv*P_gpu[k]*y[j,k]`` in TFLOP/hour (v2 Eq. 8g).
+
+    ``eta`` is ``instance.compute_utilization``; ``T_conv`` is
+    ``instance.seconds_per_hour``; ``P_gpu`` is ``tier.compute_throughput_tflops``.
+    ``state.gpu_counts`` supplies ``y`` directly.
+    """
+
+    validate_parallelism_decision_domains(instance, state)
+    return _compute_available_compute_tflops_per_hour(instance, state)
+
+
+def compute_compute_capacity_diagnostics(
+    instance: ProblemInstance,
+    state: ParallelismDecisionState,
+) -> tuple[ComputeCapacityDiagnostic, ...]:
+    """Return compute-capacity diagnostics for each model/tier pair (v2 Eq. 8g).
+
+    ``required_compute`` sums the load routed through x[i,j,k];
+    ``available_compute`` uses the allocated GPU count y[j,k].
+    Both are in TFLOP/hour; each diagnostic derives
+    ``slack = available_compute - required_compute``.
+    """
+
+    validate_routing_decision_domains(instance, state.routing_decisions)
+    _validate_parallelism_configuration_domains(instance, state)
+    return _compute_compute_capacity_diagnostics(instance, state)
+
+
+def _compute_required_compute_tflops_per_hour(
+    instance: ProblemInstance,
+    state: RoutingDecisionState,
+) -> dict[tuple[str, str], float]:
+    """Calculate from instance and decision domains validated by the caller."""
     required_by_pair: dict[tuple[str, str], float] = {}
     for model_id in instance.model_ids:
         for tier_id in instance.gpu_tier_ids:
@@ -81,18 +122,11 @@ def compute_required_compute_tflops_per_hour(
     return required_by_pair
 
 
-def compute_available_compute_tflops_per_hour(
+def _compute_available_compute_tflops_per_hour(
     instance: ProblemInstance,
     state: ParallelismDecisionState,
 ) -> dict[tuple[str, str], float]:
-    """Return ``(j,k) -> eta*T_conv*P_gpu[k]*y[j,k]`` in TFLOP/hour (v2 Eq. 8g).
-
-    ``eta`` is ``instance.compute_utilization``; ``T_conv`` is
-    ``instance.seconds_per_hour``; ``P_gpu`` is ``tier.compute_throughput_tflops``.
-    ``state.gpu_counts`` supplies ``y`` directly.
-    """
-
-    validate_parallelism_decision_domains(instance, state)
+    """Calculate from instance and decision domains validated by the caller."""
     capacity_by_pair: dict[tuple[str, str], float] = {}
     for model_id in instance.model_ids:
         for tier in instance.gpu_tiers:
@@ -106,22 +140,16 @@ def compute_available_compute_tflops_per_hour(
     return capacity_by_pair
 
 
-def compute_compute_capacity_diagnostics(
+def _compute_compute_capacity_diagnostics(
     instance: ProblemInstance,
     state: ParallelismDecisionState,
 ) -> tuple[ComputeCapacityDiagnostic, ...]:
-    """Return compute-capacity diagnostics for each model/tier pair (v2 Eq. 8g).
+    """Calculate from instance and decision domains validated by the caller."""
 
-    ``required_compute`` sums the load routed through x[i,j,k];
-    ``available_compute`` uses the allocated GPU count y[j,k].
-    Both are in TFLOP/hour; each diagnostic derives
-    ``slack = available_compute - required_compute``.
-    """
-
-    required_by_pair = compute_required_compute_tflops_per_hour(
+    required_by_pair = _compute_required_compute_tflops_per_hour(
         instance, state.routing_decisions
     )
-    available_by_pair = compute_available_compute_tflops_per_hour(instance, state)
+    available_by_pair = _compute_available_compute_tflops_per_hour(instance, state)
     return tuple(
         ComputeCapacityDiagnostic(
             model_id=model_id,

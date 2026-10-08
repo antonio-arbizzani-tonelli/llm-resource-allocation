@@ -5,11 +5,11 @@ from enum import Enum
 from math import isfinite
 
 from llm_resource_allocation.algorithms.m1 import (
-    select_minimum_feasible_parallelism,
+    _select_minimum_feasible_parallelism,
 )
 from llm_resource_allocation.algorithms.phase1 import (
     Phase1CandidateEvaluation,
-    evaluate_phase1_candidate,
+    _evaluate_phase1_candidate,
     rank_phase1_candidates,
 )
 from llm_resource_allocation.domain import (
@@ -176,6 +176,62 @@ class GHPhase1Result:
         return self.final_state.active_pair_ids
 
 
+def initialize_gh_phase1_state(
+    instance: ProblemInstance,
+    config: GHPhase1Config,
+) -> GHPhase1State:
+    """Initialize Algorithm 1 Phase 1 with ``I_unc=I``, ``y=0``, and cost zero."""
+
+    validate_problem_instance(instance)
+    return _initialize_gh_phase1_state(instance, config)
+
+
+def evaluate_gh_phase1_candidates(
+    instance: ProblemInstance,
+    state: GHPhase1State,
+) -> tuple[Phase1CandidateEvaluation, ...]:
+    """Recompute ``F[j,k]`` and ``Cost(j,k)`` at the current ``I_unc``.
+
+    Candidates follow model-then-tier semantic order, including active pairs,
+    as required by Algorithm 1's all-pair loop (D-0036).
+    """
+
+    validate_problem_instance(instance)
+    _validate_state_against_instance(instance, state)
+    return _evaluate_gh_phase1_candidates(instance, state)
+
+
+def apply_gh_phase1_activation(
+    instance: ProblemInstance,
+    state: GHPhase1State,
+    selected_candidate: Phase1CandidateEvaluation,
+) -> GHPhase1State:
+    """Return the state after one selected Phase-1 activation (Algorithm 1).
+
+    Remove exactly the Eq. (13) coverage set from ``I_unc`` in surviving order,
+    store its common configuration as ``y``, and add Eq. (14) rental cost
+    without mutating the input (D-0036).
+    """
+
+    validate_problem_instance(instance)
+    _validate_state_against_instance(instance, state)
+    return _apply_gh_phase1_activation(instance, state, selected_candidate)
+
+
+def run_gh_phase1(
+    instance: ProblemInstance,
+    config: GHPhase1Config,
+) -> GHPhase1Result:
+    """Run the GH Phase-1 activation loop (v2 Algorithm 1, lines 1-6).
+
+    The guard is ``accumulated_rental < beta*delta`` before selection. An
+    activation may reach or overshoot the cap; the next guard stops (D-0036).
+    """
+
+    validate_problem_instance(instance)
+    return _run_gh_phase1(instance, config)
+
+
 def _validate_state_against_instance(
     instance: ProblemInstance,
     state: GHPhase1State,
@@ -221,13 +277,12 @@ def _validate_state_against_instance(
         raise ValueError("state must partition the instance query IDs")
 
 
-def initialize_gh_phase1_state(
+def _initialize_gh_phase1_state(
     instance: ProblemInstance,
     config: GHPhase1Config,
 ) -> GHPhase1State:
-    """Initialize Algorithm 1 Phase 1 with ``I_unc=I``, ``y=0``, and cost zero."""
+    """Initialize empty Phase 1 on a validated instance; check the config type."""
 
-    validate_problem_instance(instance)
     if not isinstance(config, GHPhase1Config):
         raise ValueError("config must be a GHPhase1Config")
     return GHPhase1State(
@@ -239,23 +294,17 @@ def initialize_gh_phase1_state(
     )
 
 
-def evaluate_gh_phase1_candidates(
+def _evaluate_gh_phase1_candidates(
     instance: ProblemInstance,
     state: GHPhase1State,
 ) -> tuple[Phase1CandidateEvaluation, ...]:
-    """Recompute ``F[j,k]`` and ``Cost(j,k)`` at the current ``I_unc``.
+    """Reevaluate all pairs on an internally produced or checked Phase-1 state."""
 
-    Candidates follow model-then-tier semantic order, including active pairs,
-    as required by Algorithm 1's all-pair loop (D-0036).
-    """
-
-    validate_problem_instance(instance)
-    _validate_state_against_instance(instance, state)
     evaluations: list[Phase1CandidateEvaluation] = []
     for model in instance.models:
         for tier in instance.gpu_tiers:
             m1_selections = tuple(
-                select_minimum_feasible_parallelism(
+                _select_minimum_feasible_parallelism(
                     instance,
                     query_id=query_id,
                     model_id=model.id,
@@ -264,7 +313,7 @@ def evaluate_gh_phase1_candidates(
                 for query_id in state.uncovered_query_ids
             )
             evaluations.append(
-                evaluate_phase1_candidate(
+                _evaluate_phase1_candidate(
                     instance,
                     model.id,
                     tier.id,
@@ -275,20 +324,13 @@ def evaluate_gh_phase1_candidates(
     return tuple(evaluations)
 
 
-def apply_gh_phase1_activation(
+def _apply_gh_phase1_activation(
     instance: ProblemInstance,
     state: GHPhase1State,
     selected_candidate: Phase1CandidateEvaluation,
 ) -> GHPhase1State:
-    """Return the state after one selected Phase-1 activation (Algorithm 1).
+    """Activate matching coverage on a checked state without changing inputs."""
 
-    Remove exactly the Eq. (13) coverage set from ``I_unc`` in surviving order,
-    store its common configuration as ``y``, and add Eq. (14) rental cost
-    without mutating the input (D-0036).
-    """
-
-    validate_problem_instance(instance)
-    _validate_state_against_instance(instance, state)
     if selected_candidate.coverage.uncovered_query_ids != state.uncovered_query_ids:
         raise ValueError("selected candidate was not evaluated at the current state")
     if not selected_candidate.is_rankable:
@@ -329,17 +371,13 @@ def apply_gh_phase1_activation(
     )
 
 
-def run_gh_phase1(
+def _run_gh_phase1(
     instance: ProblemInstance,
     config: GHPhase1Config,
 ) -> GHPhase1Result:
-    """Run the GH Phase-1 activation loop (v2 Algorithm 1, lines 1-6).
+    """Run Phase 1 on a validated instance, carrying immutable internal states."""
 
-    The guard is ``accumulated_rental < beta*delta`` before selection. An
-    activation may reach or overshoot the cap; the next guard stops (D-0036).
-    """
-
-    initial_state = initialize_gh_phase1_state(instance, config)
+    initial_state = _initialize_gh_phase1_state(instance, config)
     state = initial_state
     traces: list[GHPhase1IterationTrace] = []
 
@@ -347,7 +385,7 @@ def run_gh_phase1(
         state.uncovered_query_ids
         and state.accumulated_rental_cost_usd < state.rental_cap_usd
     ):
-        evaluations = evaluate_gh_phase1_candidates(instance, state)
+        evaluations = _evaluate_gh_phase1_candidates(instance, state)
         ranked = rank_phase1_candidates(evaluations)
         if not ranked:
             return GHPhase1Result(
@@ -358,7 +396,7 @@ def run_gh_phase1(
                 terminal_candidate_evaluations=evaluations,
             )
         selected = ranked[0]
-        next_state = apply_gh_phase1_activation(instance, state, selected)
+        next_state = _apply_gh_phase1_activation(instance, state, selected)
         traces.append(
             GHPhase1IterationTrace(
                 iteration_index=state.iteration_count,
