@@ -15,13 +15,14 @@ model builder, raw extraction, domain normalization, HiGHS/Gurobi solver adapter
 and independently validated run records. The independent 1x1x1 enumeration
 oracle is available in `verification`, with focused solver/run/oracle tests.
 The `algorithms` package now includes reviewed M1 minimum-feasible parallelism
-selection and M2 marginal-cost/effective-coverage ranking, with their focused
-test sources. M2 uses immutable `M2EvaluationInputs` and read-only configuration
-evidence. The current interface passes the published snapshot's 78 tests and
-the full local reference's 807-test regression.
+selection, M2 marginal-cost/effective-coverage ranking, and M3 minimum-GPU
+parallelism upgrades within the remaining rental budget, with focused tests.
+M2 uses immutable `M2EvaluationInputs` and read-only configuration evidence.
+The M1-M3 publication snapshot passes all 99 tests; the full local reference's
+latest complete regression passed 807 tests.
 Publication proceeds component by component. The
 implementation status, test command, and documentation map below describe the
-full local reference; M3, GH/AGH, Stage-2 optimization, experiments, the remaining
+full local reference; GH/AGH, Stage-2 optimization, experiments, the remaining
 tests, and documentation remain outside the published snapshot.
 
 ## Project goals

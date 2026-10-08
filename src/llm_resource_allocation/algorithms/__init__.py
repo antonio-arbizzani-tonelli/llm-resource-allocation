@@ -1,4 +1,4 @@
-"""M1/M2 scientific mechanisms and immutable evaluation evidence."""
+"""M1-M3 scientific mechanisms and immutable evaluation evidence."""
 
 from .m1 import (
     M1ConfigurationDiagnostic,
@@ -20,6 +20,14 @@ from .m2 import (
     rank_m2_candidates,
 )
 
+from .m3 import (
+    M3ConfigurationDiagnostic,
+    M3EvaluationState,
+    M3NoUpgradeReason,
+    M3UpgradeResult,
+    select_m3_parallelism_upgrade,
+)
+
 __all__ = [
     "M1ConfigurationDiagnostic",
     "M1SelectionResult",
@@ -35,4 +43,9 @@ __all__ = [
     "compute_m2_marginal_cost",
     "evaluate_m2_candidate",
     "rank_m2_candidates",
+    "M3ConfigurationDiagnostic",
+    "M3EvaluationState",
+    "M3NoUpgradeReason",
+    "M3UpgradeResult",
+    "select_m3_parallelism_upgrade",
 ]
