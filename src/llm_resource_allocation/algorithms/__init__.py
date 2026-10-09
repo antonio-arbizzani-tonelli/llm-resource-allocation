@@ -1,27 +1,150 @@
-"""M1-M3 mechanisms and complete independently validated GH construction."""
+"""M1-M3, GH construction, AGH ordering, and individual relocate proposals."""
 
-from .m1 import M1ConfigurationDiagnostic, M1SelectionResult, select_minimum_feasible_parallelism
+from .agh_ordering import (
+    DETERMINISTIC_AGH_ORDERING_SPECS,
+    AGHDeterministicOrderingSpec,
+    AGHOrderingCriterion,
+    AGHOrderingDirection,
+    AGHOrderingSource,
+    AGHQueryOrdering,
+    build_all_deterministic_agh_orderings,
+    build_deterministic_agh_ordering,
+    build_seeded_random_agh_ordering,
+    compute_adaptive_agh_random_start_count,
+)
 
-from .m2 import M2CandidateEvaluation, M2ConfigurationEvidence, M2CoverageLimiter, M2EffectiveCoverageDiagnostic, M2EvaluationInputs, M2MarginalCostBreakdown, M2UnrankableReason, compute_m2_effective_coverage, compute_m2_marginal_cost, evaluate_m2_candidate, rank_m2_candidates
+from .agh_relocate import (
+    AGH_RELOCATE_CONSTRUCTION_ABSOLUTE_TOLERANCE,
+    AGHRelocateDemandConsistencyEvidence,
+    AGHRelocateDestinationPair,
+    AGHRelocateMoveResult,
+    AGHDeploymentPairEvidence,
+    AGHRelocateRejectionReason,
+    AGHRelocateSourceAssignment,
+    evaluate_agh_relocate_move,
+)
 
-from .m3 import M3ConfigurationDiagnostic, M3EvaluationState, M3NoUpgradeReason, M3UpgradeResult, select_m3_parallelism_upgrade
+from .m1 import (
+    M1ConfigurationDiagnostic,
+    M1SelectionResult,
+    select_minimum_feasible_parallelism,
+)
 
-from .gh_phase2 import GHPhase2CandidateEvaluation, GHPhase2CandidateRejectionReason, GHPhase2CandidateConfiguration, GHPhase2ConfigurationSource, GHPhase2Deployment, GHPhase2QueryEvaluation, GHPhase2State, evaluate_gh_phase2_query_candidates, initialize_gh_phase2_state, order_gh_phase2_queries
+from .m2 import (
+    M2CandidateEvaluation,
+    M2ConfigurationEvidence,
+    M2CoverageLimiter,
+    M2EffectiveCoverageDiagnostic,
+    M2EvaluationInputs,
+    M2MarginalCostBreakdown,
+    M2UnrankableReason,
+    compute_m2_effective_coverage,
+    compute_m2_marginal_cost,
+    evaluate_m2_candidate,
+    rank_m2_candidates,
+)
 
-from .gh_phase2_commit import GHPhase2BudgetComparison, GHPhase2AllocationProposal, GHPhase2CommitDiagnostic, GHPhase2CommitRejectionReason, GHPhase2CommitResult, GHPhase2ProspectiveDeployment, commit_gh_phase2_candidate, compute_gh_phase2_candidate_allocation
+from .m3 import (
+    M3ConfigurationDiagnostic,
+    M3EvaluationState,
+    M3NoUpgradeReason,
+    M3UpgradeResult,
+    select_m3_parallelism_upgrade,
+)
 
-from .gh_phase2_query import GHPhase2CandidateAttempt, GHPhase2QueryProcessResult, GHPhase2QueryTerminationReason, process_gh_phase2_query_candidates
+from .gh_phase2 import (
+    GHPhase2CandidateEvaluation,
+    GHPhase2CandidateRejectionReason,
+    GHPhase2CandidateConfiguration,
+    GHPhase2ConfigurationSource,
+    GHPhase2Deployment,
+    GHPhase2QueryEvaluation,
+    GHPhase2State,
+    evaluate_gh_phase2_query_candidates,
+    initialize_gh_phase2_state,
+    order_gh_phase2_queries,
+)
 
-from .gh_phase2_run import GHPhase2QueryTrace, GHPhase2RunCompletionStatus, GHPhase2RunResult, run_gh_phase2
+from .gh_phase2_commit import (
+    GHPhase2BudgetComparison,
+    GHPhase2AllocationProposal,
+    GHPhase2CommitDiagnostic,
+    GHPhase2CommitRejectionReason,
+    GHPhase2CommitResult,
+    GHPhase2ProspectiveDeployment,
+    commit_gh_phase2_candidate,
+    compute_gh_phase2_candidate_allocation,
+)
 
-from .gh import GHCanonicalBinaryCounts, GHCanonicalizationReport, GHBudgetConsistencyAudit, GHCompletionStatus, GHDemandConsistencyAudit, GHResult, GHRunIdentity, canonicalize_gh_phase2_state, run_gh
+from .gh_phase2_query import (
+    GHPhase2CandidateAttempt,
+    GHPhase2QueryProcessResult,
+    GHPhase2QueryTerminationReason,
+    process_gh_phase2_query_candidates,
+)
 
-from .gh_phase1 import GHPhase1Config, GHPhase1Deployment, GHPhase1IterationTrace, GHPhase1Result, GHPhase1State, GHPhase1TerminationReason, apply_gh_phase1_activation, evaluate_gh_phase1_candidates, initialize_gh_phase1_state, run_gh_phase1
+from .gh_phase2_run import (
+    GHPhase2QueryTrace,
+    GHPhase2RunCompletionStatus,
+    GHPhase2RunResult,
+    run_gh_phase2,
+)
 
-from .phase1 import Phase1ActivationScore, Phase1CandidateEvaluation, Phase1CommonConfigurationDiagnostic, Phase1CommonConfigurationQueryDiagnostic, Phase1CoverageResult, Phase1QueryExclusionReason, Phase1NonRankableReason, Phase1QueryCoverageDiagnostic, compute_phase1_activation_score, compute_phase1_pair_coverage, evaluate_phase1_candidate, rank_phase1_candidates
+from .gh import (
+    GHCanonicalBinaryCounts,
+    GHCanonicalizationReport,
+    GHBudgetConsistencyAudit,
+    GHCompletionStatus,
+    GHDemandConsistencyAudit,
+    GHResult,
+    GHRunIdentity,
+    canonicalize_gh_phase2_state,
+    run_gh,
+)
+
+from .gh_phase1 import (
+    GHPhase1Config,
+    GHPhase1Deployment,
+    GHPhase1IterationTrace,
+    GHPhase1Result,
+    GHPhase1State,
+    GHPhase1TerminationReason,
+    apply_gh_phase1_activation,
+    evaluate_gh_phase1_candidates,
+    initialize_gh_phase1_state,
+    run_gh_phase1,
+)
+
+from .phase1 import (
+    Phase1ActivationScore,
+    Phase1CandidateEvaluation,
+    Phase1CommonConfigurationDiagnostic,
+    Phase1CommonConfigurationQueryDiagnostic,
+    Phase1CoverageResult,
+    Phase1QueryExclusionReason,
+    Phase1NonRankableReason,
+    Phase1QueryCoverageDiagnostic,
+    compute_phase1_activation_score,
+    compute_phase1_pair_coverage,
+    evaluate_phase1_candidate,
+    rank_phase1_candidates,
+)
 
 
 __all__ = [
+    "AGHDeterministicOrderingSpec",
+    "AGHOrderingCriterion",
+    "AGHOrderingDirection",
+    "AGHOrderingSource",
+    "AGHQueryOrdering",
+    "AGHRelocateDemandConsistencyEvidence",
+    "AGHRelocateDestinationPair",
+    "AGHRelocateMoveResult",
+    "AGHDeploymentPairEvidence",
+    "AGHRelocateRejectionReason",
+    "AGHRelocateSourceAssignment",
+    "AGH_RELOCATE_CONSTRUCTION_ABSOLUTE_TOLERANCE",
+    "DETERMINISTIC_AGH_ORDERING_SPECS",
     "GHBudgetConsistencyAudit",
     "GHCanonicalBinaryCounts",
     "GHCanonicalizationReport",
@@ -76,13 +199,18 @@ __all__ = [
     "Phase1NonRankableReason",
     "Phase1QueryCoverageDiagnostic",
     "apply_gh_phase1_activation",
+    "build_all_deterministic_agh_orderings",
+    "build_deterministic_agh_ordering",
+    "build_seeded_random_agh_ordering",
     "canonicalize_gh_phase2_state",
     "commit_gh_phase2_candidate",
+    "compute_adaptive_agh_random_start_count",
     "compute_gh_phase2_candidate_allocation",
     "compute_m2_effective_coverage",
     "compute_m2_marginal_cost",
     "compute_phase1_activation_score",
     "compute_phase1_pair_coverage",
+    "evaluate_agh_relocate_move",
     "evaluate_gh_phase1_candidates",
     "evaluate_gh_phase2_query_candidates",
     "evaluate_m2_candidate",

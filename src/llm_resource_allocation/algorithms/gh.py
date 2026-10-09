@@ -57,14 +57,13 @@ class GHCompletionStatus(str, Enum):
 
 @dataclass(frozen=True, slots=True)
 class GHRunIdentity:
-    """Snapshot the instance identity, semantic order, and paper provenance."""
+    """Snapshot the instance identity, semantic order, and paper version."""
 
     instance_id: str
     paper_version: PaperVersion
     query_ids: tuple[str, ...]
     model_ids: tuple[str, ...]
     tier_ids: tuple[str, ...]
-    algorithm_reference: str = "Paper Algorithm 1 (GH)"
 
     def __post_init__(self) -> None:
         """Freeze semantic identity sequences for direct construction too."""
