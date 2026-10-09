@@ -22,6 +22,7 @@ from llm_resource_allocation.optimization.solver import (
     probe_solver_backend,
     require_solver_incumbent,
     solve_pyomo_model,
+    translate_gurobi_options,
     translate_highs_options,
 )
 from llm_resource_allocation.optimization.problem_data import PdmProblemData
@@ -52,7 +53,7 @@ def solve_and_independently_validate_minimal():
     instance = make_minimal_tiny_instance()
     problem_data = PdmProblemData(instance)
     model = build_pdm_pyomo_model(problem_data)
-    solver_result = solve_pyomo_model(model, SolverConfig())
+    solver_result = solve_pyomo_model(model, SolverConfig(backend=SolverBackend.HIGHS))
     require_solver_incumbent(solver_result)
     raw_solution = extract_raw_pdm_solution_from_pyomo(model, problem_data)
     decision_state = normalize_raw_pdm_solution(raw_solution, problem_data)
@@ -75,22 +76,23 @@ def solve_and_independently_validate_minimal():
 
 
 class SolverConfigurationTests(unittest.TestCase):
-    """Protect backend identity, common options, and HiGHS translation."""
+    """Protect the Gurobi default, common options, and HiGHS translation."""
 
     def test_defaults_are_explicit_unspecified_and_immutable(self) -> None:
         config = SolverConfig()
 
-        self.assertIs(config.backend, SolverBackend.HIGHS)
+        self.assertIs(config.backend, SolverBackend.GUROBI)
         self.assertIsNone(config.time_limit_seconds)
         self.assertIsNone(config.relative_mip_gap)
         self.assertIsNone(config.absolute_mip_gap)
         self.assertFalse(config.tee)
-        self.assertEqual(dict(translate_highs_options(config)), {})
+        self.assertEqual(dict(translate_gurobi_options(config)), {})
         with self.assertRaises(FrozenInstanceError):
             config.tee = True
 
     def test_requested_options_map_exactly_to_highs(self) -> None:
         config = SolverConfig(
+            backend=SolverBackend.HIGHS,
             time_limit_seconds=12.5,
             relative_mip_gap=0.02,
             absolute_mip_gap=0.25,
@@ -118,6 +120,7 @@ class SolverConfigurationTests(unittest.TestCase):
         result = solve_pyomo_model(
             model,
             SolverConfig(
+                backend=SolverBackend.HIGHS,
                 time_limit_seconds=5.0,
                 relative_mip_gap=0.0,
                 absolute_mip_gap=0.0,
@@ -209,7 +212,7 @@ class SolverFailureTransportTests(unittest.TestCase):
         ), patch.object(
             solver_module, "Highs", return_value=self.solver
         ), patch.object(solver_module, "perf_counter", side_effect=(10.0, 10.25)):
-            return solve_pyomo_model(self.model, SolverConfig())
+            return solve_pyomo_model(self.model, SolverConfig(backend=SolverBackend.HIGHS))
 
     def test_execution_failure_retains_exception_without_incumbent(self) -> None:
         result = self.solve(error=RuntimeError("solve failed"))
@@ -281,7 +284,10 @@ class SolverFailureTransportTests(unittest.TestCase):
             patch.object(solver_module, "probe_solver_backend",
                          side_effect=AssertionError("explicit probe is not part of solve")) as probe,
         ):
-            result = solve_pyomo_model(self.model, SolverConfig(time_limit_seconds=1.0))
+            result = solve_pyomo_model(
+                self.model,
+                SolverConfig(backend=SolverBackend.HIGHS, time_limit_seconds=1.0),
+            )
         constructor.assert_called_once_with()
         self.solver.available.assert_called_once_with()
         self.solver.version.assert_called_once_with()
@@ -397,7 +403,7 @@ class PdmHighsIntegrationTests(unittest.TestCase):
         problem_data = PdmProblemData(instance)
         model = build_pdm_pyomo_model(problem_data)
 
-        result = solve_pyomo_model(model, SolverConfig())
+        result = solve_pyomo_model(model, SolverConfig(backend=SolverBackend.HIGHS))
 
         self.assertIs(result.status, SolverStatus.INFEASIBLE)
         self.assertEqual(result.termination_condition, "infeasible")

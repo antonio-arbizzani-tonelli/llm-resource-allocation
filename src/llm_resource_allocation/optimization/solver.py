@@ -18,7 +18,7 @@ from pyomo.contrib.appsi.solvers import Gurobi, Highs
 
 
 class SolverBackend(str, Enum):
-    """Identify the HiGHS and optional licensed Gurobi backends."""
+    """Identify the supported HiGHS and licensed Gurobi backends."""
 
     HIGHS = "highs"
     GUROBI = "gurobi"
@@ -66,10 +66,10 @@ class NoSolverIncumbentError(SolverAdapterError):
 class SolverConfig:
     """Configure backend, time limit in seconds, MIP gaps, and logging.
 
-    HiGHS is the development default (D-0023); ``None`` uses backend defaults.
+    Gurobi is the default (D-0096); ``None`` uses native backend defaults.
     """
 
-    backend: SolverBackend = SolverBackend.HIGHS
+    backend: SolverBackend = SolverBackend.GUROBI
     time_limit_seconds: float | None = None
     relative_mip_gap: float | None = None
     absolute_mip_gap: float | None = None

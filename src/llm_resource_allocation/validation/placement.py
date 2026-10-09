@@ -4,7 +4,7 @@ from dataclasses import dataclass, field, fields
 from enum import Enum
 from math import isfinite
 from types import MappingProxyType
-from typing import Mapping
+from typing import Mapping, TypeVar
 
 from llm_resource_allocation.domain import InstanceValidationError, ProblemInstance
 from llm_resource_allocation.math.budget import (
@@ -57,10 +57,39 @@ from llm_resource_allocation.math.storage_capacity import (
     QueryStorageCapacityDiagnostic,
     _compute_storage_capacity_residuals,
 )
+# D-0097: keep the published numerical policy self-contained in this module.
+_FamilyT = TypeVar("_FamilyT", bound=Enum)
+
+
+DEFAULT_FRACTION_ABSOLUTE_TOLERANCE = 1e-10
+DEFAULT_BUDGET_ABSOLUTE_TOLERANCE = 1e-8
+DEFAULT_COMPUTE_ABSOLUTE_TOLERANCE = 1e-8
+DEFAULT_DELAY_ABSOLUTE_TOLERANCE = 1e-10
+DEFAULT_ERROR_ABSOLUTE_TOLERANCE = 1e-12
+DEFAULT_PRINTED_CAPACITY_ABSOLUTE_TOLERANCE = 1e-9
+DEFAULT_SCALED_RELATIVE_TOLERANCE = 1e-12
+
+
+def _record_applied_tolerance(
+    thresholds: dict[tuple[_FamilyT, tuple[str | int, ...]], float],
+    family: _FamilyT,
+    location: tuple[str | int, ...],
+    absolute: float,
+    relative: float = 0.0,
+    lhs: float = 0.0,
+    rhs: float = 0.0,
+) -> float:
+    """Retain the inclusive threshold for a row without changing its residual."""
+
+    threshold = absolute + relative * max(abs(lhs), abs(rhs))
+    if not isfinite(threshold):
+        raise ValueError("applied feasibility tolerance must be finite")
+    thresholds[family, location] = threshold
+    return threshold
 
 
 # D-0076: dimensionless residual classification; supplied decisions stay unchanged.
-DEFAULT_MCCORMICK_ABSOLUTE_TOLERANCE = 1e-10
+DEFAULT_MCCORMICK_ABSOLUTE_TOLERANCE = DEFAULT_FRACTION_ABSOLUTE_TOLERANCE
 
 
 class ConstraintFamily(str, Enum):
@@ -80,21 +109,40 @@ class ConstraintFamily(str, Enum):
     ROUTING_CONSISTENCY = "routing_consistency_eq_8k"
 
 
+_ToleranceKey = tuple[ConstraintFamily, tuple[str | int, ...]]
+
+
 @dataclass(frozen=True, slots=True)
 class ValidationTolerances:
-    """Per-family tolerances in each residual's native unit; domains stay exact."""
+    """Per-family absolute floors and relative coefficients; domains stay exact.
+
+    Scaled rows use ``atol + rtol*max(abs(lhs), abs(rhs))``. Use ``exact()``
+    to disable both terms; setting an absolute floor to zero alone keeps rtol.
+    """
 
     mccormick: float = DEFAULT_MCCORMICK_ABSOLUTE_TOLERANCE
-    demand_balance: float = 0.0
-    budget: float = 0.0
+    demand_balance: float = DEFAULT_FRACTION_ABSOLUTE_TOLERANCE
+    budget: float = DEFAULT_BUDGET_ABSOLUTE_TOLERANCE
     configuration_selection: float = 0.0
     gpu_count_linking: float = 0.0
-    gpu_memory: float = 0.0
-    compute_capacity: float = 0.0
-    storage_capacity: float = 0.0
-    delay_slo: float = 0.0
-    error_slo: float = 0.0
-    routing_consistency: float = 0.0
+    gpu_memory: float = DEFAULT_PRINTED_CAPACITY_ABSOLUTE_TOLERANCE
+    compute_capacity: float = DEFAULT_COMPUTE_ABSOLUTE_TOLERANCE
+    storage_capacity: float = DEFAULT_PRINTED_CAPACITY_ABSOLUTE_TOLERANCE
+    delay_slo: float = DEFAULT_DELAY_ABSOLUTE_TOLERANCE
+    error_slo: float = DEFAULT_ERROR_ABSOLUTE_TOLERANCE
+    routing_consistency: float = DEFAULT_FRACTION_ABSOLUTE_TOLERANCE
+    budget_relative: float = DEFAULT_SCALED_RELATIVE_TOLERANCE
+    gpu_memory_relative: float = DEFAULT_SCALED_RELATIVE_TOLERANCE
+    compute_capacity_relative: float = DEFAULT_SCALED_RELATIVE_TOLERANCE
+    storage_capacity_relative: float = DEFAULT_SCALED_RELATIVE_TOLERANCE
+    delay_slo_relative: float = DEFAULT_SCALED_RELATIVE_TOLERANCE
+    error_slo_relative: float = DEFAULT_SCALED_RELATIVE_TOLERANCE
+
+    @classmethod
+    def exact(cls) -> "ValidationTolerances":
+        """Request exact classification of every residual, including scaled rows."""
+
+        return cls(**{descriptor.name: 0.0 for descriptor in fields(cls)})
 
     def __post_init__(self) -> None:
         """Reject non-finite, negative, boolean, or non-numeric tolerances."""
@@ -183,6 +231,9 @@ class PlacementValidationReport:
     _violations: tuple[ValidationViolation, ...] = field(
         init=False, repr=False, compare=False
     )
+    applied_tolerances: Mapping[_ToleranceKey, float] = field(
+        init=False, repr=False, compare=False
+    )
 
     def __post_init__(self) -> None:
         """Own immutable copies of the mapping and diagnostic sequences."""
@@ -205,7 +256,9 @@ class PlacementValidationReport:
             "routing_consistency_diagnostics",
         ):
             object.__setattr__(self, name, tuple(getattr(self, name)))
-        object.__setattr__(self, "_violations", self._collect_violations())
+        thresholds: dict[_ToleranceKey, float] = {}
+        object.__setattr__(self, "_violations", self._collect_violations(thresholds))
+        object.__setattr__(self, "applied_tolerances", MappingProxyType(thresholds))
 
     @property
     def violations(self) -> tuple[ValidationViolation, ...]:
@@ -213,7 +266,9 @@ class PlacementValidationReport:
 
         return self._violations
 
-    def _collect_violations(self) -> tuple[ValidationViolation, ...]:
+    def _collect_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> tuple[ValidationViolation, ...]:
         """Derive violation locations from the report's immutable evidence."""
 
         if not self.domain_diagnostic.is_valid:
@@ -225,15 +280,17 @@ class PlacementValidationReport:
                 ),
             )
 
-        violations = self._mccormick_violations()
-        violations.extend(self._demand_balance_violations())
-        violations.extend(self._budget_violations())
-        violations.extend(self._configuration_violations())
-        violations.extend(self._capacity_and_slo_violations())
-        violations.extend(self._routing_consistency_violations())
+        violations = self._mccormick_violations(thresholds)
+        violations.extend(self._demand_balance_violations(thresholds))
+        violations.extend(self._budget_violations(thresholds))
+        violations.extend(self._configuration_violations(thresholds))
+        violations.extend(self._capacity_and_slo_violations(thresholds))
+        violations.extend(self._routing_consistency_violations(thresholds))
         return tuple(violations)
 
-    def _mccormick_violations(self) -> list[ValidationViolation]:
+    def _mccormick_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> list[ValidationViolation]:
         """Locate each failed McCormick bound at its full configuration index."""
 
         violations: list[ValidationViolation] = []
@@ -253,7 +310,11 @@ class PlacementValidationReport:
                 ("v_nonnegative", slacks.v_nonnegative),
             )
             for inequality_name, slack in named_slacks:
-                if slack < -self.tolerances.mccormick:
+                tolerance = _record_applied_tolerance(
+                    thresholds, ConstraintFamily.MCCORMICK,
+                    (*location, inequality_name), self.tolerances.mccormick,
+                )
+                if slack < -tolerance:
                     violations.append(
                         ValidationViolation(
                             ConstraintFamily.MCCORMICK,
@@ -263,12 +324,18 @@ class PlacementValidationReport:
                     )
         return violations
 
-    def _demand_balance_violations(self) -> list[ValidationViolation]:
+    def _demand_balance_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> list[ValidationViolation]:
         """Locate failed demand-balance equalities by query."""
 
         violations: list[ValidationViolation] = []
         for diagnostic in self.demand_balance_diagnostics:
-            if not diagnostic.is_feasible(self.tolerances.demand_balance):
+            tolerance = _record_applied_tolerance(
+                thresholds, ConstraintFamily.DEMAND_BALANCE,
+                (diagnostic.query_id,), self.tolerances.demand_balance,
+            )
+            if not diagnostic.is_feasible(tolerance):
                 violations.append(
                     ValidationViolation(
                         ConstraintFamily.DEMAND_BALANCE,
@@ -278,11 +345,20 @@ class PlacementValidationReport:
                 )
         return violations
 
-    def _budget_violations(self) -> list[ValidationViolation]:
+    def _budget_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> list[ValidationViolation]:
         """Report the global budget inequality when present and violated."""
 
         diagnostic = self.budget_diagnostic
-        if diagnostic is None or diagnostic.is_feasible(self.tolerances.budget):
+        if diagnostic is None:
+            return []
+        tolerance = _record_applied_tolerance(
+            thresholds, ConstraintFamily.BUDGET, ("global",),
+            self.tolerances.budget, self.tolerances.budget_relative,
+            diagnostic.total_budget_use, diagnostic.budget_limit,
+        )
+        if diagnostic.is_feasible(tolerance):
             return []
         return [
             ValidationViolation(
@@ -292,7 +368,9 @@ class PlacementValidationReport:
             )
         ]
 
-    def _configuration_violations(self) -> list[ValidationViolation]:
+    def _configuration_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> list[ValidationViolation]:
         """Locate selection and GPU-count equalities by model/GPU pair."""
 
         violations: list[ValidationViolation] = []
@@ -310,6 +388,10 @@ class PlacementValidationReport:
         )
         for family, diagnostics, tolerance in equality_groups:
             for diagnostic in diagnostics:
+                _record_applied_tolerance(
+                    thresholds, family, (diagnostic.model_id, diagnostic.gpu_tier_id),
+                    tolerance,
+                )
                 if not diagnostic.is_feasible(tolerance):
                     violations.append(
                         ValidationViolation(
@@ -320,7 +402,9 @@ class PlacementValidationReport:
                     )
         return violations
 
-    def _capacity_and_slo_violations(self) -> list[ValidationViolation]:
+    def _capacity_and_slo_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> list[ValidationViolation]:
         """Locate capacity and SLO inequalities by model/GPU pair or query."""
 
         violations: list[ValidationViolation] = []
@@ -329,15 +413,26 @@ class PlacementValidationReport:
                 ConstraintFamily.GPU_MEMORY,
                 self.gpu_memory_diagnostics,
                 self.tolerances.gpu_memory,
+                self.tolerances.gpu_memory_relative,
+                "printed_memory_lhs", "available_memory_rhs_gb",
             ),
             (
                 ConstraintFamily.COMPUTE_CAPACITY,
                 self.compute_capacity_diagnostics,
                 self.tolerances.compute_capacity,
+                self.tolerances.compute_capacity_relative,
+                "required_compute", "available_compute",
             ),
         )
-        for family, diagnostics, tolerance in pair_inequality_groups:
+        for (
+            family, diagnostics, absolute, relative, lhs_name, rhs_name
+        ) in pair_inequality_groups:
             for diagnostic in diagnostics:
+                tolerance = _record_applied_tolerance(
+                    thresholds, family, (diagnostic.model_id, diagnostic.gpu_tier_id),
+                    absolute, relative, getattr(diagnostic, lhs_name),
+                    getattr(diagnostic, rhs_name),
+                )
                 if not diagnostic.is_feasible(tolerance):
                     violations.append(
                         ValidationViolation(
@@ -352,20 +447,32 @@ class PlacementValidationReport:
                 ConstraintFamily.STORAGE_CAPACITY,
                 self.storage_capacity_diagnostics,
                 self.tolerances.storage_capacity,
+                self.tolerances.storage_capacity_relative,
+                "printed_storage_lhs", "storage_limit_gb",
             ),
             (
                 ConstraintFamily.DELAY_SLO,
                 self.delay_slo_diagnostics,
                 self.tolerances.delay_slo,
+                self.tolerances.delay_slo_relative,
+                "processing_delay", "delay_limit",
             ),
             (
                 ConstraintFamily.ERROR_SLO,
                 self.error_slo_diagnostics,
                 self.tolerances.error_slo,
+                self.tolerances.error_slo_relative,
+                "weighted_error", "error_limit",
             ),
         )
-        for family, diagnostics, tolerance in query_inequality_groups:
+        for (
+            family, diagnostics, absolute, relative, lhs_name, rhs_name
+        ) in query_inequality_groups:
             for diagnostic in diagnostics:
+                tolerance = _record_applied_tolerance(
+                    thresholds, family, (diagnostic.query_id,), absolute, relative,
+                    getattr(diagnostic, lhs_name), getattr(diagnostic, rhs_name),
+                )
                 if not diagnostic.is_feasible(tolerance):
                     violations.append(
                         ValidationViolation(
@@ -376,7 +483,9 @@ class PlacementValidationReport:
                     )
         return violations
 
-    def _routing_consistency_violations(self) -> list[ValidationViolation]:
+    def _routing_consistency_violations(
+        self, thresholds: dict[_ToleranceKey, float]
+    ) -> list[ValidationViolation]:
         """Locate each failed routing bound at its query/model/GPU index."""
 
         violations: list[ValidationViolation] = []
@@ -388,7 +497,11 @@ class PlacementValidationReport:
                 ("deployment_slack", diagnostic.deployment_slack),
             )
             for inequality_name, slack in named_slacks:
-                if slack < -self.tolerances.routing_consistency:
+                tolerance = _record_applied_tolerance(
+                    thresholds, ConstraintFamily.ROUTING_CONSISTENCY,
+                    (*location, inequality_name), self.tolerances.routing_consistency,
+                )
+                if slack < -tolerance:
                     violations.append(
                         ValidationViolation(
                             ConstraintFamily.ROUTING_CONSISTENCY,

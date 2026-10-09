@@ -41,7 +41,7 @@ class GurobiConfigurationTests(unittest.TestCase):
 
     def test_defaults_and_requested_options(self) -> None:
         self.assertEqual(
-            dict(translate_gurobi_options(SolverConfig(backend=SolverBackend.GUROBI))),
+            dict(translate_gurobi_options(SolverConfig())),
             {},
         )
         options = translate_gurobi_options(SolverConfig(
@@ -67,7 +67,7 @@ class GurobiConfigurationTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             translate_gurobi_options(None)
         with self.assertRaises(UnsupportedSolverBackendError):
-            translate_gurobi_options(SolverConfig())
+            translate_gurobi_options(SolverConfig(backend=SolverBackend.HIGHS))
 
     def test_missing_package_is_unavailable_without_importing_it(self) -> None:
         with patch.object(solver_module, "find_spec", return_value=None), patch.object(
@@ -208,7 +208,9 @@ class GurobiIntegrationTests(unittest.TestCase):
                     data = PdmProblemData(factory())
                     oracle = enumerate_tiny_pdm(data, paper_version=version)
                     gurobi = execute_and_record_pdm_run(data, self.config, version)
-                    highs = execute_and_record_pdm_run(data, SolverConfig(), version)
+                    highs = execute_and_record_pdm_run(
+                        data, SolverConfig(backend=SolverBackend.HIGHS), version
+                    )
                     self.assertTrue(gurobi.accepted_run)
                     self.assertTrue(highs.accepted_run)
                     self.assertIs(gurobi.solver_evidence.result.status, SolverStatus.OPTIMAL)
@@ -243,7 +245,9 @@ class GurobiIntegrationTests(unittest.TestCase):
                 with self.subTest(version=version, order=candidate.query_ids):
                     data = PdmProblemData(candidate)
                     gurobi = execute_and_record_pdm_run(data, self.config, version)
-                    highs = execute_and_record_pdm_run(data, SolverConfig(), version)
+                    highs = execute_and_record_pdm_run(
+                        data, SolverConfig(backend=SolverBackend.HIGHS), version
+                    )
                     self.assertTrue(gurobi.accepted_run)
                     self.assertTrue(highs.accepted_run)
                     self.assertTrue(ObjectiveComparison(

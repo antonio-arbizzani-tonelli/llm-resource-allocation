@@ -188,7 +188,7 @@ class PlacementValidationTests(unittest.TestCase):
                 )
                 self.assertEqual(diagnostic.residuals.w_minus_v, -value)
 
-    def test_mccormick_default_does_not_relax_domains_or_other_families(self) -> None:
+    def test_tolerant_defaults_do_not_relax_domains_and_exact_is_available(self) -> None:
         instance = make_minimal_tiny_instance()
         delta = 2.0**-40
         for state in (
@@ -202,7 +202,13 @@ class PlacementValidationTests(unittest.TestCase):
         report = validate_placement(
             instance, make_placement_state(u=delta), PaperVersion.V2
         )
-        self.assertEqual(report.violated_families, (ConstraintFamily.DEMAND_BALANCE,))
+        exact = validate_placement(
+            instance, make_placement_state(u=delta), PaperVersion.V2,
+            ValidationTolerances.exact(),
+        )
+        self.assertTrue(report.is_feasible)
+        self.assertEqual(exact.violated_families, (ConstraintFamily.DEMAND_BALANCE,))
+        self.assertEqual(report.demand_balance_diagnostics, exact.demand_balance_diagnostics)
 
     def test_fully_feasible_tiny_state_reports_objective_and_all_families(self) -> None:
         instance = make_minimal_tiny_instance()

@@ -11,6 +11,7 @@ from llm_resource_allocation.data.tiny_instances import (
 )
 from llm_resource_allocation.math.objective import PaperVersion
 from llm_resource_allocation.optimization.solver import (
+    SolverBackend,
     SolverConfig,
     SolverStatus,
     require_solver_incumbent,
@@ -44,7 +45,7 @@ def solve_with_highs(instance):
 
     problem_data = PdmProblemData(instance)
     model = build_pdm_pyomo_model(problem_data)
-    solver_result = solve_pyomo_model(model, SolverConfig())
+    solver_result = solve_pyomo_model(model, SolverConfig(backend=SolverBackend.HIGHS))
     if solver_result.has_incumbent:
         require_solver_incumbent(solver_result)
         raw = extract_raw_pdm_solution_from_pyomo(model, problem_data)

@@ -15,6 +15,7 @@ from llm_resource_allocation.validation.objective_comparison import (
 )
 from llm_resource_allocation.validation.placement import (
     PlacementValidationReport,
+    ValidationTolerances,
     validate_placement,
 )
 
@@ -199,11 +200,15 @@ def execute_and_record_pdm_run(
     solver_config: SolverConfig,
     paper_version: PaperVersion = PaperVersion.V2,
     normalization_tolerances: SolutionNormalizationTolerances | None = None,
+    *,
+    validation_tolerances: ValidationTolerances | None = None,
 ) -> PdmRunRecord:
     """Execute the ``P_DM`` pipeline and snapshot decisions and evidence.
 
     No incumbent raises ``NoSolverIncumbentError`` before extraction (D-0030).
     Validation failures and objective discrepancies remain in rejected records.
+    ``validation_tolerances`` controls only independent residual acceptance;
+    ``ValidationTolerances.exact()`` disables absolute and relative terms.
     """
 
     if not isinstance(problem_data, PdmProblemData):
@@ -212,6 +217,11 @@ def execute_and_record_pdm_run(
         raise TypeError("solver_config must be SolverConfig")
     if not isinstance(paper_version, PaperVersion):
         raise ValueError("paper_version must be PaperVersion.V1 or V2")
+    selected_validation = (
+        ValidationTolerances() if validation_tolerances is None else validation_tolerances
+    )
+    if not isinstance(selected_validation, ValidationTolerances):
+        raise TypeError("validation_tolerances must be ValidationTolerances or None")
     selected_tolerances = (
         normalization_tolerances or SolutionNormalizationTolerances()
     )
@@ -233,6 +243,7 @@ def execute_and_record_pdm_run(
         problem_data.instance,
         solution,
         paper_version,
+        selected_validation,
     )
     objective_breakdown = validation_report.objective_breakdown
     if objective_breakdown is None:
