@@ -6,7 +6,10 @@ from math import isfinite
 from types import MappingProxyType
 from typing import Mapping
 
-from llm_resource_allocation.algorithms.gh_phase1 import GHPhase1Result
+from llm_resource_allocation.algorithms.gh_phase1 import (
+    GHPhase1Result,
+    _validate_state_against_instance,
+)
 from llm_resource_allocation.algorithms.m1 import (
     M1SelectionResult,
     _select_minimum_feasible_parallelism,
@@ -211,11 +214,9 @@ class GHPhase2CandidateEvaluation:
     rejection_reasons: tuple[GHPhase2CandidateRejectionReason, ...]
 
     def __post_init__(self) -> None:
-        expected_count = (
-            0 if self.current_configuration is None else self.current_configuration.gpu_count
-        )
-        if self.m2_inputs.current_gpu_count != expected_count:
-            raise ValueError("M2 GPU count must match the current configuration")
+        """Own the immutable rejection evidence supplied by the producer."""
+
+        object.__setattr__(self, "rejection_reasons", tuple(self.rejection_reasons))
 
     @property
     def is_active_pair(self) -> bool:
@@ -302,6 +303,9 @@ def initialize_gh_phase2_state(
     """
 
     validate_problem_instance(instance)
+    if not isinstance(phase1_result, GHPhase1Result):
+        raise ValueError("phase1_result must be a GHPhase1Result")
+    _validate_phase1_result_for_instance(instance, phase1_result)
     return _initialize_gh_phase2_state(
         instance, phase1_result, query_order_override=query_order_override
     )
@@ -389,8 +393,6 @@ def _evaluate_phase2_candidate(
         else:
             selected_configuration = m1_selection.selected_configuration
             selected_delay = m1_selection.selected_fixed_configuration_delay_seconds
-            if selected_configuration is None or selected_delay is None:
-                raise RuntimeError("feasible M1 result lacks selected configuration or delay")
             candidate_configuration = GHPhase2CandidateConfiguration(
                 query_id=query_id,
                 model_id=model_id,
@@ -448,8 +450,6 @@ def _evaluate_phase2_candidate(
                 )
             else:
                 selected = m3_upgrade.selected_diagnostic
-                if selected is None:
-                    raise RuntimeError("M3 selected an upgrade without diagnostics")
                 candidate_configuration = GHPhase2CandidateConfiguration(
                     query_id=query_id,
                     model_id=model_id,
@@ -477,8 +477,6 @@ def _evaluate_phase2_candidate(
             rejection_reasons=rejection_reasons,
         )
 
-    if candidate_configuration is None:
-        raise RuntimeError("surviving active candidate lacks candidate configuration")
     m2_evaluation = _evaluate_m2_candidate(instance, candidate_configuration, m2_inputs)
     return _complete_phase2_candidate(
         query_id,
@@ -591,34 +589,7 @@ def _validate_phase1_result_for_instance(
 ) -> None:
     """Require consistent Phase-1 evidence for the supplied instance."""
 
-    phase1_state = phase1_result.final_state
-    known_queries = set(instance.query_ids)
-    covered_ids = tuple(
-        query_id
-        for deployment in phase1_state.active_deployments
-        for query_id in deployment.covered_query_ids
-    )
-    if (
-        len(set(covered_ids)) != len(covered_ids)
-        or set(covered_ids).intersection(phase1_state.uncovered_query_ids)
-        or set(covered_ids).union(phase1_state.uncovered_query_ids) != known_queries
-    ):
-        raise ValueError("Phase-1 result does not partition this instance's queries")
-    model_ids = set(instance.model_ids)
-    tier_by_id = {tier.id: tier for tier in instance.gpu_tiers}
-    for deployment in phase1_state.active_deployments:
-        if deployment.model_id not in model_ids or deployment.tier_id not in tier_by_id:
-            raise ValueError("Phase-1 result contains an unknown model-tier pair")
-        tier = tier_by_id[deployment.tier_id]
-        if deployment.configuration not in tier.parallelism_configs:
-            raise ValueError("Phase-1 result contains an unsupported configuration")
-        expected_cost = (
-            instance.horizon_hours
-            * tier.hourly_rental_usd
-            * deployment.configuration.gpu_count
-        )
-        if deployment.activation_cost_usd != expected_cost:
-            raise ValueError("Phase-1 activation cost does not match this instance")
+    _validate_state_against_instance(instance, phase1_result.final_state)
 
 
 def _initialize_gh_phase2_state(
@@ -627,12 +598,9 @@ def _initialize_gh_phase2_state(
     *,
     query_order_override: tuple[str, ...] | None = None,
 ) -> GHPhase2State:
-    """Transfer compatible Phase-1 evidence on an already validated instance."""
+    """Transfer producer-created or publicly checked Phase-1 evidence."""
 
-    if not isinstance(phase1_result, GHPhase1Result):
-        raise ValueError("phase1_result must be a GHPhase1Result")
     phase1_state = phase1_result.final_state
-    _validate_phase1_result_for_instance(instance, phase1_result)
     deployments = tuple(
         GHPhase2Deployment(
             model_id=deployment.model_id,

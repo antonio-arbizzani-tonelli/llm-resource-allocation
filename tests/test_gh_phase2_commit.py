@@ -70,6 +70,19 @@ def make_two_model_instance():
 class GHPhase2AllocationTests(unittest.TestCase):
     """Protect the literal Algorithm-1 line-18 allocation."""
 
+    def test_public_boundaries_reject_mismatched_candidate_gpu_evidence(self):
+        instance = make_minimal_tiny_instance()
+        _, state = inactive_state(instance)
+        candidate = sole_candidate(instance, state)
+        changed = replace(
+            candidate,
+            m2_inputs=replace(candidate.m2_inputs, current_gpu_count=1),
+        )
+        with self.assertRaisesRegex(ValueError, "M2 GPU count"):
+            compute_gh_phase2_candidate_allocation(state, changed)
+        with self.assertRaisesRegex(ValueError, "declared state"):
+            commit_gh_phase2_candidate(instance, state, changed)
+
     def test_proposal_is_minimum_of_unmet_and_effective_coverage(self):
         instance = make_minimal_tiny_instance()
         _, state = inactive_state(instance)

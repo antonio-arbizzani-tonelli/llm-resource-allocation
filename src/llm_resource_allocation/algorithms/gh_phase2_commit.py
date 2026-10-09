@@ -184,11 +184,27 @@ def compute_gh_phase2_candidate_allocation(
         raise ValueError("candidate must be a GHPhase2CandidateEvaluation")
     if not candidate.is_rankable or candidate.m2_evaluation is None:
         raise ValueError("candidate must be a positive-coverage ranked candidate")
+    expected_gpu_count = (
+        0 if candidate.current_configuration is None
+        else candidate.current_configuration.gpu_count
+    )
+    if candidate.m2_inputs.current_gpu_count != expected_gpu_count:
+        raise ValueError("M2 GPU count must match the current configuration")
     coverage_diagnostic = candidate.m2_evaluation.coverage_diagnostic
     if coverage_diagnostic is None:
         raise ValueError("ranked candidate lacks effective-coverage evidence")
     if candidate.query_id not in state.unmet_fraction_by_query:
         raise ValueError("candidate query is absent from Phase-2 state")
+    return _compute_gh_phase2_candidate_allocation(state, candidate)
+
+
+def _compute_gh_phase2_candidate_allocation(
+    state: GHPhase2State,
+    candidate: GHPhase2CandidateEvaluation,
+) -> GHPhase2AllocationProposal:
+    """Use retained coverage from a producer-ranked or publicly checked candidate."""
+
+    coverage_diagnostic = candidate.m2_evaluation.coverage_diagnostic
     unserved_fraction_before = state.unmet_fraction_by_query[candidate.query_id]
     candidate_coverage_fraction = coverage_diagnostic.effective_coverage
     return GHPhase2AllocationProposal(
@@ -226,9 +242,8 @@ def commit_gh_phase2_candidate(
             evaluation_state,
             expected_state_order=expected_state_order,
         )
-    result, _ = _commit_gh_phase2_candidate(
-        instance, state, candidate, candidate_evaluation_state=evaluation_state
-    )
+    _validate_candidate_for_state(instance, state, candidate, evaluation_state)
+    result, _ = _commit_gh_phase2_candidate(instance, state, candidate)
     return result
 
 
@@ -237,18 +252,11 @@ def _commit_gh_phase2_candidate(
     state: GHPhase2State,
     candidate: GHPhase2CandidateEvaluation,
     *,
-    candidate_evaluation_state: GHPhase2State,
     context: _GHPhase2CommitContext | None = None,
 ) -> tuple[GHPhase2CommitResult, _GHPhase2CommitContext | None]:
     """Check a proposal on the same validated instance and exact current state."""
 
-    _validate_candidate_for_state(
-        instance,
-        state,
-        candidate,
-        candidate_evaluation_state,
-    )
-    allocation = compute_gh_phase2_candidate_allocation(state, candidate)
+    allocation = _compute_gh_phase2_candidate_allocation(state, candidate)
 
     if allocation.proposed_routing_fraction <= 0.0:
         diagnostic = GHPhase2CommitDiagnostic(
@@ -273,8 +281,6 @@ def _commit_gh_phase2_candidate(
         context = _GHPhase2CommitContext(
             state, _compute_budget_residual(instance, decisions)
         )
-    elif context.state is not state:
-        raise RuntimeError("commit context must belong to the exact current state")
 
     proposal = _build_commit_proposal(state, candidate, allocation)
     diagnostic = _evaluate_prospective_commit(
@@ -364,7 +370,7 @@ def _evaluate_prospective_commit(
     if not prospective_budget_diagnostic.is_feasible():
         rejection_reasons.append(GHPhase2CommitRejectionReason.GLOBAL_BUDGET)
 
-    diagnostic = GHPhase2CommitDiagnostic(
+    return GHPhase2CommitDiagnostic(
         query_id=candidate.query_id,
         model_id=candidate.model_id,
         tier_id=candidate.tier_id,
@@ -376,7 +382,6 @@ def _evaluate_prospective_commit(
         budget_comparison=budget_comparison,
         rejection_reasons=tuple(rejection_reasons),
     )
-    return diagnostic
 
 
 def _apply_feasible_commit(
@@ -401,8 +406,6 @@ def _apply_feasible_commit(
     cumulative_error[query.id] += effective_error * allocation.proposed_routing_fraction
     cumulative_delay = dict(state.cumulative_delay_seconds_by_query)
     candidate_configuration = candidate.candidate_configuration
-    if candidate_configuration is None:
-        raise RuntimeError("ranked candidate lacks candidate configuration")
     cumulative_delay[query.id] += (
         candidate_configuration.selected_fixed_configuration_delay_seconds
         * allocation.proposed_routing_fraction
@@ -441,6 +444,8 @@ def _validate_candidate_for_state(
         or candidate.tier_id not in instance.gpu_tier_ids
     ):
         raise ValueError("candidate has an unknown model-tier pair")
+    if candidate.m2_evaluation.selected_configuration != candidate.effective_configuration:
+        raise ValueError("candidate M2 configuration lacks matching selection evidence")
     current = state.deployment_for_pair(candidate.model_id, candidate.tier_id)
     evaluated = candidate_evaluation_state.deployment_for_pair(
         candidate.model_id, candidate.tier_id
@@ -455,6 +460,7 @@ def _validate_candidate_for_state(
             raise ValueError("M1 candidate no longer targets an inactive pair")
         if (
             candidate.m1_selection is None
+            or candidate.m1_selection.selected_diagnostic is None
             or candidate.m1_selection.selected_configuration
             != candidate.effective_configuration
         ):
@@ -481,6 +487,7 @@ def _validate_candidate_for_state(
             if (
                 candidate.m3_upgrade is None
                 or not candidate.m3_upgrade.has_upgrade
+                or candidate.m3_upgrade.selected_diagnostic is None
                 or candidate.m3_upgrade.selected_configuration
                 != candidate.effective_configuration
             ):
@@ -513,8 +520,6 @@ def _prospective_deployments(
 
     candidate_configuration = candidate.candidate_configuration
     configuration = candidate.effective_configuration
-    if candidate_configuration is None or configuration is None:
-        raise ValueError("ranked candidate lacks prospective configuration")
     current = state.deployment_for_pair(candidate.model_id, candidate.tier_id)
     prospective = GHPhase2Deployment(
         candidate.model_id, candidate.tier_id, configuration

@@ -1,4 +1,4 @@
-"""Invoke HiGHS or Gurobi and normalize solver evidence (D-0024/D-0080).
+"""Invoke HiGHS or Gurobi and normalize solver evidence (D-0080).
 
 Extraction and independent scientific validation are separate operations.
 """
@@ -282,7 +282,7 @@ def _normalize_appsi_status(
     termination_condition: TerminationCondition,
     has_incumbent: bool,
 ) -> SolverStatus:
-    """Classify APPSI termination using incumbent presence (D-0024)."""
+    """Classify APPSI termination using incumbent presence."""
 
     if termination_condition is TerminationCondition.optimal:
         return SolverStatus.OPTIMAL if has_incumbent else SolverStatus.ERROR
@@ -432,7 +432,7 @@ def solve_pyomo_model(model: object, config: SolverConfig) -> SolverResult:
     """Solve a constructed model through the configured APPSI backend.
 
     Load variables only when a finite best feasible objective establishes an
-    incumbent (D-0024). This adapter also serves the Stage-2 LP.
+    incumbent.
     """
 
     if not isinstance(config, SolverConfig):
@@ -451,7 +451,7 @@ def solve_pyomo_model(model: object, config: SolverConfig) -> SolverResult:
 
 
 def require_solver_incumbent(result: SolverResult) -> SolverResult:
-    """Require an incumbent before extraction; otherwise raise (D-0024)."""
+    """Require an incumbent before extraction; otherwise raise."""
 
     if not isinstance(result, SolverResult):
         raise TypeError("result must be a SolverResult")

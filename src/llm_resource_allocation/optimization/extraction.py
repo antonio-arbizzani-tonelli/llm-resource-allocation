@@ -1,4 +1,4 @@
-"""Extract ``P_DM`` values and normalize variable domains (D-0021).
+"""Extract ``P_DM`` values and normalize variable domains.
 
 Independent validation checks scientific constraints after normalization.
 """
@@ -229,7 +229,7 @@ def extract_raw_pdm_solution_from_pyomo(
     """Copy finite model values in the exact problem-data key order.
 
     Reject mismatched keys and unusable values; preserve ``v`` rather than
-    recomputing ``x*w`` (D-0021).
+    recomputing ``x*w``.
     """
 
     if not isinstance(problem_data, PdmProblemData):
@@ -394,7 +394,7 @@ def normalize_raw_pdm_solution(
 
     Snap nearby binaries/GPU counts and clip continuous bound excursions within
     their tolerances. Scientific relationships, including ``v=x*w``, remain for
-    independent validation (D-0021/D-0022).
+    independent validation (D-0022).
     """
 
     if not isinstance(raw_solution, RawPdmSolution):

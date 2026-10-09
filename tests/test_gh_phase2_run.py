@@ -2,7 +2,7 @@
 
 import sys
 import unittest
-from dataclasses import FrozenInstanceError, replace
+from dataclasses import FrozenInstanceError, fields, replace
 from unittest.mock import patch
 
 from llm_resource_allocation.algorithms import (
@@ -357,11 +357,24 @@ class GHPhase2OuterBoundaryTests(unittest.TestCase):
         result = run_gh_phase2(instance, initialized_state(instance))
 
         with self.assertRaises(FrozenInstanceError):
-            result.final_state = result.initial_state
+            result.initial_state = result.final_state
         with self.assertRaises(FrozenInstanceError):
             result.query_traces[0].query_position = 99
         with self.assertRaises(TypeError):
             result.residual_demand_by_query["q_high"] = 1.0
+        self.assertIs(
+            result.residual_demand_by_query, result.final_state.remaining_demand_by_query
+        )
+        self.assertTrue(
+            {"final_state", "processed_query_ids", "residual_demand_by_query"}.isdisjoint(
+                item.name for item in fields(result)
+            )
+        )
+        self.assertTrue(
+            {"query_id", "state_at_query_entry", "query_evaluation", "state_after_query"}.isdisjoint(
+                item.name for item in fields(result.query_traces[0])
+            )
+        )
 
     def test_stale_or_reordered_phase2_state_is_rejected_before_5f_or_5h(self):
         instance = make_outer_instance()

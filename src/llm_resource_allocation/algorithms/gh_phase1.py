@@ -77,7 +77,6 @@ class GHPhase1State:
     active_deployments: tuple[GHPhase1Deployment, ...]
     accumulated_rental_cost_usd: float
     rental_cap_usd: float
-    iteration_count: int
 
     def __post_init__(self) -> None:
         """Freeze sequences and enforce representation-level state invariants."""
@@ -99,20 +98,12 @@ class GHPhase1State:
         ):
             if not isfinite(value) or value < 0.0:
                 raise ValueError(f"{name} must be finite and nonnegative")
-        if (
-            isinstance(self.iteration_count, bool)
-            or not isinstance(self.iteration_count, int)
-            or self.iteration_count < 0
-        ):
-            raise ValueError("iteration_count must be a nonnegative integer")
-        if self.iteration_count != len(self.active_deployments):
-            raise ValueError("iteration_count must equal the number of activations")
-        recorded_cost = sum(
-            deployment.activation_cost_usd
-            for deployment in self.active_deployments
-        )
-        if recorded_cost != self.accumulated_rental_cost_usd:
-            raise ValueError("accumulated rental cost must equal activation costs")
+
+    @property
+    def iteration_count(self) -> int:
+        """Return the number of activations retained in the state."""
+
+        return len(self.active_deployments)
 
     @property
     def active_pair_ids(self) -> tuple[tuple[str, str], ...]:
@@ -133,12 +124,22 @@ class GHPhase1TerminationReason(str, Enum):
 class GHPhase1IterationTrace:
     """Retain complete immutable evidence for one greedy activation."""
 
-    iteration_index: int
     state_before: GHPhase1State
     candidate_evaluations: tuple[Phase1CandidateEvaluation, ...]
     ranked_candidates: tuple[Phase1CandidateEvaluation, ...]
-    selected_candidate: Phase1CandidateEvaluation
     state_after: GHPhase1State
+
+    @property
+    def iteration_index(self) -> int:
+        """Return the activation index carried by the entry state."""
+
+        return self.state_before.iteration_count
+
+    @property
+    def selected_candidate(self) -> Phase1CandidateEvaluation:
+        """Return the first candidate in the producer's greedy ranking."""
+
+        return self.ranked_candidates[0]
 
     def __post_init__(self) -> None:
         """Freeze candidate sequences even for directly constructed traces."""
@@ -155,9 +156,16 @@ class GHPhase1Result:
 
     initial_state: GHPhase1State
     iterations: tuple[GHPhase1IterationTrace, ...]
-    final_state: GHPhase1State
     termination_reason: GHPhase1TerminationReason
     terminal_candidate_evaluations: tuple[Phase1CandidateEvaluation, ...]
+
+    @property
+    def final_state(self) -> GHPhase1State:
+        """Return the last activation state, or the unchanged initial state."""
+
+        return (
+            self.iterations[-1].state_after if self.iterations else self.initial_state
+        )
 
     def __post_init__(self) -> None:
         """Freeze the complete trace sequence at the public result boundary."""
@@ -215,7 +223,8 @@ def apply_gh_phase1_activation(
 
     validate_problem_instance(instance)
     _validate_state_against_instance(instance, state)
-    return _apply_gh_phase1_activation(instance, state, selected_candidate)
+    _validate_activation_candidate(state, selected_candidate)
+    return _apply_gh_phase1_activation(state, selected_candidate)
 
 
 def run_gh_phase1(
@@ -240,6 +249,10 @@ def _validate_state_against_instance(
 
     if not isinstance(state, GHPhase1State):
         raise ValueError("state must be a GHPhase1State")
+    if state.accumulated_rental_cost_usd != sum(
+        deployment.activation_cost_usd for deployment in state.active_deployments
+    ):
+        raise ValueError("accumulated rental cost must equal activation costs")
     known_queries = set(instance.query_ids)
     if not set(state.uncovered_query_ids).issubset(known_queries):
         raise ValueError("state contains an unknown uncovered query ID")
@@ -290,7 +303,6 @@ def _initialize_gh_phase1_state(
         active_deployments=(),
         accumulated_rental_cost_usd=0.0,
         rental_cap_usd=config.budget_fraction * instance.cost_budget_usd,
-        iteration_count=0,
     )
 
 
@@ -324,12 +336,11 @@ def _evaluate_gh_phase1_candidates(
     return tuple(evaluations)
 
 
-def _apply_gh_phase1_activation(
-    instance: ProblemInstance,
+def _validate_activation_candidate(
     state: GHPhase1State,
     selected_candidate: Phase1CandidateEvaluation,
-) -> GHPhase1State:
-    """Activate matching coverage on a checked state without changing inputs."""
+) -> None:
+    """Check externally supplied activation evidence at the public boundary."""
 
     if selected_candidate.coverage.uncovered_query_ids != state.uncovered_query_ids:
         raise ValueError("selected candidate was not evaluated at the current state")
@@ -346,13 +357,23 @@ def _apply_gh_phase1_activation(
     activation_cost = selected_candidate.activation.activation_cost_usd
     if configuration is None or activation_cost is None:
         raise ValueError("rankable activation lacks configuration or cost")
+
+
+def _apply_gh_phase1_activation(
+    state: GHPhase1State,
+    selected_candidate: Phase1CandidateEvaluation,
+) -> GHPhase1State:
+    """Activate a producer-ranked or publicly checked candidate."""
+
+    covered = selected_candidate.coverage.covered_query_ids
+    covered_set = set(covered)
+    configuration = selected_candidate.coverage.common_configuration
+    activation_cost = selected_candidate.activation.activation_cost_usd
     remaining = tuple(
         query_id
         for query_id in state.uncovered_query_ids
         if query_id not in covered_set
     )
-    if len(remaining) >= len(state.uncovered_query_ids):
-        raise RuntimeError("Phase-1 activation made no coverage progress")
     deployment = GHPhase1Deployment(
         model_id=selected_candidate.model_id,
         tier_id=selected_candidate.tier_id,
@@ -367,7 +388,6 @@ def _apply_gh_phase1_activation(
             state.accumulated_rental_cost_usd + activation_cost
         ),
         rental_cap_usd=state.rental_cap_usd,
-        iteration_count=state.iteration_count + 1,
     )
 
 
@@ -391,19 +411,16 @@ def _run_gh_phase1(
             return GHPhase1Result(
                 initial_state=initial_state,
                 iterations=tuple(traces),
-                final_state=state,
                 termination_reason=GHPhase1TerminationReason.NO_RANKABLE_CANDIDATE,
                 terminal_candidate_evaluations=evaluations,
             )
         selected = ranked[0]
-        next_state = _apply_gh_phase1_activation(instance, state, selected)
+        next_state = _apply_gh_phase1_activation(state, selected)
         traces.append(
             GHPhase1IterationTrace(
-                iteration_index=state.iteration_count,
                 state_before=state,
                 candidate_evaluations=evaluations,
                 ranked_candidates=ranked,
-                selected_candidate=selected,
                 state_after=next_state,
             )
         )
@@ -417,7 +434,6 @@ def _run_gh_phase1(
     return GHPhase1Result(
         initial_state=initial_state,
         iterations=tuple(traces),
-        final_state=state,
         termination_reason=reason,
         terminal_candidate_evaluations=(),
     )

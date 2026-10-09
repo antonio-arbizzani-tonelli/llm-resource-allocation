@@ -211,12 +211,6 @@ class M2CandidateEvaluation:
     cost_breakdown: M2MarginalCostBreakdown | None
     coverage_diagnostic: M2EffectiveCoverageDiagnostic | None
 
-    def __post_init__(self) -> None:
-        if (self.selected_configuration is None) != (self.cost_breakdown is None):
-            raise ValueError("M2 selection and marginal cost must occur together")
-        if (self.selected_configuration is None) != (self.coverage_diagnostic is None):
-            raise ValueError("M2 selection and effective coverage must occur together")
-
     @property
     def pi(self) -> int | None:
         if self.coverage_diagnostic is None:
@@ -324,6 +318,9 @@ def evaluate_m2_candidate(
     """
 
     validate_problem_instance(instance)
+    _, _, tier = _resolve_m2_candidate_identity(instance, configuration_evidence)
+    if configuration_evidence.is_feasible:
+        _require_feasible_configuration_evidence(tier, configuration_evidence)
     return _evaluate_m2_candidate(instance, configuration_evidence, evaluation_inputs)
 
 
@@ -514,9 +511,8 @@ def _evaluate_m2_candidate(
             coverage_diagnostic=None,
         )
 
-    configuration, delay_seconds = _require_feasible_configuration_evidence(
-        tier, configuration_evidence
-    )
+    configuration = configuration_evidence.selected_configuration
+    delay_seconds = configuration_evidence.selected_fixed_configuration_delay_seconds
     cost_breakdown = _compute_m2_marginal_cost(
         instance,
         query,

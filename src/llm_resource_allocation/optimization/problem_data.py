@@ -1,7 +1,7 @@
 """Ordered indices and structural counts for deterministic ``P_DM``.
 
 Paper v2 Table 1: ``i in I``, ``j in J``, ``k in K``, ``n in N_k``,
-``m in M_k``. Model construction and extraction share these keys (D-0019);
+``m in M_k``. Model construction and extraction share these keys;
 ``ProblemInstance`` retains the coefficients. Counts precede solver presolve.
 """
 
@@ -121,7 +121,7 @@ class PdmVariableCounts:
 class PdmConstraintCounts:
     """Count reference constraints before solver presolve (v2 Eqs. 7-8).
 
-    Eq. (8k), ``0 <= x <= z <= q``: two rows plus one x lower bound (D-0020).
+    Eq. (8k), ``0 <= x <= z <= q``: two rows plus one x lower bound.
     ``eq_8h_d_0016`` counts per-query storage constraints (D-0016);
     ``mccormick_inequalities`` counts four rows per v key, including ``v >= 0``.
     """
@@ -145,7 +145,7 @@ class PdmConstraintCounts:
         """Sum explicit Eq. (8b)-(8k) and McCormick rows.
 
         Include Eq. (8k)'s two linking rows; exclude x bounds and its separate
-        three-inequality count to avoid double-counting (D-0020).
+        three-inequality count to avoid double-counting.
         """
 
         return (
@@ -168,7 +168,7 @@ class PdmProblemData:
     """Derive immutable ``P_DM`` indices, variable keys, and structural counts.
 
     Retain the validated ``instance`` by identity as coefficient authority;
-    preserve its order and tier-specific TP/PP domains (D-0019).
+    preserve its order and tier-specific TP/PP domains.
     """
 
     instance: ProblemInstance
@@ -225,7 +225,7 @@ def _build_variable_lattices(index_sets: PdmIndexSets) -> PdmVariableLattices:
         for model_id in index_sets.model_ids
         for tier_id in index_sets.tier_ids
     )
-    # Use each tier's N_k x M_k; exclude unsupported TP/PP combinations (D-0019).
+    # Use each tier's N_k x M_k; exclude unsupported TP/PP combinations.
     configuration_keys = tuple(
         (model_id, tier_id, tensor_degree, pipeline_depth)
         for model_id in index_sets.model_ids
@@ -280,7 +280,7 @@ def _count_constraints(lattices: PdmVariableLattices) -> PdmConstraintCounts:
         eq_8k_paper_semantic_inequalities=3 * n_routes,
         eq_8k_explicit_linking_rows=2 * n_routes,
         eq_8k_x_lower_bounds=n_routes,
-        # Keep all four McCormick rows, including explicit v >= 0 (D-0020).
+        # Keep all four McCormick rows, including explicit v >= 0.
         mccormick_inequalities=4 * len(lattices.auxiliary_product_keys),
     )
 

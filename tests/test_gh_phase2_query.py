@@ -2,7 +2,7 @@
 
 import sys
 import unittest
-from dataclasses import FrozenInstanceError, replace
+from dataclasses import FrozenInstanceError, fields, replace
 from unittest.mock import patch
 
 from llm_resource_allocation.algorithms import (
@@ -510,6 +510,13 @@ class GHPhase2QueryCompatibilityAndTraceTests(unittest.TestCase):
             self.assertIs(attempt.state_after, attempt.commit_result.state_after)
             current = attempt.state_after
         self.assertIs(current, result.final_state)
+        self.assertNotIn("final_state", {item.name for item in fields(result)})
+        self.assertNotIn("query_id", {item.name for item in fields(result)})
+        self.assertTrue(
+            {"rank_key", "state_before", "state_after"}.isdisjoint(
+                item.name for item in fields(result.attempts[0])
+            )
+        )
 
     def test_exact_ties_are_stable_and_reversible_with_model_order(self):
         forward = make_loop_instance(
@@ -539,7 +546,7 @@ class GHPhase2QueryCompatibilityAndTraceTests(unittest.TestCase):
         self.assertEqual(state.routing_fraction_by_candidate, {})
         self.assertEqual(evaluation, evaluate_gh_phase2_query_candidates(instance, state, QUERY))
         with self.assertRaises(FrozenInstanceError):
-            first.final_state = state
+            first.initial_state = state
         with self.assertRaises(FrozenInstanceError):
             first.attempts[0].ranked_candidate_index = 99
 

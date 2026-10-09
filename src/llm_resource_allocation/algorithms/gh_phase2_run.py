@@ -2,7 +2,6 @@
 
 from dataclasses import dataclass
 from enum import Enum
-from types import MappingProxyType
 from typing import Mapping
 
 from llm_resource_allocation.algorithms.gh_phase2 import (
@@ -28,12 +27,32 @@ class GHPhase2QueryTrace:
     """Record one query's entry state, evaluation, traversal, and resulting state."""
 
     query_position: int
-    query_id: str
     arrival_rate_per_hour: float
-    state_at_query_entry: GHPhase2State
-    query_evaluation: GHPhase2QueryEvaluation
     query_process_result: GHPhase2QueryProcessResult
-    state_after_query: GHPhase2State
+
+    @property
+    def query_id(self) -> str:
+        """Return the processed query's identifier."""
+
+        return self.query_process_result.query_id
+
+    @property
+    def state_at_query_entry(self) -> GHPhase2State:
+        """Return the exact initial state of this query's traversal."""
+
+        return self.query_process_result.initial_state
+
+    @property
+    def query_evaluation(self) -> GHPhase2QueryEvaluation:
+        """Return the candidate evaluation retained by the query result."""
+
+        return self.query_process_result.query_evaluation
+
+    @property
+    def state_after_query(self) -> GHPhase2State:
+        """Return the query traversal's final state."""
+
+        return self.query_process_result.final_state
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,23 +61,33 @@ class GHPhase2RunResult:
 
     initial_state: GHPhase2State
     query_traces: tuple[GHPhase2QueryTrace, ...]
-    final_state: GHPhase2State
-    processed_query_ids: tuple[str, ...]
-    residual_demand_by_query: Mapping[str, float]
     completion_status: GHPhase2RunCompletionStatus
 
     def __post_init__(self) -> None:
         """Freeze caller-supplied containers at the public result boundary."""
 
         object.__setattr__(self, "query_traces", tuple(self.query_traces))
-        object.__setattr__(
-            self, "processed_query_ids", tuple(self.processed_query_ids)
+
+    @property
+    def final_state(self) -> GHPhase2State:
+        """Return the final query state, or the unchanged initial state."""
+
+        return (
+            self.query_traces[-1].state_after_query
+            if self.query_traces else self.initial_state
         )
-        object.__setattr__(
-            self,
-            "residual_demand_by_query",
-            MappingProxyType(dict(self.residual_demand_by_query)),
-        )
+
+    @property
+    def processed_query_ids(self) -> tuple[str, ...]:
+        """Return query identifiers in traversal order."""
+
+        return tuple(trace.query_id for trace in self.query_traces)
+
+    @property
+    def residual_demand_by_query(self) -> Mapping[str, float]:
+        """Return the final state's independently carried residual demand."""
+
+        return self.final_state.remaining_demand_by_query
 
     @property
     def all_queries_processed(self) -> bool:
@@ -104,28 +133,19 @@ def _run_gh_phase2(
     for query_position, query_id in enumerate(state.query_order):
         query_entry_state = current_state
         query_result = _process_gh_phase2_query(instance, query_entry_state, query_id)
-        query_evaluation = query_result.query_evaluation
         current_state = query_result.final_state
         traces.append(
             GHPhase2QueryTrace(
                 query_position=query_position,
-                query_id=query_id,
                 arrival_rate_per_hour=(
                     query_by_id[query_id].arrival_rate_per_hour
                 ),
-                state_at_query_entry=query_entry_state,
-                query_evaluation=query_evaluation,
                 query_process_result=query_result,
-                state_after_query=current_state,
             )
         )
 
-    processed_query_ids = tuple(trace.query_id for trace in traces)
     return GHPhase2RunResult(
         initial_state=state,
         query_traces=tuple(traces),
-        final_state=current_state,
-        processed_query_ids=processed_query_ids,
-        residual_demand_by_query=current_state.remaining_demand_by_query,
         completion_status=GHPhase2RunCompletionStatus.ALL_QUERIES_PROCESSED,
     )

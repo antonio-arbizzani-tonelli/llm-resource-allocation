@@ -88,17 +88,18 @@ def select(instance, query_id: str = QUERY_ID, tier_id: str = TIER_ID):
 class M2HandDerivedArithmeticTests(unittest.TestCase):
     """Verify Eq. (10), Eq. (11), and exact rank values by hand."""
 
-    def test_selected_candidate_requires_cost_and_coverage_evidence(self):
-        instance = make_m2_instance()
-        result = evaluate_m2_candidate(
-            instance,
-            select(instance),
-            M2EvaluationInputs(0.8, 0.1, 1.0, 0),
-        )
-        with self.assertRaisesRegex(ValueError, "marginal cost"):
-            replace(result, cost_breakdown=None)
-        with self.assertRaisesRegex(ValueError, "effective coverage"):
-            replace(result, coverage_diagnostic=None)
+    def test_producer_retains_cost_and_coverage_with_each_selected_candidate(self):
+        for memory_capacity, available in ((8.0, True), (0.01, False)):
+            with self.subTest(memory_capacity=memory_capacity):
+                instance = make_m2_instance(memory_capacity_gb=memory_capacity)
+                result = evaluate_m2_candidate(
+                    instance,
+                    select(instance),
+                    M2EvaluationInputs(0.8, 0.1, 1.0, 0),
+                )
+                self.assertEqual(result.selected_configuration is not None, available)
+                self.assertEqual(result.cost_breakdown is not None, available)
+                self.assertEqual(result.coverage_diagnostic is not None, available)
 
     def test_hand_baseline_cost_coverage_and_rank(self):
         """Derive cost 9.54, full coverage .8, pi=0, and kappa=11.925."""

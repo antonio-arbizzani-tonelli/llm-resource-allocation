@@ -1,7 +1,7 @@
 """Hand-derived tests for the pure GH Phase-1 greedy activation loop."""
 
 import unittest
-from dataclasses import FrozenInstanceError, replace
+from dataclasses import FrozenInstanceError, fields, replace
 from unittest.mock import patch
 
 from llm_resource_allocation.algorithms import (
@@ -114,6 +114,7 @@ class GHPhase1InitializationTests(unittest.TestCase):
         self.assertEqual(state.accumulated_rental_cost_usd, 0.0)
         self.assertEqual(state.rental_cap_usd, 8.0)
         self.assertEqual(state.iteration_count, 0)
+        self.assertNotIn("iteration_count", {item.name for item in fields(state)})
 
     def test_config_is_explicit_immutable_and_validated(self):
         config = GHPhase1Config(0.8)
@@ -123,6 +124,16 @@ class GHPhase1InitializationTests(unittest.TestCase):
         for invalid in (-0.1, 1.1, float("inf"), True):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
                 GHPhase1Config(invalid)
+
+    def test_public_candidate_boundary_checks_supplied_state_accounting(self):
+        instance = make_loop_instance()
+        state = initialize_gh_phase1_state(instance, GHPhase1Config(0.8))
+        for changed, message in (
+            (replace(state, accumulated_rental_cost_usd=1.0), "activation costs"),
+        ):
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(ValueError, message):
+                    evaluate_gh_phase1_candidates(instance, changed)
 
 
 class GHPhase1LoopHandCases(unittest.TestCase):
@@ -285,7 +296,7 @@ class GHPhase1DeterminismAndIsolationTests(unittest.TestCase):
         with self.assertRaises(FrozenInstanceError):
             first.final_state.uncovered_query_ids = ()
         with self.assertRaises(FrozenInstanceError):
-            first.iterations[0].state_after = GHPhase1State((), (), 0.0, 0.0, 0)
+            first.iterations[0].state_after = GHPhase1State((), (), 0.0, 0.0)
 
     def test_loop_reuses_5d_stable_ranking_once_per_activation_attempt(self):
         instance = make_loop_instance()
@@ -309,6 +320,14 @@ class GHPhase1DeterminismAndIsolationTests(unittest.TestCase):
             self.assertIn(trace.selected_candidate, trace.candidate_evaluations)
             state = trace.state_after
         self.assertEqual(state, result.final_state)
+        self.assertIs(result.final_state, result.iterations[-1].state_after)
+        self.assertNotIn("final_state", {item.name for item in fields(result)})
+        self.assertNotIn(
+            "selected_candidate", {item.name for item in fields(result.iterations[0])}
+        )
+        self.assertNotIn(
+            "iteration_index", {item.name for item in fields(result.iterations[0])}
+        )
 
 
 

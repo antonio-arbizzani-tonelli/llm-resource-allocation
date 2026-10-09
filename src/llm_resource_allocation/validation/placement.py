@@ -4,7 +4,7 @@ from dataclasses import dataclass, field, fields
 from enum import Enum
 from math import isfinite
 from types import MappingProxyType
-from typing import Mapping, TypeVar
+from typing import Mapping
 
 from llm_resource_allocation.domain import InstanceValidationError, ProblemInstance
 from llm_resource_allocation.math.budget import (
@@ -57,35 +57,16 @@ from llm_resource_allocation.math.storage_capacity import (
     QueryStorageCapacityDiagnostic,
     _compute_storage_capacity_residuals,
 )
-# D-0097: keep the published numerical policy self-contained in this module.
-_FamilyT = TypeVar("_FamilyT", bound=Enum)
-
-
-DEFAULT_FRACTION_ABSOLUTE_TOLERANCE = 1e-10
-DEFAULT_BUDGET_ABSOLUTE_TOLERANCE = 1e-8
-DEFAULT_COMPUTE_ABSOLUTE_TOLERANCE = 1e-8
-DEFAULT_DELAY_ABSOLUTE_TOLERANCE = 1e-10
-DEFAULT_ERROR_ABSOLUTE_TOLERANCE = 1e-12
-DEFAULT_PRINTED_CAPACITY_ABSOLUTE_TOLERANCE = 1e-9
-DEFAULT_SCALED_RELATIVE_TOLERANCE = 1e-12
-
-
-def _record_applied_tolerance(
-    thresholds: dict[tuple[_FamilyT, tuple[str | int, ...]], float],
-    family: _FamilyT,
-    location: tuple[str | int, ...],
-    absolute: float,
-    relative: float = 0.0,
-    lhs: float = 0.0,
-    rhs: float = 0.0,
-) -> float:
-    """Retain the inclusive threshold for a row without changing its residual."""
-
-    threshold = absolute + relative * max(abs(lhs), abs(rhs))
-    if not isfinite(threshold):
-        raise ValueError("applied feasibility tolerance must be finite")
-    thresholds[family, location] = threshold
-    return threshold
+from .tolerances import (
+    DEFAULT_FRACTION_ABSOLUTE_TOLERANCE,
+    DEFAULT_BUDGET_ABSOLUTE_TOLERANCE,
+    DEFAULT_COMPUTE_ABSOLUTE_TOLERANCE,
+    DEFAULT_DELAY_ABSOLUTE_TOLERANCE,
+    DEFAULT_ERROR_ABSOLUTE_TOLERANCE,
+    DEFAULT_PRINTED_CAPACITY_ABSOLUTE_TOLERANCE,
+    DEFAULT_SCALED_RELATIVE_TOLERANCE,
+    _record_applied_tolerance,
+)
 
 
 # D-0076: dimensionless residual classification; supplied decisions stay unchanged.
@@ -167,21 +148,6 @@ class PlacementDomainDiagnostic:
     is_valid: bool
     error_type: str | None = None
     message: str | None = None
-
-    def __post_init__(self) -> None:
-        """Require a coherent success flag and error description."""
-
-        if not isinstance(self.is_valid, bool):
-            raise TypeError("is_valid must be a bool")
-        if self.is_valid:
-            if self.error_type is not None or self.message is not None:
-                raise ValueError("a valid diagnostic cannot contain an error")
-        else:
-            if not isinstance(self.error_type, str) or not self.error_type:
-                raise ValueError("an invalid diagnostic must name its error type")
-            if not isinstance(self.message, str):
-                raise ValueError("an invalid diagnostic must contain an error message")
-
 
 @dataclass(frozen=True, slots=True)
 class ValidationViolation:

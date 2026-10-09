@@ -1,6 +1,6 @@
 """Build, solve, normalize, and independently validate one ``P_DM`` run.
 
-Records retain plain immutable evidence, including objective agreement (D-0029).
+Records retain plain immutable evidence, including objective agreement.
 """
 
 from dataclasses import dataclass
@@ -51,21 +51,10 @@ class PdmRunIdentity:
     constraint_counts: PdmConstraintCounts
 
     def __post_init__(self) -> None:
-        """Freeze sequence inputs and reject malformed identity metadata."""
+        """Freeze ordered identity sequences already owned by problem data."""
 
-        if not isinstance(self.instance_id, str) or not self.instance_id:
-            raise ValueError("instance_id must be a non-empty string")
-        if not isinstance(self.paper_version, PaperVersion):
-            raise ValueError("paper_version must be PaperVersion.V1 or V2")
         for field_name in ("query_ids", "model_ids", "tier_ids"):
-            values = tuple(getattr(self, field_name))
-            if not values or any(not isinstance(value, str) or not value for value in values):
-                raise ValueError(f"{field_name} must contain non-empty strings")
-            object.__setattr__(self, field_name, values)
-        if not isinstance(self.variable_counts, PdmVariableCounts):
-            raise TypeError("variable_counts must be PdmVariableCounts")
-        if not isinstance(self.constraint_counts, PdmConstraintCounts):
-            raise TypeError("constraint_counts must be PdmConstraintCounts")
+            object.__setattr__(self, field_name, tuple(getattr(self, field_name)))
 
 
 @dataclass(frozen=True, slots=True)
@@ -77,37 +66,14 @@ class PdmScientificEvidence:
     """
 
     validation_report: PlacementValidationReport
-    objective_breakdown: ObjectiveBreakdown
     objective_comparison: ObjectiveComparison
     normalization_tolerances: SolutionNormalizationTolerances
 
-    def __post_init__(self) -> None:
-        """Require stored objective values to match the validation report."""
+    @property
+    def objective_breakdown(self) -> ObjectiveBreakdown | None:
+        """Return the independently recomputed costs from the retained report."""
 
-        if not isinstance(self.validation_report, PlacementValidationReport):
-            raise TypeError("validation_report must be PlacementValidationReport")
-        if not isinstance(self.objective_breakdown, ObjectiveBreakdown):
-            raise TypeError("objective_breakdown must be ObjectiveBreakdown")
-        if not isinstance(self.objective_comparison, ObjectiveComparison):
-            raise TypeError("objective_comparison must be ObjectiveComparison")
-        if not isinstance(
-            self.normalization_tolerances, SolutionNormalizationTolerances
-        ):
-            raise TypeError(
-                "normalization_tolerances must be SolutionNormalizationTolerances"
-            )
-        if self.validation_report.objective_breakdown != self.objective_breakdown:
-            raise ValueError(
-                "objective_breakdown must equal the independent validation result"
-            )
-        if (
-            self.objective_comparison.independent_objective
-            != self.objective_breakdown.total
-        ):
-            raise ValueError(
-                "objective comparison must use the stored independent C1-C5 total"
-            )
-
+        return self.validation_report.objective_breakdown
 
 @dataclass(frozen=True, slots=True)
 class PdmSolverEvidence:
@@ -116,52 +82,18 @@ class PdmSolverEvidence:
     config: SolverConfig
     result: SolverResult
 
-    def __post_init__(self) -> None:
-        """Require matching configuration and result backends."""
-
-        if not isinstance(self.config, SolverConfig):
-            raise TypeError("config must be SolverConfig")
-        if not isinstance(self.result, SolverResult):
-            raise TypeError("result must be SolverResult")
-        if self.config.backend is not self.result.backend:
-            raise ValueError("solver config and result backends must match")
-
-
 @dataclass(frozen=True, slots=True)
 class PdmRunRecord:
     """Store a completed ``P_DM`` incumbent with separate scientific evidence.
 
     Record construction follows successful normalization. Acceptance also
-    requires independent feasibility and objective agreement (D-0029).
+    requires independent feasibility and objective agreement.
     """
 
     identity: PdmRunIdentity
     solution: PlacementDecisionState
     scientific_evidence: PdmScientificEvidence
     solver_evidence: PdmSolverEvidence
-
-    def __post_init__(self) -> None:
-        """Reject cross-section mismatches in a manually constructed record."""
-
-        if not isinstance(self.identity, PdmRunIdentity):
-            raise TypeError("identity must be PdmRunIdentity")
-        if not isinstance(self.solution, PlacementDecisionState):
-            raise TypeError("solution must be PlacementDecisionState")
-        if not isinstance(self.scientific_evidence, PdmScientificEvidence):
-            raise TypeError("scientific_evidence must be PdmScientificEvidence")
-        if not isinstance(self.solver_evidence, PdmSolverEvidence):
-            raise TypeError("solver_evidence must be PdmSolverEvidence")
-        report = self.scientific_evidence.validation_report
-        comparison = self.scientific_evidence.objective_comparison
-        solver_result = self.solver_evidence.result
-        if self.identity.paper_version is not report.paper_version:
-            raise ValueError("identity and validation paper versions must match")
-        if not solver_result.has_incumbent:
-            raise ValueError("a completed PdmRunRecord requires a solver incumbent")
-        if solver_result.objective_value != comparison.solver_objective:
-            raise ValueError(
-                "objective comparison must use the nested solver result objective"
-            )
 
     @property
     def has_incumbent(self) -> bool:
@@ -185,7 +117,7 @@ class PdmRunRecord:
     def accepted_run(self) -> bool:
         """Require incumbent, independent feasibility, and objective agreement.
 
-        Successful normalization precedes record construction (D-0029).
+        Successful normalization precedes record construction.
         """
 
         return (
@@ -205,7 +137,7 @@ def execute_and_record_pdm_run(
 ) -> PdmRunRecord:
     """Execute the ``P_DM`` pipeline and snapshot decisions and evidence.
 
-    No incumbent raises ``NoSolverIncumbentError`` before extraction (D-0030).
+    No incumbent raises ``NoSolverIncumbentError`` before extraction.
     Validation failures and objective discrepancies remain in rejected records.
     ``validation_tolerances`` controls only independent residual acceptance;
     ``ValidationTolerances.exact()`` disables absolute and relative terms.
@@ -272,7 +204,6 @@ def execute_and_record_pdm_run(
         solution=solution,
         scientific_evidence=PdmScientificEvidence(
             validation_report=validation_report,
-            objective_breakdown=objective_breakdown,
             objective_comparison=objective_comparison,
             normalization_tolerances=selected_tolerances,
         ),

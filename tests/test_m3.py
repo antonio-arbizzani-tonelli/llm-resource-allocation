@@ -100,13 +100,25 @@ class M3HandDerivedSelectionTests(unittest.TestCase):
         self.assertTrue(selected.budget_condition_passes)
         self.assertEqual(result.no_upgrade_reasons, ())
 
-    def test_selected_upgrade_must_have_a_diagnostic(self):
-        result = select_upgrade(
-            make_m3_instance(),
-            M3EvaluationState(ParallelismConfig(1, 1), 6.0),
-        )
-        with self.assertRaisesRegex(ValueError, "has no diagnostic"):
-            replace(result, configuration_diagnostics=())
+    def test_producer_retains_the_selected_upgrade_diagnostic(self):
+        for budget, expected in ((6.0, ParallelismConfig(2, 1)), (5.99, None)):
+            with self.subTest(budget=budget):
+                result = select_upgrade(
+                    make_m3_instance(),
+                    M3EvaluationState(ParallelismConfig(1, 1), budget),
+                )
+                self.assertEqual(result.selected_configuration, expected)
+                matching = tuple(
+                    diagnostic
+                    for diagnostic in result.configuration_diagnostics
+                    if diagnostic.candidate_configuration == expected
+                )
+                self.assertEqual(len(matching), int(expected is not None))
+                if matching:
+                    self.assertIs(result.selected_diagnostic, matching[0])
+                    self.assertTrue(matching[0].is_feasible_upgrade)
+                else:
+                    self.assertIsNone(result.selected_diagnostic)
 
     def test_budget_blocked_delay_feasible_upgrade_is_not_selected(self):
         instance = make_m3_instance()

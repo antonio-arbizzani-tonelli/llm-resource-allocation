@@ -1,4 +1,4 @@
-"""M1-M3, GH construction, AGH ordering, and individual relocate proposals."""
+"""GH/AGH construction, local search, and immutable scientific evidence."""
 
 from .agh_ordering import (
     DETERMINISTIC_AGH_ORDERING_SPECS,
@@ -12,7 +12,6 @@ from .agh_ordering import (
     build_seeded_random_agh_ordering,
     compute_adaptive_agh_random_start_count,
 )
-
 from .agh_relocate import (
     AGH_RELOCATE_CONSTRUCTION_ABSOLUTE_TOLERANCE,
     AGHRelocateDemandConsistencyEvidence,
@@ -23,13 +22,39 @@ from .agh_relocate import (
     AGHRelocateSourceAssignment,
     evaluate_agh_relocate_move,
 )
-
+from .agh_relocate_pass import (
+    AGH_RELOCATE_MAX_PASSES,
+    AGHRelocateAttemptTrace,
+    AGHRelocatePassResult,
+    AGHRelocateRunResult,
+    AGHRelocateRunTerminationReason,
+    AGHRelocateSourceStatus,
+    AGHRelocateSourceTrace,
+    run_agh_relocate,
+    run_agh_relocate_pass,
+)
+from .agh_consolidation import (
+    AGH_CONSOLIDATION_CONSTRUCTION_ABSOLUTE_TOLERANCE,
+    AGHConsolidationDemandEvidence,
+    AGHConsolidationDestinationAttempt,
+    AGHConsolidationUtilizationEvidence,
+    AGHConsolidationPair,
+    AGHConsolidationRejectionReason,
+    AGHConsolidationRoute,
+    AGHConsolidationRouteStatus,
+    AGHConsolidationRouteTrace,
+    AGHConsolidationScanResult,
+    AGHConsolidationSourceResult,
+    AGHConsolidationSourceScanStatus,
+    AGHConsolidationSourceTrace,
+    evaluate_agh_consolidation_source,
+    run_agh_consolidation_scan,
+)
 from .m1 import (
     M1ConfigurationDiagnostic,
     M1SelectionResult,
     select_minimum_feasible_parallelism,
 )
-
 from .m2 import (
     M2CandidateEvaluation,
     M2ConfigurationEvidence,
@@ -43,7 +68,6 @@ from .m2 import (
     evaluate_m2_candidate,
     rank_m2_candidates,
 )
-
 from .m3 import (
     M3ConfigurationDiagnostic,
     M3EvaluationState,
@@ -51,7 +75,6 @@ from .m3 import (
     M3UpgradeResult,
     select_m3_parallelism_upgrade,
 )
-
 from .gh_phase2 import (
     GHPhase2CandidateEvaluation,
     GHPhase2CandidateRejectionReason,
@@ -64,7 +87,6 @@ from .gh_phase2 import (
     initialize_gh_phase2_state,
     order_gh_phase2_queries,
 )
-
 from .gh_phase2_commit import (
     GHPhase2BudgetComparison,
     GHPhase2AllocationProposal,
@@ -75,21 +97,18 @@ from .gh_phase2_commit import (
     commit_gh_phase2_candidate,
     compute_gh_phase2_candidate_allocation,
 )
-
 from .gh_phase2_query import (
     GHPhase2CandidateAttempt,
     GHPhase2QueryProcessResult,
     GHPhase2QueryTerminationReason,
     process_gh_phase2_query_candidates,
 )
-
 from .gh_phase2_run import (
     GHPhase2QueryTrace,
     GHPhase2RunCompletionStatus,
     GHPhase2RunResult,
     run_gh_phase2,
 )
-
 from .gh import (
     GHCanonicalBinaryCounts,
     GHCanonicalizationReport,
@@ -101,7 +120,6 @@ from .gh import (
     canonicalize_gh_phase2_state,
     run_gh,
 )
-
 from .gh_phase1 import (
     GHPhase1Config,
     GHPhase1Deployment,
@@ -114,7 +132,28 @@ from .gh_phase1 import (
     initialize_gh_phase1_state,
     run_gh_phase1,
 )
-
+from .agh_start import (
+    AGHStartCompletionStatus,
+    AGHStartFailureReason,
+    AGHStartResult,
+    run_agh_start,
+)
+from .agh_multistart import (
+    AGH_MAX_CONSECUTIVE_NONIMPROVING_STARTS,
+    AGHMultiStartIncumbentStatus,
+    AGHMultiStartResult,
+    AGHMultiStartScaleEvidence,
+    AGHMultiStartTerminationReason,
+    AGHMultiStartTrace,
+    AGHStartComparisonOutcome,
+    run_agh_multistart,
+)
+from .agh import (
+    AGHFinalCheckFailureReason,
+    AGHCompletionStatus,
+    AGHResult,
+    run_agh,
+)
 from .phase1 import (
     Phase1ActivationScore,
     Phase1CandidateEvaluation,
@@ -132,18 +171,51 @@ from .phase1 import (
 
 
 __all__ = [
+    "AGHFinalCheckFailureReason",
+    "AGHCompletionStatus",
+    "AGHConsolidationDemandEvidence",
+    "AGHConsolidationDestinationAttempt",
+    "AGHConsolidationUtilizationEvidence",
+    "AGHConsolidationPair",
+    "AGHConsolidationRejectionReason",
+    "AGHConsolidationRoute",
+    "AGHConsolidationRouteStatus",
+    "AGHConsolidationRouteTrace",
+    "AGHConsolidationScanResult",
+    "AGHConsolidationSourceResult",
+    "AGHConsolidationSourceScanStatus",
+    "AGHConsolidationSourceTrace",
     "AGHDeterministicOrderingSpec",
+    "AGHMultiStartIncumbentStatus",
+    "AGHMultiStartResult",
+    "AGHMultiStartScaleEvidence",
+    "AGHMultiStartTerminationReason",
+    "AGHMultiStartTrace",
     "AGHOrderingCriterion",
     "AGHOrderingDirection",
     "AGHOrderingSource",
     "AGHQueryOrdering",
+    "AGHRelocateAttemptTrace",
     "AGHRelocateDemandConsistencyEvidence",
     "AGHRelocateDestinationPair",
     "AGHRelocateMoveResult",
     "AGHDeploymentPairEvidence",
+    "AGHRelocatePassResult",
     "AGHRelocateRejectionReason",
+    "AGHRelocateRunResult",
+    "AGHRelocateRunTerminationReason",
     "AGHRelocateSourceAssignment",
+    "AGHRelocateSourceStatus",
+    "AGHRelocateSourceTrace",
+    "AGHResult",
+    "AGHStartComparisonOutcome",
+    "AGHStartCompletionStatus",
+    "AGHStartFailureReason",
+    "AGHStartResult",
+    "AGH_CONSOLIDATION_CONSTRUCTION_ABSOLUTE_TOLERANCE",
+    "AGH_MAX_CONSECUTIVE_NONIMPROVING_STARTS",
     "AGH_RELOCATE_CONSTRUCTION_ABSOLUTE_TOLERANCE",
+    "AGH_RELOCATE_MAX_PASSES",
     "DETERMINISTIC_AGH_ORDERING_SPECS",
     "GHBudgetConsistencyAudit",
     "GHCanonicalBinaryCounts",
@@ -210,6 +282,7 @@ __all__ = [
     "compute_m2_marginal_cost",
     "compute_phase1_activation_score",
     "compute_phase1_pair_coverage",
+    "evaluate_agh_consolidation_source",
     "evaluate_agh_relocate_move",
     "evaluate_gh_phase1_candidates",
     "evaluate_gh_phase2_query_candidates",
@@ -221,6 +294,12 @@ __all__ = [
     "process_gh_phase2_query_candidates",
     "rank_m2_candidates",
     "rank_phase1_candidates",
+    "run_agh",
+    "run_agh_consolidation_scan",
+    "run_agh_multistart",
+    "run_agh_relocate",
+    "run_agh_relocate_pass",
+    "run_agh_start",
     "run_gh",
     "run_gh_phase1",
     "run_gh_phase2",

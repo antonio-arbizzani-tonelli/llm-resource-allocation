@@ -61,11 +61,6 @@ class M1SelectionResult:
         object.__setattr__(
             self, "configuration_diagnostics", tuple(self.configuration_diagnostics)
         )
-        if self.selected_configuration is not None and not any(
-            diagnostic.configuration == self.selected_configuration
-            for diagnostic in self.configuration_diagnostics
-        ):
-            raise ValueError("selected M1 configuration has no diagnostic")
 
     @property
     def is_feasible(self) -> bool:
@@ -80,9 +75,12 @@ class M1SelectionResult:
         if self.selected_configuration is None:
             return None
         return next(
-            diagnostic
-            for diagnostic in self.configuration_diagnostics
-            if diagnostic.configuration == self.selected_configuration
+            (
+                diagnostic
+                for diagnostic in self.configuration_diagnostics
+                if diagnostic.configuration == self.selected_configuration
+            ),
+            None,
         )
 
     @property

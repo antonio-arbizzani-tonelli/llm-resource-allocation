@@ -100,7 +100,6 @@ class AGHRelocateMoveResult:
     validation_before: PlacementValidationReport
     validation_report: PlacementValidationReport | None
     demand_consistency: AGHRelocateDemandConsistencyEvidence | None
-    accepted: bool
     rejection_reasons: tuple[AGHRelocateRejectionReason, ...]
 
     @property
@@ -139,8 +138,12 @@ class AGHRelocateMoveResult:
         object.__setattr__(self, "rejection_reasons", tuple(self.rejection_reasons))
         if self.accepted and self.prospective_placement is None:
             raise ValueError("accepted move requires a prospective placement")
-        if self.accepted == bool(self.rejection_reasons):
-            raise ValueError("accepted and rejection_reasons are inconsistent")
+
+    @property
+    def accepted(self) -> bool:
+        """Return whether the proposal has no rejection reasons."""
+
+        return not self.rejection_reasons
 
 
 @dataclass(frozen=True, slots=True)
@@ -196,7 +199,6 @@ def _reject_before_construction(
         validation_before=validation_before,
         validation_report=None,
         demand_consistency=None,
-        accepted=False,
         rejection_reasons=(reason,),
     )
 
@@ -397,7 +399,6 @@ def _evaluate_agh_relocate_move(
         # Algorithm 2 requires exact strict improvement, without an objective epsilon.
         reasons.append(AGHRelocateRejectionReason.NOT_STRICTLY_IMPROVING)
 
-    accepted = not reasons
     return AGHRelocateMoveResult(
         source=source,
         destination=destination,
@@ -409,6 +410,5 @@ def _evaluate_agh_relocate_move(
         validation_before=validation_before,
         validation_report=validation_after,
         demand_consistency=demand_evidence,
-        accepted=accepted,
         rejection_reasons=tuple(reasons),
     )

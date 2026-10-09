@@ -248,6 +248,17 @@ class Phase1CoverageHandCases(unittest.TestCase):
                 instance, MODEL_ID, "tier_a", ("q_easy",), ()
             )
 
+    def test_public_coverage_boundaries_reject_incomplete_external_m1_diagnostics(self):
+        instance = make_phase1_instance()
+        selection = m1_evidence(instance, "tier_a", ("q_easy",))[0]
+        incomplete = replace(selection, configuration_diagnostics=())
+        for evaluate_boundary in (compute_phase1_pair_coverage, evaluate_phase1_candidate):
+            with self.subTest(boundary=evaluate_boundary.__name__):
+                with self.assertRaisesRegex(ValueError, "M1 diagnostics"):
+                    evaluate_boundary(
+                        instance, MODEL_ID, "tier_a", ("q_easy",), (incomplete,)
+                    )
+
 
 class Phase1CommonConfigurationAuditTests(unittest.TestCase):
     """Make the v2 prose/Eq. (14) shape closure executable and visible."""

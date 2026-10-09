@@ -421,7 +421,7 @@ def _add_mccormick_constraints(
 ) -> None:
     """Attach all four McCormick rows per v, including explicit non-negativity."""
 
-    # v2 Eqs. (7a)-(7b): retain all four rows, including v >= 0 (D-0020).
+    # v2 Eqs. (7a)-(7b): retain all four rows, including v >= 0.
     model.mccormick_v_le_x = Constraint(
         model.auxiliary_product_keys,
         rule=lambda _model, query_id, model_id, tier_id, tensor_degree, pipeline_depth: (
@@ -543,7 +543,7 @@ def _add_placement_constraints(
             _model.weighted_error[query_id] <= query_by_id[query_id].error_slo
         ),
     )
-    # D-0020: x >= 0 is represented only by UnitInterval; Eq. (8k) adds two
+    # x >= 0 is represented only by UnitInterval; Eq. (8k) adds two
     # explicit linking rows per route key.
     model.routing_x_le_z = Constraint(
         model.route_keys,

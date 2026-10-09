@@ -166,6 +166,10 @@ class HeterogeneousPdmRunTests(unittest.TestCase):
         breakdown = self.record.scientific_evidence.objective_breakdown
         state = self.record.solution
 
+        self.assertIs(
+            breakdown,
+            self.record.scientific_evidence.validation_report.objective_breakdown,
+        )
         self.assertEqual(breakdown.gpu_rental_cost, 1.0)
         self.assertEqual(breakdown.model_storage_cost, 0.024)
         self.assertEqual(breakdown.data_storage_cost, 0.000001008)

@@ -117,6 +117,7 @@ class PrimaryTinyOracleTests(unittest.TestCase):
         self.assertEqual(len(result.optimal_states), 1)
 
         state = result.best_state
+        self.assertIs(state, result.optimal_states[0])
         self.assertIsNotNone(state)
         self.assertEqual(state.routing_fractions[ROUTE], 1.0)
         self.assertEqual(state.unmet_fractions["q_text"], 0.0)

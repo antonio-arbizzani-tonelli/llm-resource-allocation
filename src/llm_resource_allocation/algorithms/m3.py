@@ -134,11 +134,6 @@ class M3UpgradeResult:
             self, "configuration_diagnostics", tuple(self.configuration_diagnostics)
         )
         object.__setattr__(self, "no_upgrade_reasons", tuple(self.no_upgrade_reasons))
-        if self.selected_configuration is not None and not any(
-            diagnostic.candidate_configuration == self.selected_configuration
-            for diagnostic in self.configuration_diagnostics
-        ):
-            raise ValueError("selected M3 configuration has no diagnostic")
 
     @property
     def current_gpu_count(self) -> int:
@@ -171,9 +166,12 @@ class M3UpgradeResult:
         if self.selected_configuration is None:
             return None
         return next(
-            diagnostic
-            for diagnostic in self.configuration_diagnostics
-            if diagnostic.candidate_configuration == self.selected_configuration
+            (
+                diagnostic
+                for diagnostic in self.configuration_diagnostics
+                if diagnostic.candidate_configuration == self.selected_configuration
+            ),
+            None,
         )
 
 
@@ -209,9 +207,6 @@ def _evaluate_m3_configuration(
     """Evaluate one tier-valid configuration against the M3 conditions."""
 
     current_configuration = state.current_configuration
-    if current_configuration is None:
-        raise ValueError("M3 configuration evaluation requires an active pair")
-
     candidate_gpu_count = candidate_configuration.gpu_count
     incremental_gpu_count = max(
         candidate_gpu_count - state.current_gpu_count,

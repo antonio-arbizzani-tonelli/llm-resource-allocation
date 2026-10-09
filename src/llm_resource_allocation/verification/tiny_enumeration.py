@@ -11,7 +11,7 @@ Only one continuous variable, ``x``, remains. Resource/SLO rows have the form
 ``fixed+slope*x <= limit`` with non-negative slopes, so they bound ``x`` from
 above or check a fixed term. Together with ``1-zeta <= x <= z`` and ``[0,1]``,
 their intersection is an interval. The objective is affine on that interval,
-so its minimum is attained at an endpoint (D-0026..D-0028).
+so its minimum is attained at an endpoint (D-0026, D-0028).
 
 Construct and independently validate the endpoints, then retain the cheapest
 states and their ties. The oracle uses no optimizer and provides only tiny
@@ -70,7 +70,7 @@ class TinyEnumerationError(RuntimeError):
 
 
 class TinyEnumerationLimitError(TinyEnumerationError):
-    """Reject a raw binary search space above the configured limit (D-0027)."""
+    """Reject a raw binary search space above the configured limit."""
 
     def __init__(self, search_space_size: int, maximum: int) -> None:
         """Retain the raw count and configured maximum."""
@@ -88,7 +88,7 @@ class UnsupportedTinyOracleInstanceError(TinyEnumerationError):
 
 @dataclass(frozen=True, slots=True)
 class TinyEnumerationConfig:
-    """Bound raw enumeration and absolute objective ties (D-0027..D-0028)."""
+    """Bound raw enumeration and absolute objective ties (D-0028)."""
 
     max_discrete_combinations: int = 4096
     objective_tolerance: float = DEFAULT_OBJECTIVE_COMPARISON_ABSOLUTE_TOLERANCE
@@ -125,10 +125,15 @@ class TinyCandidateDiagnostic:
     routing_upper_bound: float
     selected_routing_fraction: float | None
     objective_value: float | None
-    is_feasible: bool
     endpoint_tie: bool
     rejection_reason: str | None
     violated_families: tuple[str, ...]
+
+    @property
+    def is_feasible(self) -> bool:
+        """Return whether endpoint validation supplied a routing fraction."""
+
+        return self.selected_routing_fraction is not None
 
 
 @dataclass(frozen=True, slots=True)
@@ -136,14 +141,45 @@ class TinyEnumerationResult:
     """Store counts, diagnostics, ordered optima, and the first tie's objective."""
 
     search_space_size: int
-    candidates_examined: int
-    feasible_candidates: int
-    best_state: PlacementDecisionState | None
     best_objective: float | None
-    tie_count: int
     optimal_states: tuple[PlacementDecisionState, ...]
-    is_unique_optimum: bool
     diagnostics: tuple[TinyCandidateDiagnostic, ...]
+
+    def __post_init__(self) -> None:
+        """Own the ordered candidate diagnostics and optimal states."""
+
+        object.__setattr__(self, "optimal_states", tuple(self.optimal_states))
+        object.__setattr__(self, "diagnostics", tuple(self.diagnostics))
+
+    @property
+    def candidates_examined(self) -> int:
+        """Count the discrete candidates retained in the diagnostics."""
+
+        return len(self.diagnostics)
+
+    @property
+    def feasible_candidates(self) -> int:
+        """Count candidates with an independently feasible routing endpoint."""
+
+        return sum(diagnostic.is_feasible for diagnostic in self.diagnostics)
+
+    @property
+    def best_state(self) -> PlacementDecisionState | None:
+        """Return the first optimum in the enumeration's stable tie order."""
+
+        return self.optimal_states[0] if self.optimal_states else None
+
+    @property
+    def tie_count(self) -> int:
+        """Count retained optimal routing endpoints."""
+
+        return len(self.optimal_states)
+
+    @property
+    def is_unique_optimum(self) -> bool:
+        """Return whether exactly one optimal state was retained."""
+
+        return self.tie_count == 1
 
 
 @dataclass(frozen=True, slots=True)
@@ -171,7 +207,7 @@ def _minimum_ties(
 
 
 def estimate_tiny_discrete_search_space(problem_data: PdmProblemDataView) -> int:
-    """Return raw binary count ``2^(|q|+|z|+|w|)`` before pruning (D-0027)."""
+    """Return raw binary count ``2^(|q|+|z|+|w|)`` before pruning."""
 
     lattices = problem_data.variable_lattices
     binary_count = (
@@ -489,7 +525,6 @@ def _evaluate_discrete_candidate(
             None if best_endpoint is None else best_endpoint.routing_fraction
         ),
         objective_value=None if best_endpoint is None else best_endpoint.objective_value,
-        is_feasible=best_endpoint is not None,
         endpoint_tie=len(tied_endpoints) > 1,
         rejection_reason=rejection,
         violated_families=violated_families,
@@ -505,7 +540,7 @@ def enumerate_tiny_pdm(
     """Find the tiny-instance optimum through exact pruning and endpoint checks.
 
     Prune by ``sum(w)=q`` and ``z<=q`` (v2 Eq. 8d). Scan configurations in index
-    order, validate endpoints, and retain ordered minimum ties (D-0026..D-0028).
+    order, validate endpoints, and retain ordered minimum ties (D-0026, D-0028).
     """
 
     selected_config = config or TinyEnumerationConfig()
@@ -557,12 +592,7 @@ def enumerate_tiny_pdm(
     best_endpoint = tied_endpoints[0] if tied_endpoints else None
     return TinyEnumerationResult(
         search_space_size=search_space_size,
-        candidates_examined=len(diagnostics),
-        feasible_candidates=sum(diagnostic.is_feasible for diagnostic in diagnostics),
-        best_state=None if best_endpoint is None else best_endpoint.state,
         best_objective=None if best_endpoint is None else best_endpoint.objective_value,
-        tie_count=len(tied_endpoints),
         optimal_states=tuple(endpoint.state for endpoint in tied_endpoints),
-        is_unique_optimum=len(tied_endpoints) == 1,
         diagnostics=tuple(diagnostics),
     )

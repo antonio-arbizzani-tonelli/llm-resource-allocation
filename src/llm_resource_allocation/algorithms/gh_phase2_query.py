@@ -32,11 +32,26 @@ class GHPhase2CandidateAttempt:
 
     attempt_index: int
     ranked_candidate_index: int
-    rank_key: tuple[int, float]
     candidate: GHPhase2CandidateEvaluation
-    state_before: GHPhase2State
     commit_result: GHPhase2CommitResult
-    state_after: GHPhase2State
+
+    @property
+    def rank_key(self) -> tuple[int, float] | None:
+        """Return the ranking key retained by the candidate."""
+
+        return self.candidate.rank_key
+
+    @property
+    def state_before(self) -> GHPhase2State:
+        """Return the exact state evaluated by the commit authority."""
+
+        return self.commit_result.state_before
+
+    @property
+    def state_after(self) -> GHPhase2State:
+        """Return the state produced by the commit authority."""
+
+        return self.commit_result.state_after
 
     @property
     def committed(self) -> bool:
@@ -49,12 +64,22 @@ class GHPhase2CandidateAttempt:
 class GHPhase2QueryProcessResult:
     """Return the complete immutable result for exactly one query."""
 
-    query_id: str
     initial_state: GHPhase2State
     query_evaluation: GHPhase2QueryEvaluation
     attempts: tuple[GHPhase2CandidateAttempt, ...]
-    final_state: GHPhase2State
     termination_reason: GHPhase2QueryTerminationReason
+
+    @property
+    def query_id(self) -> str:
+        """Return the evaluated query's identifier."""
+
+        return self.query_evaluation.query_id
+
+    @property
+    def final_state(self) -> GHPhase2State:
+        """Return the last attempt's state, or the unchanged entry state."""
+
+        return self.attempts[-1].state_after if self.attempts else self.initial_state
 
     def __post_init__(self) -> None:
         """Freeze directly supplied attempt containers."""
@@ -125,14 +150,10 @@ def _process_gh_phase2_query_candidates(
     for ranked_index, candidate in enumerate(query_evaluation.ranked_candidates):
         if current_state.unmet_fraction_by_query[query_id] <= 0.0:
             break
-        rank_key = candidate.rank_key
-        if rank_key is None:
-            raise RuntimeError("ranked candidate lacks Paper M2 rank evidence")
         commit_result, context = _commit_gh_phase2_candidate(
             instance,
             current_state,
             candidate,
-            candidate_evaluation_state=state,
             context=context,
         )
         next_state = commit_result.state_after
@@ -140,11 +161,8 @@ def _process_gh_phase2_query_candidates(
             GHPhase2CandidateAttempt(
                 attempt_index=len(attempts),
                 ranked_candidate_index=ranked_index,
-                rank_key=rank_key,
                 candidate=candidate,
-                state_before=current_state,
                 commit_result=commit_result,
-                state_after=next_state,
             )
         )
         current_state = next_state
@@ -155,11 +173,9 @@ def _process_gh_phase2_query_candidates(
         else GHPhase2QueryTerminationReason.CANDIDATES_EXHAUSTED_WITH_RESIDUAL_DEMAND
     )
     return GHPhase2QueryProcessResult(
-        query_id=query_id,
         initial_state=state,
         query_evaluation=query_evaluation,
         attempts=tuple(attempts),
-        final_state=current_state,
         termination_reason=termination_reason,
     )
 

@@ -154,14 +154,12 @@ def _compute_storage_capacity_residuals(
 
     model_usage = _compute_model_storage_usage_by_query(instance, state)
     data_rate = _compute_data_storage_rate_by_query(instance, state)
-    residuals: list[QueryStorageCapacityDiagnostic] = []
-    for query_id in instance.query_ids:
-        residuals.append(
-            QueryStorageCapacityDiagnostic(
-                query_id=query_id,
-                model_storage_usage_gb=model_usage[query_id],
-                data_storage_rate_gb_per_hour=data_rate[query_id],
-                storage_limit_gb=instance.storage_capacity_gb,
-            )
+    return tuple(
+        QueryStorageCapacityDiagnostic(
+            query_id=query_id,
+            model_storage_usage_gb=model_usage[query_id],
+            data_storage_rate_gb_per_hour=data_rate[query_id],
+            storage_limit_gb=instance.storage_capacity_gb,
         )
-    return tuple(residuals)
+        for query_id in instance.query_ids
+    )

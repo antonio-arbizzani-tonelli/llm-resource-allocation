@@ -66,10 +66,26 @@ class M1HandDerivedSelectionTests(unittest.TestCase):
         )
         self.assertTrue(result.selected_diagnostic.is_feasible)
 
-    def test_selected_configuration_must_have_a_diagnostic(self):
-        result = select(make_m1_instance())
-        with self.assertRaisesRegex(ValueError, "has no diagnostic"):
-            replace(result, configuration_diagnostics=())
+    def test_producer_retains_the_selected_configuration_diagnostic(self):
+        for delay_slo, expected in (
+            (1.0, ParallelismConfig(1, 1)),
+            (0.2, ParallelismConfig(2, 1)),
+            (0.001, None),
+        ):
+            with self.subTest(delay_slo=delay_slo):
+                result = select(make_m1_instance(delay_slo_seconds=delay_slo))
+                self.assertEqual(result.selected_configuration, expected)
+                matching = tuple(
+                    diagnostic
+                    for diagnostic in result.configuration_diagnostics
+                    if diagnostic.configuration == expected
+                )
+                self.assertEqual(len(matching), int(expected is not None))
+                if matching:
+                    self.assertIs(result.selected_diagnostic, matching[0])
+                    self.assertTrue(matching[0].is_feasible)
+                else:
+                    self.assertIsNone(result.selected_diagnostic)
 
     def test_caller_cannot_remove_selected_diagnostic_after_construction(self):
         result = select(make_m1_instance())

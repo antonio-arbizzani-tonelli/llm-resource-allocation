@@ -3,24 +3,20 @@
 from dataclasses import dataclass
 from enum import Enum
 from math import inf
-from typing import TypeVar
 
 from llm_resource_allocation.algorithms.m1 import (
     M1ConfigurationDiagnostic,
     M1SelectionResult,
 )
 from llm_resource_allocation.domain import (
-    FoundationModel,
     GpuTier,
     ParallelismConfig,
     ProblemInstance,
-    QueryType,
     validate_problem_instance,
 )
 from llm_resource_allocation.math.error import compute_effective_error
 
-
-EntityT = TypeVar("EntityT", QueryType, FoundationModel, GpuTier)
+from ._mechanism_support import _entity_by_id
 
 
 class Phase1QueryExclusionReason(str, Enum):
@@ -123,8 +119,6 @@ class Phase1CoverageResult:
             "common_configuration_diagnostics",
             tuple(self.common_configuration_diagnostics),
         )
-        if tuple(item.query_id for item in self.query_diagnostics) != self.uncovered_query_ids:
-            raise ValueError("query diagnostics must follow uncovered query order")
 
     @property
     def covered_query_ids(self) -> tuple[str, ...]:
@@ -229,6 +223,9 @@ def compute_phase1_pair_coverage(
     """
 
     validate_problem_instance(instance)
+    uncovered = _validate_uncovered_query_ids(instance, uncovered_query_ids)
+    tier = _entity_by_id(instance.gpu_tiers, tier_id, "GPU-tier")
+    _validate_and_index_m1_evidence(tier, model_id, uncovered, m1_selections)
     return _compute_phase1_pair_coverage(instance, model_id, tier_id, uncovered_query_ids, m1_selections)
 
 
@@ -244,6 +241,10 @@ def compute_phase1_activation_score(
     """
 
     validate_problem_instance(instance)
+    if tuple(item.query_id for item in coverage.query_diagnostics) != coverage.uncovered_query_ids:
+        raise ValueError("query diagnostics must follow uncovered query order")
+    if not coverage.is_empty and coverage.required_gpu_count is None:
+        raise ValueError("nonempty Phase-1 coverage requires a GPU count")
     return _compute_phase1_activation_score(instance, coverage)
 
 
@@ -257,6 +258,9 @@ def evaluate_phase1_candidate(
     """Compose coverage and activation scoring for one static ``(j,k)`` pair."""
 
     validate_problem_instance(instance)
+    uncovered = _validate_uncovered_query_ids(instance, uncovered_query_ids)
+    tier = _entity_by_id(instance.gpu_tiers, tier_id, "GPU-tier")
+    _validate_and_index_m1_evidence(tier, model_id, uncovered, m1_selections)
     return _evaluate_phase1_candidate(instance, model_id, tier_id, uncovered_query_ids, m1_selections)
 
 
@@ -276,19 +280,6 @@ def rank_phase1_candidates(
             reverse=True,
         )
     )
-
-
-def _entity_by_id(
-    entities: tuple[EntityT, ...],
-    entity_id: str,
-    label: str,
-) -> EntityT:
-    """Return the entity with the requested semantic ID or reject an unknown ID."""
-
-    for entity in entities:
-        if entity.id == entity_id:
-            return entity
-    raise ValueError(f"unknown {label} ID: {entity_id!r}")
 
 
 def _validate_uncovered_query_ids(
@@ -383,10 +374,8 @@ def _compute_phase1_pair_coverage(
 
     model = _entity_by_id(instance.models, model_id, "model")
     tier = _entity_by_id(instance.gpu_tiers, tier_id, "GPU-tier")
-    uncovered = _validate_uncovered_query_ids(instance, uncovered_query_ids)
-    evidence_by_query = _validate_and_index_m1_evidence(
-        tier, model.id, uncovered, m1_selections
-    )
+    uncovered = uncovered_query_ids
+    evidence_by_query = {selection.query_id: selection for selection in m1_selections}
 
     diagnostics: list[Phase1QueryCoverageDiagnostic] = []
     for query_id in uncovered:
@@ -470,8 +459,6 @@ def _compute_phase1_activation_score(
         )
 
     required_gpu_count = coverage.required_gpu_count
-    if required_gpu_count is None:
-        raise ValueError("nonempty Phase-1 coverage requires a GPU count")
     activation_cost = (
         instance.horizon_hours
         * tier.hourly_rental_usd

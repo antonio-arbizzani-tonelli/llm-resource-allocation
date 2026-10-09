@@ -22,12 +22,6 @@ class _AGHSearchContext:
     problem_data: PdmProblemData
     validator: PlacementValidator
 
-    def __post_init__(self) -> None:
-        """Require problem data and validator to share the same instance."""
-
-        if self.problem_data.instance is not self.validator.instance:
-            raise ValueError("search indices and validator must share the exact instance")
-
     def validate(self, placement: PlacementDecisionState) -> "_AGHPlacementEvaluation":
         """Evaluate a placement and retain its independent validation report."""
 
@@ -42,16 +36,6 @@ class _AGHPlacementEvaluation:
     placement: PlacementDecisionState
     validation: PlacementValidationReport
 
-    def __post_init__(self) -> None:
-        """Require the report to use the context's version and tolerances."""
-
-        if (
-            self.validation.paper_version is not self.context.validator.paper_version
-            or self.validation.tolerances != self.context.validator.tolerances
-        ):
-            raise ValueError("placement report must use the search validation policy")
-
-
 @dataclass(frozen=True, slots=True)
 class AGHDeploymentPairEvidence:
     """Record activation, configurations, and GPU count for a model/tier pair."""
@@ -61,6 +45,13 @@ class AGHDeploymentPairEvidence:
     deployment_indicator: float
     selected_configurations: tuple[ParallelismConfig, ...]
     gpu_count: float
+
+    def __post_init__(self) -> None:
+        """Own the configuration sequence independently of the caller."""
+
+        object.__setattr__(
+            self, "selected_configurations", tuple(self.selected_configurations)
+        )
 
     @property
     def is_active(self) -> bool:

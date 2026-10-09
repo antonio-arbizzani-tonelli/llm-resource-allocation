@@ -139,16 +139,6 @@ class GHCanonicalizationReport:
         object.__setattr__(
             self, "mapping_inconsistencies", tuple(self.mapping_inconsistencies)
         )
-        if set(self.route_totals_by_query) != set(self.source_state.query_order):
-            raise ValueError("route totals must cover the GH query order")
-        for query_id, total in self.route_totals_by_query.items():
-            expected = fsum(
-                value
-                for route, value in self.placement_decisions.routing_fractions.items()
-                if route[0] == query_id
-            )
-            if total != expected:
-                raise ValueError("route total must match canonical routing fractions")
 
 
 @dataclass(frozen=True, slots=True)
@@ -215,34 +205,36 @@ class GHResult:
     phase1_result: GHPhase1Result
     initialized_phase2_state: GHPhase2State
     phase2_result: GHPhase2RunResult
-    literal_final_state: GHPhase2State
     canonicalization: GHCanonicalizationReport
     validation_report: PlacementValidationReport
-    objective_breakdown: ObjectiveBreakdown | None
-    residual_demand_by_query: Mapping[str, float]
     budget_consistency: GHBudgetConsistencyAudit
     demand_consistency: tuple[GHDemandConsistencyAudit, ...]
     completion_status: GHCompletionStatus
 
     def __post_init__(self) -> None:
-        """Freeze final evidence and reject internally inconsistent packaging."""
+        """Freeze final evidence owned by the GH producer."""
 
-        object.__setattr__(
-            self,
-            "residual_demand_by_query",
-            MappingProxyType(dict(self.residual_demand_by_query)),
-        )
         object.__setattr__(
             self, "demand_consistency", tuple(self.demand_consistency)
         )
-        if self.phase2_result.initial_state is not self.initialized_phase2_state:
-            raise ValueError("Phase-2 result must start from the retained initialized state")
-        if self.phase2_result.final_state is not self.literal_final_state:
-            raise ValueError("literal final state must be the exact Phase-2 final state")
-        if self.canonicalization.source_state is not self.literal_final_state:
-            raise ValueError("canonicalization must consume the exact literal final state")
-        if self.objective_breakdown != self.validation_report.objective_breakdown:
-            raise ValueError("objective breakdown must come from independent validation")
+
+    @property
+    def literal_final_state(self) -> GHPhase2State:
+        """Return the literal final state retained by Phase 2."""
+
+        return self.phase2_result.final_state
+
+    @property
+    def objective_breakdown(self) -> ObjectiveBreakdown | None:
+        """Return the independently computed objective, when available."""
+
+        return self.validation_report.objective_breakdown
+
+    @property
+    def residual_demand_by_query(self) -> Mapping[str, float]:
+        """Return residual demand retained by Phase 2."""
+
+        return self.phase2_result.residual_demand_by_query
 
     @property
     def placement_decisions(self) -> PlacementDecisionState:
@@ -451,20 +443,15 @@ def _run_gh_with_phase1(
 ) -> GHResult:
     """Complete GH from one prepared Phase-1 result on the same instance."""
 
-    initialize_kwargs = (
-        {}
-        if query_order_override is None
-        else {"query_order_override": query_order_override}
-    )
     phase2_initial = _initialize_gh_phase2_state(
-        instance, phase1_result, **initialize_kwargs
+        instance,
+        phase1_result,
+        query_order_override=query_order_override,
     )
     phase2_result = _run_gh_phase2(instance, phase2_initial)
     final_state = phase2_result.final_state
     if problem_data is None:
         problem_data = PdmProblemData(instance)
-    elif problem_data.instance is not instance:
-        raise RuntimeError("prepared GH problem data must own the exact instance")
     canonicalization = _canonicalize_gh_phase2_state(
         instance, final_state, problem_data
     )
@@ -486,11 +473,8 @@ def _run_gh_with_phase1(
         phase1_result=phase1_result,
         initialized_phase2_state=phase2_initial,
         phase2_result=phase2_result,
-        literal_final_state=final_state,
         canonicalization=canonicalization,
         validation_report=validation,
-        objective_breakdown=validation.objective_breakdown,
-        residual_demand_by_query=phase2_result.residual_demand_by_query,
         budget_consistency=_audit_budget(
             instance, final_state, canonicalization.placement_decisions,
             validation.objective_breakdown,

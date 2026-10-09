@@ -559,7 +559,7 @@ class AGHRelocatePurityTests(unittest.TestCase):
             DESTINATION_PAIR,
         )
         with self.assertRaises(FrozenInstanceError):
-            result.accepted = False
+            result.rejection_reasons = ()
         with self.assertRaises(FrozenInstanceError):
             result.demand_consistency.routed_after = 0.0
         with self.assertRaisesRegex(ValueError, "requires a prospective placement"):

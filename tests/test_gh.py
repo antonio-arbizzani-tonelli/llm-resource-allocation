@@ -1,7 +1,7 @@
 """End-to-end tests for exact GH closure and independent validation."""
 
 import unittest
-from dataclasses import FrozenInstanceError, replace
+from dataclasses import FrozenInstanceError, fields, replace
 from unittest.mock import patch
 
 from llm_resource_allocation.algorithms import (
@@ -310,6 +310,14 @@ class GHAuditAndBoundaryTests(unittest.TestCase):
         second = run_gh(instance, GHPhase1Config(0.8))
 
         self.assertEqual(first, second)
+        self.assertTrue(
+            {"literal_final_state", "objective_breakdown", "residual_demand_by_query"}.isdisjoint(
+                item.name for item in fields(first)
+            )
+        )
+        self.assertIs(first.objective_breakdown, first.validation_report.objective_breakdown)
+        self.assertIs(first.literal_final_state, first.phase2_result.final_state)
+        self.assertIs(first.residual_demand_by_query, first.phase2_result.residual_demand_by_query)
         with self.assertRaises(FrozenInstanceError):
             first.completion_status = GHCompletionStatus.ALGORITHM_1_COMPLETED
         with self.assertRaises(TypeError):
