@@ -1,0 +1,12 @@
+[
+  {
+    "file": "cpp_parity.json",
+    "original_sha256": "36b725b160daed53eb9b072a3d4c2b6c27728b6b547fa151e15d32dfde5a8917",
+    "transformation": "host repository prefix replaced by a symbolic relative location; numeric observations unchanged"
+  },
+  {
+    "file": "openmp_verification.json",
+    "original_sha256": "3091511699504ebd705f60cd81417b2fdada3776417c8b11e67ddd6f10cd18c0",
+    "transformation": "host repository prefix replaced by a symbolic relative location; numeric observations unchanged"
+  }
+]

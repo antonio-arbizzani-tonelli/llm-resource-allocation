@@ -1,0 +1,9 @@
+{
+  "seeds": [37],
+  "query_counts": [2],
+  "warmup_repeats": 0,
+  "gh_budget_fraction": 0.8,
+  "backend": "highs",
+  "solver_time_limit_seconds": 2.0,
+  "paper_version": "v2"
+}

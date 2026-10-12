@@ -8,12 +8,12 @@ from llm_resource_allocation.domain.types import (
     ProblemInstance,
     QueryType,
 )
-from llm_resource_allocation.domain.units import kilobytes_to_gigabytes
+from llm_resource_allocation.domain.units import UnitConvention, kilobytes_to_gigabytes
 from llm_resource_allocation.domain.validation import validate_problem_instance
 
 
 def make_minimal_tiny_instance() -> ProblemInstance:
-    """Return a validated 1-query x 1-model x 1-tier synthetic instance."""
+    """Return the historical literal 1-query x 1-model x 1-tier fixture."""
 
     query = QueryType(
         id="q_text",
@@ -61,6 +61,24 @@ def make_minimal_tiny_instance() -> ProblemInstance:
         storage_capacity_gb=100.0,
         horizon_hours=1.0,
         compute_utilization=0.9,
+        unit_convention=UnitConvention.LITERAL_PAPER,
+    )
+    validate_problem_instance(instance)
+    return instance
+
+
+def make_coherent_tiny_instance() -> ProblemInstance:
+    """Return a validated synthetic 1x1x1 example with coherent physical units.
+
+    Inputs match the historical minimal fixture; capacity and cost semantics
+    follow the current coherent policy, with one-hour steady-state data storage.
+    This is a verification example, not calibrated paper data.
+    """
+
+    instance = replace(
+        make_minimal_tiny_instance(),
+        id="tiny_1x1x1_coherent",
+        unit_convention=UnitConvention.COHERENT,
     )
     validate_problem_instance(instance)
     return instance
@@ -85,7 +103,7 @@ def make_parallelism_tradeoff_tiny_instance() -> ProblemInstance:
 
 
 def make_heterogeneous_tiny_instance() -> ProblemInstance:
-    """Return a validated 2-query x 2-model x 2-tier heterogeneous instance.
+    """Return the historical literal 2-query x 2-model x 2-tier fixture.
 
     Models differ in weight/error; tiers in memory, compute, price, precision,
     and PP depth. Arrival rates are 12 and 4 queries/hour.
@@ -210,6 +228,7 @@ def make_heterogeneous_tiny_instance() -> ProblemInstance:
         storage_capacity_gb=200.0,
         horizon_hours=2.0,
         compute_utilization=0.9,
+        unit_convention=UnitConvention.LITERAL_PAPER,
     )
     validate_problem_instance(instance)
     return instance

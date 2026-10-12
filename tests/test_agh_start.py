@@ -304,7 +304,7 @@ class AGHStartFailureTests(unittest.TestCase):
 
 
 class AGHStartScopeTests(unittest.TestCase):
-    """Prove the orchestrator delegates and contains no future scheduler."""
+    """Prove the orchestrator delegates construction and local search."""
 
     def test_orchestrator_calls_each_scientific_stage_exactly_once(self):
         function_tree = ast.parse(inspect.getsource(start_module._run_agh_start))
@@ -327,7 +327,6 @@ class AGHStartScopeTests(unittest.TestCase):
             "compute_adaptive",
             "incumbent",
             "five_nonimproving",
-            "stage2",
             "pyomo",
             "solver",
         ):

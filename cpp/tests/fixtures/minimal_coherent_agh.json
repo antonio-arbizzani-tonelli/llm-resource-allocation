@@ -1,0 +1,91 @@
+{
+  "classification": "synthetic cross-language verification",
+  "case": "minimal_coherent_agh",
+  "method": "agh",
+  "unit_convention": "coherent",
+  "paper_version": "v2",
+  "seed": 37,
+  "reference": {
+    "placement": {
+      "x": [
+        1.0
+      ],
+      "z": [
+        1
+      ],
+      "q": [
+        1
+      ],
+      "u": [
+        0.0
+      ],
+      "w": [
+        1,
+        0
+      ],
+      "y": [
+        1
+      ],
+      "v": [
+        1.0,
+        0.0
+      ]
+    },
+    "objective": [
+      1.0,
+      0.001,
+      3.0000000000000004e-08,
+      31.0,
+      0.0
+    ],
+    "feasible": true,
+    "status": "completed",
+    "executed_count": 6,
+    "termination": "five_consecutive_nonimproving",
+    "incumbent_index": 0,
+    "orders": [
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ]
+    ],
+    "counters": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "costs": [
+      32.00100003,
+      32.00100003,
+      32.00100003,
+      32.00100003,
+      32.00100003,
+      32.00100003
+    ],
+    "comparisons": [
+      "initial_incumbent_established",
+      "non_improving",
+      "non_improving",
+      "non_improving",
+      "non_improving",
+      "non_improving"
+    ]
+  }
+}

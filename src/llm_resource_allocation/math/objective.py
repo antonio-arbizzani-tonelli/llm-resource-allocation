@@ -4,7 +4,7 @@ Primitives consume already validated values; omitted terms contribute zero.
 ``DeltaT = instance.horizon_hours``, ``p_s = instance.storage_price_usd_per_gb_hour``,
 ``B_j = model.weight_gb``, ``theta_i = query.storage_gb_per_token``,
 ``r_i = query.total_tokens``, and ``lambda_i = query.arrival_rate_per_hour``.
-Printed factors and documented unit ambiguities are preserved.
+The instance selects coherent physical units or historical printed arithmetic.
 """
 
 from dataclasses import dataclass
@@ -13,6 +13,7 @@ from types import MappingProxyType
 from typing import Mapping
 
 from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain.units import MILLISECONDS_PER_SECOND
 
 
 ModelTierKey = tuple[str, str]
@@ -78,9 +79,8 @@ class ObjectiveBreakdown:
     def total(self) -> float:
         """Return ``C1 + C2 + C3 + C4 + C5`` (v2 Eq. 8a; v1 Eq. 5a).
 
-        Unit caveat: C3 retains the horizon/rate ambiguity; C4 uses seconds
-        with a per-millisecond coefficient. This is the printed objective,
-        without implicit unit corrections; a consistent USD total is unresolved.
+        Coherent inputs produce a USD total. Literal-paper inputs retain the
+        historical C3/C4 dimensional mismatches for comparison.
         """
 
         return (
@@ -140,10 +140,11 @@ def compute_data_storage_cost(
     instance: ProblemInstance,
     routing_fractions: Mapping[QueryModelTierKey, float],
 ) -> float:
-    """Return data-storage ``C3 = DeltaT*sum_(i,j,k) p_s*theta_i*r_i*lambda_i*x[i,j,k]``.
+    """Return the horizon cost of resident query data.
 
-    ``routing_fractions`` supplies x (v2 Eq. 8a). The printed horizon/rate
-    unit ambiguity is retained; storage coefficients already use GB/token.
+    In coherent mode, ``C3 = DeltaT*p_s*data_residency_hours*sum(theta*r*lambda*x)``
+    is in USD. The configured residency converts data rate to steady-state stock.
+    Literal mode retains the earlier printed expression without that factor.
     """
 
     query_by_id = {query.id: query for query in instance.queries}
@@ -154,30 +155,47 @@ def compute_data_storage_cost(
         * routing_fraction
         for (query_id, _, _), routing_fraction in routing_fractions.items()
     )
-    return (
+    cost = (
         instance.horizon_hours
         * instance.storage_price_usd_per_gb_hour
         * indexed_storage
     )
+    return cost * instance.data_residency_hours if instance.uses_coherent_units else cost
 
 
 def compute_delay_penalty(
     instance: ProblemInstance,
     processing_delays_seconds: Mapping[str, float],
+    *,
+    arrival_rates_per_hour: Mapping[str, float] | None = None,
 ) -> float:
-    """Return delay penalty ``C4 = sum_i rho_i*D_proc[i]`` (v2 Eq. 8a).
+    """Return delay penalties under the selected unit convention.
 
     ``query.delay_penalty_usd_per_millisecond_query`` supplies rho;
-    ``processing_delays_seconds`` supplies D_proc in seconds. The paper's
-    seconds/milliseconds mismatch is preserved without rescaling.
+    ``processing_delays_seconds`` supplies D_proc in seconds. Coherent mode
+    converts seconds to milliseconds and charges all ``lambda_i*DeltaT``
+    arriving requests, producing USD. The optional rates select a validated
+    realized scenario; omitted rates use the instance's nominal arrivals.
+    Literal mode retains ``sum(rho*D_proc)`` and does not use arrival rates.
     """
 
-    penalty_by_query = {
-        query.id: query.delay_penalty_usd_per_millisecond_query
-        for query in instance.queries
-    }
+    query_by_id = {query.id: query for query in instance.queries}
+    if instance.uses_coherent_units:
+        arrivals = (
+            {query.id: query.arrival_rate_per_hour for query in instance.queries}
+            if arrival_rates_per_hour is None
+            else arrival_rates_per_hour
+        )
+        return sum(
+            query_by_id[query_id].delay_penalty_usd_per_millisecond_query
+            * processing_delay
+            * MILLISECONDS_PER_SECOND
+            * arrivals[query_id]
+            * instance.horizon_hours
+            for query_id, processing_delay in processing_delays_seconds.items()
+        )
     return sum(
-        penalty_by_query[query_id] * processing_delay
+        query_by_id[query_id].delay_penalty_usd_per_millisecond_query * processing_delay
         for query_id, processing_delay in processing_delays_seconds.items()
     )
 
@@ -191,7 +209,11 @@ def compute_unmet_demand_penalty(
 
     With ``phi_i = query.unmet_penalty_usd_per_hour``, v1 Eq. (5a) uses
     ``sum_i phi_i*u[i]``; v2 Eq. (8a) uses ``DeltaT*sum_i phi_i*u[i]``.
+    Coherent units require v2; v1 remains available with literal-paper units.
     """
+
+    if instance.uses_coherent_units and paper_version is PaperVersion.V1:
+        raise ValueError("coherent units require PaperVersion.V2; v1 uses LITERAL_PAPER")
 
     penalty_by_query = {
         query.id: query.unmet_penalty_usd_per_hour for query in instance.queries
@@ -216,8 +238,8 @@ def compute_objective_breakdown(
 
     ``state`` supplies y, z, x, u, and D_proc; ``paper_version`` selects C5
     scaling. Evaluation consumes already validated decisions.
-    Unit caveat: ``total`` preserves C3's horizon/rate ambiguity and C4's
-    seconds/milliseconds mismatch, without implicit unit corrections.
+    Coherent units give costs in USD; literal units retain historical C3/C4
+    arithmetic for versioned comparison.
     """
 
     return ObjectiveBreakdown(

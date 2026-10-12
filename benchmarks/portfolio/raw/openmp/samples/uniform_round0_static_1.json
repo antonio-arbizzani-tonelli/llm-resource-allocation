@@ -1,0 +1,222 @@
+{
+  "schedule": "static",
+  "requested_threads": 1,
+  "actual_threads": 1,
+  "campaign_seconds": 0.632564539,
+  "repeat_seconds": [
+    0.632564539
+  ],
+  "repeat_threads": [
+    1
+  ],
+  "cases": [
+    {
+      "name": "uniform_000_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_001_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_002_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_003_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_004_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_005_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_006_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_007_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_008_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_009_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_010_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_011_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_012_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_013_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_014_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "uniform_015_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    }
+  ]
+}

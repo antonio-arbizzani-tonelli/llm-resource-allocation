@@ -1,0 +1,94 @@
+{
+  "classification": "synthetic cross-language verification",
+  "case": "frozen_batch_d0039_gh",
+  "method": "gh",
+  "unit_convention": "literal_paper",
+  "paper_version": "v2",
+  "seed": 37,
+  "reference": {
+    "placement": {
+      "x": [
+        0.5,
+        0.5
+      ],
+      "z": [
+        1,
+        1
+      ],
+      "q": [
+        1,
+        1
+      ],
+      "u": [
+        0.0
+      ],
+      "w": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "y": [
+        1,
+        1
+      ],
+      "v": [
+        0.5,
+        0.0,
+        0.5,
+        0.0
+      ]
+    },
+    "objective": [
+      2.0,
+      0.002,
+      3.0000000000000004e-08,
+      0.0031,
+      0.0
+    ],
+    "feasible": false,
+    "status": "algorithm_1_completed",
+    "gh_trace": {
+      "phase1_termination": "rental_cap_reached",
+      "phase1_selected": [],
+      "queries": [
+        {
+          "query": 0,
+          "ranked": [
+            0,
+            1
+          ],
+          "attempts": [
+            {
+              "position": 0,
+              "allocation": 0.5,
+              "committed": true,
+              "budget": 1.0010000149999998,
+              "x": [
+                0.5,
+                0.0
+              ],
+              "remaining": [
+                0.5
+              ]
+            },
+            {
+              "position": 1,
+              "allocation": 0.5,
+              "committed": true,
+              "budget": 2.0020000299999996,
+              "x": [
+                0.5,
+                0.5
+              ],
+              "remaining": [
+                0.0
+              ]
+            }
+          ],
+          "termination": "query_fully_served"
+        }
+      ]
+    }
+  }
+}

@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from math import fsum, isfinite
 
 from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain.units import GFLOPS_PER_TFLOP
 
 from .parallelism import (
     ParallelismDecisionState,
@@ -116,7 +117,7 @@ def _compute_required_compute_tflops_per_hour(
                 * state.routing_fractions.get(
                     (query.id, model_id, tier_id), 0.0
                 )
-                / 1000.0
+                / GFLOPS_PER_TFLOP
                 for query in instance.queries
             )
     return required_by_pair

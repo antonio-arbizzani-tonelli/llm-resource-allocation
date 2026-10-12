@@ -6,6 +6,7 @@ from math import inf, nan, nextafter
 from unittest.mock import patch
 
 from llm_resource_allocation.data import make_minimal_tiny_instance
+from llm_resource_allocation.data.stage2_tiny_cases import make_stage2_fully_served_case
 from llm_resource_allocation.math.budget import BudgetDiagnostic
 from llm_resource_allocation.math.compute_capacity import ComputeCapacityDiagnostic
 from llm_resource_allocation.math.error_slo import ErrorSloDiagnostic
@@ -14,11 +15,20 @@ from llm_resource_allocation.math.objective import PaperVersion
 from llm_resource_allocation.math.processing_delay import DelaySloDiagnostic
 from llm_resource_allocation.math.routing import RoutingConsistencyDiagnostic
 from llm_resource_allocation.math.storage_capacity import QueryStorageCapacityDiagnostic
+from llm_resource_allocation.optimization.stage2_extraction import (
+    Stage2Solution, stage2_solution_identity,
+)
 from llm_resource_allocation.optimization.pdm_run import execute_and_record_pdm_run
 from llm_resource_allocation.optimization.problem_data import PdmProblemData
-from llm_resource_allocation.optimization.solver import SolverBackend, SolverConfig
+from llm_resource_allocation.optimization.solver import (
+    SolverBackend, SolverBackendAvailability, SolverConfig, probe_solver_backend,
+)
 from llm_resource_allocation.validation.placement import (
     ConstraintFamily, ValidationTolerances, validate_placement,
+)
+from llm_resource_allocation.validation.stage2 import (
+    Stage2ConstraintFamily, Stage2RoutingMaskDiagnostic, Stage2ValidationTolerances,
+    validate_stage2_solution,
 )
 
 from placement_support import make_minimal_placement_state
@@ -153,7 +163,7 @@ class PlacementToleranceTests(unittest.TestCase):
         self.assertEqual(dict(invalid.applied_tolerances), {})
 
     def test_relative_fields_reject_invalid_values_and_overflow(self):
-        for policy_type in (ValidationTolerances,):
+        for policy_type in (ValidationTolerances, Stage2ValidationTolerances):
             for descriptor in fields(policy_type):
                 if descriptor.name.endswith("_relative"):
                     for value in (-1.0, inf, nan, True, "1e-12"):
@@ -202,6 +212,70 @@ class PlacementToleranceTests(unittest.TestCase):
             self.assertEqual(report.objective_breakdown, exact.objective_breakdown)
 
 
+class Stage2ToleranceTests(unittest.TestCase):
+    def setUp(self):
+        self.data = make_stage2_fully_served_case()
+        self.solution = Stage2Solution(stage2_solution_identity(self.data), {ROUTE: 1.0}, {QUERY: 0.0})
+        self.base = validate_stage2_solution(self.data, self.solution)
+
+    def test_shared_default_policies_and_classification_match_placement(self):
+        placement_policy = ValidationTolerances()
+        for descriptor in fields(Stage2ValidationTolerances):
+            placement_field = "routing_consistency" if descriptor.name == "routing_mask" else descriptor.name
+            self.assertEqual(getattr(self.base.tolerances, descriptor.name),
+                             getattr(placement_policy, placement_field))
+        for family, field, policy_field, floor, make in SCALED_ROWS:
+            if policy_field not in ("compute_capacity", "delay_slo", "error_slo"):
+                continue
+            stage2_family = Stage2ConstraintFamily[family.name]
+            for defect, expected in ((floor / 2, True), (2 * floor, False)):
+                with self.subTest(family=family, defect=defect):
+                    report = with_row(self.base, field, make(defect, 0.0))
+                    self.assertEqual(report.is_feasible, expected)
+                    exact = replace(report, tolerances=Stage2ValidationTolerances.exact())
+                    self.assertEqual(exact.violated_families, (stage2_family,))
+                    self.assertEqual(getattr(report, field), getattr(exact, field))
+                    self.assertEqual(report.objective_breakdown, exact.objective_breakdown)
+            # Exactly representable relative-only inclusive boundary.
+            policy = replace(self.base.tolerances, **{policy_field: 0.0, policy_field + "_relative": .5})
+            for lhs, expected in ((2.0, True), (nextafter(2.0, inf), False)):
+                report = with_row(self.base, field, make(lhs, 1.0), tolerances=policy)
+                self.assertEqual(report.is_feasible, expected)
+
+    def test_demand_defects_on_both_sides_and_exact_domains(self):
+        for solution in (
+            replace(self.solution, routing_fractions={ROUTE: 1.0 - 2**-35}),
+            replace(self.solution, unmet_fractions={QUERY: 2**-35}),
+        ):
+            report = validate_stage2_solution(self.data, solution)
+            exact = validate_stage2_solution(self.data, solution, Stage2ValidationTolerances.exact())
+            self.assertTrue(report.is_feasible)
+            self.assertEqual(exact.violated_families, (Stage2ConstraintFamily.DEMAND_BALANCE,))
+            self.assertEqual(report.demand_balance_diagnostics, exact.demand_balance_diagnostics)
+        invalid = validate_stage2_solution(
+            self.data, replace(self.solution, routing_fractions={ROUTE: 1.0 + 2**-40}),
+        )
+        self.assertEqual(invalid.violated_families, (Stage2ConstraintFamily.DECISION_DOMAINS,))
+        self.assertEqual(dict(invalid.applied_tolerances), {})
+
+    def test_stage2_threshold_evidence_and_exact_policy(self):
+        self.assertTrue(all(getattr(Stage2ValidationTolerances.exact(), f.name) == 0.0
+                            for f in fields(Stage2ValidationTolerances)))
+        self.assertEqual(len(self.base.applied_tolerances), 5)
+        self.assertEqual(self.base.applied_tolerances[Stage2ConstraintFamily.DEMAND_BALANCE, (QUERY,)], 1e-10)
+        self.assertEqual(self.base.applied_tolerances[Stage2ConstraintFamily.ROUTING_MASK, ROUTE], 1e-10)
+        with self.assertRaises(TypeError):
+            self.base.applied_tolerances[Stage2ConstraintFamily.ROUTING_MASK, ROUTE] = 1.0
+
+    def test_mask_threshold_is_inclusive_without_repair(self):
+        for fraction, expected in ((nextafter(1e-10, 0.0), True), (1e-10, True),
+                                   (nextafter(1e-10, inf), False)):
+            diagnostic = Stage2RoutingMaskDiagnostic(*ROUTE, fraction, 0.0)
+            report = with_row(self.base, "routing_mask_diagnostics", diagnostic)
+            self.assertEqual(report.is_feasible, expected)
+            self.assertEqual(report.routing_mask_diagnostics[0].routing_fraction, fraction)
+            exact = replace(report, tolerances=Stage2ValidationTolerances.exact())
+            self.assertEqual(exact.violated_families, (Stage2ConstraintFamily.ROUTING_MASK,))
 
 
 class PdmRunnerToleranceTests(unittest.TestCase):
@@ -209,6 +283,11 @@ class PdmRunnerToleranceTests(unittest.TestCase):
         data = PdmProblemData(make_minimal_tiny_instance())
         policy = ValidationTolerances.exact()
         for backend in (SolverBackend.HIGHS, SolverBackend.GUROBI):
+            if (
+                backend is SolverBackend.GUROBI
+                and probe_solver_backend(backend).availability is not SolverBackendAvailability.AVAILABLE
+            ):
+                continue
             with self.subTest(backend=backend):
                 record = execute_and_record_pdm_run(
                     data, SolverConfig(backend=backend), validation_tolerances=policy,

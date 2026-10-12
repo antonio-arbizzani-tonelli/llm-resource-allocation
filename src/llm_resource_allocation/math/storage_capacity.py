@@ -1,14 +1,14 @@
 """Storage-capacity diagnostics for Paper v2 Eq. (8h), under D-0016.
 
 D-0016 closes the paper's free query index with one constraint per query.
-The printed sum combines model storage in GB and a data rate in GB/hour;
-this unresolved unit mismatch is preserved.
+Coherent units multiply the data rate by explicit steady-state residency;
+literal units retain the historical GB plus GB/hour arithmetic.
 """
 
 from dataclasses import dataclass
 from math import fsum, isfinite
 
-from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance, UnitConvention
 
 from .placement import PlacementDecisionState, validate_placement_decision_domains
 
@@ -19,20 +19,39 @@ class QueryStorageCapacityDiagnostic:
 
     ``model_storage_usage_gb = sum_(j,k) B_j*z[i,j,k]``;
     ``data_storage_rate_gb_per_hour = sum_(j,k) theta_i*r_i*lambda_i*x[i,j,k]``;
-    ``storage_limit_gb = C_s``. ``slack = C_s - printed_storage_lhs`` retains
-    the printed comparison despite its GB versus GB/hour mismatch.
+    ``storage_limit_gb = C_s``. ``data_residency_hours`` and ``unit_convention``
+    retain the selected policy. The coherent data footprint is rate times
+    residency; literal mode preserves the printed rate's numerical value.
     """
 
     query_id: str
     model_storage_usage_gb: float
     data_storage_rate_gb_per_hour: float
     storage_limit_gb: float
+    data_residency_hours: float = 1.0
+    unit_convention: UnitConvention = UnitConvention.LITERAL_PAPER
+
+    @property
+    def data_storage_usage_gb(self) -> float:
+        """Return coherent resident data in GB; reject the literal rate."""
+
+        if self.unit_convention is UnitConvention.LITERAL_PAPER:
+            raise ValueError("literal data storage is a GB/hour rate, not a GB stock")
+        return self.data_storage_rate_gb_per_hour * self.data_residency_hours
+
+    @property
+    def storage_usage_gb(self) -> float:
+        """Return model plus data storage under the recorded convention."""
+
+        return self.model_storage_usage_gb + self.data_storage_usage_gb
 
     @property
     def printed_storage_lhs(self) -> float:
-        """Return ``model_storage_usage_gb + data_storage_rate_gb_per_hour`` (Eq. 8h)."""
+        """Return the selected storage LHS; historical attribute retained."""
 
-        return self.model_storage_usage_gb + self.data_storage_rate_gb_per_hour
+        if self.unit_convention is UnitConvention.LITERAL_PAPER:
+            return self.model_storage_usage_gb + self.data_storage_rate_gb_per_hour
+        return self.storage_usage_gb
 
     @property
     def slack(self) -> float:
@@ -49,7 +68,7 @@ class QueryStorageCapacityDiagnostic:
     def is_feasible(self, tolerance: float = 0.0) -> bool:
         """Return whether ``slack >= -tolerance`` for Eq. (8h), under D-0016.
 
-        The tolerance uses the numerical scale of the unresolved storage comparison.
+        The tolerance uses GB in coherent mode, or the legacy comparison scale.
         """
 
         if (
@@ -100,7 +119,8 @@ def compute_storage_capacity_residuals(
     Compute ``model_storage_usage_gb = sum_(j,k) B_j*z[i,j,k]`` and
     ``data_storage_rate_gb_per_hour = sum_(j,k) theta_i*r_i*lambda_i*x[i,j,k]``.
     Each diagnostic stores both terms and ``storage_limit_gb = C_s``, deriving
-    ``slack = C_s - printed_storage_lhs``. The GB + GB/hour mismatch is preserved.
+    ``slack = C_s - storage_usage_gb``. Coherent mode includes the configured
+    steady-state data residency; literal mode preserves the printed comparison.
     """
 
     validate_placement_decision_domains(instance, state)
@@ -160,6 +180,8 @@ def _compute_storage_capacity_residuals(
             model_storage_usage_gb=model_usage[query_id],
             data_storage_rate_gb_per_hour=data_rate[query_id],
             storage_limit_gb=instance.storage_capacity_gb,
+            data_residency_hours=instance.data_storage_duration_hours,
+            unit_convention=instance.unit_convention,
         )
         for query_id in instance.query_ids
     )

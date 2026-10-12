@@ -32,8 +32,8 @@ class BudgetDiagnostic:
     def total_budget_use(self) -> float:
         """Return ``C1 + C2 + C3``, the resource cost in Eq. (8c).
 
-        Unit caveat: C3 retains the printed horizon/rate ambiguity; this sum
-        is not established as dimensionally consistent USD. No correction is applied.
+        Coherent inputs use resident data stock, giving USD under D-0101.
+        Literal historical inputs retain the printed C3 unit caveat.
         """
 
         return self.gpu_rental_cost + self.model_storage_cost + self.data_storage_cost

@@ -14,6 +14,7 @@ from llm_resource_allocation.domain import (
     validate_problem_instance,
 )
 from llm_resource_allocation.math.error import compute_effective_error
+from llm_resource_allocation.domain.units import MILLISECONDS_PER_SECOND
 
 from ._mechanism_support import _entity_by_id
 
@@ -258,8 +259,9 @@ def compute_m2_marginal_cost(
     ``c = DeltaT*(p_gpu*max(n*m-y,0) + p_s*(B_j+theta_i*r_i*lambda_i))
          + rho_i*D_cfg``.
     ``DeltaT`` is ``instance.horizon_hours``; ``y`` is ``evaluation_inputs.current_gpu_count``.
-    Only the GPU term uses the positive part. The printed ``rho_i*D_cfg`` term
-    uses the stored delay in seconds without adding a unit conversion.
+    Only the GPU term uses the positive part. Coherent units multiply the data
+    rate by its configured residency and charge delay in milliseconds for all
+    arrivals over the horizon. Literal mode retains the printed arithmetic.
     """
 
     query, model, tier = _validate_m2_candidate_identity(instance, configuration_evidence)
@@ -389,7 +391,7 @@ def _compute_m2_marginal_cost(
     fixed_configuration_delay_seconds: float,
     evaluation_inputs: M2EvaluationInputs,
 ) -> M2MarginalCostBreakdown:
-    """Evaluate the literal additive terms in Paper v2 Eq. (10)."""
+    """Evaluate Eq. (10) under the instance's explicit unit convention."""
 
     required_gpu_count = configuration.gpu_count
     incremental_gpu_count = max(
@@ -401,20 +403,32 @@ def _compute_m2_marginal_cost(
         * tier.hourly_rental_usd
         * incremental_gpu_count
     )
+    data_storage = (
+        query.storage_gb_per_token
+        * query.total_tokens
+        * query.arrival_rate_per_hour
+    )
+    if instance.uses_coherent_units:
+        data_storage *= instance.data_storage_duration_hours
     model_and_data_storage_cost = (
         instance.horizon_hours
         * instance.storage_price_usd_per_gb_hour
         * (
             model.weight_gb
-            + query.storage_gb_per_token
-            * query.total_tokens
-            * query.arrival_rate_per_hour
+            + data_storage
         )
     )
     delay_penalty_cost = (
         query.delay_penalty_usd_per_millisecond_query
         * fixed_configuration_delay_seconds
     )
+    if instance.uses_coherent_units:
+        delay_penalty_cost = (
+            delay_penalty_cost
+            * MILLISECONDS_PER_SECOND
+            * query.arrival_rate_per_hour
+            * instance.horizon_hours
+        )
     return M2MarginalCostBreakdown(
         current_gpu_count=evaluation_inputs.current_gpu_count,
         required_gpu_count=required_gpu_count,

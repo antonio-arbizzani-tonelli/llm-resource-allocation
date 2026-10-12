@@ -19,4 +19,3 @@ __all__ = [
     "QueryType",
     "validate_problem_instance",
 ]
-

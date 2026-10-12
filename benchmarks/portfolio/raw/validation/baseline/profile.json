@@ -1,0 +1,1705 @@
+{
+  "classification": "synthetic implementation performance; not paper numerical replication",
+  "mode": "baseline",
+  "complete": true,
+  "metadata": {
+    "python": "3.14.3",
+    "coordinator_platform": "Windows-11-10.0.26200-SP0",
+    "wsl_distribution": "Ubuntu",
+    "build_description": "GCC 13.3.0; C++20; -O2 -g -ffp-contract=off; gprof adds -pg",
+    "omp_environment": {
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "OMP_WAIT_POLICY": "ACTIVE"
+    },
+    "binary": "results\\cpp_large_instances_2026-10-12\\baseline\\cpp\\build\\release\\pacs_serial",
+    "profile_binary": "results\\cpp_large_instances_2026-10-12\\baseline\\cpp\\build\\profile\\pacs_serial",
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "cpp_runtime": "Linux 6.6.87.2-microsoft-standard-WSL2 x86_64 GNU/Linux",
+    "cpu": {
+      "Architecture": "x86_64",
+      "CPU(s)": "16",
+      "Model name": "13th Gen Intel(R) Core(TM) i7-13620H",
+      "Thread(s) per core": "2",
+      "Core(s) per socket": "8",
+      "Socket(s)": "1"
+    }
+  },
+  "configuration": {
+    "query_counts": [
+      16,
+      32,
+      64
+    ],
+    "models": 4,
+    "gpu_tiers": 4,
+    "load_multiplier": 200.0,
+    "seed": 37,
+    "beta": 0.8,
+    "paper_version": "V2",
+    "unit_convention": "COHERENT",
+    "repeats": 3
+  },
+  "fingerprints_before": {
+    "compiled_source_directory": "results\\cpp_large_instances_2026-10-12\\baseline\\cpp",
+    "compiled_source_sha256": {
+      "include/pacs/agh.hpp": "47155bfa0d6230df01a61f13efbaa4fb904894a7406ca477558597fd5eb1727b",
+      "include/pacs/core.hpp": "12655d2a8de371a32718e99b9522ba910c2644227a0850cefe962a11ebb54f42",
+      "include/pacs/gh.hpp": "a4f3ef55c8304ea50b2da61878bf7e3438779157c3a99e01a494b8dd90be30b1",
+      "include/pacs/io.hpp": "e0d2a9e00e66578b412858eadb6d7810d091bf90b9abeb4a970965f30e33140b",
+      "Makefile": "777162265416cb81669852dafe03037aad127b61bec16e553129b254a7f0fd85",
+      "src/agh.cpp": "0f36787a11f9178d998931b96dcb4ee3a5f6207e7d9960db2652b687bed1d6b9",
+      "src/core.cpp": "d49d16ebbf0d725c64d876c36369bc1db77591d943ffd516c85f8b0b4edab036",
+      "src/gh.cpp": "1dd1529262c996584282770f94a810303bb23bd9af9ac9404c87207c04738e2e",
+      "src/io.cpp": "332a72af7a14eab427c9447aa005ac928f61e7406a0066e35a1a1a2d2d0b997c",
+      "src/main.cpp": "32908ca14acc68653e026aebe0a154adfdf622be2f38bedac27599576ae1b2ee"
+    },
+    "python_source_sha256": {
+      "src/llm_resource_allocation/__init__.py": "64f2cbc50ed57b5ff70657006f1c77ced84748747ac2b3664bfc6cafadcda312",
+      "src/llm_resource_allocation/algorithms/__init__.py": "c38ffe3c42ec76b2696955bf166eb4d44e7282c8a6b0428190a1032e8f6615d2",
+      "src/llm_resource_allocation/algorithms/_agh_placement_ops.py": "d2e89c1b323f61be1f5d28ac0d677689e6551e52a4fa1b2c1aceac692083b682",
+      "src/llm_resource_allocation/algorithms/_mechanism_support.py": "d74faccb98c819e145c9b41444fa794be3e13e4fb305a76f70ff07e34cb05cf8",
+      "src/llm_resource_allocation/algorithms/agh.py": "24aaca18e2b9605efb8c041fbd9784ccb8a1f9630d90a789eec0a02c2540fa1e",
+      "src/llm_resource_allocation/algorithms/agh_consolidation.py": "e3d2840fd18314fd6e4e8563e14ae50a5dee52125a29ebb893f1b796f700e4a9",
+      "src/llm_resource_allocation/algorithms/agh_multistart.py": "9d8845bbdf44c761b0284a66210718fcc257a4bfc28ac962e6caaefeaad04ec3",
+      "src/llm_resource_allocation/algorithms/agh_ordering.py": "7c6ea73c46d407edd1f784ea527d6ed348fc86034e736f7ed1ce4f1171bdc7bd",
+      "src/llm_resource_allocation/algorithms/agh_relocate.py": "9d5a19f9d24580dfca1c63aa6bc2238e17733a007098dc91c92a278a36a19e3e",
+      "src/llm_resource_allocation/algorithms/agh_relocate_pass.py": "3f669b5314553e4e05714710046f2843f8d58aa2df61b38ef0b8ddc6a621be66",
+      "src/llm_resource_allocation/algorithms/agh_start.py": "7a9ae904b98549e8f5aa5f2d956be455a24ce5613a820d795bfc026bc5ba392f",
+      "src/llm_resource_allocation/algorithms/gh.py": "5a73a249ad8f6cc65d99dde95476ecaab4592a30450eda31f11b9ddb7b8a7e33",
+      "src/llm_resource_allocation/algorithms/gh_phase1.py": "51b8f31132505333380b07e3c6a88a7068a64688fc75d5b98d998d8e71120803",
+      "src/llm_resource_allocation/algorithms/gh_phase2.py": "eae0e849ed89489aa2e837b08f70eb5c2c0c350d59e25d5350d9657486569c95",
+      "src/llm_resource_allocation/algorithms/gh_phase2_commit.py": "41c6e7dcc8849ecd8043be9c978d82323c31a578e7168f61d25f20aa71eb3345",
+      "src/llm_resource_allocation/algorithms/gh_phase2_query.py": "e46b9c3fe0a31d3be05d8396b468f847b5a4ef04a6778775df4c447c96916005",
+      "src/llm_resource_allocation/algorithms/gh_phase2_run.py": "fc9f3b4d1bd2a19180d744b403fa639b7d7717f40873425f6962e47d50ced1e9",
+      "src/llm_resource_allocation/algorithms/m1.py": "21adee8d942ef8f55832c24e83ec248aba48e871db72aa6772790c3746718417",
+      "src/llm_resource_allocation/algorithms/m2.py": "9a2f17dca1df64acfbac4a52dcd1b168cfabbf9f99f2f201b8c6bead11aafeff",
+      "src/llm_resource_allocation/algorithms/m3.py": "e8e9701808ba33b1f35c430a78db0537d7a3d714d6730e9a7f2dbfdd88ed81ea",
+      "src/llm_resource_allocation/algorithms/phase1.py": "fd22b7e158f173d14dd95374bead46e52ccd39f2058c8b121dd4b457ac907bc9",
+      "src/llm_resource_allocation/data/__init__.py": "5d91dc15cda435303ed6ef6b4902d66a46434adc788ca03a00e6c722066378a8",
+      "src/llm_resource_allocation/data/azure_trace.py": "3a8c9c253fb71dc89b598a3d63e0b7aa6b67f5b8b828977b00f4bdaed92ed343",
+      "src/llm_resource_allocation/data/scaling_experiment_instances.py": "fd72f7422743f3fe6c1166ff4aa492474b2e88ba600bea923570926e12b49467",
+      "src/llm_resource_allocation/data/stage2_tiny_cases.py": "faec34b5f17439eb70dc3e98605f1eb0cf27fa933ada1443be7c0615fc6f9c32",
+      "src/llm_resource_allocation/data/synthetic_benchmark_instances.py": "a8e37e70065ea9465c5df05e61cedaa39f962356eae10a1bd866be29573a6671",
+      "src/llm_resource_allocation/data/tiny_instances.py": "dc78688bc71eefd45475d84fdbd99b77ee3844a8479d3ebef472499d1f4e184c",
+      "src/llm_resource_allocation/domain/__init__.py": "27fa6becb7600a7473b924365eab6ef97b735e6a2dcc347a0aeddd219270c94e",
+      "src/llm_resource_allocation/domain/types.py": "dad32dbd56cc61546db67cee6e3e60407c381e515e34a3e59fefcd7eb8d549ec",
+      "src/llm_resource_allocation/domain/units.py": "8d438401aaed56d6de31e7775d58afd76617c4a153bad17fbaeed56e39eca3e8",
+      "src/llm_resource_allocation/domain/validation.py": "8222721e9289d3fa94ecbad34c2252f38afe2a5f530dc952e54fefbde434ab57",
+      "src/llm_resource_allocation/experiments/__init__.py": "059cf3e062e911cd669aae5699dfebdd88325d2eacefe8a79a1700dbe3049778",
+      "src/llm_resource_allocation/experiments/_record_serialization.py": "06ea0be580689243d7d6fe96b519a63845a5f7654b4141026373da7b673f8622",
+      "src/llm_resource_allocation/experiments/azure_replay.py": "9a69c26dcf0d287dfca609b5ba71ea965bc9fbce677d10a68466516e72c813b6",
+      "src/llm_resource_allocation/experiments/bounded_experiment.py": "93e6ab361e6006752c2057e3c70447e8b6823337a4a30f730f6791a54cb5664e",
+      "src/llm_resource_allocation/experiments/scenario_evaluation.py": "06339ab0e149df871b8842799e6ee81f6bb208942cddb6bf287d58a8a6d1e63f",
+      "src/llm_resource_allocation/experiments/scenario_generation.py": "28f234b3f9308a011d15a84e4eb54c1428a8ab20dabac95ad9ce8e0126e16b78",
+      "src/llm_resource_allocation/experiments/scenario_protocol.py": "2c7ca6d87414904c1a347c65d2a2f422cf92944e46611e1f316c4f590e0cd040",
+      "src/llm_resource_allocation/experiments/synthetic_benchmark.py": "53e7a76ce8c7f904c2caa9ea685c79810d971ad64b62bbc98a65df58d9fcea40",
+      "src/llm_resource_allocation/experiments/version_comparison.py": "2ff56c8cbfbdf52ee93faa195c83b971ada35a2004b1b04e8e8975e644a772c8",
+      "src/llm_resource_allocation/math/__init__.py": "77a4d1895640ccad5ec726f3f1120dcd5e29a95431d078dc8d8aaec4395e0e55",
+      "src/llm_resource_allocation/math/budget.py": "ae4fceb68e78a86ff2ad9d40df147fdc40640c9822635dd892ec8c75ccd6d249",
+      "src/llm_resource_allocation/math/compute_capacity.py": "21233f8f536d2e67a3d5541de12350449e0f9457e9c15b57fe15f675b493b8f9",
+      "src/llm_resource_allocation/math/error.py": "0c8e22caa34b3308347a7791e1d574c5ff044a1d270cdcfa5191022e37e85e63",
+      "src/llm_resource_allocation/math/error_slo.py": "46e7ed6dc83b44568b0e1850afd198aacbdee8be565caf97b8dc8cc5d3f4e40a",
+      "src/llm_resource_allocation/math/gpu_memory.py": "4f9f1e76a3d15d0cbb64750378d44289322c20ad7ce67a83e288bb563106d6fc",
+      "src/llm_resource_allocation/math/latency.py": "e9311bee9a1955f27a0c6c6388e80a891ba775ec7498f093609ce0a5012dc55a",
+      "src/llm_resource_allocation/math/mccormick.py": "a294729edaabce3edf4bc0363a4b57d7b14a7932fdde872f251fcf5b3368469b",
+      "src/llm_resource_allocation/math/objective.py": "a5a02aca4ccc9841c52dbe111ff94d299549ad4554bbc0f53a25aa71a08ff48f",
+      "src/llm_resource_allocation/math/parallelism.py": "e2c351050ecb0d917cbdcea2be9b2a325964b67c3a417ccdf29a7cc97f92f4ce",
+      "src/llm_resource_allocation/math/placement.py": "afe4c44c546cdc0e6c1510e5c04357547a246f33de0eced75a4aae2e8cd18166",
+      "src/llm_resource_allocation/math/processing_delay.py": "0b6e21535ace02aaacc4fb381f91e3a3c4ce99cdab76c9e1e01867ce22cde8b2",
+      "src/llm_resource_allocation/math/routing.py": "9289984dba4d6c44118ee49ff430f9236497070128646d97de978675302afe74",
+      "src/llm_resource_allocation/math/storage_capacity.py": "e999ce3e40fd2706a71e3c117aa884c66408b2e46c351d61f4a44f85ab7c2cd1",
+      "src/llm_resource_allocation/optimization/__init__.py": "fb26ab03b5f95a91a44f8d2dc22908fad57fa2db2816ad59db3a1d6a5fec7ec5",
+      "src/llm_resource_allocation/optimization/extraction.py": "25e7494003ae4a1beaf658b74fd4144cb2a89aee43c2c405fdb7e41316806254",
+      "src/llm_resource_allocation/optimization/pdm_run.py": "f5edb403549871bbc9abd8156815f23cd4ea5f6f53a268c18a0118411734953f",
+      "src/llm_resource_allocation/optimization/problem_data.py": "88c7e5beb9e2db97ddf7f062cf07136d412f73e505c5ea93f1be60a849c7b32e",
+      "src/llm_resource_allocation/optimization/pyomo_pdm.py": "78601606a1ac5b53758d99a67007df9cde0664a2282fbf62a1d4a84fdd27483f",
+      "src/llm_resource_allocation/optimization/pyomo_stage2.py": "15774a1af0fd45bd4ef2acf5a557d9be5dd0ec8d25e38569b9a31b3464006c8f",
+      "src/llm_resource_allocation/optimization/solver.py": "c0f2362e67fa0266ca0d45d0842c21fa3cf3de259da47312d29d5c22b9f2d401",
+      "src/llm_resource_allocation/optimization/stage2_adapter.py": "5a979152d42c6d857c2507fd3fcf3f27d5d8a522ad0b95c538938438416fad33",
+      "src/llm_resource_allocation/optimization/stage2_extraction.py": "d777f25b9b6da65feb526ad4ed9f5a08e250bf1b442613a4848c16cbc15b76e3",
+      "src/llm_resource_allocation/optimization/stage2_integration.py": "a91030fc2a390c6fefc215a71af7c3a1b038ec3ba4524bf4de3f3e117953a448",
+      "src/llm_resource_allocation/optimization/stage2_problem_data.py": "d1998196307cdaf504290ec9cb217d413ff7cf049e55d87fe398d7efdf4bcc29",
+      "src/llm_resource_allocation/optimization/stage2_run.py": "953a4a3cee8e20e823a3e54284ec105d88b1e5bfee86fbc383666b29eeec1d40",
+      "src/llm_resource_allocation/validation/__init__.py": "0d484a856d98e1f65c739ac13bdd75996ce31c0b80ffcef6c03ff3663c4eac30",
+      "src/llm_resource_allocation/validation/objective_comparison.py": "8b803511a40fea4327cf36b578a8b1a09f53a33c6061abd6b6895fe1b1860e7a",
+      "src/llm_resource_allocation/validation/placement.py": "74926f75529eb4eeef9e51a19fe3fa6d04054754a51028b1d39a2331b89e64ab",
+      "src/llm_resource_allocation/validation/stage2.py": "e181e6bba14ab1514bd053dd373955252be893554d211579e8a7458ace524b6c",
+      "src/llm_resource_allocation/validation/tolerances.py": "9babdadb006920954d729a1b96bfd62677b880408cbba83661419ced655792b2",
+      "src/llm_resource_allocation/verification/__init__.py": "b786f218f203a2db1e11a555f894613c2c1c4be396ea590c6fe27a7a385e758b",
+      "src/llm_resource_allocation/verification/tiny_enumeration.py": "3e0422f98df4057f26dea1a17f5cde08e5e6470ac60362ed24e672eba9dc31c1",
+      "scripts/check_cpp_parity.py": "194836b4986d5f7ceaa946b2dcc702065513d8c32433624f8d7e401f7a70d7d4",
+      "scripts/check_openmp_campaign.py": "802a1ed7f9e2a4660f1a65336c2cf08a50421d8ae959e78b583ae817e427c7f9"
+    },
+    "runner_sha256": "2a24293dd556953f1b81f0098d2a853821b5b6b608b98afe26816544f4a86621",
+    "binary_sha256": "f509af268887af1dec4e882382332c8ab38d30eee3ae3af866a06e4dad785f37",
+    "input_sha256": {
+      "16x4x4_load200_gh.txt": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "16x4x4_load200_agh.txt": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "32x4x4_load200_gh.txt": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "32x4x4_load200_agh.txt": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "64x4x4_load200_gh.txt": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "64x4x4_load200_agh.txt": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf"
+    },
+    "profile_binary_sha256": "fe3c53733047807e984e257cf4c19ccf8cd24024a3fd18b481d7a4bb28a52258"
+  },
+  "timing_policy": "minimum of individual C++ calls across warm coordinator repeats; process minima separate",
+  "python_reference_timing_scope": "one check_case: public Python algorithm, projection and independent validation",
+  "cases": [
+    {
+      "case": "16x4x4_load200_gh",
+      "method": "gh",
+      "dimensions": [
+        16,
+        4,
+        4
+      ],
+      "seed": 37,
+      "feasible": true,
+      "objective": [
+        9.0,
+        0.096,
+        0.0005376,
+        404480.0,
+        0.0
+      ],
+      "input": "inputs/16x4x4_load200_gh.txt",
+      "input_sha256": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "python_golden": "goldens/16x4x4_load200_gh.json",
+      "python_golden_sha256": "3188833d440ac424ec0e66fd2bb7b960f78350ef7349f3997252ccfe2503de11",
+      "full_cpp_evidence": "evidence/16x4x4_load200_gh.json.gz",
+      "full_cpp_evidence_sha256": "06db5ae300bf35705300c6ac97157947d7b4350fa78f80262f6f04963818922b",
+      "python_reference_check_seconds": 0.09093429999484215,
+      "reference_calls": 1,
+      "warm_full_measurement": {
+        "cpp_core_seconds": 0.002853644,
+        "cpp_repeat_seconds": [
+          0.002853644
+        ],
+        "process_wall_seconds": 0.15588469999784138,
+        "unattributed_process_minus_core_seconds": 0.1530310559978414
+      },
+      "python_parity": {
+        "compared_numeric_values": 1517,
+        "bitwise_difference_count": 0,
+        "max_absolute_difference": 0.0
+      },
+      "samples": [
+        {
+          "round": 0,
+          "evidence": "samples/16x4x4_load200_gh_0.json",
+          "evidence_sha256": "7f8f095a461663f70ac998f96f9626e65b9ebfeb34fc40a1bf98999ccd7f7c19",
+          "cpp_core_seconds": 0.001537975,
+          "cpp_repeat_seconds": [
+            0.001537975
+          ],
+          "process_wall_seconds": 0.12348150000616442,
+          "unattributed_process_minus_core_seconds": 0.12194352500616443
+        },
+        {
+          "round": 1,
+          "evidence": "samples/16x4x4_load200_gh_1.json",
+          "evidence_sha256": "de455c35874f458801b0c0da18103f0e53230bd991cb1144afb3b75ce0ca0f39",
+          "cpp_core_seconds": 0.00109572,
+          "cpp_repeat_seconds": [
+            0.00109572
+          ],
+          "process_wall_seconds": 0.12370789999840781,
+          "unattributed_process_minus_core_seconds": 0.12261217999840782
+        },
+        {
+          "round": 2,
+          "evidence": "samples/16x4x4_load200_gh_2.json",
+          "evidence_sha256": "1c2f95174bc533fc9ae156033cdb7ef58628163be17033ee2a92aa9e861123fe",
+          "cpp_core_seconds": 0.003836431,
+          "cpp_repeat_seconds": [
+            0.003836431
+          ],
+          "process_wall_seconds": 0.11049710000224877,
+          "unattributed_process_minus_core_seconds": 0.10666066900224877
+        }
+      ],
+      "cpp_core_min_seconds": 0.00109572,
+      "process_wall_min_seconds": 0.11049710000224877
+    },
+    {
+      "case": "16x4x4_load200_agh",
+      "method": "agh",
+      "dimensions": [
+        16,
+        4,
+        4
+      ],
+      "seed": 37,
+      "feasible": true,
+      "objective": [
+        8.0,
+        0.096,
+        0.0005376,
+        404480.0,
+        0.0
+      ],
+      "input": "inputs/16x4x4_load200_agh.txt",
+      "input_sha256": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "python_golden": "goldens/16x4x4_load200_agh.json",
+      "python_golden_sha256": "71d29a4b9ea79b24b34cf1c887f23e3c756d85b31dc602c83f342a35678a0183",
+      "full_cpp_evidence": "evidence/16x4x4_load200_agh.json.gz",
+      "full_cpp_evidence_sha256": "e01e0a4aa929c8937a67fc29a868e3831e2109285759868c494808a16b5cea4a",
+      "python_reference_check_seconds": 3.372463299994706,
+      "reference_calls": 1,
+      "warm_full_measurement": {
+        "cpp_core_seconds": 0.038433644,
+        "cpp_repeat_seconds": [
+          0.038433644
+        ],
+        "process_wall_seconds": 0.1412934999971185,
+        "unattributed_process_minus_core_seconds": 0.10285985599711849
+      },
+      "python_parity": {
+        "compared_numeric_values": 1517,
+        "bitwise_difference_count": 0,
+        "max_absolute_difference": 0.0
+      },
+      "samples": [
+        {
+          "round": 0,
+          "evidence": "samples/16x4x4_load200_agh_0.json",
+          "evidence_sha256": "4f51c904723f163b30567b638bdc0cbb5b4389c90a50183916dbae5672836079",
+          "cpp_core_seconds": 0.044898868,
+          "cpp_repeat_seconds": [
+            0.044898868
+          ],
+          "process_wall_seconds": 0.16878790000919253,
+          "unattributed_process_minus_core_seconds": 0.12388903200919252
+        },
+        {
+          "round": 1,
+          "evidence": "samples/16x4x4_load200_agh_1.json",
+          "evidence_sha256": "f740e91fae11f75d12fc5a022cbddb3f878dbdd86b627886dd0c1f59310d0a04",
+          "cpp_core_seconds": 0.038509464,
+          "cpp_repeat_seconds": [
+            0.038509464
+          ],
+          "process_wall_seconds": 0.1285277999995742,
+          "unattributed_process_minus_core_seconds": 0.0900183359995742
+        },
+        {
+          "round": 2,
+          "evidence": "samples/16x4x4_load200_agh_2.json",
+          "evidence_sha256": "d9eb645a6b376cfed7dac0fa3e8120d7a854091437079b59b34386b1dfced75d",
+          "cpp_core_seconds": 0.042712703,
+          "cpp_repeat_seconds": [
+            0.042712703
+          ],
+          "process_wall_seconds": 0.1460774000006495,
+          "unattributed_process_minus_core_seconds": 0.10336469700064951
+        }
+      ],
+      "cpp_core_min_seconds": 0.038509464,
+      "process_wall_min_seconds": 0.1285277999995742,
+      "gprof": {
+        "case": "16x4x4_load200_agh",
+        "instrumented": true,
+        "sample_target_seconds": 1.2,
+        "target_reached": true,
+        "attempts": [
+          {
+            "repetitions": 32,
+            "process_wall_seconds": 1.7851629999931902,
+            "report": "gprof/16x4x4_load200_agh/run-x2nwnn52/flat-and-callgraph.txt",
+            "report_sha256": "81813ed675b335e007d94bd4ffbc19b790f9f2b433cb47d3713138a0c5e6fcd2",
+            "gmon": "gprof/16x4x4_load200_agh/run-x2nwnn52/gmon.out",
+            "gmon_sha256": "67feee58cbf2cece6bfbac205575212b48e1ad23eb336c414a16a851874ee099",
+            "fresh_directory": true,
+            "sample_interval_seconds": 0.01,
+            "total_sampled_seconds": 0.42,
+            "validate_calls": 8480,
+            "validate_calls_per_algorithm": 265.0,
+            "validate_flat_self_seconds": 0.03,
+            "validate_flat_self_seconds_per_call": 3.5377358490566038e-06,
+            "validate_callgraph_self_seconds": 0.03,
+            "validate_callgraph_children_seconds": 0.28,
+            "validate_inclusive_propagated_seconds": 0.31000000000000005,
+            "validate_inclusive_propagated_seconds_per_call": 3.6556603773584914e-05,
+            "validate_callgraph_percent": 74.4,
+            "largest_flat_rows": [
+              {
+                "self_percent": 45.24,
+                "cumulative_seconds": 0.19,
+                "self_seconds": 0.19,
+                "calls": 37998880,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+              },
+              {
+                "self_percent": 9.52,
+                "cumulative_seconds": 0.23,
+                "self_seconds": 0.04,
+                "calls": 1518976,
+                "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 9.52,
+                "cumulative_seconds": 0.27,
+                "self_seconds": 0.04,
+                "calls": null,
+                "symbol": "_init"
+              },
+              {
+                "self_percent": 7.14,
+                "cumulative_seconds": 0.3,
+                "self_seconds": 0.03,
+                "calls": 8480,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 4.76,
+                "cumulative_seconds": 0.32,
+                "self_seconds": 0.02,
+                "calls": 37033920,
+                "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+              },
+              {
+                "self_percent": 4.76,
+                "cumulative_seconds": 0.34,
+                "self_seconds": 0.02,
+                "calls": 10535552,
+                "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+              },
+              {
+                "self_percent": 4.76,
+                "cumulative_seconds": 0.36,
+                "self_seconds": 0.02,
+                "calls": 29761,
+                "symbol": "pacs::Validation::~Validation()"
+              },
+              {
+                "self_percent": 4.76,
+                "cumulative_seconds": 0.38,
+                "self_seconds": 0.02,
+                "calls": 11552,
+                "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 4.76,
+                "cumulative_seconds": 0.4,
+                "self_seconds": 0.02,
+                "calls": 11552,
+                "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+              },
+              {
+                "self_percent": 2.38,
+                "cumulative_seconds": 0.41,
+                "self_seconds": 0.01,
+                "calls": 61664,
+                "symbol": "pacs::(anonymous namespace)::sparse_budget(pacs::Problem const&, pacs::GhPhase2State const&)"
+              },
+              {
+                "self_percent": 2.38,
+                "cumulative_seconds": 0.42,
+                "self_seconds": 0.01,
+                "calls": 192,
+                "symbol": "pacs::(anonymous namespace)::relocate_worker(pacs::Problem const&, pacs::Placement, pacs::Validation, unsigned long, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 0.0,
+                "cumulative_seconds": 0.42,
+                "self_seconds": 0.0,
+                "calls": 737280,
+                "symbol": "pacs::M2Result::coverage() const"
+              }
+            ],
+            "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+          },
+          {
+            "repetitions": 110,
+            "process_wall_seconds": 5.57052590000967,
+            "report": "gprof/16x4x4_load200_agh/run-2dg4h4q4/flat-and-callgraph.txt",
+            "report_sha256": "29c062a9226fb50af5ffb7a52980acdf24677fada22a252e827221ff5b8fcb2a",
+            "gmon": "gprof/16x4x4_load200_agh/run-2dg4h4q4/gmon.out",
+            "gmon_sha256": "3f3b7d8e5caa6ac1ea5464f9bd9079865a935122a073d6ed768637cf73ae984b",
+            "fresh_directory": true,
+            "sample_interval_seconds": 0.01,
+            "total_sampled_seconds": 1.94,
+            "validate_calls": 29150,
+            "validate_calls_per_algorithm": 265.0,
+            "validate_flat_self_seconds": 0.17,
+            "validate_flat_self_seconds_per_call": 5.831903945111493e-06,
+            "validate_callgraph_self_seconds": 0.17,
+            "validate_callgraph_children_seconds": 1.31,
+            "validate_inclusive_propagated_seconds": 1.48,
+            "validate_inclusive_propagated_seconds_per_call": 5.077186963979417e-05,
+            "validate_callgraph_percent": 76.4,
+            "largest_flat_rows": [
+              {
+                "self_percent": 42.27,
+                "cumulative_seconds": 0.82,
+                "self_seconds": 0.82,
+                "calls": 130621150,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+              },
+              {
+                "self_percent": 8.76,
+                "cumulative_seconds": 0.99,
+                "self_seconds": 0.17,
+                "calls": 29150,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 7.73,
+                "cumulative_seconds": 1.14,
+                "self_seconds": 0.15,
+                "calls": 127304100,
+                "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+              },
+              {
+                "self_percent": 7.73,
+                "cumulative_seconds": 1.29,
+                "self_seconds": 0.15,
+                "calls": 5221480,
+                "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 7.73,
+                "cumulative_seconds": 1.44,
+                "self_seconds": 0.15,
+                "calls": 39710,
+                "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 5.67,
+                "cumulative_seconds": 1.55,
+                "self_seconds": 0.11,
+                "calls": null,
+                "symbol": "_init"
+              },
+              {
+                "self_percent": 5.15,
+                "cumulative_seconds": 1.65,
+                "self_seconds": 0.1,
+                "calls": 36215960,
+                "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+              },
+              {
+                "self_percent": 4.12,
+                "cumulative_seconds": 1.73,
+                "self_seconds": 0.08,
+                "calls": 102301,
+                "symbol": "pacs::Validation::~Validation()"
+              },
+              {
+                "self_percent": 3.09,
+                "cumulative_seconds": 1.79,
+                "self_seconds": 0.06,
+                "calls": 39710,
+                "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 2.06,
+                "cumulative_seconds": 1.83,
+                "self_seconds": 0.04,
+                "calls": 39710,
+                "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+              },
+              {
+                "self_percent": 2.06,
+                "cumulative_seconds": 1.87,
+                "self_seconds": 0.04,
+                "calls": 1320,
+                "symbol": "pacs::Validation::Validation(pacs::Validation const&)"
+              },
+              {
+                "self_percent": 1.03,
+                "cumulative_seconds": 1.89,
+                "self_seconds": 0.02,
+                "calls": 211970,
+                "symbol": "pacs::(anonymous namespace)::sparse_budget(pacs::Problem const&, pacs::GhPhase2State const&)"
+              }
+            ],
+            "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+          }
+        ],
+        "selected": {
+          "repetitions": 110,
+          "process_wall_seconds": 5.57052590000967,
+          "report": "gprof/16x4x4_load200_agh/run-2dg4h4q4/flat-and-callgraph.txt",
+          "report_sha256": "29c062a9226fb50af5ffb7a52980acdf24677fada22a252e827221ff5b8fcb2a",
+          "gmon": "gprof/16x4x4_load200_agh/run-2dg4h4q4/gmon.out",
+          "gmon_sha256": "3f3b7d8e5caa6ac1ea5464f9bd9079865a935122a073d6ed768637cf73ae984b",
+          "fresh_directory": true,
+          "sample_interval_seconds": 0.01,
+          "total_sampled_seconds": 1.94,
+          "validate_calls": 29150,
+          "validate_calls_per_algorithm": 265.0,
+          "validate_flat_self_seconds": 0.17,
+          "validate_flat_self_seconds_per_call": 5.831903945111493e-06,
+          "validate_callgraph_self_seconds": 0.17,
+          "validate_callgraph_children_seconds": 1.31,
+          "validate_inclusive_propagated_seconds": 1.48,
+          "validate_inclusive_propagated_seconds_per_call": 5.077186963979417e-05,
+          "validate_callgraph_percent": 76.4,
+          "largest_flat_rows": [
+            {
+              "self_percent": 42.27,
+              "cumulative_seconds": 0.82,
+              "self_seconds": 0.82,
+              "calls": 130621150,
+              "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+            },
+            {
+              "self_percent": 8.76,
+              "cumulative_seconds": 0.99,
+              "self_seconds": 0.17,
+              "calls": 29150,
+              "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+            },
+            {
+              "self_percent": 7.73,
+              "cumulative_seconds": 1.14,
+              "self_seconds": 0.15,
+              "calls": 127304100,
+              "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+            },
+            {
+              "self_percent": 7.73,
+              "cumulative_seconds": 1.29,
+              "self_seconds": 0.15,
+              "calls": 5221480,
+              "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+            },
+            {
+              "self_percent": 7.73,
+              "cumulative_seconds": 1.44,
+              "self_seconds": 0.15,
+              "calls": 39710,
+              "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+            },
+            {
+              "self_percent": 5.67,
+              "cumulative_seconds": 1.55,
+              "self_seconds": 0.11,
+              "calls": null,
+              "symbol": "_init"
+            },
+            {
+              "self_percent": 5.15,
+              "cumulative_seconds": 1.65,
+              "self_seconds": 0.1,
+              "calls": 36215960,
+              "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+            },
+            {
+              "self_percent": 4.12,
+              "cumulative_seconds": 1.73,
+              "self_seconds": 0.08,
+              "calls": 102301,
+              "symbol": "pacs::Validation::~Validation()"
+            },
+            {
+              "self_percent": 3.09,
+              "cumulative_seconds": 1.79,
+              "self_seconds": 0.06,
+              "calls": 39710,
+              "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+            },
+            {
+              "self_percent": 2.06,
+              "cumulative_seconds": 1.83,
+              "self_seconds": 0.04,
+              "calls": 39710,
+              "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+            },
+            {
+              "self_percent": 2.06,
+              "cumulative_seconds": 1.87,
+              "self_seconds": 0.04,
+              "calls": 1320,
+              "symbol": "pacs::Validation::Validation(pacs::Validation const&)"
+            },
+            {
+              "self_percent": 1.03,
+              "cumulative_seconds": 1.89,
+              "self_seconds": 0.02,
+              "calls": 211970,
+              "symbol": "pacs::(anonymous namespace)::sparse_budget(pacs::Problem const&, pacs::GhPhase2State const&)"
+            }
+          ],
+          "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+        }
+      }
+    },
+    {
+      "case": "32x4x4_load200_gh",
+      "method": "gh",
+      "dimensions": [
+        32,
+        4,
+        4
+      ],
+      "seed": 37,
+      "feasible": true,
+      "objective": [
+        9.0,
+        0.192,
+        0.0010752,
+        808960.0,
+        0.0
+      ],
+      "input": "inputs/32x4x4_load200_gh.txt",
+      "input_sha256": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "python_golden": "goldens/32x4x4_load200_gh.json",
+      "python_golden_sha256": "170104e4dcfb4426329e4169bb63fae5f2e4fd89f84786be72534b4cf06de291",
+      "full_cpp_evidence": "evidence/32x4x4_load200_gh.json.gz",
+      "full_cpp_evidence_sha256": "eab86164218616d468547beb8edf1339c5d1fae97e3e72eb411f247b3f67a3a9",
+      "python_reference_check_seconds": 0.2650173000001814,
+      "reference_calls": 1,
+      "warm_full_measurement": {
+        "cpp_core_seconds": 0.00330794,
+        "cpp_repeat_seconds": [
+          0.00330794
+        ],
+        "process_wall_seconds": 0.1271207000099821,
+        "unattributed_process_minus_core_seconds": 0.1238127600099821
+      },
+      "python_parity": {
+        "compared_numeric_values": 2941,
+        "bitwise_difference_count": 0,
+        "max_absolute_difference": 0.0
+      },
+      "samples": [
+        {
+          "round": 0,
+          "evidence": "samples/32x4x4_load200_gh_0.json",
+          "evidence_sha256": "6acc862d846fe47a462776df0c857e0ea1eca1788ab1052acda7e85703541ced",
+          "cpp_core_seconds": 0.003042921,
+          "cpp_repeat_seconds": [
+            0.003042921
+          ],
+          "process_wall_seconds": 0.1072342999977991,
+          "unattributed_process_minus_core_seconds": 0.1041913789977991
+        },
+        {
+          "round": 1,
+          "evidence": "samples/32x4x4_load200_gh_1.json",
+          "evidence_sha256": "7ec16c717097ebab956a320ba0caa4812ed66a1f5c15fd00bd9aa8e0c8051815",
+          "cpp_core_seconds": 0.003249855,
+          "cpp_repeat_seconds": [
+            0.003249855
+          ],
+          "process_wall_seconds": 0.10713249999389518,
+          "unattributed_process_minus_core_seconds": 0.10388264499389518
+        },
+        {
+          "round": 2,
+          "evidence": "samples/32x4x4_load200_gh_2.json",
+          "evidence_sha256": "d25ef3f57d133077db055850137da2293113a632ca5f61926762a9ac717fb9ba",
+          "cpp_core_seconds": 0.003416375,
+          "cpp_repeat_seconds": [
+            0.003416375
+          ],
+          "process_wall_seconds": 0.10909829998854548,
+          "unattributed_process_minus_core_seconds": 0.10568192498854548
+        }
+      ],
+      "cpp_core_min_seconds": 0.003042921,
+      "process_wall_min_seconds": 0.10713249999389518
+    },
+    {
+      "case": "32x4x4_load200_agh",
+      "method": "agh",
+      "dimensions": [
+        32,
+        4,
+        4
+      ],
+      "seed": 37,
+      "feasible": true,
+      "objective": [
+        8.0,
+        0.192,
+        0.0010752,
+        808960.0,
+        0.0
+      ],
+      "input": "inputs/32x4x4_load200_agh.txt",
+      "input_sha256": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "python_golden": "goldens/32x4x4_load200_agh.json",
+      "python_golden_sha256": "a1636043b7f6b2bcf8d5d79b1c5f7fa6338d8661790f1e032a30889af88e548c",
+      "full_cpp_evidence": "evidence/32x4x4_load200_agh.json.gz",
+      "full_cpp_evidence_sha256": "c0ccf2d8add5d052644a02c484f73a04da0b03cf1a004a28630ef09eb1163bb5",
+      "python_reference_check_seconds": 12.57141249999404,
+      "reference_calls": 1,
+      "warm_full_measurement": {
+        "cpp_core_seconds": 0.11551175,
+        "cpp_repeat_seconds": [
+          0.11551175
+        ],
+        "process_wall_seconds": 0.20185919999494217,
+        "unattributed_process_minus_core_seconds": 0.08634744999494218
+      },
+      "python_parity": {
+        "compared_numeric_values": 2941,
+        "bitwise_difference_count": 0,
+        "max_absolute_difference": 0.0
+      },
+      "samples": [
+        {
+          "round": 0,
+          "evidence": "samples/32x4x4_load200_agh_0.json",
+          "evidence_sha256": "fe22fc54de1236c9942ed8d33d157e0113456443ae37c86485374bb48893f8b2",
+          "cpp_core_seconds": 0.107244083,
+          "cpp_repeat_seconds": [
+            0.107244083
+          ],
+          "process_wall_seconds": 0.21056880000105593,
+          "unattributed_process_minus_core_seconds": 0.10332471700105593
+        },
+        {
+          "round": 1,
+          "evidence": "samples/32x4x4_load200_agh_1.json",
+          "evidence_sha256": "dafa556f5b232df2757f6b66a174eb179e41bd6cb1e709544740e0896052319f",
+          "cpp_core_seconds": 0.105781425,
+          "cpp_repeat_seconds": [
+            0.105781425
+          ],
+          "process_wall_seconds": 0.22195349998946767,
+          "unattributed_process_minus_core_seconds": 0.11617207498946767
+        },
+        {
+          "round": 2,
+          "evidence": "samples/32x4x4_load200_agh_2.json",
+          "evidence_sha256": "056d0d0026d478b4f7372140f1101a1f730f21c28cbf3a27c9e5b818fd5598f9",
+          "cpp_core_seconds": 0.105119292,
+          "cpp_repeat_seconds": [
+            0.105119292
+          ],
+          "process_wall_seconds": 0.22415349999209866,
+          "unattributed_process_minus_core_seconds": 0.11903420799209866
+        }
+      ],
+      "cpp_core_min_seconds": 0.105119292,
+      "process_wall_min_seconds": 0.21056880000105593,
+      "gprof": {
+        "case": "32x4x4_load200_agh",
+        "instrumented": true,
+        "sample_target_seconds": 1.2,
+        "target_reached": true,
+        "attempts": [
+          {
+            "repetitions": 12,
+            "process_wall_seconds": 2.5992928000050597,
+            "report": "gprof/32x4x4_load200_agh/run-knif28h5/flat-and-callgraph.txt",
+            "report_sha256": "a59b0e3f68f2f4beee3c09a5c2541859c4e27f6baabfb3ba6365c44198f52ed4",
+            "gmon": "gprof/32x4x4_load200_agh/run-knif28h5/gmon.out",
+            "gmon_sha256": "456db50d41ebfe6a260d76ebb253f95c5ae7c6dab70a0fb2258ec4eed5f65cd4",
+            "fresh_directory": true,
+            "sample_interval_seconds": 0.01,
+            "total_sampled_seconds": 0.86,
+            "validate_calls": 6060,
+            "validate_calls_per_algorithm": 505.0,
+            "validate_flat_self_seconds": 0.09,
+            "validate_flat_self_seconds_per_call": 1.4851485148514851e-05,
+            "validate_callgraph_self_seconds": 0.09,
+            "validate_callgraph_children_seconds": 0.61,
+            "validate_inclusive_propagated_seconds": 0.7,
+            "validate_inclusive_propagated_seconds_per_call": 0.00011551155115511551,
+            "validate_callgraph_percent": 81.4,
+            "largest_flat_rows": [
+              {
+                "self_percent": 50.0,
+                "cumulative_seconds": 0.43,
+                "self_seconds": 0.43,
+                "calls": 53915820,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+              },
+              {
+                "self_percent": 10.47,
+                "cumulative_seconds": 0.52,
+                "self_seconds": 0.09,
+                "calls": 6060,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 9.3,
+                "cumulative_seconds": 0.6,
+                "self_seconds": 0.08,
+                "calls": 8364,
+                "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 8.14,
+                "cumulative_seconds": 0.67,
+                "self_seconds": 0.07,
+                "calls": 52656168,
+                "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+              },
+              {
+                "self_percent": 5.81,
+                "cumulative_seconds": 0.72,
+                "self_seconds": 0.05,
+                "calls": 20377,
+                "symbol": "pacs::Validation::~Validation()"
+              },
+              {
+                "self_percent": 4.65,
+                "cumulative_seconds": 0.76,
+                "self_seconds": 0.04,
+                "calls": 1769808,
+                "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 3.49,
+                "cumulative_seconds": 0.79,
+                "self_seconds": 0.03,
+                "calls": 8364,
+                "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 1.16,
+                "cumulative_seconds": 0.8,
+                "self_seconds": 0.01,
+                "calls": 13368,
+                "symbol": "pacs::(anonymous namespace)::transfer_route(pacs::Problem const&, pacs::Placement const&, unsigned long, unsigned long, double)"
+              },
+              {
+                "self_percent": 1.16,
+                "cumulative_seconds": 0.81,
+                "self_seconds": 0.01,
+                "calls": 8364,
+                "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+              },
+              {
+                "self_percent": 1.16,
+                "cumulative_seconds": 0.82,
+                "self_seconds": 0.01,
+                "calls": 6840,
+                "symbol": "pacs::GhQueryTrace::~GhQueryTrace()"
+              },
+              {
+                "self_percent": 1.16,
+                "cumulative_seconds": 0.83,
+                "self_seconds": 0.01,
+                "calls": 360,
+                "symbol": "std::vector<double, std::allocator<double> >::_M_fill_assign(unsigned long, double const&)"
+              },
+              {
+                "self_percent": 1.16,
+                "cumulative_seconds": 0.84,
+                "self_seconds": 0.01,
+                "calls": 144,
+                "symbol": "pacs::Validation::Validation(pacs::Validation const&)"
+              }
+            ],
+            "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+          },
+          {
+            "repetitions": 24,
+            "process_wall_seconds": 5.481698799994774,
+            "report": "gprof/32x4x4_load200_agh/run-1nl_0vxj/flat-and-callgraph.txt",
+            "report_sha256": "75bb7a1513e88c357461e5e2c3d70aa27e8dcd8d6d6b869adf6d3dd6a974c8d4",
+            "gmon": "gprof/32x4x4_load200_agh/run-1nl_0vxj/gmon.out",
+            "gmon_sha256": "95dd8788932166623f6439bd3ddcb516f55d138636383e97e17c1547dbc8ec9a",
+            "fresh_directory": true,
+            "sample_interval_seconds": 0.01,
+            "total_sampled_seconds": 1.85,
+            "validate_calls": 12120,
+            "validate_calls_per_algorithm": 505.0,
+            "validate_flat_self_seconds": 0.22,
+            "validate_flat_self_seconds_per_call": 1.8151815181518153e-05,
+            "validate_callgraph_self_seconds": 0.22,
+            "validate_callgraph_children_seconds": 1.3,
+            "validate_inclusive_propagated_seconds": 1.52,
+            "validate_inclusive_propagated_seconds_per_call": 0.0001254125412541254,
+            "validate_callgraph_percent": 82.2,
+            "largest_flat_rows": [
+              {
+                "self_percent": 47.03,
+                "cumulative_seconds": 0.87,
+                "self_seconds": 0.87,
+                "calls": 107831640,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+              },
+              {
+                "self_percent": 11.89,
+                "cumulative_seconds": 1.09,
+                "self_seconds": 0.22,
+                "calls": 12120,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 10.27,
+                "cumulative_seconds": 1.28,
+                "self_seconds": 0.19,
+                "calls": 16728,
+                "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 9.19,
+                "cumulative_seconds": 1.45,
+                "self_seconds": 0.17,
+                "calls": 3539616,
+                "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 5.41,
+                "cumulative_seconds": 1.55,
+                "self_seconds": 0.1,
+                "calls": 105312336,
+                "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+              },
+              {
+                "self_percent": 4.86,
+                "cumulative_seconds": 1.64,
+                "self_seconds": 0.09,
+                "calls": null,
+                "symbol": "_init"
+              },
+              {
+                "self_percent": 3.24,
+                "cumulative_seconds": 1.7,
+                "self_seconds": 0.06,
+                "calls": 40753,
+                "symbol": "pacs::Validation::~Validation()"
+              },
+              {
+                "self_percent": 2.7,
+                "cumulative_seconds": 1.75,
+                "self_seconds": 0.05,
+                "calls": 16728,
+                "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 2.16,
+                "cumulative_seconds": 1.79,
+                "self_seconds": 0.04,
+                "calls": 30253152,
+                "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+              },
+              {
+                "self_percent": 1.08,
+                "cumulative_seconds": 1.81,
+                "self_seconds": 0.02,
+                "calls": 111288,
+                "symbol": "pacs::python_sum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 0.54,
+                "cumulative_seconds": 1.82,
+                "self_seconds": 0.01,
+                "calls": 294912,
+                "symbol": "pacs::resource_diagnostics(pacs::Problem const&, pacs::Placement const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double) const"
+              },
+              {
+                "self_percent": 0.54,
+                "cumulative_seconds": 1.83,
+                "self_seconds": 0.01,
+                "calls": 52032,
+                "symbol": "pacs::GhPhase2State::~GhPhase2State()"
+              }
+            ],
+            "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+          }
+        ],
+        "selected": {
+          "repetitions": 24,
+          "process_wall_seconds": 5.481698799994774,
+          "report": "gprof/32x4x4_load200_agh/run-1nl_0vxj/flat-and-callgraph.txt",
+          "report_sha256": "75bb7a1513e88c357461e5e2c3d70aa27e8dcd8d6d6b869adf6d3dd6a974c8d4",
+          "gmon": "gprof/32x4x4_load200_agh/run-1nl_0vxj/gmon.out",
+          "gmon_sha256": "95dd8788932166623f6439bd3ddcb516f55d138636383e97e17c1547dbc8ec9a",
+          "fresh_directory": true,
+          "sample_interval_seconds": 0.01,
+          "total_sampled_seconds": 1.85,
+          "validate_calls": 12120,
+          "validate_calls_per_algorithm": 505.0,
+          "validate_flat_self_seconds": 0.22,
+          "validate_flat_self_seconds_per_call": 1.8151815181518153e-05,
+          "validate_callgraph_self_seconds": 0.22,
+          "validate_callgraph_children_seconds": 1.3,
+          "validate_inclusive_propagated_seconds": 1.52,
+          "validate_inclusive_propagated_seconds_per_call": 0.0001254125412541254,
+          "validate_callgraph_percent": 82.2,
+          "largest_flat_rows": [
+            {
+              "self_percent": 47.03,
+              "cumulative_seconds": 0.87,
+              "self_seconds": 0.87,
+              "calls": 107831640,
+              "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+            },
+            {
+              "self_percent": 11.89,
+              "cumulative_seconds": 1.09,
+              "self_seconds": 0.22,
+              "calls": 12120,
+              "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+            },
+            {
+              "self_percent": 10.27,
+              "cumulative_seconds": 1.28,
+              "self_seconds": 0.19,
+              "calls": 16728,
+              "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+            },
+            {
+              "self_percent": 9.19,
+              "cumulative_seconds": 1.45,
+              "self_seconds": 0.17,
+              "calls": 3539616,
+              "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+            },
+            {
+              "self_percent": 5.41,
+              "cumulative_seconds": 1.55,
+              "self_seconds": 0.1,
+              "calls": 105312336,
+              "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+            },
+            {
+              "self_percent": 4.86,
+              "cumulative_seconds": 1.64,
+              "self_seconds": 0.09,
+              "calls": null,
+              "symbol": "_init"
+            },
+            {
+              "self_percent": 3.24,
+              "cumulative_seconds": 1.7,
+              "self_seconds": 0.06,
+              "calls": 40753,
+              "symbol": "pacs::Validation::~Validation()"
+            },
+            {
+              "self_percent": 2.7,
+              "cumulative_seconds": 1.75,
+              "self_seconds": 0.05,
+              "calls": 16728,
+              "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+            },
+            {
+              "self_percent": 2.16,
+              "cumulative_seconds": 1.79,
+              "self_seconds": 0.04,
+              "calls": 30253152,
+              "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+            },
+            {
+              "self_percent": 1.08,
+              "cumulative_seconds": 1.81,
+              "self_seconds": 0.02,
+              "calls": 111288,
+              "symbol": "pacs::python_sum(std::span<double const, 18446744073709551615ul>)"
+            },
+            {
+              "self_percent": 0.54,
+              "cumulative_seconds": 1.82,
+              "self_seconds": 0.01,
+              "calls": 294912,
+              "symbol": "pacs::resource_diagnostics(pacs::Problem const&, pacs::Placement const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double) const"
+            },
+            {
+              "self_percent": 0.54,
+              "cumulative_seconds": 1.83,
+              "self_seconds": 0.01,
+              "calls": 52032,
+              "symbol": "pacs::GhPhase2State::~GhPhase2State()"
+            }
+          ],
+          "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+        }
+      }
+    },
+    {
+      "case": "64x4x4_load200_gh",
+      "method": "gh",
+      "dimensions": [
+        64,
+        4,
+        4
+      ],
+      "seed": 37,
+      "feasible": true,
+      "objective": [
+        9.0,
+        0.384,
+        0.0021504,
+        1617920.0,
+        0.0
+      ],
+      "input": "inputs/64x4x4_load200_gh.txt",
+      "input_sha256": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "python_golden": "goldens/64x4x4_load200_gh.json",
+      "python_golden_sha256": "29cdcc349e5978a180fbdb58deba7b9508a7a3f06fb1d500b058c2ee226deb49",
+      "full_cpp_evidence": "evidence/64x4x4_load200_gh.json.gz",
+      "full_cpp_evidence_sha256": "7e3ef7d28aeda3eeed63526ee8e5b4623976a905fa0242ef5e5226040301fd03",
+      "python_reference_check_seconds": 1.1848735000094166,
+      "reference_calls": 1,
+      "warm_full_measurement": {
+        "cpp_core_seconds": 0.011335514,
+        "cpp_repeat_seconds": [
+          0.011335514
+        ],
+        "process_wall_seconds": 0.13480140001047403,
+        "unattributed_process_minus_core_seconds": 0.12346588601047402
+      },
+      "python_parity": {
+        "compared_numeric_values": 5789,
+        "bitwise_difference_count": 0,
+        "max_absolute_difference": 0.0
+      },
+      "samples": [
+        {
+          "round": 0,
+          "evidence": "samples/64x4x4_load200_gh_0.json",
+          "evidence_sha256": "5a284e62d1f500650979c6cc07241660880eac770e54789a26a1893290289fad",
+          "cpp_core_seconds": 0.011121393,
+          "cpp_repeat_seconds": [
+            0.011121393
+          ],
+          "process_wall_seconds": 0.11612400000740308,
+          "unattributed_process_minus_core_seconds": 0.10500260700740308
+        },
+        {
+          "round": 1,
+          "evidence": "samples/64x4x4_load200_gh_1.json",
+          "evidence_sha256": "9d580e4d8ab8284557ab8eb89888c6d95d0d7b124179730dee61b9f54fa6e319",
+          "cpp_core_seconds": 0.011139846,
+          "cpp_repeat_seconds": [
+            0.011139846
+          ],
+          "process_wall_seconds": 0.11996559999533929,
+          "unattributed_process_minus_core_seconds": 0.1088257539953393
+        },
+        {
+          "round": 2,
+          "evidence": "samples/64x4x4_load200_gh_2.json",
+          "evidence_sha256": "d378b87b8e4e80c4728e568103cb9c542ce34403d589fcba0b51bca5ee20f67e",
+          "cpp_core_seconds": 0.011683511,
+          "cpp_repeat_seconds": [
+            0.011683511
+          ],
+          "process_wall_seconds": 0.143214399999124,
+          "unattributed_process_minus_core_seconds": 0.131530888999124
+        }
+      ],
+      "cpp_core_min_seconds": 0.011121393,
+      "process_wall_min_seconds": 0.11612400000740308
+    },
+    {
+      "case": "64x4x4_load200_agh",
+      "method": "agh",
+      "dimensions": [
+        64,
+        4,
+        4
+      ],
+      "seed": 37,
+      "feasible": true,
+      "objective": [
+        8.0,
+        0.384,
+        0.0021504,
+        1617920.0,
+        0.0
+      ],
+      "input": "inputs/64x4x4_load200_agh.txt",
+      "input_sha256": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "python_golden": "goldens/64x4x4_load200_agh.json",
+      "python_golden_sha256": "2defc84d4022dcc7698fc72ef235d99715bed5b35ccf7e676b112589619bd41a",
+      "full_cpp_evidence": "evidence/64x4x4_load200_agh.json.gz",
+      "full_cpp_evidence_sha256": "c199b498917bd3a764ffef2caaba9a2898f5dc1a3874ea6df7c95c2b894f611e",
+      "python_reference_check_seconds": 72.01063230000727,
+      "reference_calls": 1,
+      "warm_full_measurement": {
+        "cpp_core_seconds": 0.60455253,
+        "cpp_repeat_seconds": [
+          0.60455253
+        ],
+        "process_wall_seconds": 0.7618323999922723,
+        "unattributed_process_minus_core_seconds": 0.15727986999227228
+      },
+      "python_parity": {
+        "compared_numeric_values": 5789,
+        "bitwise_difference_count": 0,
+        "max_absolute_difference": 0.0
+      },
+      "samples": [
+        {
+          "round": 0,
+          "evidence": "samples/64x4x4_load200_agh_0.json",
+          "evidence_sha256": "689914796338cee7a769bb2d361f12ada380df0a77a278da98e38b8b61990b01",
+          "cpp_core_seconds": 0.672115285,
+          "cpp_repeat_seconds": [
+            0.672115285
+          ],
+          "process_wall_seconds": 4.463788699998986,
+          "unattributed_process_minus_core_seconds": 3.791673414998986
+        },
+        {
+          "round": 1,
+          "evidence": "samples/64x4x4_load200_agh_1.json",
+          "evidence_sha256": "86ecef25220f24ec1da5a9e3098bb9401cee6d53fc0848f664158c2349f9c340",
+          "cpp_core_seconds": 0.616130069,
+          "cpp_repeat_seconds": [
+            0.616130069
+          ],
+          "process_wall_seconds": 0.7396948999958113,
+          "unattributed_process_minus_core_seconds": 0.12356483099581128
+        },
+        {
+          "round": 2,
+          "evidence": "samples/64x4x4_load200_agh_2.json",
+          "evidence_sha256": "f6b1528585203646f3892d15b6643b057058fe3803ed241ce24e5c81e25f90ae",
+          "cpp_core_seconds": 0.568313804,
+          "cpp_repeat_seconds": [
+            0.568313804
+          ],
+          "process_wall_seconds": 0.686550400001579,
+          "unattributed_process_minus_core_seconds": 0.11823659600157899
+        }
+      ],
+      "cpp_core_min_seconds": 0.568313804,
+      "process_wall_min_seconds": 0.686550400001579,
+      "gprof": {
+        "case": "64x4x4_load200_agh",
+        "instrumented": true,
+        "sample_target_seconds": 1.2,
+        "target_reached": true,
+        "attempts": [
+          {
+            "repetitions": 3,
+            "process_wall_seconds": 2.620613900013268,
+            "report": "gprof/64x4x4_load200_agh/run-nif7vr9c/flat-and-callgraph.txt",
+            "report_sha256": "71d798f6ee26a03a695abb3a917f4df8e4df9083b6667955b9dea1b1c847c4c7",
+            "gmon": "gprof/64x4x4_load200_agh/run-nif7vr9c/gmon.out",
+            "gmon_sha256": "cf958e6a2327335f006af69a979713b9fda9c745a671d34d3b5b9a7c6ba77c6d",
+            "fresh_directory": true,
+            "sample_interval_seconds": 0.01,
+            "total_sampled_seconds": 0.88,
+            "validate_calls": 2955,
+            "validate_calls_per_algorithm": 985.0,
+            "validate_flat_self_seconds": 0.13,
+            "validate_flat_self_seconds_per_call": 4.3993231810490695e-05,
+            "validate_callgraph_self_seconds": 0.13,
+            "validate_callgraph_children_seconds": 0.56,
+            "validate_inclusive_propagated_seconds": 0.6900000000000001,
+            "validate_inclusive_propagated_seconds_per_call": 0.00023350253807106602,
+            "validate_callgraph_percent": 78.6,
+            "largest_flat_rows": [
+              {
+                "self_percent": 38.64,
+                "cumulative_seconds": 0.34,
+                "self_seconds": 0.34,
+                "calls": 52389195,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+              },
+              {
+                "self_percent": 14.77,
+                "cumulative_seconds": 0.47,
+                "self_seconds": 0.13,
+                "calls": 1526388,
+                "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 14.77,
+                "cumulative_seconds": 0.6,
+                "self_seconds": 0.13,
+                "calls": 2955,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 5.68,
+                "cumulative_seconds": 0.65,
+                "self_seconds": 0.05,
+                "calls": 4107,
+                "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 4.55,
+                "cumulative_seconds": 0.69,
+                "self_seconds": 0.04,
+                "calls": 51224490,
+                "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+              },
+              {
+                "self_percent": 3.41,
+                "cumulative_seconds": 0.72,
+                "self_seconds": 0.03,
+                "calls": 9703,
+                "symbol": "pacs::Validation::~Validation()"
+              },
+              {
+                "self_percent": 3.41,
+                "cumulative_seconds": 0.75,
+                "self_seconds": 0.03,
+                "calls": 4107,
+                "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 3.41,
+                "cumulative_seconds": 0.78,
+                "self_seconds": 0.03,
+                "calls": 4107,
+                "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+              },
+              {
+                "self_percent": 3.41,
+                "cumulative_seconds": 0.81,
+                "self_seconds": 0.03,
+                "calls": null,
+                "symbol": "_init"
+              },
+              {
+                "self_percent": 1.14,
+                "cumulative_seconds": 0.82,
+                "self_seconds": 0.01,
+                "calls": 14788524,
+                "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+              },
+              {
+                "self_percent": 1.14,
+                "cumulative_seconds": 0.83,
+                "self_seconds": 0.01,
+                "calls": 27447,
+                "symbol": "pacs::python_sum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 1.14,
+                "cumulative_seconds": 0.84,
+                "self_seconds": 0.01,
+                "calls": 15012,
+                "symbol": "pacs::(anonymous namespace)::routed_total(pacs::Problem const&, pacs::Placement const&, unsigned long)"
+              }
+            ],
+            "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+          },
+          {
+            "repetitions": 6,
+            "process_wall_seconds": 5.826484700010042,
+            "report": "gprof/64x4x4_load200_agh/run-no7knpyb/flat-and-callgraph.txt",
+            "report_sha256": "4599d89c73f8230e00fba34f03c9d188fb22f72ca7e6b3c9edf2489a7b584c16",
+            "gmon": "gprof/64x4x4_load200_agh/run-no7knpyb/gmon.out",
+            "gmon_sha256": "8e5d0d629b76d16988b02b7023bae4eb668937e5639594968b2078234f9a479b",
+            "fresh_directory": true,
+            "sample_interval_seconds": 0.01,
+            "total_sampled_seconds": 2.01,
+            "validate_calls": 5910,
+            "validate_calls_per_algorithm": 985.0,
+            "validate_flat_self_seconds": 0.15,
+            "validate_flat_self_seconds_per_call": 2.5380710659898476e-05,
+            "validate_callgraph_self_seconds": 0.15,
+            "validate_callgraph_children_seconds": 1.49,
+            "validate_inclusive_propagated_seconds": 1.64,
+            "validate_inclusive_propagated_seconds_per_call": 0.00027749576988155667,
+            "validate_callgraph_percent": 81.8,
+            "largest_flat_rows": [
+              {
+                "self_percent": 46.27,
+                "cumulative_seconds": 0.93,
+                "self_seconds": 0.93,
+                "calls": 104778390,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+              },
+              {
+                "self_percent": 14.43,
+                "cumulative_seconds": 1.22,
+                "self_seconds": 0.29,
+                "calls": 3052776,
+                "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+              },
+              {
+                "self_percent": 8.96,
+                "cumulative_seconds": 1.4,
+                "self_seconds": 0.18,
+                "calls": 8214,
+                "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 7.46,
+                "cumulative_seconds": 1.55,
+                "self_seconds": 0.15,
+                "calls": 5910,
+                "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+              },
+              {
+                "self_percent": 4.48,
+                "cumulative_seconds": 1.64,
+                "self_seconds": 0.09,
+                "calls": 102448980,
+                "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+              },
+              {
+                "self_percent": 4.48,
+                "cumulative_seconds": 1.73,
+                "self_seconds": 0.09,
+                "calls": 29577048,
+                "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+              },
+              {
+                "self_percent": 3.48,
+                "cumulative_seconds": 1.8,
+                "self_seconds": 0.07,
+                "calls": 8214,
+                "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+              },
+              {
+                "self_percent": 3.48,
+                "cumulative_seconds": 1.87,
+                "self_seconds": 0.07,
+                "calls": null,
+                "symbol": "_init"
+              },
+              {
+                "self_percent": 2.49,
+                "cumulative_seconds": 1.92,
+                "self_seconds": 0.05,
+                "calls": 19405,
+                "symbol": "pacs::Validation::~Validation()"
+              },
+              {
+                "self_percent": 1.99,
+                "cumulative_seconds": 1.96,
+                "self_seconds": 0.04,
+                "calls": 8214,
+                "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+              },
+              {
+                "self_percent": 0.5,
+                "cumulative_seconds": 1.97,
+                "self_seconds": 0.01,
+                "calls": 221184,
+                "symbol": "pacs::resource_diagnostics(pacs::Problem const&, pacs::Placement const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double) const"
+              },
+              {
+                "self_percent": 0.5,
+                "cumulative_seconds": 1.98,
+                "self_seconds": 0.01,
+                "calls": 54894,
+                "symbol": "pacs::python_sum(std::span<double const, 18446744073709551615ul>)"
+              }
+            ],
+            "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+          }
+        ],
+        "selected": {
+          "repetitions": 6,
+          "process_wall_seconds": 5.826484700010042,
+          "report": "gprof/64x4x4_load200_agh/run-no7knpyb/flat-and-callgraph.txt",
+          "report_sha256": "4599d89c73f8230e00fba34f03c9d188fb22f72ca7e6b3c9edf2489a7b584c16",
+          "gmon": "gprof/64x4x4_load200_agh/run-no7knpyb/gmon.out",
+          "gmon_sha256": "8e5d0d629b76d16988b02b7023bae4eb668937e5639594968b2078234f9a479b",
+          "fresh_directory": true,
+          "sample_interval_seconds": 0.01,
+          "total_sampled_seconds": 2.01,
+          "validate_calls": 5910,
+          "validate_calls_per_algorithm": 985.0,
+          "validate_flat_self_seconds": 0.15,
+          "validate_flat_self_seconds_per_call": 2.5380710659898476e-05,
+          "validate_callgraph_self_seconds": 0.15,
+          "validate_callgraph_children_seconds": 1.49,
+          "validate_inclusive_propagated_seconds": 1.64,
+          "validate_inclusive_propagated_seconds_per_call": 0.00027749576988155667,
+          "validate_callgraph_percent": 81.8,
+          "largest_flat_rows": [
+            {
+              "self_percent": 46.27,
+              "cumulative_seconds": 0.93,
+              "self_seconds": 0.93,
+              "calls": 104778390,
+              "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double, double, double, double, double) const"
+            },
+            {
+              "self_percent": 14.43,
+              "cumulative_seconds": 1.22,
+              "self_seconds": 0.29,
+              "calls": 3052776,
+              "symbol": "pacs::python_fsum(std::span<double const, 18446744073709551615ul>)"
+            },
+            {
+              "self_percent": 8.96,
+              "cumulative_seconds": 1.4,
+              "self_seconds": 0.18,
+              "calls": 8214,
+              "symbol": "pacs::(anonymous namespace)::quantities(pacs::Problem const&, pacs::Placement const&)"
+            },
+            {
+              "self_percent": 7.46,
+              "cumulative_seconds": 1.55,
+              "self_seconds": 0.15,
+              "calls": 5910,
+              "symbol": "pacs::validate(pacs::Problem const&, pacs::Placement const&, pacs::Tolerances const&)"
+            },
+            {
+              "self_percent": 4.48,
+              "cumulative_seconds": 1.64,
+              "self_seconds": 0.09,
+              "calls": 102448980,
+              "symbol": "std::vector<double, std::allocator<double> >::resize(unsigned long)"
+            },
+            {
+              "self_percent": 4.48,
+              "cumulative_seconds": 1.73,
+              "self_seconds": 0.09,
+              "calls": 29577048,
+              "symbol": "pacs::configuration_delay(pacs::Problem const&, unsigned long, unsigned long, unsigned long, unsigned long)"
+            },
+            {
+              "self_percent": 3.48,
+              "cumulative_seconds": 1.8,
+              "self_seconds": 0.07,
+              "calls": 8214,
+              "symbol": "pacs::(anonymous namespace)::processing_delays(pacs::Problem const&, pacs::Placement const&)"
+            },
+            {
+              "self_percent": 3.48,
+              "cumulative_seconds": 1.87,
+              "self_seconds": 0.07,
+              "calls": null,
+              "symbol": "_init"
+            },
+            {
+              "self_percent": 2.49,
+              "cumulative_seconds": 1.92,
+              "self_seconds": 0.05,
+              "calls": 19405,
+              "symbol": "pacs::Validation::~Validation()"
+            },
+            {
+              "self_percent": 1.99,
+              "cumulative_seconds": 1.96,
+              "self_seconds": 0.04,
+              "calls": 8214,
+              "symbol": "pacs::(anonymous namespace)::objective_from_delays(pacs::Problem const&, pacs::Placement const&, std::vector<double, std::allocator<double> > const&)"
+            },
+            {
+              "self_percent": 0.5,
+              "cumulative_seconds": 1.97,
+              "self_seconds": 0.01,
+              "calls": 221184,
+              "symbol": "pacs::resource_diagnostics(pacs::Problem const&, pacs::Placement const&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double)#1}::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long, double) const"
+            },
+            {
+              "self_percent": 0.5,
+              "cumulative_seconds": 1.98,
+              "self_seconds": 0.01,
+              "calls": 54894,
+              "symbol": "pacs::python_sum(std::span<double const, 18446744073709551615ul>)"
+            }
+          ],
+          "grain_estimate_authority": "sampled flat self and gprof propagated call-graph child time; not direct per-call stopwatch"
+        }
+      }
+    }
+  ],
+  "fingerprints_after": {
+    "compiled_source_directory": "results\\cpp_large_instances_2026-10-12\\baseline\\cpp",
+    "compiled_source_sha256": {
+      "include/pacs/agh.hpp": "47155bfa0d6230df01a61f13efbaa4fb904894a7406ca477558597fd5eb1727b",
+      "include/pacs/core.hpp": "12655d2a8de371a32718e99b9522ba910c2644227a0850cefe962a11ebb54f42",
+      "include/pacs/gh.hpp": "a4f3ef55c8304ea50b2da61878bf7e3438779157c3a99e01a494b8dd90be30b1",
+      "include/pacs/io.hpp": "e0d2a9e00e66578b412858eadb6d7810d091bf90b9abeb4a970965f30e33140b",
+      "Makefile": "777162265416cb81669852dafe03037aad127b61bec16e553129b254a7f0fd85",
+      "src/agh.cpp": "0f36787a11f9178d998931b96dcb4ee3a5f6207e7d9960db2652b687bed1d6b9",
+      "src/core.cpp": "d49d16ebbf0d725c64d876c36369bc1db77591d943ffd516c85f8b0b4edab036",
+      "src/gh.cpp": "1dd1529262c996584282770f94a810303bb23bd9af9ac9404c87207c04738e2e",
+      "src/io.cpp": "332a72af7a14eab427c9447aa005ac928f61e7406a0066e35a1a1a2d2d0b997c",
+      "src/main.cpp": "32908ca14acc68653e026aebe0a154adfdf622be2f38bedac27599576ae1b2ee"
+    },
+    "python_source_sha256": {
+      "src/llm_resource_allocation/__init__.py": "64f2cbc50ed57b5ff70657006f1c77ced84748747ac2b3664bfc6cafadcda312",
+      "src/llm_resource_allocation/algorithms/__init__.py": "c38ffe3c42ec76b2696955bf166eb4d44e7282c8a6b0428190a1032e8f6615d2",
+      "src/llm_resource_allocation/algorithms/_agh_placement_ops.py": "d2e89c1b323f61be1f5d28ac0d677689e6551e52a4fa1b2c1aceac692083b682",
+      "src/llm_resource_allocation/algorithms/_mechanism_support.py": "d74faccb98c819e145c9b41444fa794be3e13e4fb305a76f70ff07e34cb05cf8",
+      "src/llm_resource_allocation/algorithms/agh.py": "24aaca18e2b9605efb8c041fbd9784ccb8a1f9630d90a789eec0a02c2540fa1e",
+      "src/llm_resource_allocation/algorithms/agh_consolidation.py": "e3d2840fd18314fd6e4e8563e14ae50a5dee52125a29ebb893f1b796f700e4a9",
+      "src/llm_resource_allocation/algorithms/agh_multistart.py": "9d8845bbdf44c761b0284a66210718fcc257a4bfc28ac962e6caaefeaad04ec3",
+      "src/llm_resource_allocation/algorithms/agh_ordering.py": "7c6ea73c46d407edd1f784ea527d6ed348fc86034e736f7ed1ce4f1171bdc7bd",
+      "src/llm_resource_allocation/algorithms/agh_relocate.py": "9d5a19f9d24580dfca1c63aa6bc2238e17733a007098dc91c92a278a36a19e3e",
+      "src/llm_resource_allocation/algorithms/agh_relocate_pass.py": "3f669b5314553e4e05714710046f2843f8d58aa2df61b38ef0b8ddc6a621be66",
+      "src/llm_resource_allocation/algorithms/agh_start.py": "7a9ae904b98549e8f5aa5f2d956be455a24ce5613a820d795bfc026bc5ba392f",
+      "src/llm_resource_allocation/algorithms/gh.py": "5a73a249ad8f6cc65d99dde95476ecaab4592a30450eda31f11b9ddb7b8a7e33",
+      "src/llm_resource_allocation/algorithms/gh_phase1.py": "51b8f31132505333380b07e3c6a88a7068a64688fc75d5b98d998d8e71120803",
+      "src/llm_resource_allocation/algorithms/gh_phase2.py": "eae0e849ed89489aa2e837b08f70eb5c2c0c350d59e25d5350d9657486569c95",
+      "src/llm_resource_allocation/algorithms/gh_phase2_commit.py": "41c6e7dcc8849ecd8043be9c978d82323c31a578e7168f61d25f20aa71eb3345",
+      "src/llm_resource_allocation/algorithms/gh_phase2_query.py": "e46b9c3fe0a31d3be05d8396b468f847b5a4ef04a6778775df4c447c96916005",
+      "src/llm_resource_allocation/algorithms/gh_phase2_run.py": "fc9f3b4d1bd2a19180d744b403fa639b7d7717f40873425f6962e47d50ced1e9",
+      "src/llm_resource_allocation/algorithms/m1.py": "21adee8d942ef8f55832c24e83ec248aba48e871db72aa6772790c3746718417",
+      "src/llm_resource_allocation/algorithms/m2.py": "9a2f17dca1df64acfbac4a52dcd1b168cfabbf9f99f2f201b8c6bead11aafeff",
+      "src/llm_resource_allocation/algorithms/m3.py": "e8e9701808ba33b1f35c430a78db0537d7a3d714d6730e9a7f2dbfdd88ed81ea",
+      "src/llm_resource_allocation/algorithms/phase1.py": "fd22b7e158f173d14dd95374bead46e52ccd39f2058c8b121dd4b457ac907bc9",
+      "src/llm_resource_allocation/data/__init__.py": "5d91dc15cda435303ed6ef6b4902d66a46434adc788ca03a00e6c722066378a8",
+      "src/llm_resource_allocation/data/azure_trace.py": "3a8c9c253fb71dc89b598a3d63e0b7aa6b67f5b8b828977b00f4bdaed92ed343",
+      "src/llm_resource_allocation/data/scaling_experiment_instances.py": "fd72f7422743f3fe6c1166ff4aa492474b2e88ba600bea923570926e12b49467",
+      "src/llm_resource_allocation/data/stage2_tiny_cases.py": "faec34b5f17439eb70dc3e98605f1eb0cf27fa933ada1443be7c0615fc6f9c32",
+      "src/llm_resource_allocation/data/synthetic_benchmark_instances.py": "a8e37e70065ea9465c5df05e61cedaa39f962356eae10a1bd866be29573a6671",
+      "src/llm_resource_allocation/data/tiny_instances.py": "dc78688bc71eefd45475d84fdbd99b77ee3844a8479d3ebef472499d1f4e184c",
+      "src/llm_resource_allocation/domain/__init__.py": "27fa6becb7600a7473b924365eab6ef97b735e6a2dcc347a0aeddd219270c94e",
+      "src/llm_resource_allocation/domain/types.py": "dad32dbd56cc61546db67cee6e3e60407c381e515e34a3e59fefcd7eb8d549ec",
+      "src/llm_resource_allocation/domain/units.py": "8d438401aaed56d6de31e7775d58afd76617c4a153bad17fbaeed56e39eca3e8",
+      "src/llm_resource_allocation/domain/validation.py": "8222721e9289d3fa94ecbad34c2252f38afe2a5f530dc952e54fefbde434ab57",
+      "src/llm_resource_allocation/experiments/__init__.py": "059cf3e062e911cd669aae5699dfebdd88325d2eacefe8a79a1700dbe3049778",
+      "src/llm_resource_allocation/experiments/_record_serialization.py": "06ea0be580689243d7d6fe96b519a63845a5f7654b4141026373da7b673f8622",
+      "src/llm_resource_allocation/experiments/azure_replay.py": "9a69c26dcf0d287dfca609b5ba71ea965bc9fbce677d10a68466516e72c813b6",
+      "src/llm_resource_allocation/experiments/bounded_experiment.py": "93e6ab361e6006752c2057e3c70447e8b6823337a4a30f730f6791a54cb5664e",
+      "src/llm_resource_allocation/experiments/scenario_evaluation.py": "06339ab0e149df871b8842799e6ee81f6bb208942cddb6bf287d58a8a6d1e63f",
+      "src/llm_resource_allocation/experiments/scenario_generation.py": "28f234b3f9308a011d15a84e4eb54c1428a8ab20dabac95ad9ce8e0126e16b78",
+      "src/llm_resource_allocation/experiments/scenario_protocol.py": "2c7ca6d87414904c1a347c65d2a2f422cf92944e46611e1f316c4f590e0cd040",
+      "src/llm_resource_allocation/experiments/synthetic_benchmark.py": "53e7a76ce8c7f904c2caa9ea685c79810d971ad64b62bbc98a65df58d9fcea40",
+      "src/llm_resource_allocation/experiments/version_comparison.py": "2ff56c8cbfbdf52ee93faa195c83b971ada35a2004b1b04e8e8975e644a772c8",
+      "src/llm_resource_allocation/math/__init__.py": "77a4d1895640ccad5ec726f3f1120dcd5e29a95431d078dc8d8aaec4395e0e55",
+      "src/llm_resource_allocation/math/budget.py": "ae4fceb68e78a86ff2ad9d40df147fdc40640c9822635dd892ec8c75ccd6d249",
+      "src/llm_resource_allocation/math/compute_capacity.py": "21233f8f536d2e67a3d5541de12350449e0f9457e9c15b57fe15f675b493b8f9",
+      "src/llm_resource_allocation/math/error.py": "0c8e22caa34b3308347a7791e1d574c5ff044a1d270cdcfa5191022e37e85e63",
+      "src/llm_resource_allocation/math/error_slo.py": "46e7ed6dc83b44568b0e1850afd198aacbdee8be565caf97b8dc8cc5d3f4e40a",
+      "src/llm_resource_allocation/math/gpu_memory.py": "4f9f1e76a3d15d0cbb64750378d44289322c20ad7ce67a83e288bb563106d6fc",
+      "src/llm_resource_allocation/math/latency.py": "e9311bee9a1955f27a0c6c6388e80a891ba775ec7498f093609ce0a5012dc55a",
+      "src/llm_resource_allocation/math/mccormick.py": "a294729edaabce3edf4bc0363a4b57d7b14a7932fdde872f251fcf5b3368469b",
+      "src/llm_resource_allocation/math/objective.py": "a5a02aca4ccc9841c52dbe111ff94d299549ad4554bbc0f53a25aa71a08ff48f",
+      "src/llm_resource_allocation/math/parallelism.py": "e2c351050ecb0d917cbdcea2be9b2a325964b67c3a417ccdf29a7cc97f92f4ce",
+      "src/llm_resource_allocation/math/placement.py": "afe4c44c546cdc0e6c1510e5c04357547a246f33de0eced75a4aae2e8cd18166",
+      "src/llm_resource_allocation/math/processing_delay.py": "0b6e21535ace02aaacc4fb381f91e3a3c4ce99cdab76c9e1e01867ce22cde8b2",
+      "src/llm_resource_allocation/math/routing.py": "9289984dba4d6c44118ee49ff430f9236497070128646d97de978675302afe74",
+      "src/llm_resource_allocation/math/storage_capacity.py": "e999ce3e40fd2706a71e3c117aa884c66408b2e46c351d61f4a44f85ab7c2cd1",
+      "src/llm_resource_allocation/optimization/__init__.py": "fb26ab03b5f95a91a44f8d2dc22908fad57fa2db2816ad59db3a1d6a5fec7ec5",
+      "src/llm_resource_allocation/optimization/extraction.py": "25e7494003ae4a1beaf658b74fd4144cb2a89aee43c2c405fdb7e41316806254",
+      "src/llm_resource_allocation/optimization/pdm_run.py": "f5edb403549871bbc9abd8156815f23cd4ea5f6f53a268c18a0118411734953f",
+      "src/llm_resource_allocation/optimization/problem_data.py": "88c7e5beb9e2db97ddf7f062cf07136d412f73e505c5ea93f1be60a849c7b32e",
+      "src/llm_resource_allocation/optimization/pyomo_pdm.py": "78601606a1ac5b53758d99a67007df9cde0664a2282fbf62a1d4a84fdd27483f",
+      "src/llm_resource_allocation/optimization/pyomo_stage2.py": "15774a1af0fd45bd4ef2acf5a557d9be5dd0ec8d25e38569b9a31b3464006c8f",
+      "src/llm_resource_allocation/optimization/solver.py": "c0f2362e67fa0266ca0d45d0842c21fa3cf3de259da47312d29d5c22b9f2d401",
+      "src/llm_resource_allocation/optimization/stage2_adapter.py": "5a979152d42c6d857c2507fd3fcf3f27d5d8a522ad0b95c538938438416fad33",
+      "src/llm_resource_allocation/optimization/stage2_extraction.py": "d777f25b9b6da65feb526ad4ed9f5a08e250bf1b442613a4848c16cbc15b76e3",
+      "src/llm_resource_allocation/optimization/stage2_integration.py": "a91030fc2a390c6fefc215a71af7c3a1b038ec3ba4524bf4de3f3e117953a448",
+      "src/llm_resource_allocation/optimization/stage2_problem_data.py": "d1998196307cdaf504290ec9cb217d413ff7cf049e55d87fe398d7efdf4bcc29",
+      "src/llm_resource_allocation/optimization/stage2_run.py": "953a4a3cee8e20e823a3e54284ec105d88b1e5bfee86fbc383666b29eeec1d40",
+      "src/llm_resource_allocation/validation/__init__.py": "0d484a856d98e1f65c739ac13bdd75996ce31c0b80ffcef6c03ff3663c4eac30",
+      "src/llm_resource_allocation/validation/objective_comparison.py": "8b803511a40fea4327cf36b578a8b1a09f53a33c6061abd6b6895fe1b1860e7a",
+      "src/llm_resource_allocation/validation/placement.py": "74926f75529eb4eeef9e51a19fe3fa6d04054754a51028b1d39a2331b89e64ab",
+      "src/llm_resource_allocation/validation/stage2.py": "e181e6bba14ab1514bd053dd373955252be893554d211579e8a7458ace524b6c",
+      "src/llm_resource_allocation/validation/tolerances.py": "9babdadb006920954d729a1b96bfd62677b880408cbba83661419ced655792b2",
+      "src/llm_resource_allocation/verification/__init__.py": "b786f218f203a2db1e11a555f894613c2c1c4be396ea590c6fe27a7a385e758b",
+      "src/llm_resource_allocation/verification/tiny_enumeration.py": "3e0422f98df4057f26dea1a17f5cde08e5e6470ac60362ed24e672eba9dc31c1",
+      "scripts/check_cpp_parity.py": "194836b4986d5f7ceaa946b2dcc702065513d8c32433624f8d7e401f7a70d7d4",
+      "scripts/check_openmp_campaign.py": "802a1ed7f9e2a4660f1a65336c2cf08a50421d8ae959e78b583ae817e427c7f9"
+    },
+    "runner_sha256": "2a24293dd556953f1b81f0098d2a853821b5b6b608b98afe26816544f4a86621",
+    "binary_sha256": "f509af268887af1dec4e882382332c8ab38d30eee3ae3af866a06e4dad785f37",
+    "input_sha256": {
+      "16x4x4_load200_gh.txt": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "16x4x4_load200_agh.txt": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "32x4x4_load200_gh.txt": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "32x4x4_load200_agh.txt": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "64x4x4_load200_gh.txt": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "64x4x4_load200_agh.txt": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf"
+    },
+    "profile_binary_sha256": "fe3c53733047807e984e257cf4c19ccf8cd24024a3fd18b481d7a4bb28a52258"
+  },
+  "fingerprints_verified_unchanged": true,
+  "_publication": {
+    "original_origin": "results/cpp_large_instances_2026-10-12/baseline_profile/profile.json",
+    "original_sha256": "e911b3166471c26882bbee5eca8f15f4cc65452456b3dcebf3172ad17ef175b5",
+    "transformation": "Host paths made relative or redacted; linked-library addresses omitted.",
+    "measurement_is_historical": true,
+    "recorded_source_hashes_identify_the_measured_code": true
+  }
+}

@@ -1,0 +1,18 @@
+PACS_CAMPAIGN 1
+16
+agh "mixed_000_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/000_agh.txt"
+agh "mixed_001_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/001_agh.txt"
+agh "mixed_002_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/002_agh.txt"
+agh "mixed_003_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/003_agh.txt"
+agh "mixed_004_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/004_agh.txt"
+agh "mixed_005_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/005_agh.txt"
+agh "mixed_006_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/006_agh.txt"
+agh "mixed_007_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/007_agh.txt"
+agh "mixed_008_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/008_agh.txt"
+agh "mixed_009_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/009_agh.txt"
+agh "mixed_010_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/010_agh.txt"
+agh "mixed_011_agh" "benchmarks/portfolio/raw/openmp/inputs/mixed/011_agh.txt"
+gh "mixed_012_gh" "benchmarks/portfolio/raw/openmp/inputs/mixed/012_gh.txt"
+gh "mixed_013_gh" "benchmarks/portfolio/raw/openmp/inputs/mixed/013_gh.txt"
+gh "mixed_014_gh" "benchmarks/portfolio/raw/openmp/inputs/mixed/014_gh.txt"
+gh "mixed_015_gh" "benchmarks/portfolio/raw/openmp/inputs/mixed/015_gh.txt"

@@ -1,0 +1,55 @@
+{
+  "classification": "synthetic cross-language verification",
+  "case": "frozen_batch_d0039_agh",
+  "method": "agh",
+  "unit_convention": "literal_paper",
+  "paper_version": "v2",
+  "seed": 37,
+  "reference": {
+    "placement": null,
+    "objective": null,
+    "feasible": false,
+    "status": "no_feasible_incumbent",
+    "executed_count": 5,
+    "termination": "five_consecutive_nonimproving",
+    "incumbent_index": -1,
+    "orders": [
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ]
+    ],
+    "counters": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "costs": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "comparisons": [
+      "non_improving",
+      "non_improving",
+      "non_improving",
+      "non_improving",
+      "non_improving"
+    ]
+  }
+}

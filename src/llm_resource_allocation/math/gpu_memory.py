@@ -1,26 +1,28 @@
-"""Literal GPU-memory diagnostics for Paper v2 Eq. (8f).
+"""Per-GPU model and KV-memory diagnostics under the instance unit convention.
 
 Compare model-shard and KV terms with ``C_gpu[k]*q[j,k]``. D-0002 expands
-the printed product using supplied auxiliaries v for x*w. The KV term's
-physical units remain unresolved; its numerical value is preserved.
+the printed product using supplied auxiliaries v for x*w. Coherent units add
+arrival rate times request residency to account for mean KV-cache occupancy;
+literal units retain the historical printed term.
 """
 
 from dataclasses import dataclass
 from math import fsum, isfinite
 
-from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain import ProblemInstance, UnitConvention
 
 from .placement import PlacementDecisionState, validate_placement_decision_domains
 
 
 @dataclass(frozen=True, slots=True)
 class GpuMemoryDiagnostic:
-    """Record the printed memory comparison for one pair (v2 Eq. 8f).
+    """Record the memory comparison for one model/tier pair.
 
     ``model_memory_usage_gb`` is the model shard; ``kv_memory_printed_term`` is
     the linearized KV term. ``available_memory_rhs_gb = C_gpu[k]*q[j,k]``.
     ``slack = available_memory_rhs_gb - printed_memory_lhs``; the KV term's
-    units remain unresolved.
+    ``unit_convention`` identifies whether the KV term is coherent GB or the
+    historical printed value. The old ``printed_*`` names remain compatible.
     """
 
     model_id: str
@@ -28,14 +30,25 @@ class GpuMemoryDiagnostic:
     model_memory_usage_gb: float
     kv_memory_printed_term: float
     available_memory_rhs_gb: float
+    unit_convention: UnitConvention = UnitConvention.LITERAL_PAPER
+
+    @property
+    def kv_memory_usage_gb(self) -> float:
+        """Return coherent KV occupancy in GB; reject literal mixed units."""
+
+        if self.unit_convention is UnitConvention.LITERAL_PAPER:
+            raise ValueError("literal KV memory is not a physical GB quantity")
+        return self.kv_memory_printed_term
+
+    @property
+    def memory_usage_gb(self) -> float:
+        """Return model plus KV occupancy under the recorded convention."""
+
+        return self.model_memory_usage_gb + self.kv_memory_usage_gb
 
     @property
     def printed_memory_lhs(self) -> float:
-        """Return ``model_memory_usage_gb + kv_memory_printed_term`` (v2 Eq. 8f LHS).
-
-        Unit caveat: the model shard is in GB, but the KV term retains an
-        unresolved time factor. Sum the printed terms without unit correction.
-        """
+        """Return the selected memory LHS; historical attribute retained."""
 
         return self.model_memory_usage_gb + self.kv_memory_printed_term
 
@@ -54,7 +67,7 @@ class GpuMemoryDiagnostic:
     def is_feasible(self, tolerance: float = 0.0) -> bool:
         """Return whether ``slack >= -tolerance`` for the printed Eq. (8f).
 
-        The tolerance uses the numerical scale of the unresolved memory comparison.
+        The tolerance uses GB in coherent mode, or the legacy comparison scale.
         """
 
         if (
@@ -85,16 +98,16 @@ def compute_kv_memory_printed_term_by_pair(
     instance: ProblemInstance,
     state: PlacementDecisionState,
 ) -> dict[tuple[str, str], float]:
-    """Return the linearized KV term per pair (v2 Eq. 8f, D-0002).
+    """Return the linearized KV term per pair under the selected convention.
 
     ``sum_(i,n,m) beta_j/(n*m)*r_i*T_res[i,j,k]*v[i,j,k,n,m]`` uses
     ``model.kv_cache_gb_per_token`` (beta), ``query.total_tokens`` (r),
     ``instance.kv_cache_residency_seconds`` (T_res), and ``auxiliary_products`` (v).
     Supplied v values are used directly.
-    Unit caveat: beta is GB/token, r counts tokens, and T_res is stored in
-    seconds; n, m, and v are dimensionless. The product retains GB*seconds,
-    not GB, so its comparison with GPU capacity is dimensionally unresolved.
-    No arrival-rate factor or implicit time/unit correction is introduced.
+    Coherent units multiply this term by ``lambda_i/seconds_per_hour`` so
+    request arrivals times residency produce mean concurrent KV requests.
+    Literal units preserve the historical GB*seconds term. Supplied auxiliaries
+    remain independent evidence and are never repaired from x*w.
     """
 
     validate_placement_decision_domains(instance, state)
@@ -157,6 +170,11 @@ def _compute_kv_memory_printed_term_by_pair(
             * instance.kv_cache_residency_seconds[
                 (query.id, model_id, tier.id)
             ]
+            * (
+                query.arrival_rate_per_hour / instance.seconds_per_hour
+                if instance.uses_coherent_units
+                else 1.0
+            )
             * state.auxiliary_products.get(
                 (
                     query.id,
@@ -199,6 +217,7 @@ def _compute_gpu_memory_residuals(
                     model_memory_usage_gb=model_usage[pair],
                     kv_memory_printed_term=kv_usage[pair],
                     available_memory_rhs_gb=available_rhs,
+                    unit_convention=instance.unit_convention,
                 )
             )
     return tuple(residuals)

@@ -1,0 +1,96 @@
+{
+  "classification": "synthetic independent-case verification; not paper numerical replication",
+  "python": "3.14.3",
+  "comparison": "complete serial JSON evidence, bitwise numbers",
+  "python_independently_checked_cases": 10,
+  "omp_environment": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PROC_BIND": "close",
+    "OMP_PLACES": "cores"
+  },
+  "manifest_sha256": "4402be6ba8a282913b366b81b8e346e67d92fa3f5fd8ff1ed82687674b5820b8",
+  "total_case_comparisons": 90,
+  "runs": [
+    {
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.49079060000076424,
+      "evidence": "serial_1.json"
+    },
+    {
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.2828958000027342,
+      "evidence": "static_1.json"
+    },
+    {
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.28269219999492634,
+      "evidence": "static_2.json"
+    },
+    {
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.2141284999961499,
+      "evidence": "static_4.json"
+    },
+    {
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.22481539999716915,
+      "evidence": "static_8.json"
+    },
+    {
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.22936729999491945,
+      "evidence": "dynamic_1.json"
+    },
+    {
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.21136159999878146,
+      "evidence": "dynamic_2.json"
+    },
+    {
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.20958939999400172,
+      "evidence": "dynamic_4.json"
+    },
+    {
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "passed": true,
+      "case_count": 10,
+      "process_wall_seconds": 0.20870869999635033,
+      "evidence": "dynamic_8.json"
+    }
+  ]
+}

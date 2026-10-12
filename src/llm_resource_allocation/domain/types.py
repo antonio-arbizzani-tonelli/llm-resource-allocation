@@ -8,6 +8,8 @@ from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Mapping
 
+from .units import SECONDS_PER_HOUR, UnitConvention
+
 
 PairKey = tuple[str, str]
 TripleKey = tuple[str, str, str]
@@ -44,9 +46,8 @@ class QueryType:
 class FoundationModel:
     """Describe model-weight and per-token KV-cache footprints.
 
-    Both footprints use canonical GB-based units. This representation makes
-    future conversions explicit but does not resolve the dimensional ambiguity
-    in Paper v2, Eq. (8f).
+    Both footprints use canonical GB-based units. The instance unit convention
+    selects the treatment of KV-cache occupancy.
     """
 
     id: str
@@ -115,15 +116,16 @@ class GpuTier:
 
 @dataclass(frozen=True, slots=True)
 class ProblemInstance:
-    """Store all paper-v2 coefficients needed by later mathematical milestones.
+    """Store scientific inputs and the explicit physical-unit convention.
 
     Coefficient mappings use stable string-ID tuples rather than positional
     arrays. The representation makes missing `(i,j)` and `(i,j,k)` entries
-    detectable, remains independent of NumPy/Pandas, and maps directly to
-    associative containers in a future C++ port.
+    detectable and remains independent of NumPy/Pandas.
 
-    The class stores `T_res` rather than deriving it because Paper v2,
-    Section 5.1 and Eq. (8f), leave its dimensional interpretation unresolved.
+    ``kv_cache_residency_seconds`` stores each request's KV lifetime in coherent
+    mode; ``data_residency_hours`` is the steady-state data lifetime. These are
+    supplied inputs, rather than values reconstructed inside the algorithms.
+    ``LITERAL_PAPER`` retains the historical printed formulas and time factors.
     """
 
     id: str
@@ -140,7 +142,9 @@ class ProblemInstance:
     storage_capacity_gb: float
     horizon_hours: float
     compute_utilization: float
-    seconds_per_hour: float = 3600.0
+    seconds_per_hour: float = SECONDS_PER_HOUR
+    unit_convention: UnitConvention = UnitConvention.COHERENT
+    data_residency_hours: float = 1.0
 
     def __post_init__(self) -> None:
         """Copy mutable inputs into stable tuples and read-only mappings."""
@@ -162,6 +166,22 @@ class ProblemInstance:
                 field_name,
                 MappingProxyType(dict(getattr(self, field_name))),
             )
+
+    @property
+    def uses_coherent_units(self) -> bool:
+        """Return whether capacity and costs use the coherent unit policy."""
+
+        return self.unit_convention is UnitConvention.COHERENT
+
+    @property
+    def data_storage_duration_hours(self) -> float:
+        """Return data residency, or the historical numeric factor of one.
+
+        The literal factor preserves the printed storage rate arithmetic; it
+        does not assert that the historical equations specified one-hour storage.
+        """
+
+        return self.data_residency_hours if self.uses_coherent_units else 1.0
 
     @property
     def dimensions(self) -> tuple[int, int, int]:
@@ -186,4 +206,3 @@ class ProblemInstance:
         """Return GPU-tier identifiers in deterministic instance order."""
 
         return tuple(tier.id for tier in self.gpu_tiers)
-

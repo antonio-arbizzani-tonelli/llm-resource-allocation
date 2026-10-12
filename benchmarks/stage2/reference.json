@@ -1,0 +1,63 @@
+{
+  "evidence_kind": "hand_checkable_synthetic_example",
+  "paper_replication": false,
+  "scenario_policy": "explicit nominal and doubled demand; no random sampler",
+  "python_version": "3.14.3",
+  "solver_backend": "highs",
+  "unit_convention": "coherent",
+  "horizon_hours": 3.0,
+  "data_residency_hours": 2.0,
+  "stage1_method": "GH",
+  "stage1_routing_fraction": 1.0,
+  "stage1_unmet_fraction": 0.0,
+  "deployment_unchanged": true,
+  "scenarios": [
+    {
+      "scenario_id": "nominal",
+      "realized_arrivals_per_hour": 6.0,
+      "routing_fraction": 1.0,
+      "unmet_fraction": -0.0,
+      "processing_delay_seconds": 0.1,
+      "gpu_count": 1,
+      "independently_feasible": true,
+      "solver_objective_agrees": true,
+      "solver_status": "optimal",
+      "solver_version": "1.14.0",
+      "costs_usd": {
+        "fixed_gpu_and_model_storage": 6.0,
+        "realized_data_storage": 1.8000000000000003,
+        "delay": 36.0,
+        "unmet": 0.0,
+        "operational_objective": 36.0,
+        "total_reporting_cost": 43.8
+      }
+    },
+    {
+      "scenario_id": "demand_doubled",
+      "realized_arrivals_per_hour": 12.0,
+      "routing_fraction": 0.5,
+      "unmet_fraction": 0.5,
+      "processing_delay_seconds": 0.05,
+      "gpu_count": 1,
+      "independently_feasible": true,
+      "solver_objective_agrees": true,
+      "solver_status": "optimal",
+      "solver_version": "1.14.0",
+      "costs_usd": {
+        "fixed_gpu_and_model_storage": 6.0,
+        "realized_data_storage": 1.8000000000000003,
+        "delay": 36.0,
+        "unmet": 150.0,
+        "operational_objective": 186.0,
+        "total_reporting_cost": 193.8
+      }
+    }
+  ],
+  "source_sha256": {
+    "examples/stage2_quickstart.py": "ffc2de396021bf81ef1d41ca6f385b4ee8e87c2e0d4e1990d607272115af6946",
+    "src/llm_resource_allocation/math/objective.py": "9058e848a0829a308402ce8ba08bf273ab4af56da03f757aa1b9041be6ad7b16",
+    "src/llm_resource_allocation/optimization/pyomo_stage2.py": "e3b8f295c73278550e5537d5ae4e336eeb94cb3a787dfbffda544f4fe5e1e8c7",
+    "src/llm_resource_allocation/optimization/stage2_problem_data.py": "07c6a3a3e3b548214a707d6b9e7d55b4fba5ce0ed13627048ef88279f5cad7b7",
+    "src/llm_resource_allocation/validation/stage2.py": "9e65e9e6e2ca51372c5e2a3948ab6e640170a130f33aa46a6494d9f35e29e751"
+  }
+}

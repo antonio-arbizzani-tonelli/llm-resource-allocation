@@ -5,6 +5,7 @@ from math import isfinite
 import re
 
 from .types import PairKey, ProblemInstance, TripleKey
+from .units import SECONDS_PER_HOUR, UnitConvention
 
 
 _IDENTIFIER_PATTERN = re.compile(r"^[A-Za-z][A-Za-z0-9_.-]*$")
@@ -240,6 +241,7 @@ def validate_problem_instance(instance: ProblemInstance) -> None:
         ("horizon_hours", instance.horizon_hours, 0.0, False, None),
         ("compute_utilization", instance.compute_utilization, 0.0, False, 1.0),
         ("seconds_per_hour", instance.seconds_per_hour, 0.0, False, None),
+        ("data_residency_hours", instance.data_residency_hours, 0.0, True, None),
     ):
         _validate_number(
             value,
@@ -248,6 +250,13 @@ def validate_problem_instance(instance: ProblemInstance) -> None:
             minimum=minimum,
             maximum=maximum,
             minimum_inclusive=inclusive,
+        )
+
+    if not isinstance(instance.unit_convention, UnitConvention):
+        errors.append("instance.unit_convention must be a UnitConvention")
+    if instance.uses_coherent_units and instance.seconds_per_hour != SECONDS_PER_HOUR:
+        errors.append(
+            f"coherent units require instance.seconds_per_hour = {SECONDS_PER_HOUR}"
         )
 
     pair_keys: set[PairKey] = {
@@ -282,4 +291,3 @@ def validate_problem_instance(instance: ProblemInstance) -> None:
     if errors:
         message = "Invalid problem instance:\n- " + "\n- ".join(errors)
         raise InstanceValidationError(message)
-

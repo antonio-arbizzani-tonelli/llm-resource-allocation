@@ -22,6 +22,7 @@ from pyomo.environ import (
 )
 
 from llm_resource_allocation.domain import FoundationModel, GpuTier, QueryType
+from llm_resource_allocation.domain.units import GFLOPS_PER_TFLOP, MILLISECONDS_PER_SECOND
 from llm_resource_allocation.math.objective import PaperVersion
 
 from .problem_data import (
@@ -212,8 +213,8 @@ def _add_objective(
             for query_id, model_id, tier_id in lattices.route_keys
         )
     )
-    model.cost_data_storage = Expression(
-        expr=instance.horizon_hours
+    data_storage_cost = (
+        instance.horizon_hours
         * instance.storage_price_usd_per_gb_hour
         * sum(
             query_by_id[query_id].storage_gb_per_token
@@ -223,10 +224,28 @@ def _add_objective(
             for query_id, model_id, tier_id in lattices.route_keys
         )
     )
+    if instance.uses_coherent_units:
+        data_storage_cost *= instance.data_storage_duration_hours
+    model.cost_data_storage = Expression(expr=data_storage_cost)
+
+    def delay_penalty_term(query_id: str):
+        query = query_by_id[query_id]
+        term = (
+            query.delay_penalty_usd_per_millisecond_query
+            * model.processing_delay[query_id]
+        )
+        if instance.uses_coherent_units:
+            term = (
+                term
+                * MILLISECONDS_PER_SECOND
+                * query.arrival_rate_per_hour
+                * instance.horizon_hours
+            )
+        return term
+
     model.delay_penalty = Expression(
         expr=sum(
-            query_by_id[query_id].delay_penalty_usd_per_millisecond_query
-            * model.processing_delay[query_id]
+            delay_penalty_term(query_id)
             for query_id in indices.query_ids
         )
     )
@@ -240,7 +259,7 @@ def _add_objective(
             for query_id in indices.query_ids
         )
     )
-    # Preserve C3's horizon/rate ambiguity and C4's seconds/milliseconds mismatch.
+    # Literal mode preserves printed unit tensions; coherent mode charges USD.
     model.total_objective = Expression(
         expr=model.cost_gpu
         + model.cost_model_storage
@@ -250,7 +269,7 @@ def _add_objective(
     )
     model.objective = Objective(expr=model.total_objective, sense=minimize)
 
-    # v2 Eq. (8c): budget uses C1+C2+C3, including C3's printed units.
+    # v2 Eq. (8c): budget uses C1+C2+C3 under the selected unit convention.
     model.budget_use = Expression(
         expr=model.cost_gpu + model.cost_model_storage + model.cost_data_storage
     )
@@ -277,7 +296,7 @@ def _add_compute_expressions(
             * query_by_id[query_id].total_tokens
             * query_by_id[query_id].arrival_rate_per_hour
             * _model.x[query_id, model_id, tier_id]
-            / 1000.0
+            / GFLOPS_PER_TFLOP
             for query_id, _, _ in routes_by_pair[(model_id, tier_id)]
         )
 
@@ -300,7 +319,7 @@ def _add_memory_expressions(
     problem_data: PdmProblemData,
     lookups: _PdmModelLookups,
 ) -> None:
-    """Build the printed GPU-memory terms under D-0002, using supplied v."""
+    """Build model and KV memory under the selected units, using supplied v."""
 
     instance = problem_data.instance
     query_by_id = lookups.query_by_id
@@ -325,17 +344,31 @@ def _add_memory_expressions(
         model.model_tier_keys, rule=model_memory_usage_rule
     )
 
-    # v2 Eq. (8f), D-0002: substitute v; retain the printed GB/GB*s mismatch.
+    def kv_memory_coefficient(
+        query_id: str, model_id: str, tier_id: str,
+        tensor_degree: int, pipeline_depth: int,
+    ) -> float:
+        coefficient = (
+            model_by_id[model_id].kv_cache_gb_per_token
+            / (tensor_degree * pipeline_depth)
+            * query_by_id[query_id].total_tokens
+            * instance.kv_cache_residency_seconds[(query_id, model_id, tier_id)]
+        )
+        if instance.uses_coherent_units:
+            coefficient *= (
+                query_by_id[query_id].arrival_rate_per_hour / instance.seconds_per_hour
+            )
+        return coefficient
+
+    # Coherent KV occupancy = footprint * residency * arrivals/second.
+    # The expression names remain available for historical model inspection.
     def kv_memory_printed_term_rule(
         _model: ConcreteModel, model_id: str, tier_id: str
     ):
         return sum(
-            model_by_id[model_id].kv_cache_gb_per_token
-            / (tensor_degree * pipeline_depth)
-            * query_by_id[query_id].total_tokens
-            * instance.kv_cache_residency_seconds[
-                (query_id, model_id, tier_id)
-            ]
+            kv_memory_coefficient(
+                query_id, model_id, tier_id, tensor_degree, pipeline_depth
+            )
             * _model.v[
                 query_id, model_id, tier_id, tensor_degree, pipeline_depth
             ]
@@ -387,7 +420,7 @@ def _add_storage_and_error_expressions(
             for _, model_id, tier_id in routes_by_query[query_id]
         ),
     )
-    # v2 Eq. (8h), D-0016: per-query closure retains the GB/GB-per-hour mismatch.
+    # Preserve the per-query closure and retain the raw data rate in GB/hour.
     model.data_storage_rate = Expression(
         model.query_ids,
         rule=lambda _model, query_id: sum(
@@ -402,7 +435,11 @@ def _add_storage_and_error_expressions(
         model.query_ids,
         rule=lambda _model, query_id: (
             _model.model_storage_usage[query_id]
-            + _model.data_storage_rate[query_id]
+            + (
+                _model.data_storage_rate[query_id] * instance.data_storage_duration_hours
+                if instance.uses_coherent_units
+                else _model.data_storage_rate[query_id]
+            )
         ),
     )
     model.weighted_error = Expression(
@@ -568,13 +605,16 @@ def build_pdm_pyomo_model(
     """Build symbolic variables, objective C1-C5, and all placement constraints.
 
     Index sets come directly from ``problem_data``. Paper v1 changes only C5's
-    horizon factor; memory/storage use D-0002/D-0016 interpretations.
+    horizon factor in literal mode. Coherent mode supports primary Paper v2,
+    converts KV occupancy and storage to GB, and charges delay in USD.
     """
 
     if not isinstance(problem_data, PdmProblemData):
         raise TypeError("problem_data must be a PdmProblemData")
     if not isinstance(paper_version, PaperVersion):
         raise ValueError("paper_version must be PaperVersion.V1 or PaperVersion.V2")
+    if problem_data.instance.uses_coherent_units and paper_version is PaperVersion.V1:
+        raise ValueError("coherent units require PaperVersion.V2; use literal_paper for v1")
 
     lookups = _prepare_model_lookups(problem_data)
     model = ConcreteModel(

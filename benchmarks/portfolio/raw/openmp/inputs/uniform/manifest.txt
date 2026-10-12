@@ -1,0 +1,18 @@
+PACS_CAMPAIGN 1
+16
+agh "uniform_000_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/000_agh.txt"
+agh "uniform_001_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/001_agh.txt"
+agh "uniform_002_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/002_agh.txt"
+agh "uniform_003_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/003_agh.txt"
+agh "uniform_004_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/004_agh.txt"
+agh "uniform_005_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/005_agh.txt"
+agh "uniform_006_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/006_agh.txt"
+agh "uniform_007_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/007_agh.txt"
+agh "uniform_008_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/008_agh.txt"
+agh "uniform_009_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/009_agh.txt"
+agh "uniform_010_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/010_agh.txt"
+agh "uniform_011_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/011_agh.txt"
+agh "uniform_012_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/012_agh.txt"
+agh "uniform_013_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/013_agh.txt"
+agh "uniform_014_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/014_agh.txt"
+agh "uniform_015_agh" "benchmarks/portfolio/raw/openmp/inputs/uniform/015_agh.txt"

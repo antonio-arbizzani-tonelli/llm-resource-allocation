@@ -1,0 +1,191 @@
+{
+  "classification": "ASSUMED_SYNTHETIC_SIZE_AND_COMPUTE_PRESSURE",
+  "reference_decision": "D-0100",
+  "seeds": [
+    37,
+    41,
+    43
+  ],
+  "dates": [
+    "2024-05-14",
+    "2024-05-15"
+  ],
+  "stage1_solver_limit_seconds": 20,
+  "azure_solver_limit_seconds": 5,
+  "rolling_pilot_windows": 24,
+  "rolling_full_projection_limit_seconds": 180,
+  "instance_policy": "Nested dyadic interpolation of existing heterogeneous tiny endpoints; alternating query clones; budget/storage multiplied by I/2; retained 2-hour horizon/caps; no paper calibration",
+  "load_policy": "1 and 100000 selected before measurement; accurate/budget full-route compute=0.264*(I/2)*L TFLOP/hour versus 32400 per GPU. Memory literal term is independent of arrival.",
+  "azure_policy": "Full static all joint sizes and loads; loaded rolling through I=6. Fixed seed37 and causal D-0089 EWMA alpha.2 initialized1. Pilot first24 ordered windows; gate full replay if pilot projected integrated time exceeds180 seconds. Gate affects runtime scope only, not input values.",
+  "timing_policy": "Stage1 one excluded warmup and three measured rounds per method/case; Azure3 excluded warmup windows and one measured run per date/method/variant; snapshot execution serial. Larger rolling may be pilots; no timing confidence intervals for Azure.",
+  "case_specs": [
+    {
+      "case_id": "nominal_joint_2x2x2",
+      "family": "nominal_joint",
+      "dimensions": [
+        2,
+        2,
+        2
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "nominal_joint_4x4x5",
+      "family": "nominal_joint",
+      "dimensions": [
+        4,
+        4,
+        5
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "nominal_joint_6x6x10",
+      "family": "nominal_joint",
+      "dimensions": [
+        6,
+        6,
+        10
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "nominal_joint_10x10x10",
+      "family": "nominal_joint",
+      "dimensions": [
+        10,
+        10,
+        10
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "query_only_4x2x2",
+      "family": "query_only",
+      "dimensions": [
+        4,
+        2,
+        2
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "query_only_6x2x2",
+      "family": "query_only",
+      "dimensions": [
+        6,
+        2,
+        2
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "query_only_10x2x2",
+      "family": "query_only",
+      "dimensions": [
+        10,
+        2,
+        2
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "options_only_2x4x5",
+      "family": "options_only",
+      "dimensions": [
+        2,
+        4,
+        5
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "options_only_2x6x10",
+      "family": "options_only",
+      "dimensions": [
+        2,
+        6,
+        10
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "options_only_2x10x10",
+      "family": "options_only",
+      "dimensions": [
+        2,
+        10,
+        10
+      ],
+      "load_multiplier": 1,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "loaded_joint_2x2x2",
+      "family": "loaded_joint",
+      "dimensions": [
+        2,
+        2,
+        2
+      ],
+      "load_multiplier": 100000,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "loaded_joint_4x4x5",
+      "family": "loaded_joint",
+      "dimensions": [
+        4,
+        4,
+        5
+      ],
+      "load_multiplier": 100000,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "loaded_joint_6x6x10",
+      "family": "loaded_joint",
+      "dimensions": [
+        6,
+        6,
+        10
+      ],
+      "load_multiplier": 100000,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    },
+    {
+      "case_id": "loaded_joint_10x10x10",
+      "family": "loaded_joint",
+      "dimensions": [
+        10,
+        10,
+        10
+      ],
+      "load_multiplier": 100000,
+      "delay_slo_multiplier": 1,
+      "budget_multiplier": 1
+    }
+  ]
+}

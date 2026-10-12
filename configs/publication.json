@@ -1,0 +1,1426 @@
+{
+  "format_version": 1,
+  "scope": "Python Stage 1 and coherent Stage 2; serial C++20 GH/AGH; OpenMP independent campaigns; reproducible measured evidence",
+  "excluded_development_material": [
+    "private continuity and decision logs",
+    "paper PDFs (public citations provided)",
+    "external Azure raw trace",
+    "binaries and generated builds",
+    "test_scientific_spec.py (development-document structure checks)"
+  ],
+  "files": [
+    {
+      "path": ".gitattributes"
+    },
+    {
+      "path": ".github/workflows/portfolio.yml"
+    },
+    {
+      "path": ".gitignore"
+    },
+    {
+      "path": "README.md"
+    },
+    {
+      "path": "benchmarks/backend_comparison/manifest.json"
+    },
+    {
+      "path": "benchmarks/backend_comparison/paired_runs.csv"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/heuristic_campaigns.png"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/heuristic_campaigns.svg"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/pdm_objective.png"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/pdm_objective.svg"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/pdm_runtime.png"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/pdm_runtime.svg"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/solver_evidence.png"
+    },
+    {
+      "path": "benchmarks/backend_comparison/plots/solver_evidence.svg"
+    },
+    {
+      "path": "benchmarks/backend_comparison/summary.csv"
+    },
+    {
+      "path": "benchmarks/gurobi/evidence.jsonl.gz"
+    },
+    {
+      "path": "benchmarks/gurobi/manifest.json"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/acceptance.png"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/acceptance.svg"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/objective_and_gap.png"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/objective_and_gap.svg"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/objective_components.png"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/objective_components.svg"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/runtime.png"
+    },
+    {
+      "path": "benchmarks/gurobi/plots/runtime.svg"
+    },
+    {
+      "path": "benchmarks/gurobi/query_metrics.csv"
+    },
+    {
+      "path": "benchmarks/gurobi/runs.csv"
+    },
+    {
+      "path": "benchmarks/gurobi/source_snapshot.zip"
+    },
+    {
+      "path": "benchmarks/gurobi/summary.csv"
+    },
+    {
+      "path": "benchmarks/portfolio/README.md"
+    },
+    {
+      "path": "benchmarks/portfolio/indicators.csv"
+    },
+    {
+      "path": "benchmarks/portfolio/plots/openmp_scaling.png"
+    },
+    {
+      "path": "benchmarks/portfolio/plots/openmp_scaling.svg"
+    },
+    {
+      "path": "benchmarks/portfolio/plots/validation_grain.png"
+    },
+    {
+      "path": "benchmarks/portfolio/plots/validation_grain.svg"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/manifest.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_serial_reference.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_dynamic_1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_dynamic_2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_dynamic_4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_dynamic_8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_serial_1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_static_1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_static_2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_static_4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/mixed_warm_static_8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_serial_reference.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_dynamic_1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_dynamic_2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_dynamic_4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_dynamic_8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_serial_1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_static_1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_static_2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_static_4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/evidence/uniform_warm_static_8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/000_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/001_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/002_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/003_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/004_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/005_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/006_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/007_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/008_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/009_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/010_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/011_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/012_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/013_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/014_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/015_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/mixed/manifest.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/000_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/001_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/002_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/003_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/004_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/005_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/006_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/007_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/008_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/009_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/010_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/011_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/012_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/013_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/014_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/015_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/inputs/uniform/manifest.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/profile.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_dynamic_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_dynamic_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_dynamic_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_dynamic_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_serial_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_static_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_static_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_static_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round0_static_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_dynamic_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_dynamic_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_dynamic_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_dynamic_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_serial_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_static_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_static_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_static_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round1_static_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_dynamic_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_dynamic_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_dynamic_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_dynamic_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_serial_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_static_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_static_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_static_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/mixed_round2_static_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_dynamic_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_dynamic_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_dynamic_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_dynamic_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_serial_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_static_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_static_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_static_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round0_static_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_dynamic_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_dynamic_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_dynamic_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_dynamic_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_serial_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_static_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_static_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_static_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round1_static_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_dynamic_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_dynamic_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_dynamic_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_dynamic_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_serial_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_static_1.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_static_2.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_static_4.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/samples/uniform_round2_static_8.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/openmp/verification.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/inputs/16x4x4_load200_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/inputs/16x4x4_load200_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/inputs/4x2x2_load1_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/inputs/4x2x2_load1_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/inputs/8x4x4_load200_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/inputs/8x4x4_load200_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/parity.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/serial/profile.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/profile.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_omp1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_agh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_omp1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/16x4x4_load200_gh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_omp1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_agh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_omp1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/32x4x4_load200_gh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_omp1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_agh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_omp1.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/active/warm/64x4x4_load200_gh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/evidence/16x4x4_load200_agh.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/evidence/16x4x4_load200_gh.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/evidence/32x4x4_load200_agh.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/evidence/32x4x4_load200_gh.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/evidence/64x4x4_load200_agh.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/evidence/64x4x4_load200_gh.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/goldens/16x4x4_load200_agh.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/goldens/16x4x4_load200_gh.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/goldens/32x4x4_load200_agh.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/goldens/32x4x4_load200_gh.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/goldens/64x4x4_load200_agh.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/goldens/64x4x4_load200_gh.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/inputs/16x4x4_load200_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/inputs/16x4x4_load200_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/inputs/32x4x4_load200_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/inputs/32x4x4_load200_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/inputs/64x4x4_load200_agh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/inputs/64x4x4_load200_gh.txt"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/baseline/profile.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/profile.json"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_agh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_agh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_agh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_agh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_agh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_agh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_gh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_gh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_gh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_gh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_gh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/32x4x4_load200_gh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_agh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_agh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_agh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_agh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_agh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_agh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_gh_append.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_gh_omp2.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_gh_omp4.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_gh_omp8.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_gh_serial.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/passive/warm/64x4x4_load200_gh_slots.json.gz"
+    },
+    {
+      "path": "benchmarks/portfolio/raw/validation/verification.json"
+    },
+    {
+      "path": "benchmarks/portfolio/summary.json"
+    },
+    {
+      "path": "benchmarks/reference/evidence.jsonl.gz"
+    },
+    {
+      "path": "benchmarks/reference/manifest.json"
+    },
+    {
+      "path": "benchmarks/reference/plots/acceptance.png"
+    },
+    {
+      "path": "benchmarks/reference/plots/acceptance.svg"
+    },
+    {
+      "path": "benchmarks/reference/plots/objective_and_gap.png"
+    },
+    {
+      "path": "benchmarks/reference/plots/objective_and_gap.svg"
+    },
+    {
+      "path": "benchmarks/reference/plots/objective_components.png"
+    },
+    {
+      "path": "benchmarks/reference/plots/objective_components.svg"
+    },
+    {
+      "path": "benchmarks/reference/plots/runtime.png"
+    },
+    {
+      "path": "benchmarks/reference/plots/runtime.svg"
+    },
+    {
+      "path": "benchmarks/reference/query_metrics.csv"
+    },
+    {
+      "path": "benchmarks/reference/runs.csv"
+    },
+    {
+      "path": "benchmarks/reference/source_snapshot.zip"
+    },
+    {
+      "path": "benchmarks/reference/summary.csv"
+    },
+    {
+      "path": "benchmarks/release_checks/base_regression.json"
+    },
+    {
+      "path": "benchmarks/release_checks/cpp_parity.json"
+    },
+    {
+      "path": "benchmarks/release_checks/openmp_verification.json"
+    },
+    {
+      "path": "benchmarks/release_checks/provenance.json"
+    },
+    {
+      "path": "benchmarks/stage2/reference.json"
+    },
+    {
+      "path": "configs/azure_replay.json"
+    },
+    {
+      "path": "configs/publication.json"
+    },
+    {
+      "path": "configs/quick_benchmark.json"
+    },
+    {
+      "path": "configs/scaling_experiment.json"
+    },
+    {
+      "path": "configs/synthetic_benchmark.json"
+    },
+    {
+      "path": "cpp/Makefile"
+    },
+    {
+      "path": "cpp/README.md"
+    },
+    {
+      "path": "cpp/experiments/generate_validation_core.py"
+    },
+    {
+      "path": "cpp/experiments/validation_probe.cpp"
+    },
+    {
+      "path": "cpp/experiments/validation_probe.hpp"
+    },
+    {
+      "path": "cpp/experiments/validation_probe_main.cpp"
+    },
+    {
+      "path": "cpp/experiments/validation_probe_tests.cpp"
+    },
+    {
+      "path": "cpp/include/pacs/agh.hpp"
+    },
+    {
+      "path": "cpp/include/pacs/campaign.hpp"
+    },
+    {
+      "path": "cpp/include/pacs/core.hpp"
+    },
+    {
+      "path": "cpp/include/pacs/gh.hpp"
+    },
+    {
+      "path": "cpp/include/pacs/io.hpp"
+    },
+    {
+      "path": "cpp/src/agh.cpp"
+    },
+    {
+      "path": "cpp/src/campaign.cpp"
+    },
+    {
+      "path": "cpp/src/campaign_main.cpp"
+    },
+    {
+      "path": "cpp/src/core.cpp"
+    },
+    {
+      "path": "cpp/src/gh.cpp"
+    },
+    {
+      "path": "cpp/src/io.cpp"
+    },
+    {
+      "path": "cpp/src/main.cpp"
+    },
+    {
+      "path": "cpp/tests/agh_tests.cpp"
+    },
+    {
+      "path": "cpp/tests/campaign_tests.cpp"
+    },
+    {
+      "path": "cpp/tests/core_tests.cpp"
+    },
+    {
+      "path": "cpp/tests/fixtures/README.md"
+    },
+    {
+      "path": "cpp/tests/fixtures/frozen_batch_d0039_agh.json"
+    },
+    {
+      "path": "cpp/tests/fixtures/frozen_batch_d0039_agh.txt"
+    },
+    {
+      "path": "cpp/tests/fixtures/frozen_batch_d0039_gh.json"
+    },
+    {
+      "path": "cpp/tests/fixtures/frozen_batch_d0039_gh.txt"
+    },
+    {
+      "path": "cpp/tests/fixtures/minimal_coherent_agh.json"
+    },
+    {
+      "path": "cpp/tests/fixtures/minimal_coherent_agh.txt"
+    },
+    {
+      "path": "cpp/tests/fixtures/minimal_coherent_gh.json"
+    },
+    {
+      "path": "cpp/tests/fixtures/minimal_coherent_gh.txt"
+    },
+    {
+      "path": "cpp/tests/gh_tests.cpp"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md"
+    },
+    {
+      "path": "docs/EXPERIMENTS.md"
+    },
+    {
+      "path": "docs/MODEL.md"
+    },
+    {
+      "path": "docs/PRESENTATION_BRIEF.md"
+    },
+    {
+      "path": "docs/RESULTS.md"
+    },
+    {
+      "path": "docs/UNITS.md"
+    },
+    {
+      "path": "docs/VALIDATION.md"
+    },
+    {
+      "path": "examples/stage1_quickstart.py"
+    },
+    {
+      "path": "examples/stage2_quickstart.py"
+    },
+    {
+      "path": "pyproject.toml"
+    },
+    {
+      "path": "scripts/check_cpp_parity.py"
+    },
+    {
+      "path": "scripts/check_openmp_campaign.py"
+    },
+    {
+      "path": "scripts/compare_validation_modes.py"
+    },
+    {
+      "path": "scripts/download_azure_trace.py"
+    },
+    {
+      "path": "scripts/plot_synthetic_benchmark.py"
+    },
+    {
+      "path": "scripts/prepare_release.py"
+    },
+    {
+      "path": "scripts/preprocess_azure_trace.py"
+    },
+    {
+      "path": "scripts/profile_cpp.py"
+    },
+    {
+      "path": "scripts/profile_large_instances.py"
+    },
+    {
+      "path": "scripts/profile_openmp.py"
+    },
+    {
+      "path": "scripts/run_azure_replay.py"
+    },
+    {
+      "path": "scripts/run_scaling_experiment.py"
+    },
+    {
+      "path": "scripts/run_synthetic_benchmark.py"
+    },
+    {
+      "path": "scripts/summarize_portfolio_results.py"
+    },
+    {
+      "path": "scripts/summarize_scaling_experiment.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/_agh_placement_ops.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/_mechanism_support.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh_consolidation.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh_multistart.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh_ordering.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh_relocate.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh_relocate_pass.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/agh_start.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/gh.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/gh_phase1.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/gh_phase2.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/gh_phase2_commit.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/gh_phase2_query.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/gh_phase2_run.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/m1.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/m2.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/m3.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/algorithms/phase1.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/data/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/data/azure_trace.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/data/scaling_experiment_instances.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/data/stage2_tiny_cases.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/data/synthetic_benchmark_instances.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/data/tiny_instances.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/domain/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/domain/types.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/domain/units.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/domain/validation.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/_record_serialization.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/azure_replay.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/bounded_experiment.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/scenario_evaluation.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/scenario_generation.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/scenario_protocol.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/synthetic_benchmark.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/version_comparison.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/budget.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/compute_capacity.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/error.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/error_slo.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/gpu_memory.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/latency.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/mccormick.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/objective.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/parallelism.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/placement.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/processing_delay.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/routing.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/math/storage_capacity.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/extraction.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/pdm_run.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/problem_data.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/pyomo_pdm.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/pyomo_stage2.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/solver.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/stage2_adapter.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/stage2_extraction.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/stage2_integration.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/stage2_problem_data.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/optimization/stage2_run.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/validation/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/validation/objective_comparison.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/validation/placement.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/validation/stage2.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/validation/tolerances.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/verification/__init__.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/verification/tiny_enumeration.py"
+    },
+    {
+      "path": "tests/placement_support.py"
+    },
+    {
+      "path": "tests/test_agh.py"
+    },
+    {
+      "path": "tests/test_agh_consolidation.py"
+    },
+    {
+      "path": "tests/test_agh_multistart.py"
+    },
+    {
+      "path": "tests/test_agh_ordering.py"
+    },
+    {
+      "path": "tests/test_agh_relocate.py"
+    },
+    {
+      "path": "tests/test_agh_relocate_pass.py"
+    },
+    {
+      "path": "tests/test_agh_start.py"
+    },
+    {
+      "path": "tests/test_azure_replay.py"
+    },
+    {
+      "path": "tests/test_azure_replay_cli.py"
+    },
+    {
+      "path": "tests/test_azure_trace.py"
+    },
+    {
+      "path": "tests/test_bounded_experiment.py"
+    },
+    {
+      "path": "tests/test_budget.py"
+    },
+    {
+      "path": "tests/test_coherent_resource_bounds.py"
+    },
+    {
+      "path": "tests/test_coherent_units.py"
+    },
+    {
+      "path": "tests/test_compute_capacity.py"
+    },
+    {
+      "path": "tests/test_core_boundaries.py"
+    },
+    {
+      "path": "tests/test_cpp_tooling.py"
+    },
+    {
+      "path": "tests/test_domain.py"
+    },
+    {
+      "path": "tests/test_error_slo.py"
+    },
+    {
+      "path": "tests/test_gh.py"
+    },
+    {
+      "path": "tests/test_gh_phase1.py"
+    },
+    {
+      "path": "tests/test_gh_phase2.py"
+    },
+    {
+      "path": "tests/test_gh_phase2_commit.py"
+    },
+    {
+      "path": "tests/test_gh_phase2_query.py"
+    },
+    {
+      "path": "tests/test_gh_phase2_run.py"
+    },
+    {
+      "path": "tests/test_gpu_memory.py"
+    },
+    {
+      "path": "tests/test_gurobi_solver.py"
+    },
+    {
+      "path": "tests/test_import_boundaries.py"
+    },
+    {
+      "path": "tests/test_large_instance_profiling.py"
+    },
+    {
+      "path": "tests/test_m1.py"
+    },
+    {
+      "path": "tests/test_m2.py"
+    },
+    {
+      "path": "tests/test_m3.py"
+    },
+    {
+      "path": "tests/test_math_primitives.py"
+    },
+    {
+      "path": "tests/test_mccormick.py"
+    },
+    {
+      "path": "tests/test_objective.py"
+    },
+    {
+      "path": "tests/test_openmp_tooling.py"
+    },
+    {
+      "path": "tests/test_parallelism.py"
+    },
+    {
+      "path": "tests/test_pdm_extraction.py"
+    },
+    {
+      "path": "tests/test_pdm_problem_data.py"
+    },
+    {
+      "path": "tests/test_pdm_run.py"
+    },
+    {
+      "path": "tests/test_phase1.py"
+    },
+    {
+      "path": "tests/test_placement.py"
+    },
+    {
+      "path": "tests/test_placement_validation.py"
+    },
+    {
+      "path": "tests/test_processing_delay.py"
+    },
+    {
+      "path": "tests/test_pyomo_pdm.py"
+    },
+    {
+      "path": "tests/test_release_preparation.py"
+    },
+    {
+      "path": "tests/test_routing.py"
+    },
+    {
+      "path": "tests/test_scaling_experiment_instances.py"
+    },
+    {
+      "path": "tests/test_scaling_experiment_runner.py"
+    },
+    {
+      "path": "tests/test_scenario_evaluation.py"
+    },
+    {
+      "path": "tests/test_scenario_generation.py"
+    },
+    {
+      "path": "tests/test_scenario_protocol.py"
+    },
+    {
+      "path": "tests/test_solver.py"
+    },
+    {
+      "path": "tests/test_stage1_imports.py"
+    },
+    {
+      "path": "tests/test_stage2_adapter.py"
+    },
+    {
+      "path": "tests/test_stage2_coherent_units.py"
+    },
+    {
+      "path": "tests/test_stage2_cross_method.py"
+    },
+    {
+      "path": "tests/test_stage2_integration.py"
+    },
+    {
+      "path": "tests/test_stage2_lp.py"
+    },
+    {
+      "path": "tests/test_stage2_problem_data.py"
+    },
+    {
+      "path": "tests/test_stage2_run.py"
+    },
+    {
+      "path": "tests/test_storage_capacity.py"
+    },
+    {
+      "path": "tests/test_synthetic_benchmark.py"
+    },
+    {
+      "path": "tests/test_synthetic_benchmark_instances.py"
+    },
+    {
+      "path": "tests/test_synthetic_benchmark_plots.py"
+    },
+    {
+      "path": "tests/test_tiny_enumeration.py"
+    },
+    {
+      "path": "tests/test_tiny_instances.py"
+    },
+    {
+      "path": "tests/test_units.py"
+    },
+    {
+      "path": "tests/test_v1_experimental_path.py"
+    },
+    {
+      "path": "tests/test_validation_mode_comparison.py"
+    },
+    {
+      "path": "tests/test_validation_objects.py"
+    },
+    {
+      "path": "tests/test_validation_tolerances.py"
+    },
+    {
+      "path": "tests/test_version_comparison.py"
+    }
+  ]
+}

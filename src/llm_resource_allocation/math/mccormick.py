@@ -38,7 +38,7 @@ def _validate_product_domain(x: float, w: int | float) -> None:
         raise ValueError("x must be a finite real number in [0, 1]")
     if x < 0.0 or x > 1.0:
         raise ValueError("x must lie in [0, 1]")
-    # Exact numeric 0.0/1.0 values remain useful for future solver-independent
+    # Exact numeric 0.0/1.0 values remain useful for solver-independent
     # validation, but near-binary values are never rounded into the domain.
     if (
         isinstance(w, bool)

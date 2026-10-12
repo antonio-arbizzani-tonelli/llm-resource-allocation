@@ -1,0 +1,222 @@
+{
+  "schedule": "static",
+  "requested_threads": 2,
+  "actual_threads": 2,
+  "campaign_seconds": 0.370820359,
+  "repeat_seconds": [
+    0.370820359
+  ],
+  "repeat_threads": [
+    2
+  ],
+  "cases": [
+    {
+      "name": "mixed_000_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_001_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_002_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_003_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_004_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_005_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_006_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_007_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.096,
+        0.0005376,
+        404480,
+        0
+      ]
+    },
+    {
+      "name": "mixed_008_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_009_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_010_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_011_agh",
+      "method": "agh",
+      "status": "completed",
+      "feasible": true,
+      "objective": [
+        8,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_012_gh",
+      "method": "gh",
+      "status": "algorithm_1_completed",
+      "feasible": true,
+      "objective": [
+        9,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_013_gh",
+      "method": "gh",
+      "status": "algorithm_1_completed",
+      "feasible": true,
+      "objective": [
+        9,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_014_gh",
+      "method": "gh",
+      "status": "algorithm_1_completed",
+      "feasible": true,
+      "objective": [
+        9,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    },
+    {
+      "name": "mixed_015_gh",
+      "method": "gh",
+      "status": "algorithm_1_completed",
+      "feasible": true,
+      "objective": [
+        9,
+        0.048,
+        0.0002688,
+        202240,
+        0
+      ]
+    }
+  ]
+}

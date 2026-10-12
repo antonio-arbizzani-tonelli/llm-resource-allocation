@@ -6,11 +6,16 @@ import unittest
 
 from llm_resource_allocation.data import (
     make_minimal_tiny_instance,
+    make_stage2_capacity_limited_case,
 )
 from llm_resource_allocation.math.objective import PaperVersion
 from llm_resource_allocation.math.parallelism import ParallelismDecisionState
 from llm_resource_allocation.math.placement import PlacementDecisionState
 from llm_resource_allocation.math.routing import RoutingDecisionState
+from llm_resource_allocation.optimization.stage2_extraction import (
+    Stage2Solution,
+    stage2_solution_identity,
+)
 from llm_resource_allocation.validation.objective_comparison import ObjectiveComparison
 from llm_resource_allocation.validation.placement import (
     ConstraintFamily,
@@ -19,6 +24,14 @@ from llm_resource_allocation.validation.placement import (
     ValidationTolerances,
     ValidationViolation,
     validate_placement,
+)
+from llm_resource_allocation.validation.stage2 import (
+    Stage2ConstraintFamily,
+    Stage2ValidationDiagnostic,
+    Stage2Validator,
+    Stage2ValidationTolerances,
+    Stage2ValidationViolation,
+    validate_stage2_solution,
 )
 
 
@@ -74,24 +87,67 @@ class ConfiguredValidatorTests(unittest.TestCase):
 
     def test_validator_constructors_reject_invalid_configuration(self):
         instance = make_minimal_tiny_instance()
+        problem_data = make_stage2_capacity_limited_case()
         for invalid in (False, {}, object()):
             with self.subTest(tolerances=invalid):
                 with self.assertRaises(TypeError):
                     PlacementValidator(instance, PaperVersion.V2, invalid)
+                with self.assertRaises(TypeError):
+                    Stage2Validator(problem_data, invalid)
         with self.assertRaises(ValueError):
             PlacementValidator(instance, "v2")
 
+    def test_stage2_validator_reuses_policy_and_checks_each_solution_identity(self):
+        data = make_stage2_capacity_limited_case()
+        route = data.routing_keys[0]
+        identity = stage2_solution_identity(data)
+        validator = Stage2Validator(data)
+        overloaded = Stage2Solution(identity, {route: 1.0}, {route[0]: 0.0})
+        feasible = Stage2Solution(identity, {route: 0.8}, {route[0]: 0.2})
+
+        self.assertIn(
+            Stage2ConstraintFamily.COMPUTE_CAPACITY,
+            validator.validate(overloaded).violated_families,
+        )
+        report = validator.validate(feasible)
+        self.assertTrue(report.is_feasible)
+        self.assertAlmostEqual(report.objective_breakdown.operational_objective, 1.00248)
+        self.assertEqual(report, validate_stage2_solution(data, feasible))
+        wrong_identity = replace(identity, scenario_id="other_scenario")
+        wrong_solution = replace(feasible, identity=wrong_identity)
+        self.assertEqual(
+            validator.validate(wrong_solution).violated_families,
+            (Stage2ConstraintFamily.SOLUTION_IDENTITY,),
+        )
+        self.assertEqual(validator.validate(feasible), report)
+        self.assertIs(validator.problem_data, data)
+        self.assertIsInstance(validator.tolerances, Stage2ValidationTolerances)
+        with self.assertRaises(FrozenInstanceError):
+            validator.problem_data = data
 
 
 class EvidenceInvariantTests(unittest.TestCase):
     def test_validators_produce_coherent_boundary_diagnostics(self):
         instance = make_minimal_tiny_instance()
         placement_validator = PlacementValidator(instance, PaperVersion.V2)
+        data = make_stage2_capacity_limited_case()
+        route = data.routing_keys[0]
+        identity = stage2_solution_identity(data)
+        stage2_validator = Stage2Validator(data)
         for diagnostic_type, valid, invalid in (
             (
                 PlacementDomainDiagnostic,
                 placement_validator.validate(make_state(instance)).domain_diagnostic,
                 placement_validator.validate(make_state(instance, x=1.1)).domain_diagnostic,
+            ),
+            (
+                Stage2ValidationDiagnostic,
+                stage2_validator.validate(
+                    Stage2Solution(identity, {route: 0.8}, {route[0]: 0.2})
+                ).decision_domain_diagnostic,
+                stage2_validator.validate(
+                    Stage2Solution(identity, {route: 1.1}, {route[0]: 0.0})
+                ).decision_domain_diagnostic,
             ),
         ):
             with self.subTest(diagnostic_type=diagnostic_type):
@@ -111,8 +167,14 @@ class EvidenceInvariantTests(unittest.TestCase):
         placement_report = PlacementValidator(instance, PaperVersion.V2).validate(
             make_state(instance)
         )
+        data = make_stage2_capacity_limited_case()
+        route = data.routing_keys[0]
+        solution = Stage2Solution(
+            stage2_solution_identity(data), {route: 0.8}, {route[0]: 0.2}
+        )
+        stage2_report = Stage2Validator(data).validate(solution)
 
-        for report in (placement_report,):
+        for report in (placement_report, stage2_report):
             for descriptor in fields(report):
                 if not descriptor.init:
                     continue
@@ -128,6 +190,7 @@ class EvidenceInvariantTests(unittest.TestCase):
     def test_violations_copy_their_semantic_locations(self):
         for violation_type, family in (
             (ValidationViolation, ConstraintFamily.DEMAND_BALANCE),
+            (Stage2ValidationViolation, Stage2ConstraintFamily.DEMAND_BALANCE),
         ):
             with self.subTest(violation_type=violation_type):
                 location = ["query"]

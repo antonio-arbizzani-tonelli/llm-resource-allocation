@@ -8,6 +8,7 @@ from .types import (
     QueryType,
 )
 from .validation import InstanceValidationError, validate_problem_instance
+from .units import UnitConvention
 
 __all__ = [
     "FoundationModel",
@@ -16,6 +17,6 @@ __all__ = [
     "ParallelismConfig",
     "ProblemInstance",
     "QueryType",
+    "UnitConvention",
     "validate_problem_instance",
 ]
-

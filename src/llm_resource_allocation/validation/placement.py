@@ -6,7 +6,7 @@ from math import isfinite
 from types import MappingProxyType
 from typing import Mapping
 
-from llm_resource_allocation.domain import InstanceValidationError, ProblemInstance
+from llm_resource_allocation.domain import InstanceValidationError, ProblemInstance, UnitConvention
 from llm_resource_allocation.math.budget import (
     BudgetDiagnostic,
     _budget_residual_from_objective,
@@ -174,11 +174,14 @@ class ValidationViolation:
 class PlacementValidationReport:
     """Store objective and constraint evidence for v2 Eqs. (7)-(8k).
 
-    Uses D-0002 memory and D-0016 storage interpretations. Invalid domains
+    Retains the input unit policy; D-0101 supplies coherent units and
+    D-0002/D-0016 remain the literal historical policy. Invalid domains
     leave the objective and mathematical diagnostics empty.
     """
 
     paper_version: PaperVersion
+    unit_convention: UnitConvention
+    data_residency_hours: float
     tolerances: ValidationTolerances
     domain_diagnostic: PlacementDomainDiagnostic
     processing_delays_seconds: Mapping[str, float]
@@ -510,6 +513,7 @@ class PlacementValidationReport:
 
 
 def _empty_report(
+    instance: ProblemInstance,
     paper_version: PaperVersion,
     tolerances: ValidationTolerances,
     domain_diagnostic: PlacementDomainDiagnostic,
@@ -518,6 +522,8 @@ def _empty_report(
 
     return PlacementValidationReport(
         paper_version=paper_version,
+        unit_convention=instance.unit_convention,
+        data_residency_hours=instance.data_residency_hours,
         tolerances=tolerances,
         domain_diagnostic=domain_diagnostic,
         processing_delays_seconds={},
@@ -551,6 +557,8 @@ class PlacementValidator:
             raise ValueError("paper_version must be PaperVersion.V1 or PaperVersion.V2")
         if not isinstance(self.tolerances, ValidationTolerances):
             raise TypeError("tolerances must be a ValidationTolerances")
+        if self.instance.uses_coherent_units and self.paper_version is PaperVersion.V1:
+            raise ValueError("coherent units require PaperVersion.V2; use LITERAL_PAPER for historical v1")
 
     def validate(self, state: PlacementDecisionState) -> PlacementValidationReport:
         """Check domains, then recompute objective and constraint diagnostics.
@@ -567,6 +575,7 @@ class PlacementValidator:
             validate_placement_decision_domains(instance, state)
         except (InstanceValidationError, DecisionDomainError) as error:
             return _empty_report(
+                instance,
                 paper_version,
                 selected_tolerances,
                 PlacementDomainDiagnostic(
@@ -592,6 +601,8 @@ class PlacementValidator:
 
         return PlacementValidationReport(
             paper_version=paper_version,
+            unit_convention=instance.unit_convention,
+            data_residency_hours=instance.data_residency_hours,
             tolerances=selected_tolerances,
             domain_diagnostic=PlacementDomainDiagnostic(is_valid=True),
             processing_delays_seconds=processing_delays,

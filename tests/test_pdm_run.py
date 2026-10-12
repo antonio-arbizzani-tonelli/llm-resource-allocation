@@ -14,6 +14,7 @@ from llm_resource_allocation.data.tiny_instances import (
 from llm_resource_allocation.math.objective import PaperVersion
 from llm_resource_allocation.optimization.solver import (
     NoSolverIncumbentError,
+    SolverBackend,
     SolverConfig,
     SolverStatus,
 )
@@ -132,7 +133,7 @@ class HeterogeneousPdmRunTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.instance = make_heterogeneous_solve_tiny_instance()
         cls.problem_data = PdmProblemData(cls.instance)
-        cls.config = SolverConfig()
+        cls.config = SolverConfig(backend=SolverBackend.HIGHS)
         cls.record = execute_and_record_pdm_run(cls.problem_data, cls.config)
 
     def test_end_to_end_record_is_accepted_and_independently_valid(self) -> None:

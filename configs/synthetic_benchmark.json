@@ -1,0 +1,9 @@
+{
+  "seeds": [37, 41, 43, 47, 53],
+  "query_counts": [2, 4, 8, 16],
+  "warmup_repeats": 1,
+  "gh_budget_fraction": 0.8,
+  "backend": "gurobi",
+  "solver_time_limit_seconds": 30.0,
+  "paper_version": "v2"
+}

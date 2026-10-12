@@ -12,6 +12,8 @@ from llm_resource_allocation.data import (
     make_heterogeneous_solve_tiny_instance,
     make_minimal_tiny_instance,
     make_parallelism_tradeoff_tiny_instance,
+    make_stage2_capacity_limited_case,
+    make_stage2_fully_served_case,
 )
 from llm_resource_allocation.math.objective import PaperVersion
 from llm_resource_allocation.optimization import solver as solver_module
@@ -32,6 +34,7 @@ from llm_resource_allocation.optimization.solver import (
     solve_pyomo_model,
     translate_gurobi_options,
 )
+from llm_resource_allocation.optimization.stage2_run import run_stage2
 from llm_resource_allocation.validation.objective_comparison import ObjectiveComparison
 from llm_resource_allocation.verification import enumerate_tiny_pdm
 
@@ -267,6 +270,25 @@ class GurobiIntegrationTests(unittest.TestCase):
         self.assertEqual(first.solver_evidence.result.objective_value,
                          second.solver_evidence.result.objective_value)
 
+    def test_stage2_lp_uses_same_adapter_and_independent_validation(self) -> None:
+        for version in PaperVersion:
+            for factory, expected in (
+                (make_stage2_fully_served_case, 0.0031),
+                (make_stage2_capacity_limited_case, 1.00248),
+            ):
+                with self.subTest(version=version, factory=factory.__name__):
+                    data = factory(version)
+                    gurobi = run_stage2(data, self.config)
+                    highs = run_stage2(data, SolverConfig(backend=SolverBackend.HIGHS))
+                    self.assertTrue(gurobi.successful)
+                    self.assertTrue(highs.successful)
+                    self.assertIs(gurobi.solver_evidence.result.status, SolverStatus.OPTIMAL)
+                    self.assertTrue(ObjectiveComparison(
+                        gurobi.operational_objective, highs.operational_objective
+                    ).agrees)
+                    if version is PaperVersion.V2:
+                        self.assertAlmostEqual(gurobi.operational_objective, expected)
+                    self.assertEqual(gurobi.solution, highs.solution)
 
 
 if __name__ == "__main__":

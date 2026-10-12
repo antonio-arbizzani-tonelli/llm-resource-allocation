@@ -25,6 +25,7 @@ from numbers import Real
 from typing import Protocol, Sequence
 
 from llm_resource_allocation.domain import ProblemInstance
+from llm_resource_allocation.domain.units import GFLOPS_PER_TFLOP
 from llm_resource_allocation.math.latency import compute_configuration_delay_seconds
 from llm_resource_allocation.math.objective import PaperVersion
 from llm_resource_allocation.math.parallelism import ParallelismDecisionState
@@ -276,7 +277,7 @@ def _routing_interval(
 
     Start with ``max(0,1-zeta) <= x <= min(1,z)`` (v2 Eqs. 8b, 8d, 8k), then
     intersect rows ``(label,fixed,slope,limit)`` for ``fixed+slope*x <= limit``.
-    Keep exact bounds and D-0002/D-0016 memory/storage semantics.
+    Keep exact bounds, the selected unit convention, and per-query storage closure.
     """
 
     query = instance.queries[0]
@@ -313,6 +314,24 @@ def _routing_interval(
             * query.total_tokens
             * instance.kv_cache_residency_seconds[triple]
         )
+        if instance.uses_coherent_units:
+            memory_slope *= query.arrival_rate_per_hour / instance.seconds_per_hour
+
+    storage_slope = (
+        query.storage_gb_per_token
+        * query.total_tokens
+        * query.arrival_rate_per_hour
+    )
+    data_storage_cost_slope = (
+        instance.horizon_hours
+        * instance.storage_price_usd_per_gb_hour
+        * query.storage_gb_per_token
+        * query.total_tokens
+        * query.arrival_rate_per_hour
+    )
+    if instance.uses_coherent_units:
+        storage_slope *= instance.data_storage_duration_hours
+        data_storage_cost_slope *= instance.data_storage_duration_hours
 
     constraints = (
         ("delay Eq. (8i)", 0.0, delay_slope, query.delay_slo_seconds),
@@ -329,7 +348,7 @@ def _routing_interval(
             instance.compute_gflop_per_token[triple]
             * query.total_tokens
             * query.arrival_rate_per_hour
-            / 1000.0,
+            / GFLOPS_PER_TFLOP,
             instance.compute_utilization
             * instance.seconds_per_hour
             * tier.compute_throughput_tflops
@@ -344,9 +363,7 @@ def _routing_interval(
         (
             "storage Eq. (8h)/D-0016",
             model.weight_gb * admission_indicator,
-            query.storage_gb_per_token
-            * query.total_tokens
-            * query.arrival_rate_per_hour,
+            storage_slope,
             instance.storage_capacity_gb,
         ),
         (
@@ -358,11 +375,7 @@ def _routing_interval(
                 * model.weight_gb
                 * admission_indicator
             ),
-            instance.horizon_hours
-            * instance.storage_price_usd_per_gb_hour
-            * query.storage_gb_per_token
-            * query.total_tokens
-            * query.arrival_rate_per_hour,
+            data_storage_cost_slope,
             instance.cost_budget_usd,
         ),
     )
@@ -548,6 +561,8 @@ def enumerate_tiny_pdm(
         raise TypeError("config must be TinyEnumerationConfig or None")
     if not isinstance(paper_version, PaperVersion):
         raise ValueError("paper_version must be PaperVersion.V1 or PaperVersion.V2")
+    if problem_data.instance.uses_coherent_units and paper_version is PaperVersion.V1:
+        raise ValueError("coherent units require PaperVersion.V2; use literal_paper for v1")
 
     search_space_size = estimate_tiny_discrete_search_space(problem_data)
     if search_space_size > selected_config.max_discrete_combinations:
