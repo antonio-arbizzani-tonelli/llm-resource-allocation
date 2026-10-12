@@ -15,7 +15,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = "configs/publication.json"
 MANIFEST_PATH = "release-manifest.json"
-TEXT_SUFFIXES = {".py", ".md", ".toml", ".json", ".yml", ".yaml", ".cpp", ".hpp", ".txt", ".sh", ".csv"}
+TEXT_SUFFIXES = {".py", ".ps1", ".md", ".toml", ".json", ".yml", ".yaml", ".cpp", ".hpp", ".txt", ".sh", ".csv"}
 
 
 def relative_file(value: str) -> str:

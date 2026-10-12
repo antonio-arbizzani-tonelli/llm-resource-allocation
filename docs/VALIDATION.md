@@ -4,6 +4,24 @@ Verification establishes the implemented scope through independent equations,
 hand-derived examples, solver comparisons and cross-language checks.
 Synthetic fixtures are verification inputs, not recovered paper data.
 
+## Overnight preparation checks
+
+The prepared [overnight extension](NIGHTLY_CAMPAIGN.md) passes a complete
+development regression of **1,035 tests**, no skips, **13.053 s** on Python
+3.14.3. The exact base publication runs **1,020 tests**, with **1,016 passes and
+four optional skips**, **13.950 s**; [its source-hash record](../benchmarks/release_checks/nightly_preparation_base_regression.json)
+identifies the tested Python files. Fifteen new tests cover hand-derived stress
+mapping/service indicators, configuration boundaries, snapshot tampering,
+resume, timeout, interruption and failure reporting.
+
+Fresh release binaries pass core/GH/AGH and OpenMP campaign tests. Five separate
+minimal worker checks exercise GH, AGH and P_DM Stage 2 (two scenarios each),
+paired Python/C++ profiling and OpenMP profiling/reporting. The PowerShell
+wrapper passes syntax parsing. These verify preparation and execution plumbing;
+the declared 52-job overnight campaign has **not** been executed.
+
+The checks below are the retained original release checkpoint.
+
 ## Checks performed before publication
 
 - Complete development regression: **1,020 tests pass**, no skips, 11.793 s

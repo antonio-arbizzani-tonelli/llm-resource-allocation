@@ -89,3 +89,11 @@ numerica completa degli autori. Il lavoro originale rimane attribuito a
 Cheng e Nguyen:
 [paper v2](https://arxiv.org/abs/2604.07472v2) e
 [paper v1](https://arxiv.org/abs/2604.07472v1).
+
+La [campagna notturna](NIGHTLY_CAMPAIGN.md) è predisposta per misurare crescita
+delle istanze, scalabilità OpenMP e adattamento di Stage 2. I nuovi risultati
+sono ancora in attesa: non usarne il piano come prova di vantaggio. Dopo
+l'esecuzione, integrare soltanto numeri verificati, indicando copertura, casi
+falliti, baseline e ambito del timer; il confronto con routing congelato può
+mostrare il valore operativo dell'adattamento quando la sua fattibilità è
+effettivamente recuperata.

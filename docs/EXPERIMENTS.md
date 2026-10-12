@@ -91,3 +91,10 @@ Review `configs/azure_replay.json` before a replay; it retains a historical
 literal fixture and may require optional Gurobi. These tools and their unit
 tests are delivered, while a new calibrated Azure experiment is future work.
 Dataset licensing and attribution remain those of its original publisher.
+
+## Prepared overnight campaign
+
+The [overnight guide](NIGHTLY_CAMPAIGN.md) provides a frozen, resumable 52-job
+campaign for larger Python/C++ shapes, independent-case OpenMP scaling and
+fixed-deployment Stage-2 sensitivity. This extension is prepared; its measurements
+are pending and are separate from the recorded [results](RESULTS.md).

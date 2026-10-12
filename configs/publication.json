@@ -787,6 +787,9 @@
       "path": "benchmarks/release_checks/cpp_parity.json"
     },
     {
+      "path": "benchmarks/release_checks/nightly_preparation_base_regression.json"
+    },
+    {
       "path": "benchmarks/release_checks/openmp_verification.json"
     },
     {
@@ -797,6 +800,9 @@
     },
     {
       "path": "configs/azure_replay.json"
+    },
+    {
+      "path": "configs/nightly_campaign.json"
     },
     {
       "path": "configs/publication.json"
@@ -916,6 +922,9 @@
       "path": "docs/MODEL.md"
     },
     {
+      "path": "docs/NIGHTLY_CAMPAIGN.md"
+    },
+    {
       "path": "docs/PRESENTATION_BRIEF.md"
     },
     {
@@ -970,10 +979,22 @@
       "path": "scripts/run_azure_replay.py"
     },
     {
+      "path": "scripts/run_nightly_campaign.ps1"
+    },
+    {
+      "path": "scripts/run_nightly_campaign.py"
+    },
+    {
       "path": "scripts/run_scaling_experiment.py"
     },
     {
+      "path": "scripts/run_stage2_stress.py"
+    },
+    {
       "path": "scripts/run_synthetic_benchmark.py"
+    },
+    {
+      "path": "scripts/summarize_nightly_campaign.py"
     },
     {
       "path": "scripts/summarize_portfolio_results.py"
@@ -1094,6 +1115,9 @@
     },
     {
       "path": "src/llm_resource_allocation/experiments/scenario_protocol.py"
+    },
+    {
+      "path": "src/llm_resource_allocation/experiments/stress_grid.py"
     },
     {
       "path": "src/llm_resource_allocation/experiments/synthetic_benchmark.py"
@@ -1304,6 +1328,9 @@
     },
     {
       "path": "tests/test_mccormick.py"
+    },
+    {
+      "path": "tests/test_nightly_campaign.py"
     },
     {
       "path": "tests/test_objective.py"

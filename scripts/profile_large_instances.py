@@ -55,8 +55,8 @@ def save_evidence(path, value):
     return sha256(path)
 
 
-def workload_cases(query_counts=(16, 32, 64), *, seed=37, load=200.0):
-    """Hold J/K, coefficients and explicit AGH seed fixed across query counts."""
+def workload_cases(query_counts=(16, 32, 64), *, seed=37, load=200.0, model_count=4, tier_count=4):
+    """Hold the configured model/tier menus and AGH seed fixed across I."""
     if not query_counts or len(set(query_counts)) != len(query_counts):
         raise ValueError("query counts must be nonempty and unique")
     if any(isinstance(n, bool) or not isinstance(n, int) or n < 2 for n in query_counts):
@@ -67,10 +67,10 @@ def workload_cases(query_counts=(16, 32, 64), *, seed=37, load=200.0):
         raise ValueError("seed must be an explicit integer")
     cases = []
     for count in query_counts:
-        instance = replace(make_scaling_experiment_case(count, 4, 4, load_multiplier=load).instance,
+        instance = replace(make_scaling_experiment_case(count, model_count, tier_count, load_multiplier=load).instance,
                            unit_convention=UnitConvention.COHERENT)
         for method in ("gh", "agh"):
-            cases.append(ParityCase(f"{count}x4x4_load{load:g}_{method}", instance, method, seed=seed))
+            cases.append(ParityCase(f"{count}x{model_count}x{tier_count}_load{load:g}_{method}", instance, method, seed=seed))
     return tuple(cases)
 
 
@@ -318,7 +318,8 @@ def measure_case(args, case, transport, full_reference):
 
 
 def baseline(args):
-    cases = workload_cases(args.query_counts, seed=args.seed, load=args.load)
+    cases = workload_cases(args.query_counts, seed=args.seed, load=args.load,
+                           model_count=getattr(args, "model_count", 4), tier_count=getattr(args, "tier_count", 4))
     paths = []
     for case in cases:
         path = args.output / "inputs" / (case.name + ".txt")
@@ -328,7 +329,8 @@ def baseline(args):
     before = fingerprints(args, paths)
     result = {"classification": "synthetic implementation performance; not paper numerical replication",
               "mode": "baseline", "complete": False, "metadata": runtime_metadata(args),
-              "configuration": {"query_counts": args.query_counts, "models": 4, "gpu_tiers": 4,
+              "configuration": {"query_counts": args.query_counts, "models": getattr(args, "model_count", 4),
+                                "gpu_tiers": getattr(args, "tier_count", 4),
                                 "load_multiplier": args.load, "seed": args.seed, "beta": 0.8,
                                 "paper_version": "V2", "unit_convention": "COHERENT", "repeats": args.repeats},
               "fingerprints_before": before,
@@ -457,6 +459,8 @@ def parse_args(argv=None):
     parser.add_argument("--wsl")
     parser.add_argument("--omp-wait-policy", choices=("active", "passive"), default="active")
     parser.add_argument("--query-counts", type=int, nargs="+", default=[16, 32, 64])
+    parser.add_argument("--model-count", type=int, default=4)
+    parser.add_argument("--tier-count", type=int, default=4)
     parser.add_argument("--seed", type=int, default=37)
     parser.add_argument("--load", type=float, default=200.0)
     parser.add_argument("--repeats", type=int, default=3)
@@ -483,7 +487,8 @@ def parse_args(argv=None):
     if args.mode == "candidate" and args.output.resolve() == args.baseline_output.resolve():
         parser.error("candidate output must differ from preserved baseline output")
     try:
-        workload_cases(args.query_counts, seed=args.seed, load=args.load)
+        workload_cases(args.query_counts, seed=args.seed, load=args.load,
+                       model_count=args.model_count, tier_count=args.tier_count)
     except ValueError as error:
         parser.error(str(error))
     return args

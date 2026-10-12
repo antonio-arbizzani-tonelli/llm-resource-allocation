@@ -105,3 +105,11 @@ This release establishes bounded synthetic correctness and performance evidence.
 Recovered author calibration and a quantitative reproduction of all paper
 tables remain open. MPI and native C++ solver/Stage-2 integration are future
 work. A reuse license has not yet been selected.
+
+## Overnight experiment extension
+
+The [overnight campaign guide](docs/NIGHTLY_CAMPAIGN.md) describes the prepared
+52-job scaling and Stage-2 sensitivity plan, execution command, runtime limits
+and recoverable evidence. New measurements are pending; the recorded results
+above retain their original scope.
+
