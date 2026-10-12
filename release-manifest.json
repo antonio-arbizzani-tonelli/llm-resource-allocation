@@ -1291,7 +1291,7 @@
     {
       "path": "benchmarks/release_checks/base_regression.json",
       "bytes": 19811,
-      "sha256": "a6f4548a6828529180e56efe31f83bd0635ff38f32734b9f51183f4966b1a876"
+      "sha256": "693c3fc1b956ff438a76eee08fcd30e97a4d2383d07192e3bd7dc2af5365ef4c"
     },
     {
       "path": "benchmarks/release_checks/cpp_parity.json",
@@ -1531,7 +1531,7 @@
     {
       "path": "docs/VALIDATION.md",
       "bytes": 3555,
-      "sha256": "dff0c7320a0e4ff17adf3b63722e38afbdd1b03eaaa041c292fdb61b51918a99"
+      "sha256": "57be458b74f730102290fffcfc01d1c469cac634485e30f91f1f3e3744b534fe"
     },
     {
       "path": "examples/stage1_quickstart.py",
@@ -2235,8 +2235,8 @@
     },
     {
       "path": "tests/test_scaling_experiment_runner.py",
-      "bytes": 8385,
-      "sha256": "e8f3bd8a37cc7372a71cea46816b7a7d6d75ab1b8efc40608034be603ed746de"
+      "bytes": 8397,
+      "sha256": "b41b2d72b53834f43435da4287b4822d92bd0c1c72a49b4e82632d65bb1ae511"
     },
     {
       "path": "tests/test_scenario_evaluation.py",
@@ -2245,8 +2245,8 @@
     },
     {
       "path": "tests/test_scenario_generation.py",
-      "bytes": 14967,
-      "sha256": "caf92f5add42631ec4ef90a2c8e1aa3d57071e8b22d1368b5e0c633a31893526"
+      "bytes": 14997,
+      "sha256": "3db9427087aba747e338dcd1a4b6693d9f446e3e64abf95f04ab70e5f3c369f4"
     },
     {
       "path": "tests/test_scenario_protocol.py",

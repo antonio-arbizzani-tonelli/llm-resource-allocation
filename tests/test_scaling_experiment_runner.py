@@ -27,7 +27,7 @@ class ScalingExperimentRunnerTests(unittest.TestCase):
         cls.root = runner.ROOT / "results" / f"scaling_worker_test_{uuid4().hex}"
         if not cls.root.resolve().is_relative_to((runner.ROOT / "results").resolve()):
             raise RuntimeError("Test workspace must stay within the repository results directory")
-        cls.root.mkdir()
+        cls.root.mkdir(parents=True)
         cls.addClassCleanup(shutil.rmtree, cls.root)
         cls.results = {}
         for case_id, dimensions, load, method, variant, counts in (

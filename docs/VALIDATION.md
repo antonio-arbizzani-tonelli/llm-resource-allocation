@@ -6,11 +6,11 @@ Synthetic fixtures are verification inputs, not recovered paper data.
 
 ## Checks performed before publication
 
-- Complete development regression: **1,020 tests pass**, no skips, 14.597 s
+- Complete development regression: **1,020 tests pass**, no skips, 11.793 s
   on Python 3.14.3. The public tree omits only the development-document
   structure test module, which checks private continuity logs and local PDFs.
 - Fresh base installation of the actual publication: **1,005 tests run**,
-  **1,001 pass and four optional checks skip**, 8.152 s, without Gurobi or
+  **1,001 pass and four optional checks skip**, 7.112 s, without Gurobi or
   plotting packages. Source hashes stay stable during both regressions.
   [The base regression record](../benchmarks/release_checks/base_regression.json)
   retains the exact counts, skipped checks and tested source hashes.

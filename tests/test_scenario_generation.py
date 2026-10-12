@@ -1,5 +1,6 @@
 """Focused tests for the Milestone-9.2 single-scenario generator."""
 
+import platform
 import random
 import sys
 import unittest
@@ -339,7 +340,7 @@ class ScenarioGenerationTests(unittest.TestCase):
             record.realized_scenario.arrival_rates_per_hour[query_id] = 0.0
         with self.assertRaises(FrozenInstanceError):
             record.evidence.seed = 0
-        self.assertRegex(record.evidence.python_runtime_version, r"^3\.14\.")
+        self.assertEqual(record.evidence.python_runtime_version, platform.python_version())
 
     def test_one_call_returns_one_scenario_without_invoking_any_method_or_solver(self) -> None:
         with (

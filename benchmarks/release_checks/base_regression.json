@@ -22,7 +22,7 @@
       "reason": "optional matplotlib is unavailable"
     }
   ],
-  "elapsed_seconds": 8.152198700001463,
+  "elapsed_seconds": 7.112430100009078,
   "successful": true,
   "sources_stable": true,
   "source_sha256": {
@@ -148,9 +148,9 @@
     "tests/test_release_preparation.py": "45a21a098b235960c738ad60f0753c2ba755329b4ba91054625d069b1dc5782b",
     "tests/test_routing.py": "461fa4ee53bea9b251d0bcedcc82e76c39a84a0bc64f9771c850e8f31d18a4a9",
     "tests/test_scaling_experiment_instances.py": "788b7d5545b53b588717a5902b81f8185e39896217b610a20d947f088482e827",
-    "tests/test_scaling_experiment_runner.py": "e8f3bd8a37cc7372a71cea46816b7a7d6d75ab1b8efc40608034be603ed746de",
+    "tests/test_scaling_experiment_runner.py": "b41b2d72b53834f43435da4287b4822d92bd0c1c72a49b4e82632d65bb1ae511",
     "tests/test_scenario_evaluation.py": "772a141a172c459b33ecac6f73e4ebfb82a26bf219d79e85a13644da312d70eb",
-    "tests/test_scenario_generation.py": "caf92f5add42631ec4ef90a2c8e1aa3d57071e8b22d1368b5e0c633a31893526",
+    "tests/test_scenario_generation.py": "3db9427087aba747e338dcd1a4b6693d9f446e3e64abf95f04ab70e5f3c369f4",
     "tests/test_scenario_protocol.py": "94a0c1bd2478299bfb8907e7885ba1d77d1a67232bc8ae5c7c0c186aad4e0e6f",
     "tests/test_solver.py": "63b3c5f237bc2792809a8b1aff9daa31c9303f924448cb5973c7688c96b06dbd",
     "tests/test_stage1_imports.py": "2e22cc868da7338bf9816a5a82f6913a3b51dd01aeabf6b41495eac0a3c96662",
