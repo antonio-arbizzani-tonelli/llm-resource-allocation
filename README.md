@@ -97,6 +97,7 @@ or Python dependency.
 - [Experiment guide](docs/EXPERIMENTS.md): configurations and reproduction commands.
 - [Verification](docs/VALIDATION.md): checks performed on this release.
 - [Presentation brief](docs/PRESENTATION_BRIEF.md): an Italian narrative for Claude Design.
+- [Claude Design prompt](docs/CLAUDE_DESIGN_PROMPT.md): copy or attach it to create the presentation from published evidence.
 
 Scientific sources live under `src/llm_resource_allocation/`; native code under
 `cpp/`; tests under `tests/`; measured evidence under `benchmarks/`.

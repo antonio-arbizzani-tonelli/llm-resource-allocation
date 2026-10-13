@@ -1027,6 +1027,9 @@
       "path": "docs/ARCHITECTURE.md"
     },
     {
+      "path": "docs/CLAUDE_DESIGN_PROMPT.md"
+    },
+    {
       "path": "docs/EXPERIMENTS.md"
     },
     {

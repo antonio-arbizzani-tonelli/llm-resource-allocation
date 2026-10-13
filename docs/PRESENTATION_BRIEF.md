@@ -1,5 +1,8 @@
 # Bozza di presentazione per Claude Design
 
+Il [prompt pronto da usare](CLAUDE_DESIGN_PROMPT.md) riunisce queste indicazioni
+e le fonti dei risultati pubblicati: copialo in Claude Design o allega il file.
+
 ## Obiettivo e pubblico
 
 Preparare una presentazione di 10–12 minuti per un pubblico tecnico: docenti

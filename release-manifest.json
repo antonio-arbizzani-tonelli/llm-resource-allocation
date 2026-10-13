@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "scope": "Python Stage 1 and coherent Stage 2; serial C++20 GH/AGH; OpenMP independent campaigns; reproducible measured evidence",
-  "file_count": 525,
+  "file_count": 526,
   "files": [
     {
       "path": ".gitattributes",
@@ -20,8 +20,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6619,
-      "sha256": "ae21ad9ab829e6ed702c6df4dfec6038882deb374d06262cf54dbf221dbbb360"
+      "bytes": 6745,
+      "sha256": "9a8356fde0f63c63d02be789812195fb5f633e9caa63d42c3aefcd5ab7a13082"
     },
     {
       "path": "benchmarks/backend_comparison/manifest.json",
@@ -1515,8 +1515,8 @@
     },
     {
       "path": "configs/publication.json",
-      "bytes": 43242,
-      "sha256": "462c584d8ad351804b1b7972bc169cb565321d0ce608e8453da83cd4cb94fcf9"
+      "bytes": 43300,
+      "sha256": "fd0d24a0d636da1a48889e7e4deb9a9ac7c4255d4476fc8b0f3e58115205a9ec"
     },
     {
       "path": "configs/quick_benchmark.json",
@@ -1699,6 +1699,11 @@
       "sha256": "a1524353ebeef1ce25e89135ea272362423dba980cb50b3e7564a5d00260ec79"
     },
     {
+      "path": "docs/CLAUDE_DESIGN_PROMPT.md",
+      "bytes": 5374,
+      "sha256": "d23eff832213fcc0ecef7e887bcab6ebe12b0099b1995871f521ab3a933c920f"
+    },
+    {
       "path": "docs/EXPERIMENTS.md",
       "bytes": 4967,
       "sha256": "07697c09533cdcabdc938779191afde86fee491b0c5a7210fa61ce43011e9959"
@@ -1720,8 +1725,8 @@
     },
     {
       "path": "docs/PRESENTATION_BRIEF.md",
-      "bytes": 12584,
-      "sha256": "16192ce5b37a3e8e17aad2002ed9c6b1345af4abe45dcb3ad923c43c80e025de"
+      "bytes": 12746,
+      "sha256": "6b25d49e8e7ead81d28e95d1bf24bdf47898090e67ab1dc7f9d645d9318f6815"
     },
     {
       "path": "docs/RESULTS.md",
