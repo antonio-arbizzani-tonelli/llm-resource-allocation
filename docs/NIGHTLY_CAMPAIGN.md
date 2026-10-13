@@ -1,10 +1,14 @@
 # Overnight allocation experiments
 
-The full 52-job campaign is prepared separately from earlier measurements.
-The [12-job timing subset](PERFORMANCE.md) was executed on October 13; its
-coverage and resource-limited references are reported separately. The 40
-Stage-2 stress jobs remain pending. It evaluates allocation software on the recorded CPU/WSL machine;
-it does not run LLM inference on GPUs or measure cloud bills.
+The declared 52-job campaign was prepared separately from earlier measurements.
+The [12-job timing subset](PERFORMANCE.md) was executed on October 13, retaining
+its resource-limited Python references. The separate [forty-worker Stage-2
+study](STAGE2_RESULTS.md) is now complete: 37 accepted sources, 1,850 attempted
+LPs, 646 usable decisions, 1,000 infeasible LPs and 204 objective rejections.
+This guide defines the experiment and commands for new runs; the two reports
+retain the exact observed coverage. It evaluates CPU allocation software,
+with native timing workers under WSL; it does not run GPU inference or measure
+cloud bills. Stage-2 workers use the recorded Windows Python/Gurobi environment.
 
 ## Prepare and start
 

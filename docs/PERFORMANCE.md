@@ -125,6 +125,10 @@ original prepared 52-job campaign is preserved; the 40 Stage-2 stress jobs are
 outside this timing subset. Native/Python programs are reused from the verified
 snapshot; scientific sources, inputs and binaries are hashed.
 
+The separate [Stage-2 stress study](STAGE2_RESULTS.md) now completes its forty
+workers and reports operational recovery, paired costs and numerical rejections.
+Its Python LP durations are not C++/OpenMP speedup measurements.
+
 If a full reference has recorded `MemoryError`, resume with
 `--defer-known-memory-errors` to preserve that failed job and run the other
 declared jobs. The failure remains in coverage. Finished methods inside a

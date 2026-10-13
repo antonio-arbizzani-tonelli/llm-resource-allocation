@@ -17,7 +17,8 @@ o il problema scientifico originale.
 Il repository consegnato è la fonte del progetto. Usare [RESULTS.md](RESULTS.md)
 per numeri e limiti, [MODEL.md](MODEL.md) per la formulazione,
 [ARCHITECTURE.md](ARCHITECTURE.md) per il software,
-[EXPERIMENTS.md](EXPERIMENTS.md) per la riproducibilità e
+[EXPERIMENTS.md](EXPERIMENTS.md) per la riproducibilità,
+[STAGE2_RESULTS.md](STAGE2_RESULTS.md) per adattamento e rifiuti numerici e
 [VALIDATION.md](VALIDATION.md) per i controlli finali.
 I risultati del paper e le misure del progetto devono avere attribuzioni visibili
 diverse. Non importare numeri da documenti o conversazioni non consegnati.
@@ -32,14 +33,16 @@ diverse. Non importare numeri da documenti o conversazioni non consegnati.
 | 4. Una convenzione dimensionale esplicita | Mostrare perché ore, secondi, millisecondi, concorrenza KV e dati residenti hanno confini espliciti. Le convenzioni storiche restano identificate. | Un solo esempio di conversione e un riquadro con le unità; evitare una pagina di formule. |
 | 5. Costo e servizio: guardare le componenti | Otto casi sintetici condivisi: GH rental 9 USD, AGH 8 USD. Riduzione **11,1% della componente C1** e domanda interamente servita; guadagno sul totale nominale soltanto 0,087–0,278%. | Due barre C1 9/8, con etichetta «USD per orizzonte sintetico». Riquadro separato con il piccolo guadagno totale. |
 | 6. Il solver cambia anche la lettura del confronto | Sei optima piccoli per backend; nessun optimum dimostrato sui casi maggiori. Sul nominale 10×10×10 Gurobi trova un incumbent 724,0209 USD contro 1274,7587 di HiGHS; AGH vale 1150,0550. | Tre barre per lo stesso caso, etichettate «incumbent accettato»/«euristica», e una nota sulla domanda servita. |
-| 7. Dal riferimento Python a C++ | Preservare decisioni e ordine numerico prima di misurare. **63/63 controlli**, 3023 valori finali senza differenze bitwise; sei casi maggiori verificano altri 20494 valori, riportati come campagna separata. | Due colonne Python/C++ collegate dalle stesse decisioni, con i contatori di verifica. |
-| 8. La velocità dipende dal confine del cronometro | AGH 16×4×4/load200: Python 4,774378 s, core C++ 0,045939 s. Rapporto 103,93× tra implementazioni con costi e ambienti differenti. Non chiamarlo «C++ è 104 volte più veloce». | Barre con confini del tempo espliciti: input/trace e core/trasporto. Preferire questo confronto in una slide tecnica, senza farne il titolo principale. |
-| 9. Parallelizzare le prove indipendenti | OpenMP: 16 AGH grandi, otto thread, **5,16× sul core**, **64,5% di efficienza** e **1,73× sull'invocazione completa**. Batch misto: 5,07× / 63,4% / 1,96×. | Usare il grafico [openmp_scaling.png](../benchmarks/portfolio/plots/openmp_scaling.png), mantenendo entrambe le scale temporali. |
-| 10. Un'ottimizzazione rifiutata è informazione | Il prototipo interno del validatore non aggiunge un beneficio robusto rispetto agli slot seriali. Su AGH32: 0,102698 s seriale contro 0,109183/0,133577/0,205992 con 2/4/8 thread. Si mantiene il validatore seriale. | Usare [validation_grain.png](../benchmarks/portfolio/plots/validation_grain.png). Titolo: «Scegliere il lavoro giusto da parallelizzare». |
-| 11. Stage 2: adattare senza ricostruire | Un GPU fisso: la domanda passa da 6 a 12 richieste/ora, routing da 1 a 0,5 e domanda non servita da 0 a 0,5. Il volume servito resta 6/ora, e il costo modellato aumenta da 43,8 a 193,8 USD per 3 ore. Entrambi i risultati sono indipendentemente fattibili. | Prima/dopo delle frazioni con etichette di domanda; citare [il JSON dell'esempio](../benchmarks/stage2/reference.json). È una verifica sintetica, senza inventare un risparmio o un tasso di robustezza. |
-| 12. Cosa rende il progetto riutilizzabile | Codice Python/C++20/OpenMP, API esplicite, test, risultati machine-readable, hash, input e comandi di riproduzione. Restano aperti calibrazione completa del paper, solver nativi C++/Stage 2 e MPI. | Mappa minima del repository e link GitHub finale. |
+| 7. Dal riferimento Python a C++ | Sedici confronti completi sulle istanze maggiori verificano **185.832 valori identici bit per bit**. AGH Python termina con MemoryError a 256×4×4 e 128×8×8: quei tempi C++ hanno verifica della decisione finale, senza parità dell'intero algoritmo. | Due colonne Python/C++ collegate dalle stesse decisioni; due marcatori distinti per gli endpoint con verifica supplementare. |
+| 8. Il costo della crescita | Mediane AGH C++: **2,889 s a 128×4×4**, **7,156 s a 256×4×4**, **7,471 s a 128×8×8**, cinque campioni per punto. Aumentare query e alternative cambia due dimensioni diverse del problema. | Usare [query_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/query_scaling.png) e [menu_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/menu_scaling.png), mantenendo i marcatori di verifica. |
+| 9. Parallelizzare le prove indipendenti | Nella nuova campagna, 32 casi misti, scheduling dinamico e otto thread osservati: **4,20× mediano sul core**, **2,27× sull'invocazione**, **52,5% di efficienza**, 18 round. Batch maggiori non garantiscono speedup maggiore. | Usare [openmp_core_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.png) e [openmp_process_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/openmp_process_scaling.png). Tenere distinti timer e campagne storiche. |
+| 10. Stage 2: misurare anche il confine di fattibilità | **40 job completati**, **37 sorgenti accettate**, **1.850 LP tentati**: 646 accettati, 1.000 infeasible, 204 rifiuti sull'obiettivo. Altri 150 scenari sono saltati dopo tre sorgenti P_DM rifiutate. Nessuna griglia ha 50/50 risultati accettati. | Usare [outcomes.png](../benchmarks/stage2_stress_2026-10-13/plots/outcomes.png). I 150 non tentati vanno in un riquadro separato, fuori dal denominatore 1.850. |
+| 11. Adattare senza ricostruire: due vantaggi misurati | Stage 2 recupera **256/1.344 fallimenti del routing iniziale = 19,05%**. Nei **390 scenari con entrambi i routing validi**, la somma C4+C5 diminuisce del **5,86%**. Deployment fisso; cambiano routing e domanda non servita. | Usare [recovery_and_cost.png](../benchmarks/stage2_stress_2026-10-13/plots/recovery_and_cost.png). Etichette: «griglia sintetica deterministica» e «confronto appaiato su 390 scenari». |
+| 12. Una soluzione ottima del solver può restare rifiutata | I 204 casi passano i vincoli ma falliscono la soglia assoluta di accordo **1e-8 USD**. Differenze di **1–3 ULP**, massimo relativo **3,40e-16**, coerenti con arrotondamento floating point. Le tolleranze rimangono invariate e i risultati esclusi dalle metriche. | Usare [objective_roundoff.png](../benchmarks/stage2_stress_2026-10-13/plots/objective_roundoff.png). Un esempio a 76 milioni di USD modellati rende visibile il limite di una soglia solo assoluta. |
+| 13. Cosa rende il progetto riutilizzabile | Codice Python/C++20/OpenMP, decisioni verificabili, risultati completi anche quando rifiutati, hash e replay senza solver. Restano aperti politica numerica alle grandi scale, calibrazione del paper, solver nativi C++/Stage 2 e MPI. | Mappa minima del repository e link GitHub finale. Attribuire il modello e GH/AGH al paper, e l'implementazione, verifica e misure al progetto. |
 
-Se servono dieci slide, unire 3–4 e 7–8. Le slide principali devono spiegare
+Per dodici slide spostare 6 in appendice; per dieci unire anche 3–4 e 7–8.
+Le slide principali devono spiegare
 una decisione o un risultato ciascuna; dettagli di solver, tolleranze e
 compilazione vanno nelle note del relatore o in appendice.
 
@@ -48,13 +51,20 @@ compilazione vanno nelle note del relatore o in appendice.
 - **11,1%**: riduzione della componente di rental GPU C1, `(9−8)/9`, in
   otto istanze sintetiche. Non è il risparmio totale e non è una misura di
   fatturazione reale.
-- **5,16× e 64,5%**: batch fisso di 16 AGH, core OpenMP a otto thread,
-  `T_serial/T_parallel` e `speedup/8`. Il solve individuale resta seriale.
-- **1,73×**: la stessa configurazione uniforme a otto thread includendo
-  processi e trasporto. Non è il massimo tra tutte le configurazioni: i tempi
-  completi variano e quattro thread possono essere migliori.
-- **63/63 e 3023**: 48 casi di placement e 15 controlli RNG; i valori numerici
-  confrontati appartengono ai placement. La campagna maggiore è separata.
+- **4,20× / 2,27× / 52,5%**: mediane della nuova campagna, 32 casi misti,
+  scheduling dinamico, otto thread osservati e 18 round. Il solve individuale
+  resta seriale. I vecchi 5,16× / 1,73× appartengono a un altro batch e ad
+  altri riassunti temporali: non costruire una combinazione di massimi diversi.
+- **185.832 valori**: sedici confronti completi Python/C++; gli endpoint con
+  MemoryError hanno invece verifica supplementare della decisione finale.
+- **19,05%**: recuperi scientificamente accettati tra i 1.344 fallimenti del
+  routing iniziale. Non è una probabilità reale né la quota su tutti i 1.850 LP.
+- **5,8574%**: `(somma C4+C5 congelato − somma C4+C5 adattato) / somma congelata`
+  sui 390 scenari utilizzabili da entrambe le decisioni. Le somme sono dominate
+  dal carico sintetico elevato; non è un risparmio tipico o una bolletta cloud.
+- **646 / 1.000 / 204**: esiti dei 1.850 LP tentati. I 204 rifiuti numerici
+  sono diversi dalle infeasibilità; non diventano successi perché il solver
+  dichiara un optimum. I 150 scenari saltati sono un'altra categoria.
 - **72/72 contro 69/72**: accettazione di tutti i tentativi misurati HiGHS
   contro Gurobi. Tre risultati Gurobi sono scartati per disaccordo obiettivo
   pur passando i vincoli. Non trasformare una percentuale di accettazione in
@@ -62,7 +72,10 @@ compilazione vanno nelle note del relatore o in appendice.
 
 I valori precisi e tutte le impostazioni sono in
 [summary.json](../benchmarks/portfolio/summary.json),
-[indicators.csv](../benchmarks/portfolio/indicators.csv) e nei relativi manifest.
+[indicators.csv](../benchmarks/portfolio/indicators.csv),
+[analisi Stage 2](../benchmarks/stage2_stress_2026-10-13/analysis/analysis.json),
+[diagnostica numerica](../benchmarks/stage2_stress_2026-10-13/analysis/numerical_diagnostics.json)
+e nei relativi manifest.
 I grafici disponibili sono scientifici, costruiti dalle misure registrate.
 Claude Design può adattare tipografia e disposizione, preservando etichette,
 unità, valori, assi e attribuzioni.
@@ -82,8 +95,9 @@ profilare; scegliere una granularità utile; conservare anche risultati
 negativi. Chi guarda il GitHub deve poter seguire questa catena attraverso
 codice, comandi e risultati consegnati.
 
-Per Stage 2 usare soltanto [il JSON dell'esempio](../benchmarks/stage2/reference.json)
-eseguito nella versione consegnata. Non attribuire al progetto gli esperimenti del paper con 500
+Per Stage 2 usare la [campagna consegnata](STAGE2_RESULTS.md); il
+[JSON dell'esempio](../benchmarks/stage2/reference.json) resta una verifica
+didattica da appendice, non la fonte dei nuovi indicatori. Non attribuire al progetto gli esperimenti del paper con 500
 scenari, un cluster GPU, nuove euristiche, risultati MPI o la riproduzione
 numerica completa degli autori. Il lavoro originale rimane attribuito a
 Cheng e Nguyen:
@@ -111,5 +125,17 @@ dell'intero algoritmo Python. Nei grafici questi punti sono distinti; non
 inventare un tempo Python o un rapporto di accelerazione per il run fallito.
 Sedici confronti completi verificano 185.832 valori numerici identici bit per bit.
 
-La parte di stress di Stage 2 della [campagna notturna](NIGHTLY_CAMPAIGN.md)
-rimane in attesa. Per quella parte usare ancora soltanto l'esempio consegnato.
+La parte di stress Stage 2 della [campagna notturna](NIGHTLY_CAMPAIGN.md) è ora
+eseguita e documentata. Il run principale riparte da zero con alimentazione
+da rete e impiega circa 11 minuti di wall time dei worker; il precedente avvio
+a batteria è escluso. Non presentare «40/40 job» come «2.000 LP validati».
+
+Nelle note della slide numerica distinguere le tre sorgenti P_DM rifiutate:
+16×4×4 ad alto carico viola l'error SLO; 32×4×4 passa i vincoli ma fallisce
+l'accordo sull'obiettivo; 16×8×8 viola il bilancio della domanda. Tutti gli otto
+solve P_DM terminano al limite con incumbent, senza dimostrare ottimalità.
+Un'eventuale revisione delle tolleranze sarà un esperimento separato.
+
+In appendice conservare il risultato negativo del parallelismo interno del
+validatore: [validation_grain.png](../benchmarks/portfolio/plots/validation_grain.png).
+Serve a spiegare perché il parallelismo di produzione resta sui casi indipendenti.

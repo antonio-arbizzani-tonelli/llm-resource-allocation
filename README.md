@@ -19,15 +19,17 @@ serving latency are modeled inputs.
 | Indicator | Recorded result | Meaning |
 |---|---:|---|
 | GPU rental reduction, GH → AGH | **11.1%** | 9 → 8 USD in eight controlled synthetic cases; total-cost gains are smaller. |
-| OpenMP campaign acceleration | **5.16×** | Eight threads, 16 uniform AGH cases, computation timer. |
-| Complete invocation acceleration | **1.73×** | Same uniform campaign, including process and transport overhead. |
-| Python/C++ verification | **63/63** | Small synthetic, seeded-ordering and frozen-reference checks. |
+| OpenMP median campaign acceleration | **4.20×** | Eight observed threads, 32 mixed cases, 18 rounds, computation timer. |
+| Complete invocation median acceleration | **2.27×** | Same mixed campaign, including process and transport overhead. |
+| Larger Python/C++ verification | **185,832 values** | Sixteen full reference comparisons with zero bitwise differences. |
+| Stage-2 feasibility recovery | **19.05%** | 256 usable adapted decisions among 1,344 frozen-routing failures. |
+| Stage-2 paired operational-cost reduction | **5.86%** | Summed C4+C5 on 390 scenarios with both decisions usable. |
 
 The [results report](docs/RESULTS.md) gives baselines, formulas, timing scopes,
 raw samples, solver outcomes and limitations. These are this project's
 measurements, separate from the paper's published numerical results.
 
-![Measured campaign scaling](benchmarks/portfolio/plots/openmp_scaling.png)
+![Median OpenMP campaign scaling](benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.png)
 
 ## From formulation to engineering
 
@@ -91,6 +93,7 @@ or Python dependency.
 
 - [Model and Stage 2](docs/MODEL.md): what is optimized and independently checked.
 - [Results](docs/RESULTS.md): cost, runtime, parity and parallel efficiency.
+- [Stage-2 stress results](docs/STAGE2_RESULTS.md): adaptation, paired costs and numerical rejections.
 - [Experiment guide](docs/EXPERIMENTS.md): configurations and reproduction commands.
 - [Verification](docs/VALIDATION.md): checks performed on this release.
 - [Presentation brief](docs/PRESENTATION_BRIEF.md): an Italian narrative for Claude Design.
@@ -115,6 +118,10 @@ now measures nine larger shapes and 32/64/128-case OpenMP batches. AGH C++ media
 is **2.889 s at 128x4x4** and **7.156 s at 256x4x4**; the latter uses independent
 final-decision validation after a full Python reference MemoryError. Best
 observed median OpenMP acceleration is **4.20x core / 2.27x full invocation**.
-All modes, raw evidence and failures are retained. Stage-2 stress measurements
-remain pending; the earlier results above retain their original scope.
+All modes, raw evidence and failures are retained. The [Stage-2 stress study](docs/STAGE2_RESULTS.md)
+also completes all forty workers: 37 accepted sources produce 1,850 LP attempts,
+with 646 scientifically usable decisions, 1,000 infeasible LPs and 204 numerical
+objective rejections. It records recovery and paired cost benefits without
+relaxing tolerances or assigning savings to infeasible baselines. The earlier
+campaigns retain their original scopes and observations.
 

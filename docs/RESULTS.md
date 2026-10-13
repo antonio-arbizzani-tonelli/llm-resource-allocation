@@ -33,8 +33,36 @@ full setting table, IQRs and separate process timers remain visible.
 The [analysis JSON](../benchmarks/performance_2026-10-13/analysis/analysis.json)
 and [compressed evidence](../benchmarks/performance_2026-10-13/evidence.zip)
 preserve the verification mode, failures, samples and provenance. These results
-add measured scalability and resource limits; the 40 Stage-2 stress jobs remain
-pending. The following sections retain the October 11–12 evidence and scopes.
+add measured scalability and resource limits. The separate forty-worker Stage-2
+study below is also complete. The later sections retain the October 11–12
+evidence and scopes.
+
+## Stage-2 adaptation and numerical boundaries, October 13
+
+The [complete stress report](STAGE2_RESULTS.md) records **40/40 completed workers**,
+**37/40 accepted sources** and **1,850 LP attempts**. Of those attempts, **646**
+are scientifically usable, **1,000** are solver-infeasible, and **204** pass
+independent constraints but fail the unchanged absolute objective-agreement
+threshold. Three rejected P_DM sources explicitly skip 150 scenarios.
+
+Adaptation recovers **256/1,344 frozen-routing failures (19.05%)**. On the
+**390 identical scenarios where both decisions are usable**, summed modeled
+operational C4+C5 decreases **5.8574%**. These are deterministic synthetic
+cohorts, not real-world probabilities, a cloud bill, or a method ranking.
+
+The 204 objective rejections all occur at load factor 100000. Solver/reference
+differences are one to three floating-point spacings, with maximum relative
+difference 3.4017e-16, but exceed the **1e-8 USD absolute threshold**. No rejected
+metrics are made usable and no tolerance is changed. No complete fifty-point
+grid is accepted. All eight Stage-1 P_DM solves retain time-limited incumbent
+status rather than proven optimality.
+
+![Operational stress outcomes](../benchmarks/stage2_stress_2026-10-13/plots/outcomes.png)
+
+The [dataset](../benchmarks/stage2_stress_2026-10-13/README.md) supplies all
+scenario/solver/validation evidence, numerical diagnostics and a solver-free
+frozen-source replay. Larger-instance C++/OpenMP timings remain a separate
+campaign with their own timer scopes.
 
 The timing campaigns were recorded on October 11–12, 2026. They remain historical
 measurements when the source later changes. The retained manifests identify

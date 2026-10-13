@@ -92,9 +92,13 @@ literal fixture and may require optional Gurobi. These tools and their unit
 tests are delivered, while a new calibrated Azure experiment is future work.
 Dataset licensing and attribution remain those of its original publisher.
 
-## Prepared overnight campaign
+## Recorded overnight campaign extension
 
 The [overnight guide](NIGHTLY_CAMPAIGN.md) provides a frozen, resumable 52-job
 campaign for larger Python/C++ shapes, independent-case OpenMP scaling and
-fixed-deployment Stage-2 sensitivity. This extension is prepared; its measurements
-are pending and are separate from the recorded [results](RESULTS.md).
+fixed-deployment Stage-2 sensitivity. The [larger timing study](PERFORMANCE.md)
+and [Stage-2 stress study](STAGE2_RESULTS.md) were executed separately on
+October 13. Both preserve raw observations, failures and frozen sources.
+The [Stage-2 dataset guide](../benchmarks/stage2_stress_2026-10-13/README.md)
+provides a solver-free validation replay and numerical-rejection diagnostics.
+New optimization runs have their own configuration/environment identities.

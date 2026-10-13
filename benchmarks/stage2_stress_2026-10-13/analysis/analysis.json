@@ -1,0 +1,3844 @@
+{
+  "audited_utc": "2026-10-13T15:14:55.886825+00:00",
+  "audit_status": "passed",
+  "configuration_sha256": "114a6233a8a2e8a2dd951b5b25f67ba407cfa0d6c05f6df2ed4b875247e18646",
+  "analysis_helper_sha256": "4b1f45d6f1af328271ef83dc0e4bc2822b5eaeaba114b69f6d68bee9bfb33666",
+  "completed_jobs": 40,
+  "accepted_sources": 37,
+  "full_grids_accepted": 0,
+  "stage1_solver_status_counts": {
+    "feasible": 8
+  },
+  "verified_job_files": 1970,
+  "fresh_frozen_validation_replays": 1850,
+  "fresh_operational_validation_replays": 850,
+  "fresh_stage1_validation_replays": 40,
+  "rejected_source_diagnostics": [
+    {
+      "job": "stress_16x4x4_L100000_p_dm_s37",
+      "constraints_independently_feasible": false,
+      "violated_families": [
+        "error_slo_eq_8j"
+      ],
+      "solver_status": "feasible",
+      "termination_condition": "maxTimeLimit",
+      "solver_objective": 81919817.75761268,
+      "independent_objective": 81919817.75761266,
+      "objective_absolute_difference": 1.4901161193847656e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_p_dm_s37",
+      "constraints_independently_feasible": true,
+      "violated_families": [],
+      "solver_status": "feasible",
+      "termination_condition": "maxTimeLimit",
+      "solver_objective": 163840051.95904002,
+      "independent_objective": 163840051.95904,
+      "objective_absolute_difference": 2.9802322387695312e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_p_dm_s37",
+      "constraints_independently_feasible": false,
+      "violated_families": [
+        "demand_balance_eq_8b"
+      ],
+      "solver_status": "feasible",
+      "termination_condition": "maxTimeLimit",
+      "solver_objective": 81920030.17602623,
+      "independent_objective": 81920030.17602623,
+      "objective_absolute_difference": 0.0
+    }
+  ],
+  "objective_rejection_diagnostics": [
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 0,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 1,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 2,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6337615161505616e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 5,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 7,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5376579062804103e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 10,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 12,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4522324743689305e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 15,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6509590041175185e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 16,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5008718352280222e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 17,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3757991924543721e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 20,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.568411061557545e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 21,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.425828249785549e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 22,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 25,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5301571366836764e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 26,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3910519538671538e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 27,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2751309664408585e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 30,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4937248271193012e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 31,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 32,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2447707075669346e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 37,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 40,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3638357221792053e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 41,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2398506656047832e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 42,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.136529783739146e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 45,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 46,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "scenario_index": 47,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 2.1783487582586907e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 0,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 1,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 2,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6337615161505616e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 5,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 7,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5376579062804103e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 10,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 12,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4522324743689305e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 15,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6509590041175185e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 16,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5008718352280222e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 17,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3757991924543721e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 20,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.568411061557545e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 21,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.425828249785549e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 22,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 25,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5301571366836764e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 26,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3910519538671538e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 27,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2751309664408585e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 30,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4937248271193012e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 31,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 32,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2447707075669346e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 37,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 40,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3638357221792053e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 41,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2398506656047832e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 42,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.136529783739146e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 45,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 46,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "scenario_index": 47,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 2.1783487582586907e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 0,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 1,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 2,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6337615161505616e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 5,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 7,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5376579062804103e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 10,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 12,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4522324743689305e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 15,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6509590041175185e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 16,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5008718352280222e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 17,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3757991924543721e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 20,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.568411061557545e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 21,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.425828249785549e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 22,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 25,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5301571366836764e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 26,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3910519538671538e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 27,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2751309664408585e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 30,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4937248271193012e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 31,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 32,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2447707075669346e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 37,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 40,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3638357221792053e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 41,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2398506656047832e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 42,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.136529783739146e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 45,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 46,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "scenario_index": 47,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 2.1783487582586907e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 0,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 1,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 2,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6337615161505616e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 5,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 7,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5376579062804103e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 10,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 12,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4522324743689305e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 15,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.6509590041175185e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 16,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5008718352280222e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 17,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3757991924543721e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 20,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.568411061557545e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 21,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.425828249785549e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 22,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 25,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.5301571366836764e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 26,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3910519538671538e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 27,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2751309664408585e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 30,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.4937248271193012e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 31,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 32,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2447707075669346e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 37,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 40,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.3638357221792053e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 41,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.2398506656047832e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 42,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.136529783739146e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 45,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.307009238141308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 46,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 1.1881902248295726e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "scenario_index": 47,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 2.1783487582586907e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 11,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 3.28856777452066e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 17,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 2.6259091076799186e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 27,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 2.4337694444899637e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 31,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 2.8187724563649924e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 36,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 2.690646455980133e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 37,
+      "absolute_difference": 2.2351741790771484e-08,
+      "relative_difference": 3.401745961429846e-16,
+      "ulp_difference_at_independent_scale": 3.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 41,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 2.573661845239712e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "scenario_index": 46,
+      "absolute_difference": 1.4901161193847656e-08,
+      "relative_difference": 2.4664259506410257e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 0,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 1,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 5,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 6,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6774449748218308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 10,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 11,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.584253596050656e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "scenario_index": 31,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 0,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 1,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 5,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 6,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6774449748218308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 10,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 11,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.584253596050656e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "scenario_index": 31,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 0,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 1,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 5,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 6,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6774449748218308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 10,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 11,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.584253596050656e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "scenario_index": 31,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 0,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.9605137815493865e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 1,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7822852747133034e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 5,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.8451894540250403e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 6,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6774449748218308e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 10,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7426789393513284e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 11,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.584253596050656e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "scenario_index": 31,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.3579316719073086e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 0,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.6143079137459745e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 1,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.4675526615788884e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 5,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.519348633222444e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 6,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.762452082937602e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 10,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.434940382974084e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 11,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.6089825345973555e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 15,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.7188344219718565e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 16,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.235833837188531e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 20,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.582892711241185e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 21,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.348084299226739e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 25,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.2599476663638203e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 26,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.1454069771695229e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 30,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.229948914581755e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "scenario_index": 31,
+      "absolute_difference": 1.7881393432617188e-07,
+      "relative_difference": 3.354406152827455e-16,
+      "ulp_difference_at_independent_scale": 3.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 0,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.6143079137459745e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 1,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.4675526615788884e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 5,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.519348633222444e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 6,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.762452082937602e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 10,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.434940382974084e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 11,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.6089825345973555e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 15,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.7188344219718565e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 16,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.235833837188531e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 20,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.582892711241185e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 21,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.348084299226739e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 25,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.2599476663638203e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 26,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.1454069771695229e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 30,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.229948914581755e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "scenario_index": 31,
+      "absolute_difference": 1.7881393432617188e-07,
+      "relative_difference": 3.354406152827455e-16,
+      "ulp_difference_at_independent_scale": 3.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 0,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.6143079137459745e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 1,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.4675526615788884e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 5,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.519348633222444e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 6,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.762452082937602e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 10,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.434940382974084e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 11,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.6089825345973555e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 15,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.7188344219718565e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 16,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.235833837188531e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 20,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.582892711241185e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 21,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.348084299226739e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 25,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.2599476663638203e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 26,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.1454069771695229e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 30,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.229948914581755e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "scenario_index": 31,
+      "absolute_difference": 1.7881393432617188e-07,
+      "relative_difference": 3.354406152827455e-16,
+      "ulp_difference_at_independent_scale": 3.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 0,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.6143079137459745e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 1,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.4675526615788884e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 5,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.519348633222444e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 6,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.762452082937602e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 10,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.434940382974084e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 11,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.6089825345973555e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 15,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.7188344219718565e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 16,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.235833837188531e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 20,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.582892711241185e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 21,
+      "absolute_difference": 1.1920928955078125e-07,
+      "relative_difference": 2.348084299226739e-16,
+      "ulp_difference_at_independent_scale": 2.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 25,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.2599476663638203e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 26,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.1454069771695229e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 30,
+      "absolute_difference": 5.960464477539063e-08,
+      "relative_difference": 1.229948914581755e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "scenario_index": 31,
+      "absolute_difference": 1.7881393432617188e-07,
+      "relative_difference": 3.354406152827455e-16,
+      "ulp_difference_at_independent_scale": 3.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_gh_s37",
+      "scenario_index": 20,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7380283270018114e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_gh_s37",
+      "scenario_index": 25,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6956373964417998e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s37",
+      "scenario_index": 20,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7380283270018114e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s37",
+      "scenario_index": 25,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6956373964417998e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s41",
+      "scenario_index": 20,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7380283270018114e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s41",
+      "scenario_index": 25,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6956373964417998e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s43",
+      "scenario_index": 20,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.7380283270018114e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s43",
+      "scenario_index": 25,
+      "absolute_difference": 2.9802322387695312e-08,
+      "relative_difference": 1.6956373964417998e-16,
+      "ulp_difference_at_independent_scale": 1.0,
+      "absolute_tolerance": 1e-08
+    }
+  ],
+  "job_wall_seconds_sum": 659.520909299994,
+  "overall": {
+    "attempted_scenarios": 1850,
+    "accepted_scenarios": 646,
+    "solver_status_counts": {
+      "optimal": 850,
+      "infeasible": 1000
+    },
+    "stage2_status_counts": {
+      "success": 646,
+      "solver_no_usable_solution": 1000,
+      "objective_inconsistent": 204
+    },
+    "frozen_infeasible_scenarios": 1344,
+    "recovered_scenarios": 256,
+    "recovery_fraction_of_frozen_failures": 0.19047619047619047,
+    "paired_cost_scenarios": 390,
+    "paired_frozen_operational_cost_sum_usd": 10547532668.8,
+    "paired_adapted_operational_cost_sum_usd": 9929719445.119999,
+    "paired_cost_reduction_fraction_of_baseline_sum": 0.05857419389726236,
+    "accepted_demand_weighted_unmet_median": 0.0875,
+    "accepted_changed_assignment_median": 0.07500000000000001,
+    "stage2_integrated_duration": {
+      "count": 1850,
+      "minimum_seconds": 0.0126416999992216,
+      "median_seconds": 0.03986340000119526,
+      "q1_seconds": 0.02522775000124966,
+      "q3_seconds": 0.06415252499937196,
+      "iqr_seconds": 0.0389247749981223
+    }
+  },
+  "methods": {
+    "agh": {
+      "attempted_scenarios": 1200,
+      "accepted_scenarios": 378,
+      "solver_status_counts": {
+        "optimal": 525,
+        "infeasible": 675
+      },
+      "stage2_status_counts": {
+        "success": 378,
+        "solver_no_usable_solution": 675,
+        "objective_inconsistent": 147
+      },
+      "frozen_infeasible_scenarios": 858,
+      "recovered_scenarios": 123,
+      "recovery_fraction_of_frozen_failures": 0.14335664335664336,
+      "paired_cost_scenarios": 255,
+      "paired_frozen_operational_cost_sum_usd": 7597137417.599999,
+      "paired_adapted_operational_cost_sum_usd": 7133777499.84,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060991382976244575,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 1200,
+        "minimum_seconds": 0.0126416999992216,
+        "median_seconds": 0.03975364999860176,
+        "q1_seconds": 0.02441140000064479,
+        "q3_seconds": 0.06468340000174067,
+        "iqr_seconds": 0.040272000001095876
+      }
+    },
+    "gh": {
+      "attempted_scenarios": 400,
+      "accepted_scenarios": 126,
+      "solver_status_counts": {
+        "optimal": 175,
+        "infeasible": 225
+      },
+      "stage2_status_counts": {
+        "success": 126,
+        "solver_no_usable_solution": 225,
+        "objective_inconsistent": 49
+      },
+      "frozen_infeasible_scenarios": 286,
+      "recovered_scenarios": 41,
+      "recovery_fraction_of_frozen_failures": 0.14335664335664336,
+      "paired_cost_scenarios": 85,
+      "paired_frozen_operational_cost_sum_usd": 2532379139.2,
+      "paired_adapted_operational_cost_sum_usd": 2377925833.2799997,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0609913829762447,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 400,
+        "minimum_seconds": 0.01348839999991469,
+        "median_seconds": 0.03940150000016729,
+        "q1_seconds": 0.02555667499837,
+        "q3_seconds": 0.0646610750027321,
+        "iqr_seconds": 0.039104400004362105
+      }
+    },
+    "p_dm": {
+      "attempted_scenarios": 250,
+      "accepted_scenarios": 142,
+      "solver_status_counts": {
+        "optimal": 150,
+        "infeasible": 100
+      },
+      "stage2_status_counts": {
+        "success": 142,
+        "solver_no_usable_solution": 100,
+        "objective_inconsistent": 8
+      },
+      "frozen_infeasible_scenarios": 200,
+      "recovered_scenarios": 92,
+      "recovery_fraction_of_frozen_failures": 0.46,
+      "paired_cost_scenarios": 50,
+      "paired_frozen_operational_cost_sum_usd": 418016112.0,
+      "paired_adapted_operational_cost_sum_usd": 418016112.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 250,
+        "minimum_seconds": 0.018355100000917446,
+        "median_seconds": 0.04135589999896183,
+        "q1_seconds": 0.026999774998330395,
+        "q3_seconds": 0.059355850001338695,
+        "iqr_seconds": 0.0323560750030083
+      }
+    }
+  },
+  "groups": [
+    {
+      "shape": "16x4x4",
+      "load": 200.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 90,
+      "solver_status_counts": {
+        "optimal": 90,
+        "infeasible": 60
+      },
+      "stage2_status_counts": {
+        "success": 90,
+        "solver_no_usable_solution": 60
+      },
+      "frozen_infeasible_scenarios": 90,
+      "recovered_scenarios": 30,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 60,
+      "paired_frozen_operational_cost_sum_usd": 25545945.6,
+      "paired_adapted_operational_cost_sum_usd": 24002927.04,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009155,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.023098300000128802,
+        "median_seconds": 0.02838635000080103,
+        "q1_seconds": 0.026471900002434268,
+        "q3_seconds": 0.03204124999956548,
+        "iqr_seconds": 0.005569349997131212
+      }
+    },
+    {
+      "shape": "16x4x4",
+      "load": 200.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 8515315.2,
+      "paired_adapted_operational_cost_sum_usd": 8000975.68,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.023378800000500632,
+        "median_seconds": 0.027755649998653098,
+        "q1_seconds": 0.025983025000641646,
+        "q3_seconds": 0.030521824999595992,
+        "iqr_seconds": 0.004538799998954346
+      }
+    },
+    {
+      "shape": "16x4x4",
+      "load": 200.0,
+      "method": "p_dm",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 1642672.0,
+      "paired_adapted_operational_cost_sum_usd": 1642672.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.027271800001472002,
+        "median_seconds": 0.03880620000018098,
+        "q1_seconds": 0.034439275001204805,
+        "q3_seconds": 0.042003725000540726,
+        "iqr_seconds": 0.0075644499993359204
+      }
+    },
+    {
+      "shape": "16x4x4",
+      "load": 100000.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 42,
+      "solver_status_counts": {
+        "optimal": 63,
+        "infeasible": 87
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 21,
+        "success": 42,
+        "solver_no_usable_solution": 87
+      },
+      "frozen_infeasible_scenarios": 120,
+      "recovered_scenarios": 30,
+      "recovery_fraction_of_frozen_failures": 0.25,
+      "paired_cost_scenarios": 12,
+      "paired_frozen_operational_cost_sum_usd": 2484518400.0,
+      "paired_adapted_operational_cost_sum_usd": 2334346771.2,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0604429529682695,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.023037099999783095,
+        "median_seconds": 0.027952250000453205,
+        "q1_seconds": 0.026634049998392584,
+        "q3_seconds": 0.030568350000066857,
+        "iqr_seconds": 0.0039343000016742735
+      }
+    },
+    {
+      "shape": "16x4x4",
+      "load": 100000.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 14,
+      "solver_status_counts": {
+        "optimal": 21,
+        "infeasible": 29
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 7,
+        "success": 14,
+        "solver_no_usable_solution": 29
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.25,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 828172800.0,
+      "paired_adapted_operational_cost_sum_usd": 778115590.4,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06044295296826945,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.02369890000045416,
+        "median_seconds": 0.026809649998540408,
+        "q1_seconds": 0.025656800000433577,
+        "q3_seconds": 0.030338499998833868,
+        "iqr_seconds": 0.0046816999984002905
+      }
+    },
+    {
+      "shape": "16x8x8",
+      "load": 200.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 120
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 120
+      },
+      "frozen_infeasible_scenarios": 120,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 30,
+      "paired_frozen_operational_cost_sum_usd": 10990607.999999998,
+      "paired_adapted_operational_cost_sum_usd": 10314568.799999999,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06151062798345636,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.06200890000036452,
+        "median_seconds": 0.07202105000214942,
+        "q1_seconds": 0.06799259999934293,
+        "q3_seconds": 0.07800082500034478,
+        "iqr_seconds": 0.010008225001001847
+      }
+    },
+    {
+      "shape": "16x8x8",
+      "load": 200.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 10,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 10,
+        "solver_no_usable_solution": 40
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3663535.9999999995,
+      "paired_adapted_operational_cost_sum_usd": 3438189.5999999996,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.061510627983456405,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06293369999912102,
+        "median_seconds": 0.07183470000200032,
+        "q1_seconds": 0.06719440000051691,
+        "q3_seconds": 0.07969622500149853,
+        "iqr_seconds": 0.012501825000981626
+      }
+    },
+    {
+      "shape": "16x8x8",
+      "load": 200.0,
+      "method": "p_dm",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 1642672.0000000002,
+      "paired_adapted_operational_cost_sum_usd": 1642672.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 1.417389738510607e-16,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.09696969696969691,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06767419999960111,
+        "median_seconds": 0.08542824999858567,
+        "q1_seconds": 0.07460022499981278,
+        "q3_seconds": 0.09198012499837205,
+        "iqr_seconds": 0.017379899998559267
+      }
+    },
+    {
+      "shape": "16x8x8",
+      "load": 100000.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 24,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 120
+      },
+      "stage2_status_counts": {
+        "success": 24,
+        "solver_no_usable_solution": 120,
+        "objective_inconsistent": 6
+      },
+      "frozen_infeasible_scenarios": 123,
+      "recovered_scenarios": 3,
+      "recovery_fraction_of_frozen_failures": 0.024390243902439025,
+      "paired_cost_scenarios": 21,
+      "paired_frozen_operational_cost_sum_usd": 3727487999.9999995,
+      "paired_adapted_operational_cost_sum_usd": 3498029169.6,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06155856984650243,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.062411499999143416,
+        "median_seconds": 0.06998100000237173,
+        "q1_seconds": 0.0681084749976435,
+        "q3_seconds": 0.07625264999933279,
+        "iqr_seconds": 0.008144175001689291
+      }
+    },
+    {
+      "shape": "16x8x8",
+      "load": 100000.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 8,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 8,
+        "solver_no_usable_solution": 40,
+        "objective_inconsistent": 2
+      },
+      "frozen_infeasible_scenarios": 41,
+      "recovered_scenarios": 1,
+      "recovery_fraction_of_frozen_failures": 0.024390243902439025,
+      "paired_cost_scenarios": 7,
+      "paired_frozen_operational_cost_sum_usd": 1242495999.9999998,
+      "paired_adapted_operational_cost_sum_usd": 1166009723.1999998,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0615585698465025,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06354890000147861,
+        "median_seconds": 0.07553734999964945,
+        "q1_seconds": 0.06907097499970405,
+        "q3_seconds": 0.08174482500089653,
+        "iqr_seconds": 0.012673850001192477
+      }
+    },
+    {
+      "shape": "32x4x4",
+      "load": 200.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 90,
+      "solver_status_counts": {
+        "optimal": 90,
+        "infeasible": 60
+      },
+      "stage2_status_counts": {
+        "success": 90,
+        "solver_no_usable_solution": 60
+      },
+      "frozen_infeasible_scenarios": 90,
+      "recovered_scenarios": 30,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 60,
+      "paired_frozen_operational_cost_sum_usd": 51091891.2,
+      "paired_adapted_operational_cost_sum_usd": 48005854.08,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009155,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.03850270000111777,
+        "median_seconds": 0.046343799998794566,
+        "q1_seconds": 0.042231675000039104,
+        "q3_seconds": 0.048441999999340624,
+        "iqr_seconds": 0.00621032499930152
+      }
+    },
+    {
+      "shape": "32x4x4",
+      "load": 200.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 17030630.4,
+      "paired_adapted_operational_cost_sum_usd": 16001951.36,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03903619999982766,
+        "median_seconds": 0.05133469999964291,
+        "q1_seconds": 0.04724019999957818,
+        "q3_seconds": 0.055774374999600695,
+        "iqr_seconds": 0.008534175000022515
+      }
+    },
+    {
+      "shape": "32x4x4",
+      "load": 200.0,
+      "method": "p_dm",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3285344.0,
+      "paired_adapted_operational_cost_sum_usd": 3285344.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.04177660000277683,
+        "median_seconds": 0.05313429999841901,
+        "q1_seconds": 0.04927262500041252,
+        "q3_seconds": 0.05738762499822769,
+        "iqr_seconds": 0.008114999997815175
+      }
+    },
+    {
+      "shape": "32x4x4",
+      "load": 100000.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 0,
+      "solver_status_counts": {
+        "optimal": 42,
+        "infeasible": 108
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 42,
+        "solver_no_usable_solution": 108
+      },
+      "frozen_infeasible_scenarios": 135,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 0,
+      "paired_frozen_operational_cost_sum_usd": 0.0,
+      "paired_adapted_operational_cost_sum_usd": 0.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": null,
+      "accepted_demand_weighted_unmet_median": null,
+      "accepted_changed_assignment_median": null,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.036893599997711135,
+        "median_seconds": 0.04414909999832162,
+        "q1_seconds": 0.0416540750020431,
+        "q3_seconds": 0.04988604999925883,
+        "iqr_seconds": 0.00823197499721573
+      }
+    },
+    {
+      "shape": "32x4x4",
+      "load": 100000.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 0,
+      "solver_status_counts": {
+        "optimal": 14,
+        "infeasible": 36
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 14,
+        "solver_no_usable_solution": 36
+      },
+      "frozen_infeasible_scenarios": 45,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 0,
+      "paired_frozen_operational_cost_sum_usd": 0.0,
+      "paired_adapted_operational_cost_sum_usd": 0.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": null,
+      "accepted_demand_weighted_unmet_median": null,
+      "accepted_changed_assignment_median": null,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03842109999823151,
+        "median_seconds": 0.044717149999996764,
+        "q1_seconds": 0.042163049999544455,
+        "q3_seconds": 0.049544000000423694,
+        "iqr_seconds": 0.007380950000879238
+      }
+    },
+    {
+      "shape": "8x4x4",
+      "load": 200.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 90,
+      "solver_status_counts": {
+        "optimal": 90,
+        "infeasible": 60
+      },
+      "stage2_status_counts": {
+        "success": 90,
+        "solver_no_usable_solution": 60
+      },
+      "frozen_infeasible_scenarios": 90,
+      "recovered_scenarios": 30,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 60,
+      "paired_frozen_operational_cost_sum_usd": 12772972.8,
+      "paired_adapted_operational_cost_sum_usd": 12001463.52,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009155,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.0126416999992216,
+        "median_seconds": 0.01576435000060883,
+        "q1_seconds": 0.014905024999279703,
+        "q3_seconds": 0.0167386750008518,
+        "iqr_seconds": 0.0018336500015720958
+      }
+    },
+    {
+      "shape": "8x4x4",
+      "load": 200.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 4257657.6,
+      "paired_adapted_operational_cost_sum_usd": 4000487.84,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.01348839999991469,
+        "median_seconds": 0.016401449998738826,
+        "q1_seconds": 0.015346224998211255,
+        "q3_seconds": 0.01862782500029425,
+        "iqr_seconds": 0.003281600002082996
+      }
+    },
+    {
+      "shape": "8x4x4",
+      "load": 200.0,
+      "method": "p_dm",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 821336.0,
+      "paired_adapted_operational_cost_sum_usd": 821336.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.019091599999228492,
+        "median_seconds": 0.024775849999059574,
+        "q1_seconds": 0.022978974997386103,
+        "q3_seconds": 0.02687654999863298,
+        "iqr_seconds": 0.003897575001246878
+      }
+    },
+    {
+      "shape": "8x4x4",
+      "load": 100000.0,
+      "method": "agh",
+      "attempted_scenarios": 150,
+      "accepted_scenarios": 12,
+      "solver_status_counts": {
+        "optimal": 90,
+        "infeasible": 60
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 78,
+        "solver_no_usable_solution": 60,
+        "success": 12
+      },
+      "frozen_infeasible_scenarios": 90,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 12,
+      "paired_frozen_operational_cost_sum_usd": 1284729600.0,
+      "paired_adapted_operational_cost_sum_usd": 1207076745.6000001,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060442955778398706,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 150,
+        "minimum_seconds": 0.016308300000673626,
+        "median_seconds": 0.020496999999522814,
+        "q1_seconds": 0.019214375000956352,
+        "q3_seconds": 0.021970825000607874,
+        "iqr_seconds": 0.0027564499996515224
+      }
+    },
+    {
+      "shape": "8x4x4",
+      "load": 100000.0,
+      "method": "gh",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 4,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 26,
+        "solver_no_usable_solution": 20,
+        "success": 4
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 428243200.0,
+      "paired_adapted_operational_cost_sum_usd": 402358915.20000005,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060442955778398706,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.019061499999224907,
+        "median_seconds": 0.02486460000000079,
+        "q1_seconds": 0.02295964999939315,
+        "q3_seconds": 0.02757839999958378,
+        "iqr_seconds": 0.00461875000019063
+      }
+    },
+    {
+      "shape": "8x4x4",
+      "load": 100000.0,
+      "method": "p_dm",
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 22,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 22,
+        "solver_no_usable_solution": 20,
+        "objective_inconsistent": 8
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 12,
+      "recovery_fraction_of_frozen_failures": 0.3,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 410624088.0,
+      "paired_adapted_operational_cost_sum_usd": 410624088.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212127,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.018355100000917446,
+        "median_seconds": 0.027152299999215757,
+        "q1_seconds": 0.022674324999570672,
+        "q3_seconds": 0.03301795000152197,
+        "iqr_seconds": 0.010343625001951295
+      }
+    }
+  ],
+  "sources": [
+    {
+      "job": "stress_8x4x4_L200_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.026133399998798268,
+      "job_wall_seconds": 3.041139100001601,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 4257657.6,
+      "paired_adapted_operational_cost_sum_usd": 4000487.84,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.01348839999991469,
+        "median_seconds": 0.016401449998738826,
+        "q1_seconds": 0.015346224998211255,
+        "q3_seconds": 0.01862782500029425,
+        "iqr_seconds": 0.003281600002082996
+      }
+    },
+    {
+      "job": "stress_8x4x4_L200_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.9461752999995952,
+      "job_wall_seconds": 3.490052299999661,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 4257657.6,
+      "paired_adapted_operational_cost_sum_usd": 4000487.84,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.013451499999064254,
+        "median_seconds": 0.01588410000113072,
+        "q1_seconds": 0.015066174999446957,
+        "q3_seconds": 0.016756300001361524,
+        "iqr_seconds": 0.0016901250019145664
+      }
+    },
+    {
+      "job": "stress_8x4x4_L200_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 0.948262000001705,
+      "job_wall_seconds": 3.5175464000021748,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 4257657.6,
+      "paired_adapted_operational_cost_sum_usd": 4000487.84,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.013312600000062957,
+        "median_seconds": 0.01586614999905578,
+        "q1_seconds": 0.014905024999279703,
+        "q3_seconds": 0.017443799999455223,
+        "iqr_seconds": 0.0025387750001755194
+      }
+    },
+    {
+      "job": "stress_8x4x4_L200_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 0.9751080999994883,
+      "job_wall_seconds": 3.4887437999968824,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 4257657.6,
+      "paired_adapted_operational_cost_sum_usd": 4000487.84,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.0126416999992216,
+        "median_seconds": 0.015425049998157192,
+        "q1_seconds": 0.014622274999965157,
+        "q3_seconds": 0.016259625000202504,
+        "iqr_seconds": 0.0016373500002373476
+      }
+    },
+    {
+      "job": "stress_8x4x4_L200_p_dm_s37",
+      "source_accepted": true,
+      "stage1_seconds": 20.183429900000192,
+      "job_wall_seconds": 23.510886900003243,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 821336.0,
+      "paired_adapted_operational_cost_sum_usd": 821336.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.019091599999228492,
+        "median_seconds": 0.024775849999059574,
+        "q1_seconds": 0.022978974997386103,
+        "q3_seconds": 0.02687654999863298,
+        "iqr_seconds": 0.003897575001246878
+      }
+    },
+    {
+      "job": "stress_8x4x4_L100000_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.029023600000073202,
+      "job_wall_seconds": 3.3917997000025935,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 4,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 26,
+        "solver_no_usable_solution": 20,
+        "success": 4
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 428243200.0,
+      "paired_adapted_operational_cost_sum_usd": 402358915.20000005,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060442955778398706,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.019061499999224907,
+        "median_seconds": 0.02486460000000079,
+        "q1_seconds": 0.02295964999939315,
+        "q3_seconds": 0.02757839999958378,
+        "iqr_seconds": 0.00461875000019063
+      }
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 1.0866110000024491,
+      "job_wall_seconds": 4.046913300000597,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 4,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 26,
+        "solver_no_usable_solution": 20,
+        "success": 4
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 428243200.0,
+      "paired_adapted_operational_cost_sum_usd": 402358915.20000005,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060442955778398706,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.016308300000673626,
+        "median_seconds": 0.019349800000782125,
+        "q1_seconds": 0.018197124999460357,
+        "q3_seconds": 0.020389450001857767,
+        "iqr_seconds": 0.0021923250023974106
+      }
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 1.2325987000003806,
+      "job_wall_seconds": 4.545033899998089,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 4,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 26,
+        "solver_no_usable_solution": 20,
+        "success": 4
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 428243200.0,
+      "paired_adapted_operational_cost_sum_usd": 402358915.20000005,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060442955778398706,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.018126099999790313,
+        "median_seconds": 0.02167944999928295,
+        "q1_seconds": 0.020279524998841225,
+        "q3_seconds": 0.023776874999384745,
+        "iqr_seconds": 0.00349735000054352
+      }
+    },
+    {
+      "job": "stress_8x4x4_L100000_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 1.6915989000008267,
+      "job_wall_seconds": 5.248635299998568,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 4,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 26,
+        "solver_no_usable_solution": 20,
+        "success": 4
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 428243200.0,
+      "paired_adapted_operational_cost_sum_usd": 402358915.20000005,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060442955778398706,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.017833599998994032,
+        "median_seconds": 0.020825400000830996,
+        "q1_seconds": 0.019644275000246125,
+        "q3_seconds": 0.021808349999446364,
+        "iqr_seconds": 0.0021640749992002384
+      }
+    },
+    {
+      "job": "stress_8x4x4_L100000_p_dm_s37",
+      "source_accepted": true,
+      "stage1_seconds": 20.2002164000005,
+      "job_wall_seconds": 23.93728199999896,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 22,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 22,
+        "solver_no_usable_solution": 20,
+        "objective_inconsistent": 8
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 12,
+      "recovery_fraction_of_frozen_failures": 0.3,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 410624088.0,
+      "paired_adapted_operational_cost_sum_usd": 410624088.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212127,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.018355100000917446,
+        "median_seconds": 0.027152299999215757,
+        "q1_seconds": 0.022674324999570672,
+        "q3_seconds": 0.03301795000152197,
+        "iqr_seconds": 0.010343625001951295
+      }
+    },
+    {
+      "job": "stress_16x4x4_L200_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.07750470000246423,
+      "job_wall_seconds": 3.8941503999994893,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 8515315.2,
+      "paired_adapted_operational_cost_sum_usd": 8000975.68,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.023378800000500632,
+        "median_seconds": 0.027755649998653098,
+        "q1_seconds": 0.025983025000641646,
+        "q3_seconds": 0.030521824999595992,
+        "iqr_seconds": 0.004538799998954346
+      }
+    },
+    {
+      "job": "stress_16x4x4_L200_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 4.025659400002041,
+      "job_wall_seconds": 8.295289899997442,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 8515315.2,
+      "paired_adapted_operational_cost_sum_usd": 8000975.68,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.023489100000006147,
+        "median_seconds": 0.02899530000104278,
+        "q1_seconds": 0.02670007499818894,
+        "q3_seconds": 0.03649899999891204,
+        "iqr_seconds": 0.009798925000723102
+      }
+    },
+    {
+      "job": "stress_16x4x4_L200_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 4.095202399999835,
+      "job_wall_seconds": 8.168246299999737,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 8515315.2,
+      "paired_adapted_operational_cost_sum_usd": 8000975.68,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.02313230000072508,
+        "median_seconds": 0.027730700001484365,
+        "q1_seconds": 0.026259649998792156,
+        "q3_seconds": 0.029192324998803088,
+        "iqr_seconds": 0.0029326750000109314
+      }
+    },
+    {
+      "job": "stress_16x4x4_L200_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 4.058767300000909,
+      "job_wall_seconds": 8.292692999999417,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 8515315.2,
+      "paired_adapted_operational_cost_sum_usd": 8000975.68,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.023098300000128802,
+        "median_seconds": 0.028812599999582744,
+        "q1_seconds": 0.02643545000046288,
+        "q3_seconds": 0.03230855000037991,
+        "iqr_seconds": 0.005873099999917031
+      }
+    },
+    {
+      "job": "stress_16x4x4_L200_p_dm_s37",
+      "source_accepted": true,
+      "stage1_seconds": 20.436299200002395,
+      "job_wall_seconds": 25.47947209999984,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 1642672.0,
+      "paired_adapted_operational_cost_sum_usd": 1642672.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.027271800001472002,
+        "median_seconds": 0.03880620000018098,
+        "q1_seconds": 0.034439275001204805,
+        "q3_seconds": 0.042003725000540726,
+        "iqr_seconds": 0.0075644499993359204
+      }
+    },
+    {
+      "job": "stress_16x4x4_L100000_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.08656830000109039,
+      "job_wall_seconds": 3.8669373000011547,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 14,
+      "solver_status_counts": {
+        "optimal": 21,
+        "infeasible": 29
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 7,
+        "success": 14,
+        "solver_no_usable_solution": 29
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.25,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 828172800.0,
+      "paired_adapted_operational_cost_sum_usd": 778115590.4,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06044295296826945,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.02369890000045416,
+        "median_seconds": 0.026809649998540408,
+        "q1_seconds": 0.025656800000433577,
+        "q3_seconds": 0.030338499998833868,
+        "iqr_seconds": 0.0046816999984002905
+      }
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 3.3378099000001384,
+      "job_wall_seconds": 7.188503800000035,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 14,
+      "solver_status_counts": {
+        "optimal": 21,
+        "infeasible": 29
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 7,
+        "success": 14,
+        "solver_no_usable_solution": 29
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.25,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 828172800.0,
+      "paired_adapted_operational_cost_sum_usd": 778115590.4,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06044295296826945,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.023037099999783095,
+        "median_seconds": 0.027231349999055965,
+        "q1_seconds": 0.02569260000200302,
+        "q3_seconds": 0.02798347499992815,
+        "iqr_seconds": 0.0022908749979251297
+      }
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 3.4013368000014452,
+      "job_wall_seconds": 7.4008148000029905,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 14,
+      "solver_status_counts": {
+        "optimal": 21,
+        "infeasible": 29
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 7,
+        "success": 14,
+        "solver_no_usable_solution": 29
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.25,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 828172800.0,
+      "paired_adapted_operational_cost_sum_usd": 778115590.4,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06044295296826945,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.024111499998980435,
+        "median_seconds": 0.028064100000847247,
+        "q1_seconds": 0.02670724999734375,
+        "q3_seconds": 0.030249675000050047,
+        "iqr_seconds": 0.0035424250027062953
+      }
+    },
+    {
+      "job": "stress_16x4x4_L100000_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 3.3956359999974666,
+      "job_wall_seconds": 7.5170235999976285,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 14,
+      "solver_status_counts": {
+        "optimal": 21,
+        "infeasible": 29
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 7,
+        "success": 14,
+        "solver_no_usable_solution": 29
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.25,
+      "paired_cost_scenarios": 4,
+      "paired_frozen_operational_cost_sum_usd": 828172800.0,
+      "paired_adapted_operational_cost_sum_usd": 778115590.4,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.06044295296826945,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.023750700001983205,
+        "median_seconds": 0.02950030000101833,
+        "q1_seconds": 0.027944950001256075,
+        "q3_seconds": 0.03279039999779343,
+        "iqr_seconds": 0.004845449996537354
+      }
+    },
+    {
+      "job": "stress_16x4x4_L100000_p_dm_s37",
+      "source_accepted": false,
+      "skipped_scenarios": 50
+    },
+    {
+      "job": "stress_32x4x4_L200_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.2792019000007713,
+      "job_wall_seconds": 6.733750299998064,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 17030630.4,
+      "paired_adapted_operational_cost_sum_usd": 16001951.36,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03903619999982766,
+        "median_seconds": 0.05133469999964291,
+        "q1_seconds": 0.04724019999957818,
+        "q3_seconds": 0.055774374999600695,
+        "iqr_seconds": 0.008534175000022515
+      }
+    },
+    {
+      "job": "stress_32x4x4_L200_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 15.432784799999354,
+      "job_wall_seconds": 21.813803000000917,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 17030630.4,
+      "paired_adapted_operational_cost_sum_usd": 16001951.36,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03896829999939655,
+        "median_seconds": 0.045707400000537746,
+        "q1_seconds": 0.04214682500150957,
+        "q3_seconds": 0.048009424999690964,
+        "iqr_seconds": 0.005862599998181395
+      }
+    },
+    {
+      "job": "stress_32x4x4_L200_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 14.93798969999989,
+      "job_wall_seconds": 21.268763500000205,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 17030630.4,
+      "paired_adapted_operational_cost_sum_usd": 16001951.36,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.0404101999993145,
+        "median_seconds": 0.04697420000047714,
+        "q1_seconds": 0.04328912500204751,
+        "q3_seconds": 0.04988310000044294,
+        "iqr_seconds": 0.006593974998395424
+      }
+    },
+    {
+      "job": "stress_32x4x4_L200_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 15.313248099999328,
+      "job_wall_seconds": 21.46172680000018,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 30,
+      "recovered_scenarios": 10,
+      "recovery_fraction_of_frozen_failures": 0.3333333333333333,
+      "paired_cost_scenarios": 20,
+      "paired_frozen_operational_cost_sum_usd": 17030630.4,
+      "paired_adapted_operational_cost_sum_usd": 16001951.36,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.060401700691009017,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03850270000111777,
+        "median_seconds": 0.046057550000114134,
+        "q1_seconds": 0.04196817500087491,
+        "q3_seconds": 0.0470223000011174,
+        "iqr_seconds": 0.005054125000242493
+      }
+    },
+    {
+      "job": "stress_32x4x4_L200_p_dm_s37",
+      "source_accepted": true,
+      "stage1_seconds": 20.487738499999978,
+      "job_wall_seconds": 26.93154019999929,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3285344.0,
+      "paired_adapted_operational_cost_sum_usd": 3285344.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.12121212121212128,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.04177660000277683,
+        "median_seconds": 0.05313429999841901,
+        "q1_seconds": 0.04927262500041252,
+        "q3_seconds": 0.05738762499822769,
+        "iqr_seconds": 0.008114999997815175
+      }
+    },
+    {
+      "job": "stress_32x4x4_L100000_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.32306940000125905,
+      "job_wall_seconds": 5.811123300001782,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 0,
+      "solver_status_counts": {
+        "optimal": 14,
+        "infeasible": 36
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 14,
+        "solver_no_usable_solution": 36
+      },
+      "frozen_infeasible_scenarios": 45,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 0,
+      "paired_frozen_operational_cost_sum_usd": 0.0,
+      "paired_adapted_operational_cost_sum_usd": 0.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": null,
+      "accepted_demand_weighted_unmet_median": null,
+      "accepted_changed_assignment_median": null,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03842109999823151,
+        "median_seconds": 0.044717149999996764,
+        "q1_seconds": 0.042163049999544455,
+        "q3_seconds": 0.049544000000423694,
+        "iqr_seconds": 0.007380950000879238
+      }
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 40.37431040000229,
+      "job_wall_seconds": 47.01699639999788,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 0,
+      "solver_status_counts": {
+        "optimal": 14,
+        "infeasible": 36
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 14,
+        "solver_no_usable_solution": 36
+      },
+      "frozen_infeasible_scenarios": 45,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 0,
+      "paired_frozen_operational_cost_sum_usd": 0.0,
+      "paired_adapted_operational_cost_sum_usd": 0.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": null,
+      "accepted_demand_weighted_unmet_median": null,
+      "accepted_changed_assignment_median": null,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.03965040000184672,
+        "median_seconds": 0.043860649999260204,
+        "q1_seconds": 0.042367974998342106,
+        "q3_seconds": 0.04731995000202005,
+        "iqr_seconds": 0.004951975003677944
+      }
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 39.07662679999703,
+      "job_wall_seconds": 45.382840499998565,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 0,
+      "solver_status_counts": {
+        "optimal": 14,
+        "infeasible": 36
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 14,
+        "solver_no_usable_solution": 36
+      },
+      "frozen_infeasible_scenarios": 45,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 0,
+      "paired_frozen_operational_cost_sum_usd": 0.0,
+      "paired_adapted_operational_cost_sum_usd": 0.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": null,
+      "accepted_demand_weighted_unmet_median": null,
+      "accepted_changed_assignment_median": null,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.036893599997711135,
+        "median_seconds": 0.040910849998908816,
+        "q1_seconds": 0.03869015000145737,
+        "q3_seconds": 0.04696665000028588,
+        "iqr_seconds": 0.008276499998828513
+      }
+    },
+    {
+      "job": "stress_32x4x4_L100000_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 38.2117075999995,
+      "job_wall_seconds": 45.258198399998946,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 0,
+      "solver_status_counts": {
+        "optimal": 14,
+        "infeasible": 36
+      },
+      "stage2_status_counts": {
+        "objective_inconsistent": 14,
+        "solver_no_usable_solution": 36
+      },
+      "frozen_infeasible_scenarios": 45,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 0,
+      "paired_frozen_operational_cost_sum_usd": 0.0,
+      "paired_adapted_operational_cost_sum_usd": 0.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": null,
+      "accepted_demand_weighted_unmet_median": null,
+      "accepted_changed_assignment_median": null,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.04088350000165519,
+        "median_seconds": 0.04863550000118266,
+        "q1_seconds": 0.04386209999938728,
+        "q3_seconds": 0.05391880000024685,
+        "iqr_seconds": 0.010056700000859564
+      }
+    },
+    {
+      "job": "stress_32x4x4_L100000_p_dm_s37",
+      "source_accepted": false,
+      "skipped_scenarios": 50
+    },
+    {
+      "job": "stress_16x8x8_L200_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.38963829999920563,
+      "job_wall_seconds": 9.060238400001253,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 10,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 10,
+        "solver_no_usable_solution": 40
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3663535.9999999995,
+      "paired_adapted_operational_cost_sum_usd": 3438189.5999999996,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.061510627983456405,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06293369999912102,
+        "median_seconds": 0.07183470000200032,
+        "q1_seconds": 0.06719440000051691,
+        "q3_seconds": 0.07969622500149853,
+        "iqr_seconds": 0.012501825000981626
+      }
+    },
+    {
+      "job": "stress_16x8x8_L200_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 16.85006830000202,
+      "job_wall_seconds": 26.058883400000923,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 10,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 10,
+        "solver_no_usable_solution": 40
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3663535.9999999995,
+      "paired_adapted_operational_cost_sum_usd": 3438189.5999999996,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.061510627983456405,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.0649269000023196,
+        "median_seconds": 0.07335830000010901,
+        "q1_seconds": 0.06971857500047918,
+        "q3_seconds": 0.07795667499794945,
+        "iqr_seconds": 0.008238099997470272
+      }
+    },
+    {
+      "job": "stress_16x8x8_L200_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 15.963786699998309,
+      "job_wall_seconds": 24.872285500001453,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 10,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 10,
+        "solver_no_usable_solution": 40
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3663535.9999999995,
+      "paired_adapted_operational_cost_sum_usd": 3438189.5999999996,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.061510627983456405,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06200890000036452,
+        "median_seconds": 0.06917595000049914,
+        "q1_seconds": 0.06693142499989335,
+        "q3_seconds": 0.07484972500060394,
+        "iqr_seconds": 0.007918300000710587
+      }
+    },
+    {
+      "job": "stress_16x8x8_L200_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 16.000953999999183,
+      "job_wall_seconds": 25.312052599998424,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 10,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 10,
+        "solver_no_usable_solution": 40
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 0,
+      "recovery_fraction_of_frozen_failures": 0.0,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 3663535.9999999995,
+      "paired_adapted_operational_cost_sum_usd": 3438189.5999999996,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.061510627983456405,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06301820000226144,
+        "median_seconds": 0.07315044999995735,
+        "q1_seconds": 0.06812047499897744,
+        "q3_seconds": 0.07889545000125509,
+        "iqr_seconds": 0.010774975002277642
+      }
+    },
+    {
+      "job": "stress_16x8x8_L200_p_dm_s37",
+      "source_accepted": true,
+      "stage1_seconds": 20.876311199997872,
+      "job_wall_seconds": 30.834512299999915,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 30,
+      "solver_status_counts": {
+        "optimal": 30,
+        "infeasible": 20
+      },
+      "stage2_status_counts": {
+        "success": 30,
+        "solver_no_usable_solution": 20
+      },
+      "frozen_infeasible_scenarios": 40,
+      "recovered_scenarios": 20,
+      "recovery_fraction_of_frozen_failures": 0.5,
+      "paired_cost_scenarios": 10,
+      "paired_frozen_operational_cost_sum_usd": 1642672.0000000002,
+      "paired_adapted_operational_cost_sum_usd": 1642672.0,
+      "paired_cost_reduction_fraction_of_baseline_sum": 1.417389738510607e-16,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.09696969696969691,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06767419999960111,
+        "median_seconds": 0.08542824999858567,
+        "q1_seconds": 0.07460022499981278,
+        "q3_seconds": 0.09198012499837205,
+        "iqr_seconds": 0.017379899998559267
+      }
+    },
+    {
+      "job": "stress_16x8x8_L100000_gh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 0.3286302999986219,
+      "job_wall_seconds": 8.96490669999912,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 8,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 8,
+        "solver_no_usable_solution": 40,
+        "objective_inconsistent": 2
+      },
+      "frozen_infeasible_scenarios": 41,
+      "recovered_scenarios": 1,
+      "recovery_fraction_of_frozen_failures": 0.024390243902439025,
+      "paired_cost_scenarios": 7,
+      "paired_frozen_operational_cost_sum_usd": 1242495999.9999998,
+      "paired_adapted_operational_cost_sum_usd": 1166009723.1999998,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0615585698465025,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06354890000147861,
+        "median_seconds": 0.07553734999964945,
+        "q1_seconds": 0.06907097499970405,
+        "q3_seconds": 0.08174482500089653,
+        "iqr_seconds": 0.012673850001192477
+      }
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s37",
+      "source_accepted": true,
+      "stage1_seconds": 13.597643600001902,
+      "job_wall_seconds": 22.345248800000263,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 8,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 8,
+        "solver_no_usable_solution": 40,
+        "objective_inconsistent": 2
+      },
+      "frozen_infeasible_scenarios": 41,
+      "recovered_scenarios": 1,
+      "recovery_fraction_of_frozen_failures": 0.024390243902439025,
+      "paired_cost_scenarios": 7,
+      "paired_frozen_operational_cost_sum_usd": 1242495999.9999998,
+      "paired_adapted_operational_cost_sum_usd": 1166009723.1999998,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0615585698465025,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.062411499999143416,
+        "median_seconds": 0.07054020000032324,
+        "q1_seconds": 0.06836497499807592,
+        "q3_seconds": 0.07497659999989992,
+        "iqr_seconds": 0.006611625001823995
+      }
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s41",
+      "source_accepted": true,
+      "stage1_seconds": 14.087845500002004,
+      "job_wall_seconds": 22.890414699999383,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 8,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 8,
+        "solver_no_usable_solution": 40,
+        "objective_inconsistent": 2
+      },
+      "frozen_infeasible_scenarios": 41,
+      "recovered_scenarios": 1,
+      "recovery_fraction_of_frozen_failures": 0.024390243902439025,
+      "paired_cost_scenarios": 7,
+      "paired_frozen_operational_cost_sum_usd": 1242495999.9999998,
+      "paired_adapted_operational_cost_sum_usd": 1166009723.1999998,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0615585698465025,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06381130000227131,
+        "median_seconds": 0.0696757500008971,
+        "q1_seconds": 0.06779227500101115,
+        "q3_seconds": 0.07443627499742433,
+        "iqr_seconds": 0.006643999996413186
+      }
+    },
+    {
+      "job": "stress_16x8x8_L100000_agh_s43",
+      "source_accepted": true,
+      "stage1_seconds": 14.171947499999078,
+      "job_wall_seconds": 23.034593000000314,
+      "full_grid_accepted": false,
+      "attempted_scenarios": 50,
+      "accepted_scenarios": 8,
+      "solver_status_counts": {
+        "optimal": 10,
+        "infeasible": 40
+      },
+      "stage2_status_counts": {
+        "success": 8,
+        "solver_no_usable_solution": 40,
+        "objective_inconsistent": 2
+      },
+      "frozen_infeasible_scenarios": 41,
+      "recovered_scenarios": 1,
+      "recovery_fraction_of_frozen_failures": 0.024390243902439025,
+      "paired_cost_scenarios": 7,
+      "paired_frozen_operational_cost_sum_usd": 1242495999.9999998,
+      "paired_adapted_operational_cost_sum_usd": 1166009723.1999998,
+      "paired_cost_reduction_fraction_of_baseline_sum": 0.0615585698465025,
+      "accepted_demand_weighted_unmet_median": 0.0875,
+      "accepted_changed_assignment_median": 0.07500000000000001,
+      "stage2_integrated_duration": {
+        "count": 50,
+        "minimum_seconds": 0.06428850000156672,
+        "median_seconds": 0.07052115000078629,
+        "q1_seconds": 0.06829342500168423,
+        "q3_seconds": 0.07726372500019352,
+        "iqr_seconds": 0.00897029999850929
+      }
+    },
+    {
+      "job": "stress_16x8x8_L100000_p_dm_s37",
+      "source_accepted": false,
+      "skipped_scenarios": 50
+    }
+  ],
+  "environment": {
+    "started_utc": "2026-10-13T14:56:53.628419+00:00",
+    "python_version": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "logical_cpu_count": 16,
+    "pyomo_version": "6.10.0",
+    "highspy_version": "1.14.0",
+    "backend": "gurobi",
+    "backend_version": "13.0.3",
+    "scope": "forty declared coherent fixed-deployment Stage-2 stress jobs",
+    "launcher_sha256": "98bbc8c57f54fc8714e2cc15ad57ea0ca23a88ae533c378178eec577d3a5b443",
+    "coordinator_sha256": "1a959f6fa7ce5d9b7d5b4302776116e85ef767c9b2c43bf7e2c2b10e638dc98d",
+    "wsl": null,
+    "background_apps_closed_by_launcher": false,
+    "power_plan": "GUID combinazione risparmio energia: 381b4222-f694-41f0-9685-ff5bb260df2e  (Bilanciato)",
+    "ac_line_status": 1,
+    "battery_percent": 76
+  },
+  "power_observations": [
+    {
+      "observed_utc": "2026-10-13T14:58:10.189492+00:00",
+      "active_job": "stress_8x4x4_L100000_p_dm_s37",
+      "ac_line_status": 1,
+      "battery_percent": 78
+    },
+    {
+      "observed_utc": "2026-10-13T14:58:41.848079+00:00",
+      "active_job": "stress_16x4x4_L200_p_dm_s37",
+      "ac_line_status": 1,
+      "battery_percent": 78
+    },
+    {
+      "observed_utc": "2026-10-13T15:01:30.430783+00:00",
+      "active_job": "stress_32x4x4_L200_p_dm_s37",
+      "ac_line_status": 1,
+      "battery_percent": 81
+    },
+    {
+      "observed_utc": "2026-10-13T15:02:34.645030+00:00",
+      "active_job": "stress_32x4x4_L100000_agh_s41",
+      "ac_line_status": 1,
+      "battery_percent": 83
+    },
+    {
+      "observed_utc": "2026-10-13T15:06:53.649951+00:00",
+      "active_job": "stress_16x8x8_L100000_agh_s41",
+      "ac_line_status": 1,
+      "battery_percent": 86
+    },
+    {
+      "observed_utc": "2026-10-13T15:08:01.512907+00:00",
+      "active_job": null,
+      "ac_line_status": 1,
+      "battery_percent": 87
+    }
+  ],
+  "limitations": [
+    "Deterministic synthetic sensitivity grid, not paper numerical replication or a real-world probability model.",
+    "Only the clean AC restart enters this analysis; the superseded first attempt is preserved separately.",
+    "Recorded Stage-1 and Stage-2/frozen constraint validation and indicators are replayed without solver reruns or decision repair.",
+    "Costs are paired only where frozen and adapted decisions are both usable; infeasible baselines receive no cost saving.",
+    "Pooled counts include three AGH seeds and one GH/P_DM source per shape/load; pooled method costs are not a matched method ranking.",
+    "Accepted-only service summaries are conditional on feasibility; an entire-grid mean requires fifty accepted LPs.",
+    "Integrated LP duration excludes frozen validation, gzip/checkpoint I/O and worker startup."
+  ]
+}

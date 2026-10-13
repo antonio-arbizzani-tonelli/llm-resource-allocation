@@ -847,7 +847,67 @@
       "path": "benchmarks/release_checks/provenance.json"
     },
     {
+      "path": "benchmarks/release_checks/stage2_portable_replay.json"
+    },
+    {
+      "path": "benchmarks/release_checks/stage2_publication_base_regression.json"
+    },
+    {
       "path": "benchmarks/stage2/reference.json"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/README.md"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/analysis/DIAGNOSTICS.md"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/analysis/analysis.json"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/analysis/numerical_diagnostics.json"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/analysis/report.md"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/evidence.zip"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/evidence_manifest.json"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plot_results.py"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plots/objective_roundoff.png"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plots/objective_roundoff.svg"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plots/outcomes.png"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plots/outcomes.svg"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plots/recovery_and_cost.png"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/plots/recovery_and_cost.svg"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/provenance.json"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/replay_audit.py"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/scientific-source-snapshot.zip"
+    },
+    {
+      "path": "benchmarks/stage2_stress_2026-10-13/stress_scenarios.csv"
     },
     {
       "path": "configs/azure_replay.json"
@@ -983,6 +1043,9 @@
     },
     {
       "path": "docs/RESULTS.md"
+    },
+    {
+      "path": "docs/STAGE2_RESULTS.md"
     },
     {
       "path": "docs/UNITS.md"

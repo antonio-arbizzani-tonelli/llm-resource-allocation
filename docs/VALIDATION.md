@@ -92,6 +92,23 @@ repository's Actions page; this document records local checks.
 
 ## Recheck a clone
 
+The completed [Stage-2 stress campaign](STAGE2_RESULTS.md) also verifies **1,970
+job-file hashes**, then replays **40 Stage-1**, **1,850 frozen-routing** and **850
+extracted operational** validation reports and usable indicators. The latter
+includes 204 feasible decisions rejected for objective disagreement; only 646
+are scientifically usable. Forty completed workers do not imply 2,000 accepted
+LPs: three sources skip 150 scenarios, and no fifty-point grid is wholly accepted.
+The [portable evidence and replay](../benchmarks/stage2_stress_2026-10-13/README.md)
+retain this distinction. The delivered ZIP was extracted and its replay passed;
+all quantitative fields match the original audit, recorded in
+[stage2_portable_replay.json](../benchmarks/release_checks/stage2_portable_replay.json).
+The actual publication export also passes **1,031 tests: 1,027 pass and four
+optional skips**, with stable Python source hashes, in a base environment without
+Gurobi. [The regression record](../benchmarks/release_checks/stage2_publication_base_regression.json)
+identifies the tested source files. Its standalone manifest check passes.
+Source data, mathematical code and tolerances remain
+unchanged by the documentation/evidence publication.
+
 ```bash
 python -m pip install -e .
 python -m unittest discover -s tests -q
