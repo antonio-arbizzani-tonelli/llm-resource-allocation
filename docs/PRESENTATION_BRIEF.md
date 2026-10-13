@@ -90,10 +90,26 @@ Cheng e Nguyen:
 [paper v2](https://arxiv.org/abs/2604.07472v2) e
 [paper v1](https://arxiv.org/abs/2604.07472v1).
 
-La [campagna notturna](NIGHTLY_CAMPAIGN.md) è predisposta per misurare crescita
-delle istanze, scalabilità OpenMP e adattamento di Stage 2. I nuovi risultati
-sono ancora in attesa: non usarne il piano come prova di vantaggio. Dopo
-l'esecuzione, integrare soltanto numeri verificati, indicando copertura, casi
-falliti, baseline e ambito del timer; il confronto con routing congelato può
-mostrare il valore operativo dell'adattamento quando la sua fattibilità è
-effettivamente recuperata.
+La [nuova analisi delle prestazioni](PERFORMANCE.md) aggiunge misure del 13
+ottobre: nove dimensioni, 18 punti GH/AGH C++, cinque campioni per punto e
+batch OpenMP da 32/64/128 casi con 18 round. Per le slide sul costo della
+crescita usare `query_scaling.png` e `menu_scaling.png`; per il parallelismo
+usare `openmp_core_scaling.png` e `openmp_process_scaling.png` nella cartella
+`benchmarks/performance_2026-10-13/analysis/plots`.
+
+Numeri utilizzabili: AGH C++ mediano **2,889 s a 128x4x4**, **7,156 s a
+256x4x4**, **7,471 s a 128x8x8**. Lo speedup OpenMP mediano migliore osservato
+è **4,20x per il calcolo**, **2,27x per l'intera invocazione**, efficienza
+**52,5%**: 32 casi misti, scheduling dinamico, otto thread osservati.
+Mostrare il confronto statico/dinamico sullo stesso batch; non affermare che
+batch più grandi aumentino sempre lo speedup.
+
+Un risultato da raccontare è il limite del riferimento: AGH Python termina
+con MemoryError nei casi 256x4x4 e 128x8x8. I tempi nativi di quei casi hanno
+validazione indipendente della decisione finale e dell'obiettivo, senza parità
+dell'intero algoritmo Python. Nei grafici questi punti sono distinti; non
+inventare un tempo Python o un rapporto di accelerazione per il run fallito.
+Sedici confronti completi verificano 185.832 valori numerici identici bit per bit.
+
+La parte di stress di Stage 2 della [campagna notturna](NIGHTLY_CAMPAIGN.md)
+rimane in attesa. Per quella parte usare ancora soltanto l'esempio consegnato.

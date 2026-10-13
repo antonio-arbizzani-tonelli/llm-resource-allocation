@@ -1,0 +1,10 @@
+{
+  "public_archive_replay_passed": true,
+  "derived_observations_identical": true,
+  "verified_evidence_files": 1654,
+  "completed_jobs": 10,
+  "planned_jobs": 12,
+  "evidence_archive_sha256": "ddebfce0a0e1183c36e97d6293355c5c512296071e84d52f965e5715a423d4e5",
+  "analysis_sha256": "06ad9aff71126a033a2f4888f55b88f07bf69b80ad2317325005040970db7787",
+  "existing_scientific_sources_changed": []
+}

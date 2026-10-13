@@ -194,6 +194,19 @@ class CampaignExecutionTests(unittest.TestCase):
                 self.assertEqual(campaign.run_jobs(output, self.config, [self.job], output / "snapshot", None), "incomplete")
             launch.assert_not_called()
 
+    def test_deferred_failed_job_is_not_rerun_or_marked_completed(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temporary:
+            output = Path(temporary)
+            campaign.save_json(output / "jobs.json", [{**self.job, "status": "worker_error"}])
+            with patch.object(campaign, "verify_snapshot"), patch.object(campaign.subprocess, "Popen") as launch:
+                state = campaign.run_jobs(output, self.config, [self.job], output / "snapshot", None,
+                                          deferred_jobs=[self.job["id"]])
+            launch.assert_not_called()
+            self.assertEqual(state, "incomplete")
+            recorded = json.loads((output / "status.json").read_text())
+            self.assertEqual(recorded["completed_jobs"], 0)
+            self.assertEqual(recorded["planned_jobs"], 1)
+
 
 class StressWorkerTests(unittest.TestCase):
     def test_short_real_highs_path_retains_independent_evidence(self):

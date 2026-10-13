@@ -1,0 +1,2460 @@
+{
+  "classification": "synthetic local CPU implementation performance, not paper numerical replication",
+  "completed_jobs": 10,
+  "planned_jobs": 12,
+  "coverage": [
+    {
+      "id": "serial_16x4x4",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_32x4x4",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_64x4x4",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_128x4x4",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_256x4x4",
+      "kind": "serial",
+      "status": "worker_error"
+    },
+    {
+      "id": "serial_32x8x4",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_32x4x8",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_64x8x8",
+      "kind": "serial",
+      "status": "completed"
+    },
+    {
+      "id": "serial_128x8x8",
+      "kind": "serial",
+      "status": "worker_error"
+    },
+    {
+      "id": "openmp_32",
+      "kind": "openmp",
+      "status": "completed"
+    },
+    {
+      "id": "openmp_64",
+      "kind": "openmp",
+      "status": "completed"
+    },
+    {
+      "id": "openmp_128",
+      "kind": "openmp",
+      "status": "completed"
+    }
+  ],
+  "verified_files": 1654,
+  "serial": [
+    {
+      "job": "serial_16x4x4",
+      "method": "gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "compared_numeric_values": 1517,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.001395126,
+        "median_seconds": 0.001640735,
+        "q1_seconds": 0.001553218,
+        "q3_seconds": 0.001804045,
+        "iqr_seconds": 0.0002508269999999999
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.123858899998595,
+        "median_seconds": 0.130479599989485,
+        "q1_seconds": 0.12937860000238288,
+        "q3_seconds": 0.1347856999927899,
+        "iqr_seconds": 0.005407099990407005
+      },
+      "python_reference_seconds": 0.10200050000275951,
+      "python_reference_to_cpp_median_ratio": 62.16756514779018,
+      "objective_components_usd": [
+        9.0,
+        0.096,
+        0.0005376,
+        404480.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_16x4x4",
+      "method": "agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "compared_numeric_values": 1517,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.037444512,
+        "median_seconds": 0.040910581,
+        "q1_seconds": 0.038484751,
+        "q3_seconds": 0.042956683,
+        "iqr_seconds": 0.004471932000000005
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.12525249998725485,
+        "median_seconds": 0.12642079999204725,
+        "q1_seconds": 0.1258869000012055,
+        "q3_seconds": 0.1284862000029534,
+        "iqr_seconds": 0.002599300001747906
+      },
+      "python_reference_seconds": 3.4022732000012184,
+      "python_reference_to_cpp_median_ratio": 83.16364903253802,
+      "objective_components_usd": [
+        8.0,
+        0.096,
+        0.0005376,
+        404480.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_32x4x4",
+      "method": "gh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "compared_numeric_values": 2941,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.00287862,
+        "median_seconds": 0.002971843,
+        "q1_seconds": 0.002960071,
+        "q3_seconds": 0.003013001,
+        "iqr_seconds": 5.293000000000008e-05
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.10411169999861158,
+        "median_seconds": 0.1097516000008909,
+        "q1_seconds": 0.10900389999733306,
+        "q3_seconds": 0.1122046000091359,
+        "iqr_seconds": 0.0032007000118028373
+      },
+      "python_reference_seconds": 0.2596988000004785,
+      "python_reference_to_cpp_median_ratio": 87.38644672699013,
+      "objective_components_usd": [
+        9.0,
+        0.192,
+        0.0010752,
+        808960.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_32x4x4",
+      "method": "agh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "compared_numeric_values": 2941,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.115117284,
+        "median_seconds": 0.117819114,
+        "q1_seconds": 0.116781848,
+        "q3_seconds": 0.119073192,
+        "iqr_seconds": 0.0022913440000000007
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.19995409999683034,
+        "median_seconds": 0.21077259999583475,
+        "q1_seconds": 0.20502969999506604,
+        "q3_seconds": 0.21335740000358783,
+        "iqr_seconds": 0.008327700008521788
+      },
+      "python_reference_seconds": 12.576115800009575,
+      "python_reference_to_cpp_median_ratio": 106.74087907340378,
+      "objective_components_usd": [
+        8.0,
+        0.192,
+        0.0010752,
+        808960.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_64x4x4",
+      "method": "gh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "compared_numeric_values": 5789,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.009562892,
+        "median_seconds": 0.010349177,
+        "q1_seconds": 0.01027687,
+        "q3_seconds": 0.010815124,
+        "iqr_seconds": 0.0005382540000000002
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.10538330000417773,
+        "median_seconds": 0.11237999999138992,
+        "q1_seconds": 0.10672230001364369,
+        "q3_seconds": 0.11406480000005104,
+        "iqr_seconds": 0.007342499986407347
+      },
+      "python_reference_seconds": 0.8653680999996141,
+      "python_reference_to_cpp_median_ratio": 83.61709341714942,
+      "objective_components_usd": [
+        9.0,
+        0.384,
+        0.0021504,
+        1617920.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_64x4x4",
+      "method": "agh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "compared_numeric_values": 5789,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.637684469,
+        "median_seconds": 0.713473483,
+        "q1_seconds": 0.651032508,
+        "q3_seconds": 0.77351426,
+        "iqr_seconds": 0.122481752
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.7714464999880875,
+        "median_seconds": 0.8779369999974733,
+        "q1_seconds": 0.7958618999982718,
+        "q3_seconds": 0.9568463000032352,
+        "iqr_seconds": 0.1609844000049634
+      },
+      "python_reference_seconds": 67.53417780000018,
+      "python_reference_to_cpp_median_ratio": 94.65548392357026,
+      "objective_components_usd": [
+        8.0,
+        0.384,
+        0.0021504,
+        1617920.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_128x4x4",
+      "method": "gh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "77a9ed03e6e66da7047d773112e7e7385211f14fbe67440ecdda16d5465dd5a9",
+      "compared_numeric_values": 11485,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.040172185,
+        "median_seconds": 0.043298608,
+        "q1_seconds": 0.040998328,
+        "q3_seconds": 0.04635627,
+        "iqr_seconds": 0.0053579419999999975
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.1637382000044454,
+        "median_seconds": 0.17898409999907017,
+        "q1_seconds": 0.17188400001032278,
+        "q3_seconds": 0.19738849998975638,
+        "iqr_seconds": 0.025504499979433604
+      },
+      "python_reference_seconds": 4.356779699999606,
+      "python_reference_to_cpp_median_ratio": 100.62170358916865,
+      "objective_components_usd": [
+        9.0,
+        0.768,
+        0.0043008,
+        3235840.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_128x4x4",
+      "method": "agh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "77a9ed03e6e66da7047d773112e7e7385211f14fbe67440ecdda16d5465dd5a9",
+      "compared_numeric_values": 11485,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 2.286228965,
+        "median_seconds": 2.889288553,
+        "q1_seconds": 2.529042185,
+        "q3_seconds": 3.286554025,
+        "iqr_seconds": 0.7575118399999998
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 2.4581853999989107,
+        "median_seconds": 3.1774223999964306,
+        "q1_seconds": 2.721923200006131,
+        "q3_seconds": 3.921305800002301,
+        "iqr_seconds": 1.19938259999617
+      },
+      "python_reference_seconds": 340.9775423000101,
+      "python_reference_to_cpp_median_ratio": 118.01436099068991,
+      "objective_components_usd": [
+        8.0,
+        0.768,
+        0.0043008,
+        3235840.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_256x4x4",
+      "method": "gh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "job_status": "worker_error",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "5b630f62358376751b5f6ca5eb9c06d4af9124dbccdcf0571cfe406c8c28fb12",
+      "compared_numeric_values": 22877,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.157478485,
+        "median_seconds": 0.179057229,
+        "q1_seconds": 0.164947855,
+        "q3_seconds": 0.194678876,
+        "iqr_seconds": 0.029731020999999996
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.3622063000075286,
+        "median_seconds": 0.39021470000443514,
+        "q1_seconds": 0.3737859000102617,
+        "q3_seconds": 0.47084940000786446,
+        "iqr_seconds": 0.09706349999760278
+      },
+      "python_reference_seconds": 16.826231700004428,
+      "python_reference_to_cpp_median_ratio": 93.9712503872403,
+      "objective_components_usd": [
+        9.0,
+        1.536,
+        0.0086016,
+        6471680.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_32x8x4",
+      "method": "gh",
+      "shape": [
+        32,
+        8,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "b8022096125ef5d553a18f540476cb880eca0de304228d3ed50723faa3bd80cb",
+      "compared_numeric_values": 5845,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.00520037,
+        "median_seconds": 0.00526744,
+        "q1_seconds": 0.005256775,
+        "q3_seconds": 0.005399256,
+        "iqr_seconds": 0.00014248099999999986
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.1001486000022851,
+        "median_seconds": 0.11335120000876486,
+        "q1_seconds": 0.10791009999229573,
+        "q3_seconds": 0.1159235999948578,
+        "iqr_seconds": 0.008013500002562068
+      },
+      "python_reference_seconds": 0.5441225999966264,
+      "python_reference_to_cpp_median_ratio": 103.29924972977886,
+      "objective_components_usd": [
+        9.0,
+        0.176,
+        0.0010752,
+        730879.9999999999,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_32x8x4",
+      "method": "agh",
+      "shape": [
+        32,
+        8,
+        4
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "b8022096125ef5d553a18f540476cb880eca0de304228d3ed50723faa3bd80cb",
+      "compared_numeric_values": 5845,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.219485625,
+        "median_seconds": 0.246502111,
+        "q1_seconds": 0.219925516,
+        "q3_seconds": 0.273979332,
+        "iqr_seconds": 0.05405381600000003
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.3592172000062419,
+        "median_seconds": 0.40007030000560917,
+        "q1_seconds": 0.3868176999967545,
+        "q3_seconds": 0.4811234000080731,
+        "iqr_seconds": 0.09430570001131855
+      },
+      "python_reference_seconds": 23.669790200001444,
+      "python_reference_to_cpp_median_ratio": 96.02266732718343,
+      "objective_components_usd": [
+        8.0,
+        0.176,
+        0.0010752,
+        730879.9999999999,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_32x4x8",
+      "method": "gh",
+      "shape": [
+        32,
+        4,
+        8
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "44191c0172fa5b8957fcf192cad301bab0132d906aa626da1f153d148d7c7d61",
+      "compared_numeric_values": 6109,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.005858605,
+        "median_seconds": 0.006576653,
+        "q1_seconds": 0.006210222,
+        "q3_seconds": 0.006607216,
+        "iqr_seconds": 0.00039699400000000034
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.11149910000676755,
+        "median_seconds": 0.1232941999915056,
+        "q1_seconds": 0.11798020001151599,
+        "q3_seconds": 0.13145470000745263,
+        "iqr_seconds": 0.01347449999593664
+      },
+      "python_reference_seconds": 0.6777309000026435,
+      "python_reference_to_cpp_median_ratio": 103.05103523063228,
+      "objective_components_usd": [
+        9.0,
+        0.192,
+        0.0010752,
+        808960.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_32x4x8",
+      "method": "agh",
+      "shape": [
+        32,
+        4,
+        8
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "44191c0172fa5b8957fcf192cad301bab0132d906aa626da1f153d148d7c7d61",
+      "compared_numeric_values": 6109,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.270221792,
+        "median_seconds": 0.285070606,
+        "q1_seconds": 0.274516804,
+        "q3_seconds": 0.28914488,
+        "iqr_seconds": 0.01462807599999999
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.3806048999977065,
+        "median_seconds": 0.42787220000172965,
+        "q1_seconds": 0.39864339999621734,
+        "q3_seconds": 0.4435271999973338,
+        "iqr_seconds": 0.04488380000111647
+      },
+      "python_reference_seconds": 30.082831599997007,
+      "python_reference_to_cpp_median_ratio": 105.52765163026666,
+      "objective_components_usd": [
+        8.0,
+        0.192,
+        0.0010752,
+        808960.0,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_64x8x8",
+      "method": "gh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "39a99c0938b16329b21068ae7389d48d584264a15df301274550433589bee8d7",
+      "compared_numeric_values": 23989,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.037447864,
+        "median_seconds": 0.042866348,
+        "q1_seconds": 0.038585399,
+        "q3_seconds": 0.049595583,
+        "iqr_seconds": 0.011010184
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.1860692000045674,
+        "median_seconds": 0.23996390000684187,
+        "q1_seconds": 0.21068839999497868,
+        "q3_seconds": 0.26918139999907,
+        "iqr_seconds": 0.0584930000040913
+      },
+      "python_reference_seconds": 3.9405770000012126,
+      "python_reference_to_cpp_median_ratio": 91.92705196162763,
+      "objective_components_usd": [
+        9.0,
+        0.352,
+        0.0021504,
+        1461759.9999999998,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_64x8x8",
+      "method": "agh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "job_status": "completed",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "39a99c0938b16329b21068ae7389d48d584264a15df301274550433589bee8d7",
+      "compared_numeric_values": 23989,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 1.88596127,
+        "median_seconds": 1.922956152,
+        "q1_seconds": 1.905881556,
+        "q3_seconds": 2.036892315,
+        "iqr_seconds": 0.1310107589999998
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 2.0615423999988707,
+        "median_seconds": 2.0859647000033874,
+        "q1_seconds": 2.0852177999913692,
+        "q3_seconds": 2.273524100004579,
+        "iqr_seconds": 0.1883063000132097
+      },
+      "python_reference_seconds": 309.77514070000325,
+      "python_reference_to_cpp_median_ratio": 161.0931899709813,
+      "objective_components_usd": [
+        8.0,
+        0.352,
+        0.0021504,
+        1461759.9999999998,
+        0.0
+      ]
+    },
+    {
+      "job": "serial_128x8x8",
+      "method": "gh",
+      "shape": [
+        128,
+        8,
+        8
+      ],
+      "job_status": "worker_error",
+      "verification_mode": "full_python_reference",
+      "feasible": true,
+      "input_sha256": "f663573cdb9d82e56e225d2653ebf86030a5ee0ffaf2969316c61afaed610ac6",
+      "compared_numeric_values": 47605,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 0.135785951,
+        "median_seconds": 0.143099888,
+        "q1_seconds": 0.139730018,
+        "q3_seconds": 0.152943011,
+        "iqr_seconds": 0.013212992999999978
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 0.4333533999888459,
+        "median_seconds": 0.4389549000043189,
+        "q1_seconds": 0.43793970000115223,
+        "q3_seconds": 0.44620159998885356,
+        "iqr_seconds": 0.008261899987701327
+      },
+      "python_reference_seconds": 15.353786699997727,
+      "python_reference_to_cpp_median_ratio": 107.29419089410976,
+      "objective_components_usd": [
+        9.0,
+        0.704,
+        0.0043008,
+        2923519.9999999995,
+        0.0
+      ]
+    },
+    {
+      "job": "supplemental_128x8x8_load200_agh",
+      "method": "agh",
+      "shape": [
+        128,
+        8,
+        8
+      ],
+      "job_status": "supplemental_completed",
+      "verification_mode": "independent_final_decision",
+      "feasible": true,
+      "input_sha256": "f663573cdb9d82e56e225d2653ebf86030a5ee0ffaf2969316c61afaed610ac6",
+      "compared_numeric_values": null,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 7.140629142,
+        "median_seconds": 7.470638855,
+        "q1_seconds": 7.182232591,
+        "q3_seconds": 7.568512446,
+        "iqr_seconds": 0.3862798549999997
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 7.429354600026272,
+        "median_seconds": 7.7306497000099625,
+        "q1_seconds": 7.435915799986105,
+        "q3_seconds": 7.853332099999534,
+        "iqr_seconds": 0.41741630001342855
+      },
+      "python_reference_seconds": null,
+      "python_independent_validation_seconds": 0.4303166999889072,
+      "python_reference_to_cpp_median_ratio": null,
+      "objective_components_usd": [
+        8,
+        0.704,
+        0.0043008,
+        2923519.9999999995,
+        0
+      ]
+    },
+    {
+      "job": "supplemental_256x4x4_load200_agh",
+      "method": "agh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "job_status": "supplemental_completed",
+      "verification_mode": "independent_final_decision",
+      "feasible": true,
+      "input_sha256": "5b630f62358376751b5f6ca5eb9c06d4af9124dbccdcf0571cfe406c8c28fb12",
+      "compared_numeric_values": null,
+      "cpp_core": {
+        "count": 5,
+        "minimum_seconds": 7.099572216,
+        "median_seconds": 7.156380325,
+        "q1_seconds": 7.105722461,
+        "q3_seconds": 7.316202092,
+        "iqr_seconds": 0.2104796310000001
+      },
+      "process_wall": {
+        "count": 5,
+        "minimum_seconds": 7.259656800015364,
+        "median_seconds": 7.327007499989122,
+        "q1_seconds": 7.282269200019073,
+        "q3_seconds": 7.571311100007733,
+        "iqr_seconds": 0.2890418999886606
+      },
+      "python_reference_seconds": null,
+      "python_independent_validation_seconds": 0.16016849997686222,
+      "python_reference_to_cpp_median_ratio": null,
+      "objective_components_usd": [
+        8,
+        1.536,
+        0.0086016,
+        6471680,
+        0
+      ]
+    }
+  ],
+  "openmp": [
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.080702294,
+        "median_seconds": 1.2565786735,
+        "q1_seconds": 1.1970520740000001,
+        "q3_seconds": 1.2931322650000001,
+        "iqr_seconds": 0.09608019099999998
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.3046795000263955,
+        "median_seconds": 1.5599776500021107,
+        "q1_seconds": 1.4495236499860766,
+        "q3_seconds": 1.5940032500075176,
+        "iqr_seconds": 0.144479600021441
+      },
+      "median_core_speedup": 1.0,
+      "median_core_efficiency": 1.0,
+      "median_process_speedup": 1.0,
+      "minimum_core_speedup": 1.0
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.09333109,
+        "median_seconds": 1.1978349554999999,
+        "q1_seconds": 1.152238871,
+        "q3_seconds": 1.287367297,
+        "iqr_seconds": 0.13512842600000008
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.2956592999980785,
+        "median_seconds": 1.4258228999970015,
+        "q1_seconds": 1.3972355500009144,
+        "q3_seconds": 1.5505443999863928,
+        "iqr_seconds": 0.15330884998547845
+      },
+      "median_core_speedup": 1.049041579334675,
+      "median_core_efficiency": 1.049041579334675,
+      "median_process_speedup": 1.0940893500906679,
+      "minimum_core_speedup": 0.988449248251049
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.649653826,
+        "median_seconds": 0.764176467,
+        "q1_seconds": 0.70691749425,
+        "q3_seconds": 0.8071897775,
+        "iqr_seconds": 0.10027228325000004
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.8874439000210259,
+        "median_seconds": 1.0581385499972384,
+        "q1_seconds": 1.0003324750068714,
+        "q3_seconds": 1.099726525018923,
+        "iqr_seconds": 0.0993940500120516
+      },
+      "median_core_speedup": 1.6443566738361757,
+      "median_core_efficiency": 0.8221783369180878,
+      "median_process_speedup": 1.4742659645149323,
+      "minimum_core_speedup": 1.6635048555844263
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.409717041,
+        "median_seconds": 0.4674839165,
+        "q1_seconds": 0.4256053995,
+        "q3_seconds": 0.49035042225000003,
+        "iqr_seconds": 0.06474502275000005
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.6740745000133757,
+        "median_seconds": 0.7424186999851372,
+        "q1_seconds": 0.6920242250052979,
+        "q3_seconds": 0.8000919999976759,
+        "iqr_seconds": 0.10806777499237796
+      },
+      "median_core_speedup": 2.687961294813872,
+      "median_core_efficiency": 0.671990323703468,
+      "median_process_speedup": 2.101210071935608,
+      "minimum_core_speedup": 2.6376796321732683
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.284144305,
+        "median_seconds": 0.3357963695,
+        "q1_seconds": 0.30655318675,
+        "q3_seconds": 0.35538610625,
+        "iqr_seconds": 0.048832919500000016
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.5011095999798272,
+        "median_seconds": 0.6616015000035986,
+        "q1_seconds": 0.5608242250164039,
+        "q3_seconds": 0.6693183999886969,
+        "iqr_seconds": 0.10849417497229297
+      },
+      "median_core_speedup": 3.7420853458631567,
+      "median_core_efficiency": 0.4677606682328946,
+      "median_process_speedup": 2.357881065858565,
+      "minimum_core_speedup": 3.803357220198378
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.159477322,
+        "median_seconds": 1.3006955869999999,
+        "q1_seconds": 1.245001845,
+        "q3_seconds": 1.3675052825,
+        "iqr_seconds": 0.12250343750000003
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.4250223999843001,
+        "median_seconds": 1.6042460500029847,
+        "q1_seconds": 1.5063545500015607,
+        "q3_seconds": 1.6383996749937069,
+        "iqr_seconds": 0.13204512499214616
+      },
+      "median_core_speedup": 0.9660820610595338,
+      "median_core_efficiency": 0.9660820610595338,
+      "median_process_speedup": 0.9724054798197623,
+      "minimum_core_speedup": 0.9320598803397725
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.660405751,
+        "median_seconds": 0.72905005,
+        "q1_seconds": 0.68754896625,
+        "q3_seconds": 0.788396523,
+        "iqr_seconds": 0.10084755675000001
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.8628215999924578,
+        "median_seconds": 0.9996847000002163,
+        "q1_seconds": 0.9190196499985177,
+        "q3_seconds": 1.088180425016617,
+        "iqr_seconds": 0.16916077501809923
+      },
+      "median_core_speedup": 1.7235835502651704,
+      "median_core_efficiency": 0.8617917751325852,
+      "median_process_speedup": 1.5604696660874906,
+      "minimum_core_speedup": 1.6364216882781204
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.409089847,
+        "median_seconds": 0.44279386249999997,
+        "q1_seconds": 0.42506423575,
+        "q3_seconds": 0.47087992424999997,
+        "iqr_seconds": 0.04581568849999995
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.6514822000171989,
+        "median_seconds": 0.7430764999880921,
+        "q1_seconds": 0.6914742999870214,
+        "q3_seconds": 0.8183725250055431,
+        "iqr_seconds": 0.12689822501852177
+      },
+      "median_core_speedup": 2.837841216690306,
+      "median_core_efficiency": 0.7094603041725766,
+      "median_process_speedup": 2.0993499996664,
+      "minimum_core_speedup": 2.6417235771681224
+    },
+    {
+      "job": "openmp_32",
+      "workload": "uniform",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.278175205,
+        "median_seconds": 0.32723501499999996,
+        "q1_seconds": 0.29705935625,
+        "q3_seconds": 0.35848965725000004,
+        "iqr_seconds": 0.06143030100000002
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.5007571000023745,
+        "median_seconds": 0.6579595000075642,
+        "q1_seconds": 0.5313489249892882,
+        "q3_seconds": 0.6722278999950504,
+        "iqr_seconds": 0.14087897500576219
+      },
+      "median_core_speedup": 3.8399884361396963,
+      "median_core_efficiency": 0.47999855451746204,
+      "median_process_speedup": 2.3709326333675196,
+      "minimum_core_speedup": 3.884969884357594
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.623798636,
+        "median_seconds": 0.7318110545000001,
+        "q1_seconds": 0.69853480825,
+        "q3_seconds": 0.7644627195,
+        "iqr_seconds": 0.06592791124999997
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.8527018000022508,
+        "median_seconds": 1.0060787499969592,
+        "q1_seconds": 0.9192050249912427,
+        "q3_seconds": 1.0649504250104656,
+        "iqr_seconds": 0.14574540001922287
+      },
+      "median_core_speedup": 1.0,
+      "median_core_efficiency": 1.0,
+      "median_process_speedup": 1.0,
+      "minimum_core_speedup": 1.0
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.627732974,
+        "median_seconds": 0.6686731964999999,
+        "q1_seconds": 0.65742136575,
+        "q3_seconds": 0.6892765965000001,
+        "iqr_seconds": 0.031855230750000074
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.8225319999910425,
+        "median_seconds": 0.8868602000002284,
+        "q1_seconds": 0.8696790249960031,
+        "q3_seconds": 0.9368500250056968,
+        "iqr_seconds": 0.06717100000969367
+      },
+      "median_core_speedup": 1.0944225943711805,
+      "median_core_efficiency": 1.0944225943711805,
+      "median_process_speedup": 1.134427669656052,
+      "minimum_core_speedup": 0.9937324656136352
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.591474401,
+        "median_seconds": 0.6536002235,
+        "q1_seconds": 0.6305064064999999,
+        "q3_seconds": 0.68469307,
+        "iqr_seconds": 0.05418666350000012
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.7803506000200287,
+        "median_seconds": 0.8927284000092186,
+        "q1_seconds": 0.8460804499991355,
+        "q3_seconds": 0.9156054250124726,
+        "iqr_seconds": 0.0695249750133371
+      },
+      "median_core_speedup": 1.119661573218541,
+      "median_core_efficiency": 0.5598307866092705,
+      "median_process_speedup": 1.1269707001441538,
+      "minimum_core_speedup": 1.0546502687949801
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.330565908,
+        "median_seconds": 0.385065189,
+        "q1_seconds": 0.35926290575,
+        "q3_seconds": 0.39234736675,
+        "iqr_seconds": 0.03308446100000001
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.5296375000034459,
+        "median_seconds": 0.6405999500129838,
+        "q1_seconds": 0.5612446249870118,
+        "q3_seconds": 0.6887101249958505,
+        "iqr_seconds": 0.12746550000883872
+      },
+      "median_core_speedup": 1.9004861395040311,
+      "median_core_efficiency": 0.4751215348760078,
+      "median_process_speedup": 1.5705258015967187,
+      "minimum_core_speedup": 1.8870628243974872
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.209624558,
+        "median_seconds": 0.237407615,
+        "q1_seconds": 0.22563341325,
+        "q3_seconds": 0.25042190249999996,
+        "iqr_seconds": 0.024788489249999962
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.42511650000233203,
+        "median_seconds": 0.47243534999142867,
+        "q1_seconds": 0.4460803250185563,
+        "q3_seconds": 0.4948883000179194,
+        "iqr_seconds": 0.04880797499936307
+      },
+      "median_core_speedup": 3.08250876662065,
+      "median_core_efficiency": 0.38531359582758123,
+      "median_process_speedup": 2.129558573496273,
+      "minimum_core_speedup": 2.9757898690476905
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.678394511,
+        "median_seconds": 0.742059697,
+        "q1_seconds": 0.72165315925,
+        "q3_seconds": 0.76596984625,
+        "iqr_seconds": 0.04431668700000002
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.9114636000012979,
+        "median_seconds": 0.9782585500070127,
+        "q1_seconds": 0.9634361249991343,
+        "q3_seconds": 1.007898074996774,
+        "iqr_seconds": 0.04446194999763975
+      },
+      "median_core_speedup": 0.9861889245010433,
+      "median_core_efficiency": 0.9861889245010433,
+      "median_process_speedup": 1.0284384940870153,
+      "minimum_core_speedup": 0.9195219387616772
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.379377567,
+        "median_seconds": 0.42979107650000004,
+        "q1_seconds": 0.39590888975,
+        "q3_seconds": 0.47266559975,
+        "iqr_seconds": 0.07675671
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.5670361000229605,
+        "median_seconds": 0.704589950008085,
+        "q1_seconds": 0.6134731499987538,
+        "q3_seconds": 0.7545806499838363,
+        "iqr_seconds": 0.14110749998508254
+      },
+      "median_core_speedup": 1.7027134682727645,
+      "median_core_efficiency": 0.8513567341363822,
+      "median_process_speedup": 1.427892563590234,
+      "minimum_core_speedup": 1.6442686396373034
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.220773099,
+        "median_seconds": 0.243114203,
+        "q1_seconds": 0.23104402725,
+        "q3_seconds": 0.258791145,
+        "iqr_seconds": 0.027747117749999994
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.4518629000231158,
+        "median_seconds": 0.4930541999929119,
+        "q1_seconds": 0.4679356000124244,
+        "q3_seconds": 0.5393792250033584,
+        "iqr_seconds": 0.07144362499093404
+      },
+      "median_core_speedup": 3.010153440109791,
+      "median_core_efficiency": 0.7525383600274478,
+      "median_process_speedup": 2.040503356449296,
+      "minimum_core_speedup": 2.8255192268692118
+    },
+    {
+      "job": "openmp_32",
+      "workload": "mixed",
+      "batch_size": 32,
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.150557826,
+        "median_seconds": 0.1741378085,
+        "q1_seconds": 0.16642373500000002,
+        "q3_seconds": 0.19118805174999998,
+        "iqr_seconds": 0.02476431674999996
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.35205370001494884,
+        "median_seconds": 0.44381735000933986,
+        "q1_seconds": 0.3770301249824115,
+        "q3_seconds": 0.4740194500045618,
+        "iqr_seconds": 0.0969893250221503
+      },
+      "median_core_speedup": 4.202482280004116,
+      "median_core_efficiency": 0.5253102850005145,
+      "median_process_speedup": 2.2668756639995866,
+      "minimum_core_speedup": 4.143249491394754
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.168299822,
+        "median_seconds": 2.364934742,
+        "q1_seconds": 2.30890182275,
+        "q3_seconds": 2.4674827507500003,
+        "iqr_seconds": 0.15858092800000012
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.524441999994451,
+        "median_seconds": 2.8256824999989476,
+        "q1_seconds": 2.6775114750198554,
+        "q3_seconds": 2.9055092250127927,
+        "iqr_seconds": 0.22799774999293732
+      },
+      "median_core_speedup": 1.0,
+      "median_core_efficiency": 1.0,
+      "median_process_speedup": 1.0,
+      "minimum_core_speedup": 1.0
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.21034283,
+        "median_seconds": 2.2928567754999998,
+        "q1_seconds": 2.24276455125,
+        "q3_seconds": 2.5118675662500003,
+        "iqr_seconds": 0.2691030150000002
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.555157299997518,
+        "median_seconds": 2.673962199987727,
+        "q1_seconds": 2.6049810749973403,
+        "q3_seconds": 2.9106210749960155,
+        "iqr_seconds": 0.3056399999986752
+      },
+      "median_core_speedup": 1.0314358782764712,
+      "median_core_efficiency": 1.0314358782764712,
+      "median_process_speedup": 1.0567398821164775,
+      "minimum_core_speedup": 0.9809789651499445
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.375701265,
+        "median_seconds": 1.4983279170000001,
+        "q1_seconds": 1.4547504275,
+        "q3_seconds": 1.57280637725,
+        "iqr_seconds": 0.11805594975
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.720280300010927,
+        "median_seconds": 1.9530650500091724,
+        "q1_seconds": 1.8099273999905563,
+        "q3_seconds": 2.096177700019325,
+        "iqr_seconds": 0.28625030002876883
+      },
+      "median_core_speedup": 1.5783826191633321,
+      "median_core_efficiency": 0.7891913095816661,
+      "median_process_speedup": 1.4467938484617688,
+      "minimum_core_speedup": 1.5761414757440089
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.870963669,
+        "median_seconds": 0.9645953085,
+        "q1_seconds": 0.91929338725,
+        "q3_seconds": 0.99750569625,
+        "iqr_seconds": 0.07821230899999998
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.3004203999880701,
+        "median_seconds": 1.4525558500172338,
+        "q1_seconds": 1.3649984249932459,
+        "q3_seconds": 1.5161928500019712,
+        "iqr_seconds": 0.15119442500872537
+      },
+      "median_core_speedup": 2.4517377610695688,
+      "median_core_efficiency": 0.6129344402673922,
+      "median_process_speedup": 1.9453176275221518,
+      "minimum_core_speedup": 2.4895410671831364
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.614025341,
+        "median_seconds": 0.705072022,
+        "q1_seconds": 0.69018148075,
+        "q3_seconds": 0.7268947422500001,
+        "iqr_seconds": 0.036713261500000094
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.0324026999878697,
+        "median_seconds": 1.2159287999966182,
+        "q1_seconds": 1.0974062250097631,
+        "q3_seconds": 1.324418650008738,
+        "iqr_seconds": 0.2270124249989749
+      },
+      "median_core_speedup": 3.3541747058572127,
+      "median_core_efficiency": 0.4192718382321516,
+      "median_process_speedup": 2.3238881256919046,
+      "minimum_core_speedup": 3.5312871916144584
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.216006611,
+        "median_seconds": 2.4691078745,
+        "q1_seconds": 2.43846380775,
+        "q3_seconds": 2.5600109485,
+        "iqr_seconds": 0.12154714075000017
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.5690666000009514,
+        "median_seconds": 2.9469668000092497,
+        "q1_seconds": 2.8725609999964945,
+        "q3_seconds": 3.0122568500009947,
+        "iqr_seconds": 0.13969585000450024
+      },
+      "median_core_speedup": 0.9578094041269479,
+      "median_core_efficiency": 0.9578094041269479,
+      "median_process_speedup": 0.9588443615958206,
+      "minimum_core_speedup": 0.9784717298390766
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.363279654,
+        "median_seconds": 1.4872240085000001,
+        "q1_seconds": 1.4102782137499998,
+        "q3_seconds": 1.52227709325,
+        "iqr_seconds": 0.1119988795000002
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.6593514999840409,
+        "median_seconds": 1.9056471500080079,
+        "q1_seconds": 1.7551876000070479,
+        "q3_seconds": 1.9786604000037187,
+        "iqr_seconds": 0.2234727999966708
+      },
+      "median_core_speedup": 1.5901671358743399,
+      "median_core_efficiency": 0.7950835679371699,
+      "median_process_speedup": 1.4827941783383527,
+      "minimum_core_speedup": 1.5905025910406492
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.883244367,
+        "median_seconds": 0.9871430105,
+        "q1_seconds": 0.9765936715000001,
+        "q3_seconds": 1.05235730925,
+        "iqr_seconds": 0.07576363774999995
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.350821400003042,
+        "median_seconds": 1.5118869499856373,
+        "q1_seconds": 1.3956851499897311,
+        "q3_seconds": 1.6476694000011776,
+        "iqr_seconds": 0.2519842500114464
+      },
+      "median_core_speedup": 2.395736703643509,
+      "median_core_efficiency": 0.5989341759108773,
+      "median_process_speedup": 1.868977372961511,
+      "minimum_core_speedup": 2.4549262956125935
+    },
+    {
+      "job": "openmp_64",
+      "workload": "uniform",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.588161524,
+        "median_seconds": 0.6894883144999999,
+        "q1_seconds": 0.6370914185,
+        "q3_seconds": 0.7187785675,
+        "iqr_seconds": 0.08168714900000007
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.9636481000052299,
+        "median_seconds": 1.2051173500076402,
+        "q1_seconds": 1.0411771500002942,
+        "q3_seconds": 1.2611077000037767,
+        "iqr_seconds": 0.2199305500034825
+      },
+      "median_core_speedup": 3.4299852401631967,
+      "median_core_efficiency": 0.4287481550203996,
+      "median_process_speedup": 2.3447363860299855,
+      "minimum_core_speedup": 3.6865720274487046
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.267707341,
+        "median_seconds": 1.403612301,
+        "q1_seconds": 1.35348453725,
+        "q3_seconds": 1.4696919502499999,
+        "iqr_seconds": 0.11620741299999993
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.5426315999939106,
+        "median_seconds": 1.8035888000013074,
+        "q1_seconds": 1.6664192499883939,
+        "q3_seconds": 1.8621908000131953,
+        "iqr_seconds": 0.1957715500248014
+      },
+      "median_core_speedup": 1.0,
+      "median_core_efficiency": 1.0,
+      "median_process_speedup": 1.0,
+      "minimum_core_speedup": 1.0
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.240311239,
+        "median_seconds": 1.322311338,
+        "q1_seconds": 1.3016068135,
+        "q3_seconds": 1.3463121102500002,
+        "iqr_seconds": 0.04470529675000012
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.536920199985616,
+        "median_seconds": 1.622947900003055,
+        "q1_seconds": 1.5952862250123871,
+        "q3_seconds": 1.6549147499899846,
+        "iqr_seconds": 0.05962852497759741
+      },
+      "median_core_speedup": 1.0614839793501036,
+      "median_core_efficiency": 1.0614839793501036,
+      "median_process_speedup": 1.1113041891227144,
+      "minimum_core_speedup": 1.0220880865532493
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.189752205,
+        "median_seconds": 1.2677098249999998,
+        "q1_seconds": 1.2291619917499998,
+        "q3_seconds": 1.3143791445000002,
+        "iqr_seconds": 0.0852171527500003
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.472852699982468,
+        "median_seconds": 1.5836699000064982,
+        "q1_seconds": 1.5485072250157828,
+        "q3_seconds": 1.652114349999465,
+        "iqr_seconds": 0.1036071249836823
+      },
+      "median_core_speedup": 1.1072031416968786,
+      "median_core_efficiency": 0.5536015708484393,
+      "median_process_speedup": 1.1388666287045721,
+      "minimum_core_speedup": 1.0655221613983055
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.726402131,
+        "median_seconds": 0.7820447770000001,
+        "q1_seconds": 0.7629492995,
+        "q3_seconds": 0.80831687475,
+        "iqr_seconds": 0.045367575250000014
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.019514399988111,
+        "median_seconds": 1.1612323499866761,
+        "q1_seconds": 1.077809900009015,
+        "q3_seconds": 1.1882907999897725,
+        "iqr_seconds": 0.11048089998075739
+      },
+      "median_core_speedup": 1.7947978712732964,
+      "median_core_efficiency": 0.4486994678183241,
+      "median_process_speedup": 1.5531678910099271,
+      "minimum_core_speedup": 1.745186704304974
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.442541733,
+        "median_seconds": 0.477806731,
+        "q1_seconds": 0.46678062125,
+        "q3_seconds": 0.48863846774999997,
+        "iqr_seconds": 0.021857846499999944
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.7640401000098791,
+        "median_seconds": 0.8412199999875156,
+        "q1_seconds": 0.8004450000007637,
+        "q3_seconds": 0.8907594499833067,
+        "iqr_seconds": 0.09031444998254301
+      },
+      "median_core_speedup": 2.937615169343439,
+      "median_core_efficiency": 0.36720189616792986,
+      "median_process_speedup": 2.144015596429084,
+      "minimum_core_speedup": 2.86460518063728
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.3124475,
+        "median_seconds": 1.3981254170000001,
+        "q1_seconds": 1.36432946075,
+        "q3_seconds": 1.4409593369999998,
+        "iqr_seconds": 0.07662987624999973
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.6299963000055868,
+        "median_seconds": 1.7702328499872237,
+        "q1_seconds": 1.6955667749934946,
+        "q3_seconds": 1.8449651499977335,
+        "iqr_seconds": 0.14939837500423891
+      },
+      "median_core_speedup": 1.003924457658293,
+      "median_core_efficiency": 1.003924457658293,
+      "median_process_speedup": 1.0188426906744636,
+      "minimum_core_speedup": 0.9659108962453736
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.776208903,
+        "median_seconds": 0.844556557,
+        "q1_seconds": 0.8087386745,
+        "q3_seconds": 0.879450844,
+        "iqr_seconds": 0.07071216949999992
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.0828839000023436,
+        "median_seconds": 1.236646399993333,
+        "q1_seconds": 1.126449674993637,
+        "q3_seconds": 1.3373825499947998,
+        "iqr_seconds": 0.21093287500116276
+      },
+      "median_core_speedup": 1.6619518128967647,
+      "median_core_efficiency": 0.8309759064483824,
+      "median_process_speedup": 1.4584515023947273,
+      "minimum_core_speedup": 1.6332038142056713
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.453900627,
+        "median_seconds": 0.529919456,
+        "q1_seconds": 0.4930150345,
+        "q3_seconds": 0.55660600875,
+        "iqr_seconds": 0.06359097424999999
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.8518883000069764,
+        "median_seconds": 0.9461855999979889,
+        "q1_seconds": 0.8724639500069316,
+        "q3_seconds": 0.9957717500001309,
+        "iqr_seconds": 0.1233077999931993
+      },
+      "median_core_speedup": 2.6487276228635013,
+      "median_core_efficiency": 0.6621819057158753,
+      "median_process_speedup": 1.906168092185234,
+      "minimum_core_speedup": 2.7929182415515807
+    },
+    {
+      "job": "openmp_64",
+      "workload": "mixed",
+      "batch_size": 64,
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.322734088,
+        "median_seconds": 0.3572124765,
+        "q1_seconds": 0.33412946200000004,
+        "q3_seconds": 0.38049882975000004,
+        "iqr_seconds": 0.04636936775
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 0.6401487000111956,
+        "median_seconds": 0.7975405000033788,
+        "q1_seconds": 0.67423959998996,
+        "q3_seconds": 0.84676037501049,
+        "iqr_seconds": 0.17252077502052998
+      },
+      "median_core_speedup": 3.9293484783978423,
+      "median_core_efficiency": 0.4911685597997303,
+      "median_process_speedup": 2.261438510011299,
+      "minimum_core_speedup": 3.928024302781428
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 4.641302612,
+        "median_seconds": 4.947580062,
+        "q1_seconds": 4.835248581249999,
+        "q3_seconds": 5.141823448999999,
+        "iqr_seconds": 0.3065748677500002
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 5.339573199977167,
+        "median_seconds": 5.771131200002856,
+        "q1_seconds": 5.545465099989087,
+        "q3_seconds": 5.91368142500869,
+        "iqr_seconds": 0.36821632501960266
+      },
+      "median_core_speedup": 1.0,
+      "median_core_efficiency": 1.0,
+      "median_process_speedup": 1.0,
+      "minimum_core_speedup": 1.0
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 4.480109273,
+        "median_seconds": 4.890671801,
+        "q1_seconds": 4.79392874825,
+        "q3_seconds": 4.983307097,
+        "iqr_seconds": 0.18937834875000004
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 4.968330600007903,
+        "median_seconds": 5.5227210499870125,
+        "q1_seconds": 5.343059024984541,
+        "q3_seconds": 5.632649200000742,
+        "iqr_seconds": 0.2895901750162011
+      },
+      "median_core_speedup": 1.0116360825906094,
+      "median_core_efficiency": 1.0116360825906094,
+      "median_process_speedup": 1.0449796663216273,
+      "minimum_core_speedup": 1.0359797784334086
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.91429324,
+        "median_seconds": 3.0809895385,
+        "q1_seconds": 3.0264094235000005,
+        "q3_seconds": 3.157080862,
+        "iqr_seconds": 0.1306714384999994
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 3.5071422000182793,
+        "median_seconds": 3.8484748500050046,
+        "q1_seconds": 3.6859511500006192,
+        "q3_seconds": 4.034750500002701,
+        "iqr_seconds": 0.34879935000208206
+      },
+      "median_core_speedup": 1.6058412403466849,
+      "median_core_efficiency": 0.8029206201733424,
+      "median_process_speedup": 1.4995891684196276,
+      "minimum_core_speedup": 1.5925997247963968
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.027439139,
+        "median_seconds": 2.1816350645,
+        "q1_seconds": 2.13851488425,
+        "q3_seconds": 2.218762087,
+        "iqr_seconds": 0.08024720274999986
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.8036393000220414,
+        "median_seconds": 3.175645049996092,
+        "q1_seconds": 2.9097231999985524,
+        "q3_seconds": 3.3024779250190477,
+        "iqr_seconds": 0.39275472502049524
+      },
+      "median_core_speedup": 2.2678311980349086,
+      "median_core_efficiency": 0.5669577995087272,
+      "median_process_speedup": 1.817309903702858,
+      "minimum_core_speedup": 2.289243865682322
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.431674579,
+        "median_seconds": 1.5875435035,
+        "q1_seconds": 1.5004253752499999,
+        "q3_seconds": 1.7144980487500001,
+        "iqr_seconds": 0.21407267350000025
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.1177331999933813,
+        "median_seconds": 2.40474895000807,
+        "q1_seconds": 2.314193450009043,
+        "q3_seconds": 2.6944130250049056,
+        "iqr_seconds": 0.3802195749958628
+      },
+      "median_core_speedup": 3.1165004619352152,
+      "median_core_efficiency": 0.3895625577419019,
+      "median_process_speedup": 2.3998892690995826,
+      "minimum_core_speedup": 3.2418698215916284
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 4.70588888,
+        "median_seconds": 4.951526886,
+        "q1_seconds": 4.8688017745000005,
+        "q3_seconds": 5.02184364825,
+        "iqr_seconds": 0.15304187374999945
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 5.325296399998479,
+        "median_seconds": 5.6926836499915225,
+        "q1_seconds": 5.495577625006263,
+        "q3_seconds": 6.023805925004126,
+        "iqr_seconds": 0.5282282999978634
+      },
+      "median_core_speedup": 0.9992029076907248,
+      "median_core_efficiency": 0.9992029076907248,
+      "median_process_speedup": 1.013780416203428,
+      "minimum_core_speedup": 0.9862754370859688
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.886088835,
+        "median_seconds": 3.2129995155,
+        "q1_seconds": 3.13080200925,
+        "q3_seconds": 3.425437982,
+        "iqr_seconds": 0.2946359727500001
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 3.52091069999733,
+        "median_seconds": 4.088839699994423,
+        "q1_seconds": 3.7704805250104982,
+        "q3_seconds": 4.2189501999964705,
+        "iqr_seconds": 0.44846967498597223
+      },
+      "median_core_speedup": 1.539863307831862,
+      "median_core_efficiency": 0.769931653915931,
+      "median_process_speedup": 1.411434935933225,
+      "minimum_core_speedup": 1.60816346181527
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.932146203,
+        "median_seconds": 2.06261717,
+        "q1_seconds": 2.008388242,
+        "q3_seconds": 2.1411664402499997,
+        "iqr_seconds": 0.1327781982499996
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.6550953999976628,
+        "median_seconds": 2.8605949000047985,
+        "q1_seconds": 2.768077649983752,
+        "q3_seconds": 3.125998175004497,
+        "iqr_seconds": 0.3579205250207451
+      },
+      "median_core_speedup": 2.398690427850942,
+      "median_core_efficiency": 0.5996726069627355,
+      "median_process_speedup": 2.0174583965010826,
+      "minimum_core_speedup": 2.4021487632734795
+    },
+    {
+      "job": "openmp_128",
+      "workload": "uniform",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.385071817,
+        "median_seconds": 1.460736512,
+        "q1_seconds": 1.4342973689999998,
+        "q3_seconds": 1.4944500905,
+        "iqr_seconds": 0.06015272150000017
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.081962199998088,
+        "median_seconds": 2.272650250000879,
+        "q1_seconds": 2.1428798000124516,
+        "q3_seconds": 2.446530100009113,
+        "iqr_seconds": 0.3036502999966615
+      },
+      "median_core_speedup": 3.3870448375565765,
+      "median_core_efficiency": 0.42338060469457206,
+      "median_process_speedup": 2.5393837877168397,
+      "minimum_core_speedup": 3.350947261386663
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "serial",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.677947892,
+        "median_seconds": 2.864671244,
+        "q1_seconds": 2.764410586,
+        "q3_seconds": 2.94156086475,
+        "iqr_seconds": 0.1771502787500001
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 3.1794215999834705,
+        "median_seconds": 3.5877145499980543,
+        "q1_seconds": 3.2993165500010946,
+        "q3_seconds": 3.7321225499981665,
+        "iqr_seconds": 0.4328059999970719
+      },
+      "median_core_speedup": 1.0,
+      "median_core_efficiency": 1.0,
+      "median_process_speedup": 1.0,
+      "minimum_core_speedup": 1.0
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.536561,
+        "median_seconds": 2.7562194704999996,
+        "q1_seconds": 2.6396961434999997,
+        "q3_seconds": 2.867786471,
+        "iqr_seconds": 0.22809032750000036
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 3.06481840001652,
+        "median_seconds": 3.37075050000567,
+        "q1_seconds": 3.132763524990878,
+        "q3_seconds": 3.628858450014377,
+        "iqr_seconds": 0.49609492502349894
+      },
+      "median_core_speedup": 1.0393480180590722,
+      "median_core_efficiency": 1.0393480180590722,
+      "median_process_speedup": 1.064366689255707,
+      "minimum_core_speedup": 1.0557395986140292
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.451984137,
+        "median_seconds": 2.6797665755000004,
+        "q1_seconds": 2.60736982875,
+        "q3_seconds": 2.71045621775,
+        "iqr_seconds": 0.103086389
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 3.014134199998807,
+        "median_seconds": 3.2949158499832265,
+        "q1_seconds": 3.194749399997818,
+        "q3_seconds": 3.5009843749940046,
+        "iqr_seconds": 0.3062349749961868
+      },
+      "median_core_speedup": 1.0690002891261152,
+      "median_core_efficiency": 0.5345001445630576,
+      "median_process_speedup": 1.0888637869207853,
+      "minimum_core_speedup": 1.0921554718035273
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.479354461,
+        "median_seconds": 1.5806883520000001,
+        "q1_seconds": 1.5497848140000001,
+        "q3_seconds": 1.62391797725,
+        "iqr_seconds": 0.07413316324999997
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.031095499987714,
+        "median_seconds": 2.2088455500052078,
+        "q1_seconds": 2.1284800750145223,
+        "q3_seconds": 2.420983249990968,
+        "iqr_seconds": 0.29250317497644573
+      },
+      "median_core_speedup": 1.8122935114789787,
+      "median_core_efficiency": 0.45307337786974466,
+      "median_process_speedup": 1.6242487167061526,
+      "minimum_core_speedup": 1.8102138213648853
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "static",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.001979472,
+        "median_seconds": 1.056518086,
+        "q1_seconds": 1.03752563925,
+        "q3_seconds": 1.12919180975,
+        "iqr_seconds": 0.09166617049999992
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.5421854999731295,
+        "median_seconds": 1.7186779500043485,
+        "q1_seconds": 1.6818615749944001,
+        "q3_seconds": 1.7924704749966622,
+        "iqr_seconds": 0.11060890000226209
+      },
+      "median_core_speedup": 2.711426602118764,
+      "median_core_efficiency": 0.3389283252648455,
+      "median_process_speedup": 2.0874850637310947,
+      "minimum_core_speedup": 2.6726574414291
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 1,
+      "actual_threads": 1,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 2.635628131,
+        "median_seconds": 2.895330519,
+        "q1_seconds": 2.79129805575,
+        "q3_seconds": 3.07971680575,
+        "iqr_seconds": 0.28841874999999995
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 3.1702864000108093,
+        "median_seconds": 3.724232150008902,
+        "q1_seconds": 3.5335436750101508,
+        "q3_seconds": 3.9511989499878837,
+        "iqr_seconds": 0.4176552749777329
+      },
+      "median_core_speedup": 0.989410785815711,
+      "median_core_efficiency": 0.989410785815711,
+      "median_process_speedup": 0.9633434236878812,
+      "minimum_core_speedup": 1.016056802741722
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 2,
+      "actual_threads": 2,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 1.417973179,
+        "median_seconds": 1.802355521,
+        "q1_seconds": 1.7065982882500002,
+        "q3_seconds": 1.839693954,
+        "iqr_seconds": 0.13309566574999976
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 2.154341100016609,
+        "median_seconds": 2.47383784998965,
+        "q1_seconds": 2.3670659749841434,
+        "q3_seconds": 2.7232574000008754,
+        "iqr_seconds": 0.35619142501673196
+      },
+      "median_core_speedup": 1.5894040940438854,
+      "median_core_efficiency": 0.7947020470219427,
+      "median_process_speedup": 1.450262615236914,
+      "minimum_core_speedup": 1.8885744326197866
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 4,
+      "actual_threads": 4,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.885234284,
+        "median_seconds": 1.1045966995,
+        "q1_seconds": 1.06476074775,
+        "q3_seconds": 1.14935075525,
+        "iqr_seconds": 0.0845900074999999
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.65114810000523,
+        "median_seconds": 1.9098939999967115,
+        "q1_seconds": 1.7633450250141323,
+        "q3_seconds": 2.0923550499937846,
+        "iqr_seconds": 0.32901002497965237
+      },
+      "median_core_speedup": 2.5934092011108714,
+      "median_core_efficiency": 0.6483523002777178,
+      "median_process_speedup": 1.8784888323667344,
+      "minimum_core_speedup": 3.0251289860798027
+    },
+    {
+      "job": "openmp_128",
+      "workload": "mixed",
+      "batch_size": 128,
+      "schedule": "dynamic",
+      "requested_threads": 8,
+      "actual_threads": 8,
+      "core": {
+        "count": 18,
+        "minimum_seconds": 0.581402031,
+        "median_seconds": 0.7716548864999999,
+        "q1_seconds": 0.7263665695,
+        "q3_seconds": 0.8174157675,
+        "iqr_seconds": 0.091049198
+      },
+      "process_wall": {
+        "count": 18,
+        "minimum_seconds": 1.2887839000031818,
+        "median_seconds": 1.5694023499963805,
+        "q1_seconds": 1.4443930749985157,
+        "q3_seconds": 1.721973200008506,
+        "iqr_seconds": 0.2775801250099903
+      },
+      "median_core_speedup": 3.7123736194988775,
+      "median_core_efficiency": 0.4640467024373597,
+      "median_process_speedup": 2.2860387267843256,
+      "minimum_core_speedup": 4.606017435807685
+    }
+  ],
+  "paired_quality": [
+    {
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "input_sha256": "37bbd31a370e46e55f00718d07e7ce8e0fa240dce33d0a8cd777374c06fb9a3d",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 404489.0965376,
+      "agh_total_usd": 404488.0965376,
+      "total_reduction_fraction": 2.4722545269079787e-06
+    },
+    {
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "input_sha256": "a53e9d80a717a9dea3236b21ef2188fd708d6c6f79966c88cf5783a2319fa43f",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 808969.1930752,
+      "agh_total_usd": 808968.1930752,
+      "total_reduction_fraction": 1.2361410157024882e-06
+    },
+    {
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "input_sha256": "bb5dc0eeb1ddd212d432536d23e0df2b11dcb674d0858cb1b69a43c68de85bbf",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 1617929.3861504,
+      "agh_total_usd": 1617928.3861504,
+      "total_reduction_fraction": 6.180739459707432e-07
+    },
+    {
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "input_sha256": "77a9ed03e6e66da7047d773112e7e7385211f14fbe67440ecdda16d5465dd5a9",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 3235849.7723008,
+      "agh_total_usd": 3235848.7723008,
+      "total_reduction_fraction": 3.090378325224183e-07
+    },
+    {
+      "shape": [
+        32,
+        8,
+        4
+      ],
+      "input_sha256": "b8022096125ef5d553a18f540476cb880eca0de304228d3ed50723faa3bd80cb",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 730889.1770751999,
+      "agh_total_usd": 730888.1770751999,
+      "total_reduction_fraction": 1.3681964808970098e-06
+    },
+    {
+      "shape": [
+        32,
+        4,
+        8
+      ],
+      "input_sha256": "44191c0172fa5b8957fcf192cad301bab0132d906aa626da1f153d148d7c7d61",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 808969.1930752,
+      "agh_total_usd": 808968.1930752,
+      "total_reduction_fraction": 1.2361410157024882e-06
+    },
+    {
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "input_sha256": "39a99c0938b16329b21068ae7389d48d584264a15df301274550433589bee8d7",
+      "gh_rental_usd": 9.0,
+      "agh_rental_usd": 8.0,
+      "rental_reduction_fraction": 0.1111111111111111,
+      "gh_total_usd": 1461769.3541503998,
+      "agh_total_usd": 1461768.3541503998,
+      "total_reduction_fraction": 6.841024523880606e-07
+    }
+  ],
+  "query_growth": [
+    {
+      "method": "gh",
+      "first_shape": [
+        16,
+        4,
+        4
+      ],
+      "last_shape": [
+        256,
+        4,
+        4
+      ],
+      "query_count_ratio": 16.0,
+      "core_median_time_ratio": 109.1323272801519,
+      "endpoint_empirical_exponent": 1.6924836778050791
+    },
+    {
+      "method": "agh",
+      "first_shape": [
+        16,
+        4,
+        4
+      ],
+      "last_shape": [
+        256,
+        4,
+        4
+      ],
+      "query_count_ratio": 16.0,
+      "core_median_time_ratio": 174.9273696455203,
+      "endpoint_empirical_exponent": 1.8626530562403487
+    }
+  ],
+  "best_observed_median_setting": {
+    "job": "openmp_32",
+    "workload": "mixed",
+    "batch_size": 32,
+    "schedule": "dynamic",
+    "requested_threads": 8,
+    "actual_threads": 8,
+    "core": {
+      "count": 18,
+      "minimum_seconds": 0.150557826,
+      "median_seconds": 0.1741378085,
+      "q1_seconds": 0.16642373500000002,
+      "q3_seconds": 0.19118805174999998,
+      "iqr_seconds": 0.02476431674999996
+    },
+    "process_wall": {
+      "count": 18,
+      "minimum_seconds": 0.35205370001494884,
+      "median_seconds": 0.44381735000933986,
+      "q1_seconds": 0.3770301249824115,
+      "q3_seconds": 0.4740194500045618,
+      "iqr_seconds": 0.0969893250221503
+    },
+    "median_core_speedup": 4.202482280004116,
+    "median_core_efficiency": 0.5253102850005145,
+    "median_process_speedup": 2.2668756639995866,
+    "minimum_core_speedup": 4.143249491394754
+  },
+  "limitations": [
+    "Python reference includes projection/independent validation and is timed once; C++ core uses five individual samples.",
+    "OpenMP speedup uses serial execution in the identical campaign binary and the observed team size.",
+    "Minimum, median and full-process times are separate; IQR describes samples, not a confidence interval.",
+    "The empirical endpoint exponent describes this tested range, not a formal complexity bound.",
+    "Synthetic menu values and modeled costs are not measured GPUs or cloud bills.",
+    "A serial row from a stopped worker is a finished, checked method with retained samples; its job status remains explicit.",
+    "Supplemental native rows validate final decisions/objectives in Python; full Python heuristic parity and its runtime are unavailable.",
+    "The 40 Stage-2 stress jobs are outside this timing subset."
+  ]
+}

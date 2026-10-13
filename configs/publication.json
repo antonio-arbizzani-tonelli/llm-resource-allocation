@@ -97,6 +97,51 @@
       "path": "benchmarks/gurobi/summary.csv"
     },
     {
+      "path": "benchmarks/performance_2026-10-13/analysis/analysis.json"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/menu_scaling.png"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/menu_scaling.svg"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.png"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.svg"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_process_scaling.png"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_process_scaling.svg"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/query_scaling.png"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/query_scaling.svg"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/report.md"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/serial_timings.csv"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/evidence.zip"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/evidence_manifest.json"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/provenance.json"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/scientific-source-snapshot.zip"
+    },
+    {
       "path": "benchmarks/portfolio/README.md"
     },
     {
@@ -787,6 +832,12 @@
       "path": "benchmarks/release_checks/cpp_parity.json"
     },
     {
+      "path": "benchmarks/release_checks/larger_performance_base_regression.json"
+    },
+    {
+      "path": "benchmarks/release_checks/larger_performance_replay.json"
+    },
+    {
       "path": "benchmarks/release_checks/nightly_preparation_base_regression.json"
     },
     {
@@ -925,6 +976,9 @@
       "path": "docs/NIGHTLY_CAMPAIGN.md"
     },
     {
+      "path": "docs/PERFORMANCE.md"
+    },
+    {
       "path": "docs/PRESENTATION_BRIEF.md"
     },
     {
@@ -946,6 +1000,9 @@
       "path": "pyproject.toml"
     },
     {
+      "path": "scripts/analyze_performance_campaign.py"
+    },
+    {
       "path": "scripts/check_cpp_parity.py"
     },
     {
@@ -956,6 +1013,12 @@
     },
     {
       "path": "scripts/download_azure_trace.py"
+    },
+    {
+      "path": "scripts/export_performance_campaign.py"
+    },
+    {
+      "path": "scripts/plot_performance_campaign.py"
     },
     {
       "path": "scripts/plot_synthetic_benchmark.py"
@@ -973,6 +1036,9 @@
       "path": "scripts/profile_large_instances.py"
     },
     {
+      "path": "scripts/profile_native_validated_instances.py"
+    },
+    {
       "path": "scripts/profile_openmp.py"
     },
     {
@@ -983,6 +1049,9 @@
     },
     {
       "path": "scripts/run_nightly_campaign.py"
+    },
+    {
+      "path": "scripts/run_performance_campaign.py"
     },
     {
       "path": "scripts/run_scaling_experiment.py"
@@ -1349,6 +1418,9 @@
     },
     {
       "path": "tests/test_pdm_run.py"
+    },
+    {
+      "path": "tests/test_performance_analysis.py"
     },
     {
       "path": "tests/test_phase1.py"

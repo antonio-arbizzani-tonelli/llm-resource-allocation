@@ -6,6 +6,36 @@ Python reference, independent feasibility checks, a C++ port and parallel
 campaigns. Cost comparisons measure synthetic modeled decisions; runtime
 comparisons measure the CPU allocation software.
 
+## Larger-instance measurements, October 13
+
+The [new performance study](PERFORMANCE.md) extends the engineering evidence
+through 256x4x4 and 128x8x8 query/model/tier dimensions. Across nine shapes,
+18 native method points retain five samples each. Sixteen full Python reference
+comparisons check 185,832 numeric values without a bitwise difference. AGH
+Python encounters MemoryError at the two largest endpoints; their separate
+native measurements pass the existing Python final-decision validator and
+bitwise objective checks, with full algorithm parity explicitly unavailable.
+
+AGH's C++ median is **2.889 s at 128x4x4**, **7.156 s at 256x4x4** and
+**7.471 s at 128x8x8**. The 128x4x4 full Python reference check takes
+**340.978 s**, with projection/validation included. This comparison uses
+different timer scopes and does not isolate a language effect.
+
+The 32/64/128-case OpenMP study retains 18 rounds per setting. Its best observed
+median core speedup is **4.20x**, with **2.27x** complete-invocation speedup and
+**52.5%** observed-team efficiency: 32 mixed cases, dynamic schedule, eight
+threads. For that batch, static scheduling reaches **3.08x** median core
+speedup. Larger batches do not establish larger relative core gains. The
+full setting table, IQRs and separate process timers remain visible.
+
+![Larger query counts](../benchmarks/performance_2026-10-13/analysis/plots/query_scaling.png)
+
+The [analysis JSON](../benchmarks/performance_2026-10-13/analysis/analysis.json)
+and [compressed evidence](../benchmarks/performance_2026-10-13/evidence.zip)
+preserve the verification mode, failures, samples and provenance. These results
+add measured scalability and resource limits; the 40 Stage-2 stress jobs remain
+pending. The following sections retain the October 11–12 evidence and scopes.
+
 The timing campaigns were recorded on October 11–12, 2026. They remain historical
 measurements when the source later changes. The retained manifests identify
 the measured inputs, configuration, environment and source hashes. The

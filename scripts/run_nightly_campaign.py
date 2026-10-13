@@ -213,7 +213,7 @@ def terminate_worker(process, snapshot, wsl):
         process.wait(timeout=5)
 
 
-def run_jobs(output, config, jobs, snapshot, wsl):
+def run_jobs(output, config, jobs, snapshot, wsl, *, deferred_jobs=()):
     history_path = output / "jobs.json"
     history = json.loads(history_path.read_text(encoding="utf-8")) if history_path.exists() else []
     for item in history:
@@ -224,9 +224,12 @@ def run_jobs(output, config, jobs, snapshot, wsl):
             if evidence_inventory(directory) != item["evidence_sha256"]:
                 raise RuntimeError(f"completed evidence changed: {item['id']}")
     completed = {item["id"] for item in history if item["status"] == "completed"}
+    deferred = set(deferred_jobs)
+    if not deferred <= {job["id"] for job in jobs}:
+        raise ValueError("deferred jobs must belong to this campaign")
     deadline = perf_counter() + config["maximum_wall_seconds"]
     for index, job in enumerate(jobs):
-        if job["id"] in completed:
+        if job["id"] in completed or job["id"] in deferred:
             continue
         remaining = deadline - perf_counter()
         if remaining <= 0:

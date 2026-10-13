@@ -4,6 +4,34 @@ Verification establishes the implemented scope through independent equations,
 hand-derived examples, solver comparisons and cross-language checks.
 Synthetic fixtures are verification inputs, not recovered paper data.
 
+## Larger-instance performance verification
+
+The [October 13 study](PERFORMANCE.md) retains 18 native method/shape points,
+90 individual timings and 54 OpenMP setting/workload combinations. Sixteen
+complete Python reference comparisons check 185,832 numeric values without
+bitwise differences. Two separate native points pass Python independent
+final-decision validation and bitwise objective agreement after the full AGH
+reference failed with MemoryError. Their full algorithm parity is not claimed.
+
+The OpenMP protocol checks 4,032 ordered case outputs in full warm comparisons
+and 72,576 status/feasibility/objective outputs in measured compact invocations.
+Actual teams and source/binary/input hashes are retained. Every complete
+timing job's evidence is hashed; finished methods from stopped workers also
+verify all their retained input/golden/native/sample pointers.
+
+Final development regression: **1,046 tests pass**, no skips, **11.850 s**,
+Python 3.14.3, stable source hashes. The exact base export runs **1,031 tests**:
+**1,027 pass, four optional skips**, **7.471 s**, stable sources; its
+[regression record](../benchmarks/release_checks/larger_performance_base_regression.json)
+identifies the tested Python files. Eleven new checks cover analysis, archive
+portability, partial finished methods, native final-decision validation and
+explicit deferral without false completion. Four figures have PNG/SVG outputs
+and were visually inspected. The verified evidence archive retains all
+1,689 files with original/portable hashes and exact byte checks.
+Extracting the delivered ZIP in the actual base export and rerunning analysis
+reproduces all derived observations exactly; [the replay record](../benchmarks/release_checks/larger_performance_replay.json)
+also confirms that existing scientific source files are unchanged.
+
 ## Overnight preparation checks
 
 The prepared [overnight extension](NIGHTLY_CAMPAIGN.md) passes a complete

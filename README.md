@@ -110,6 +110,11 @@ work. A reuse license has not yet been selected.
 
 The [overnight campaign guide](docs/NIGHTLY_CAMPAIGN.md) describes the prepared
 52-job scaling and Stage-2 sensitivity plan, execution command, runtime limits
-and recoverable evidence. New measurements are pending; the recorded results
-above retain their original scope.
+and recoverable evidence. The [October 13 performance study](docs/PERFORMANCE.md)
+now measures nine larger shapes and 32/64/128-case OpenMP batches. AGH C++ median
+is **2.889 s at 128x4x4** and **7.156 s at 256x4x4**; the latter uses independent
+final-decision validation after a full Python reference MemoryError. Best
+observed median OpenMP acceleration is **4.20x core / 2.27x full invocation**.
+All modes, raw evidence and failures are retained. Stage-2 stress measurements
+remain pending; the earlier results above retain their original scope.
 

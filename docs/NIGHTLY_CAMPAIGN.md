@@ -1,7 +1,9 @@
 # Overnight allocation experiments
 
-The campaign is prepared separately from the published measurements. Its results
-are pending. It evaluates allocation software on the recorded CPU/WSL machine;
+The full 52-job campaign is prepared separately from earlier measurements.
+The [12-job timing subset](PERFORMANCE.md) was executed on October 13; its
+coverage and resource-limited references are reported separately. The 40
+Stage-2 stress jobs remain pending. It evaluates allocation software on the recorded CPU/WSL machine;
 it does not run LLM inference on GPUs or measure cloud bills.
 
 ## Prepare and start

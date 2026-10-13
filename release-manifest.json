@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "scope": "Python Stage 1 and coherent Stage 2; serial C++20 GH/AGH; OpenMP independent campaigns; reproducible measured evidence",
-  "file_count": 480,
+  "file_count": 504,
   "files": [
     {
       "path": ".gitattributes",
@@ -20,8 +20,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5445,
-      "sha256": "e78b782196eb33785b9a26853c7200aac7229455249c4062c3a4ffeb3be6f95d"
+      "bytes": 5882,
+      "sha256": "c98f57acfdb5bde0171c2a9d8dd007978ee6f68e0c10953e499c6ad3e069a17f"
     },
     {
       "path": "benchmarks/backend_comparison/manifest.json",
@@ -147,6 +147,81 @@
       "path": "benchmarks/gurobi/summary.csv",
       "bytes": 5140,
       "sha256": "904de6da93918a29b424a44dd6dc175f482200c5b9d018970f8d0ed463008ac6"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/analysis.json",
+      "bytes": 77526,
+      "sha256": "06ad9aff71126a033a2f4888f55b88f07bf69b80ad2317325005040970db7787"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/menu_scaling.png",
+      "bytes": 57620,
+      "sha256": "bdefc251765b5de3700ff5bd36c99d6a3d6602a93fbf334d7c3b6cfa95675ad7"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/menu_scaling.svg",
+      "bytes": 44701,
+      "sha256": "4e993bcef0a22ffcfeecbd75fbcdbe25b99caaa1ed8886360b83752bfc185c7d"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.png",
+      "bytes": 165086,
+      "sha256": "5f58775f12d806cbaebac9e89995a8ca806db284b10045bc4df8ce2929f6df25"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.svg",
+      "bytes": 70641,
+      "sha256": "d7b373f8ec065cb1f1845c6a0dbf519f71f6554be9f82a2ddab5011bdadccd47"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_process_scaling.png",
+      "bytes": 195426,
+      "sha256": "58efc9b42ce3276a4c92638e07ee2ce44bd344ea721c6d8311b2ab1e7ef90e6c"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/openmp_process_scaling.svg",
+      "bytes": 73341,
+      "sha256": "8eb69fdba833b657cf85cb497f072ace91ec95916e7be250a806fbf1e76acf2e"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/query_scaling.png",
+      "bytes": 89978,
+      "sha256": "2be67e5bd331d896f6673ed523fa704814c4b225d4bfed2812b3b3d8fecfb9d1"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/plots/query_scaling.svg",
+      "bytes": 64136,
+      "sha256": "a38dfd772207ec27b84ba85994b3a1ee0a3ae1e609a73234d1ccd6247a588a0a"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/report.md",
+      "bytes": 6131,
+      "sha256": "630a3e8fbb30df6e723927077d67e59b6fd45a3f59a2d29c8ced0c1cc578cffc"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/analysis/serial_timings.csv",
+      "bytes": 2829,
+      "sha256": "bd3712d398521fdeb15e38acbd2021abe99eff5607a86b4cf2304d47c746de59"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/evidence.zip",
+      "bytes": 32326709,
+      "sha256": "ddebfce0a0e1183c36e97d6293355c5c512296071e84d52f965e5715a423d4e5"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/evidence_manifest.json",
+      "bytes": 310335,
+      "sha256": "435d3648aa061048cc1529ad06d203449856ea7360e108012bbbc40103416ea8"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/provenance.json",
+      "bytes": 528639,
+      "sha256": "db2370fc508033c8603264d6d6a2d2f95eda10bb2bd39b9f4fb8f3d3f04fcaf6"
+    },
+    {
+      "path": "benchmarks/performance_2026-10-13/scientific-source-snapshot.zip",
+      "bytes": 584911,
+      "sha256": "99d8073b220d0e87f4d1951cab617ab5ecdacfa87a701c6f42debb19010e80d9"
     },
     {
       "path": "benchmarks/portfolio/README.md",
@@ -1299,6 +1374,16 @@
       "sha256": "f95122f296b12f92e787e98640666fefe989c7f16dde1275beed8153893c62e8"
     },
     {
+      "path": "benchmarks/release_checks/larger_performance_base_regression.json",
+      "bytes": 21054,
+      "sha256": "f4668f3ef1888eca0b4938179acbeb554951e969c5b88ed2e8a5ad5c834d6baa"
+    },
+    {
+      "path": "benchmarks/release_checks/larger_performance_replay.json",
+      "bytes": 407,
+      "sha256": "0423391cd68736c97ef4d2f731819fcd3795d0eaa88c343f3d30567301f9e29f"
+    },
+    {
       "path": "benchmarks/release_checks/nightly_preparation_base_regression.json",
       "bytes": 20372,
       "sha256": "666bed7fd6fa4c5cee5512e5cd8d30700be85c6200826f7002a213755a8a0709"
@@ -1330,8 +1415,8 @@
     },
     {
       "path": "configs/publication.json",
-      "bytes": 39415,
-      "sha256": "c94805d529198f10aa21fc6e147f41affb24062055905ac127ccce926e889bbe"
+      "bytes": 41442,
+      "sha256": "820ee6ed0a1e980f418d32beaafaa10d19a675c8be6c9c1e95ae18a6a9812422"
     },
     {
       "path": "configs/quick_benchmark.json",
@@ -1525,18 +1610,23 @@
     },
     {
       "path": "docs/NIGHTLY_CAMPAIGN.md",
-      "bytes": 6596,
-      "sha256": "5aead3e3b97e4c2b4a19cefd142fcaaeba983d7d12ea37272848307840059fa2"
+      "bytes": 6761,
+      "sha256": "d88cf6391e0364daf21dbd614d5f8ef42c8888d29bfb5b34394e66a56fdb41ba"
+    },
+    {
+      "path": "docs/PERFORMANCE.md",
+      "bytes": 9277,
+      "sha256": "67ad7740abc2dc8e9d6e3a3cdd5d8777fc137f135525f57e319c233e98950ba1"
     },
     {
       "path": "docs/PRESENTATION_BRIEF.md",
-      "bytes": 8829,
-      "sha256": "335864463d8a464d029f1952b81ae973c8f8ca4af4355c08abbb213ad1718fc4"
+      "bytes": 9817,
+      "sha256": "c0865dc9f3fe74ead7a1177b93976108883ce79a2a20a73ff9f69aff615229c8"
     },
     {
       "path": "docs/RESULTS.md",
-      "bytes": 10390,
-      "sha256": "b3dc36f3bcf686a5da8816486dae4ba117540880d7481bb1014b6e68f5a9fff2"
+      "bytes": 12197,
+      "sha256": "3a1e4f24ec60c0e133f807d0d6833a6280bb05d83e3d68a31c3f38968fce2948"
     },
     {
       "path": "docs/UNITS.md",
@@ -1545,8 +1635,8 @@
     },
     {
       "path": "docs/VALIDATION.md",
-      "bytes": 4605,
-      "sha256": "6360b74a75459601ff2c8c540fc80f0ec593258a6e0aeb0ec6284893c6cef9a8"
+      "bytes": 6437,
+      "sha256": "1dfc1b3e8b0bb22cca0a91caa3bcaa8e5a954669a10f1af2450ffb0da65531e3"
     },
     {
       "path": "examples/stage1_quickstart.py",
@@ -1562,6 +1652,11 @@
       "path": "pyproject.toml",
       "bytes": 594,
       "sha256": "6c9e0cb88b0630399c36db0df42359ad796799ea5655a0a5cd6d06ce0575c8ec"
+    },
+    {
+      "path": "scripts/analyze_performance_campaign.py",
+      "bytes": 15669,
+      "sha256": "756b7594fa8d667f3c66bd03ab8e396de310039da7f2ebcdab7539527bc45ae8"
     },
     {
       "path": "scripts/check_cpp_parity.py",
@@ -1582,6 +1677,16 @@
       "path": "scripts/download_azure_trace.py",
       "bytes": 3975,
       "sha256": "af451fdabf15c2f9167183117b587bc9290adad7e37a0c2cec2ddf3c33264f85"
+    },
+    {
+      "path": "scripts/export_performance_campaign.py",
+      "bytes": 8964,
+      "sha256": "1979073dd1b2dcb4490e0c1272b0be752f6fef2beb8d6b0c2db5d1e4b91d0db3"
+    },
+    {
+      "path": "scripts/plot_performance_campaign.py",
+      "bytes": 5818,
+      "sha256": "6159023597fd8c0e6032e755e932583738bd3aff5fc77d01829046fe5540ad0b"
     },
     {
       "path": "scripts/plot_synthetic_benchmark.py",
@@ -1609,6 +1714,11 @@
       "sha256": "4a521e53f0c99e143b7cc2ee7e1be876f26e0552f69268dcdd28a9f477b8ae3b"
     },
     {
+      "path": "scripts/profile_native_validated_instances.py",
+      "bytes": 5601,
+      "sha256": "e028a59544e99b20a5122c86e70693cd99f4341c40035a6f4b38dc57015771fb"
+    },
+    {
       "path": "scripts/profile_openmp.py",
       "bytes": 15054,
       "sha256": "daefbbd143f9eba01b35c25eb4eabcd05d07a3d9087281e511ca7e247f561d82"
@@ -1625,8 +1735,13 @@
     },
     {
       "path": "scripts/run_nightly_campaign.py",
-      "bytes": 20866,
-      "sha256": "08078f0dc873c120faa2e64fb2dc0767228d5fcd2216efe535e6f0016d7c2488"
+      "bytes": 21069,
+      "sha256": "1a959f6fa7ce5d9b7d5b4302776116e85ef767c9b2c43bf7e2c2b10e638dc98d"
+    },
+    {
+      "path": "scripts/run_performance_campaign.py",
+      "bytes": 6354,
+      "sha256": "cf035c6172ef72658074b1227430c445c3c1955f0707bd7eb6b65e8bfda28d9e"
     },
     {
       "path": "scripts/run_scaling_experiment.py",
@@ -2205,8 +2320,8 @@
     },
     {
       "path": "tests/test_nightly_campaign.py",
-      "bytes": 15025,
-      "sha256": "75ab9503887337b4a616051693f475ce4e8ffba4a89492b3cdaa7765fffa84d0"
+      "bytes": 15865,
+      "sha256": "d0bbecdb087992856501201f8e8f438b48b05604e2d7940a00ff339c6c3d8f6b"
     },
     {
       "path": "tests/test_objective.py",
@@ -2237,6 +2352,11 @@
       "path": "tests/test_pdm_run.py",
       "bytes": 13815,
       "sha256": "7a399d6aaf7fb7842ed46bcbeb1ecb60443c469da25805de94a5fef2cac880ed"
+    },
+    {
+      "path": "tests/test_performance_analysis.py",
+      "bytes": 14436,
+      "sha256": "a16b9a06f74701947d1c87c51a82114ae1100fe3233e0bf025a71626ac7e58b7"
     },
     {
       "path": "tests/test_phase1.py",
