@@ -355,14 +355,15 @@ python scripts/extension_solver_quality.py summarize --output benchmarks/solver_
 | Package | Current numeric status | Required final denominators and scope |
 |---|---|---|
 | WP7 optional memory work | Skipped | No new allocation/resident-memory profile, lean trace or memory improvement claim |
-| WP8 pre-manifest verification | **7/7 checks pass**, including **1,131 Python tests / zero skips** | WSL Python 3.13.16, native release/sanitizer, 63/63 live/frozen parity, 90 OpenMP comparisons/ten Python independent cases and both examples; final post-manifest gate remains required |
+| WP8 pre-manifest verification | **7/7 checks pass**, including **1,131 Python tests / zero skips** | WSL Python 3.13.16, native release/sanitizer, 63/63 live/frozen parity, 90 OpenMP comparisons/ten Python independent cases and both examples; separately repeated after manifest generation |
 
 Source: [actual pre-manifest commands/log hashes](extension_release_preflight.json).
 Python takes 147.301 s inside unittest (150.6005 s outer); native release
 15.8426 s and ASAN/UBSAN 30.5101 s; live/frozen parity 4.1725 s and OpenMP
-3.8691 s. After one final manifest generation, repeat the full checks and run
-`python scripts/prepare_release.py --check` before handback. Post-generation
-passes are recorded in local logs/canonical handoff without rewriting this
-hashed public preflight evidence.
+3.8691 s. At numerical checkpoint `543ad4e`, the post-manifest repetition also
+passes: 1,131 tests / zero skips (181.611 s unittest), native release/sanitizer,
+63/63 parity, 90 OpenMP comparisons, both examples and verification of 3,568
+publication files. Actual closing logs/canonical handoff remain in the
+development workspace; this hashed preflight evidence retains its earlier scope.
 The [extension report](EXTENSION_REPORT.md) records hypotheses, deviations,
 unresolved scope and the final delivery verdict.

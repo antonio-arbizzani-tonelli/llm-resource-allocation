@@ -3,6 +3,11 @@
 Il [prompt pronto da usare](CLAUDE_DESIGN_PROMPT.md) riunisce queste indicazioni
 e le fonti dei risultati pubblicati: copialo in Claude Design o allega il file.
 
+Per la prossima presentazione usa il [prompt aggiornato con i risultati
+dell'estensione](CLAUDE_DESIGN_EXTENSION_PROMPT.md): sviluppa questa bozza con
+confronti controllati, scalabilità, diagnostica OpenMP e nuovi risultati Stage 2.
+I numeri e i limiti della bozza seguente conservano la loro campagna storica.
+
 ## Obiettivo e pubblico
 
 Preparare una presentazione di 10–12 minuti per un pubblico tecnico: docenti

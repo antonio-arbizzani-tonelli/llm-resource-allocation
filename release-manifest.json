@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "scope": "Python Stage 1 and coherent Stage 2; serial C++20 GH/AGH; OpenMP independent campaigns; reproducible measured evidence",
-  "file_count": 3568,
+  "file_count": 3569,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17501,
-      "sha256": "da565cc1c763dc35daccabe5301dbfae60e25251a7cadfa8cd6366e6cd25ca26"
+      "bytes": 18034,
+      "sha256": "617a683667fbf0f181693936c44a516b652cb9ef58401f3a572618295eb83f01"
     },
     {
       "path": "benchmarks/backend_comparison/manifest.json",
@@ -16560,8 +16560,8 @@
     },
     {
       "path": "configs/publication.json",
-      "bytes": 391691,
-      "sha256": "2b53211655bc0ad56d807bff5f65b13089696d7b827633d552cab4158273b9fb"
+      "bytes": 391759,
+      "sha256": "af794554a3917d09f3c36578bd953cdc86c988e709c661a8950939395a612fdd"
     },
     {
       "path": "configs/quick_benchmark.json",
@@ -16754,6 +16754,11 @@
       "sha256": "a1524353ebeef1ce25e89135ea272362423dba980cb50b3e7564a5d00260ec79"
     },
     {
+      "path": "docs/CLAUDE_DESIGN_EXTENSION_PROMPT.md",
+      "bytes": 23149,
+      "sha256": "8a3ab791555fea058e3be1203519c913e843cfbd81f9eee7a979fa5ff923fcae"
+    },
+    {
       "path": "docs/CLAUDE_DESIGN_PROMPT.md",
       "bytes": 5374,
       "sha256": "d23eff832213fcc0ecef7e887bcab6ebe12b0099b1995871f521ab3a933c920f"
@@ -16775,18 +16780,18 @@
     },
     {
       "path": "docs/EXTENSION_ENVIRONMENT.md",
-      "bytes": 6606,
-      "sha256": "502ec6c79823bdecc1b8bb5b016db80660cf8d41076fbaef4cff000a920f0496"
+      "bytes": 6824,
+      "sha256": "59ea0dc5f1c64ff9aafe145cb2354ac5a2bee82b7ddc10b1225b7828bd10c38c"
     },
     {
       "path": "docs/EXTENSION_REPORT.md",
-      "bytes": 50839,
-      "sha256": "23a78b6a89b38fac897677ef7455d88de8bd0260c3d8aaebbdcda96596ff57f3"
+      "bytes": 51439,
+      "sha256": "d11a7b8ef7d719b2d20b30eea247abbc394b1e1e952be9d31110caaa05dd582c"
     },
     {
       "path": "docs/KEY_NUMBERS.md",
-      "bytes": 28703,
-      "sha256": "ae6794165fa878aa3736da335375d79539b7b384f33dc32e5c7552f859a05e93"
+      "bytes": 28832,
+      "sha256": "63e71da004792a4a65d4f263af169b3e67ced0dad18495a98bceb6871fa28317"
     },
     {
       "path": "docs/MODEL.md",
@@ -16805,8 +16810,8 @@
     },
     {
       "path": "docs/PRESENTATION_BRIEF.md",
-      "bytes": 12746,
-      "sha256": "6b25d49e8e7ead81d28e95d1bf24bdf47898090e67ab1dc7f9d645d9318f6815"
+      "bytes": 13059,
+      "sha256": "80ac94ce4207fe163e4f56be2661cba40ac0b1b659b08d83a4abbc09296a8744"
     },
     {
       "path": "docs/RESULTS.md",

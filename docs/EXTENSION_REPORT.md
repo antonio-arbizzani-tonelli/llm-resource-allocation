@@ -1,10 +1,11 @@
 # Extension results, 14 October 2026
 
 This report separates new extension evidence from the existing published
-benchmarks. Work proceeds on `results-extension`, with one commit per work
-package and no push. WP1–6 measurements and package replays are complete;
-optional WP7 is skipped. WP8 has passed pre-manifest verification and retains
-the explicit post-manifest gate before handback.
+benchmarks. The numerical extension checkpoint is `543ad4e`, with one commit per
+work package on `results-extension`. WP1–6 measurements and independent replays
+are complete; optional WP7 is skipped. Both pre-manifest and post-manifest
+checkpoint checks pass. The later integration/presentation update preserves
+these experimental observations and source snapshots.
 
 The scientific formulation and GH/AGH algorithms are Cheng and Nguyen's
 ([arXiv:2604.07472](https://arxiv.org/abs/2604.07472)). This repository supplies an
@@ -661,14 +662,21 @@ python -B examples/stage1_quickstart.py
 python -B examples/stage2_quickstart.py
 ```
 
-These are **pre-manifest passes**, outside experiment timers. Once delivered
-files/allowlist settle, generate `release-manifest.json` **once**, repeat the
-full Python/native/parity/example checks, and run
-`python scripts/prepare_release.py --check` before handback. Retain actual
-post-generation passes in local logs and the canonical handoff, without
-modifying the hashed public preflight proof. This explicit release gate
-preserves frozen benchmark bytes and the final manifest's meaning; a
-pre-manifest pass is not a claimed post-manifest result.
+These are **pre-manifest passes**, outside experiment timers. At checkpoint
+`543ad4e`, the required repetition after the single manifest generation also
+passes: **1,131 Python tests / zero skips**, native release and ASAN/UBSAN,
+**63/63** live/frozen parity, **90** OpenMP comparisons, both examples and
+`python scripts/prepare_release.py --check` for **3,568 files**. Python unittest
+takes 181.611 s in that distinct closing run. The actual post-generation logs
+and canonical handoff remain in the development workspace; the hashed public
+preflight proof retains its earlier scope and is not rewritten.
+
+The follow-up integrates the extension into the principal development folder,
+preserving its editorial publication mappings and canonical model documents.
+The [new Claude Design prompt](CLAUDE_DESIGN_EXTENSION_PROMPT.md) selects a
+12-slide Italian narrative and pins numerical sources to the checkpoint above.
+Its addition extends the publication allowlist to 3,569 files without changing
+experimental observations, source snapshots or numerical defaults.
 
 ## New headline numbers for presentation
 
@@ -708,8 +716,8 @@ The new Stage-2 cohort covers all planned loads/shapes, with original and fresh
 archive-only independent replays passed. Multi-instance native scaling completes
 with conditional observed-range fits and independent replay passed. Longer
 solver limits change local accepted-case cost ordering, with weak bounds and
-two independently rejected incumbents retained. All pre-manifest checks pass;
-handback requires the post-manifest repetition and release check above.
+two independently rejected incumbents retained. Both the pre-manifest and
+post-manifest checkpoint checks pass with their distinct provenance above.
 Physical P/E/cache/
 throttling attribution remains environment-limited in the completed OpenMP study.
 Optional WP7 is skipped, with no new memory/profile evidence.

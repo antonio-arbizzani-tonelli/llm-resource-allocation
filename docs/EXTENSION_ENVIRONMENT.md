@@ -98,8 +98,10 @@ checked Python cases, and both Stage-1/Stage-2 examples. Their actual argv,
 durations, exit codes and log hashes are retained in that proof. These checks
 are outside experiment timers and are labeled **pre-manifest**.
 
-After delivered files settle, generate the release manifest once, repeat the
-full Python/native/parity/example checks, and run `prepare_release.py --check`
-before handback. Post-generation logs and actual passes belong in the local
-verification record/canonical handoff; they must not modify the hashed public
-preflight proof.
+At numerical checkpoint `543ad4e`, the required post-manifest repetition also
+passes: 1,131 tests / zero skips (181.611 s unittest), native release/sanitizer,
+63/63 parity, 90 OpenMP comparisons, both examples and verification of 3,568
+publication files. Post-generation logs and the canonical handoff retain those
+actual passes in the development workspace. The public preflight proof remains
+the separately scoped earlier record. The later presentation/integration update
+does not change campaign environment evidence or experimental timings.

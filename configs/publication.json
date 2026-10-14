@@ -10060,6 +10060,9 @@
       "path": "docs/ARCHITECTURE.md"
     },
     {
+      "path": "docs/CLAUDE_DESIGN_EXTENSION_PROMPT.md"
+    },
+    {
       "path": "docs/CLAUDE_DESIGN_PROMPT.md"
     },
     {

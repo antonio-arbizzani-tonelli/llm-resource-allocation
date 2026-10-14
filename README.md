@@ -135,6 +135,11 @@ work package's hypotheses, outcomes, deviations and open work;
 and replay commands. The [extension decisions](docs/EXTENSION_DECISIONS.md)
 describe the opt-in numerical policy and explicit synthetic input assumptions.
 
+The [updated Claude Design prompt](docs/CLAUDE_DESIGN_EXTENSION_PROMPT.md)
+develops the original presentation into a 12-slide Italian research talk. It
+selects the controlled extension results, pins their numerical source commit,
+and supplies speaker-note, appendix and claim-traceability instructions.
+
 | Confirmed extension result | Value | Denominator and scope |
 |---|---:|---|
 | Matched Python/C++ core ratio of medians | **120.5437**, 95% CI **[109.7530, 131.2151]** | AGH 16x4x4/load200, ten same-WSL paired rounds; public solve with rich traces and independent validation, excluding startup/parsing/projection/output/destruction; same-process warmup excluded. |
@@ -249,9 +254,12 @@ different and no solves rerun. All seven
 [pre-manifest checks](docs/extension_release_preflight.json) pass: **1,131 Python
 tests with zero skips**, native release/ASAN/UBSAN, **63/63** live/frozen parity,
 **90 OpenMP comparisons** with ten independently checked Python cases, and both
-examples. These are explicitly pre-manifest results. After one final manifest
-generation, repeat those checks and `prepare_release.py --check` before handback;
-record the actual post-generation passes in local logs/canonical handoff.
+examples. These are explicitly pre-manifest results. At extension checkpoint
+`543ad4e`, the post-manifest repetition also passes: 1,131 Python tests with zero
+skips, native release/sanitizer, 63/63 parity cases, 90 OpenMP comparisons,
+both examples and verification of 3,568 publication files. The actual closing
+logs and canonical handoff are retained in the development workspace; the
+hashed public preflight proof remains the separately scoped earlier record.
 
 [CITATION.cff](CITATION.cff) provides software and scientific attribution;
 the software uses the [MIT license](LICENSE).
