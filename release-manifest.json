@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9712,
-      "sha256": "b769fe5ec73ecb872d4b032ac07b83846ebba4df3fec9ed544c5efa5eb3cac67"
+      "bytes": 5847,
+      "sha256": "1b338cc6fd70c318879904a10c077811046032d48fa64d11e001f25a7a9887f9"
     },
     {
       "path": "benchmarks/backend_comparison/manifest.json",
