@@ -32,7 +32,7 @@ Extracting the delivered ZIP in the actual base export and rerunning analysis
 reproduces all derived observations exactly; [the replay record](../benchmarks/release_checks/larger_performance_replay.json)
 also confirms that existing scientific source files are unchanged.
 
-## Overnight preparation checks
+## Historical overnight preparation checkpoint, 12 October
 
 The prepared [overnight extension](NIGHTLY_CAMPAIGN.md) passes a complete
 development regression of **1,035 tests**, no skips, **13.053 s** on Python
@@ -46,7 +46,9 @@ Fresh release binaries pass core/GH/AGH and OpenMP campaign tests. Five separate
 minimal worker checks exercise GH, AGH and P_DM Stage 2 (two scenarios each),
 paired Python/C++ profiling and OpenMP profiling/reporting. The PowerShell
 wrapper passes syntax parsing. These verify preparation and execution plumbing;
-the declared 52-job overnight campaign has **not** been executed.
+at that preparation checkpoint, **0/52** declared overnight jobs had executed.
+The later performance and Stage-2 campaigns are reported separately;
+this historical preparation result does not describe their final execution state.
 
 The checks below are the retained original release checkpoint.
 

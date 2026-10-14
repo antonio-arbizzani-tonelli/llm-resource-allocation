@@ -1,149 +1,141 @@
-# Bozza di presentazione per Claude Design
+# Presentation brief
 
-Il [prompt pronto da usare](CLAUDE_DESIGN_PROMPT.md) riunisce queste indicazioni
-e le fonti dei risultati pubblicati: copialo in Claude Design o allega il file.
+The [English presentation draft](PRESENTATION_DRAFT.md) is the current narrative
+and source map. This brief supports its review and a future visual design pass.
+The current deliverable is text only. It does not include rendered slides, an
+HTML deck, a PPTX or a PDF.
 
-Per la prossima presentazione usa il [prompt aggiornato con i risultati
-dell'estensione](CLAUDE_DESIGN_EXTENSION_PROMPT.md): sviluppa questa bozza con
-confronti controllati, scalabilità, diagnostica OpenMP e nuovi risultati Stage 2.
-I numeri e i limiti della bozza seguente conservano la loro campagna storica.
+Author: **Antonio Arbizzani Tonelli**. Audience: scientific-computing faculty,
+C++ developers and technical portfolio reviewers. Suggested title: **LLM Resource
+Allocation**. Suggested subtitle: **A verified reference and CPU performance
+study**. Let the narrative determine the length. There is no required slide count.
 
-## Obiettivo e pubblico
+Use the [current design guidance](CLAUDE_DESIGN_EXTENSION_PROMPT.md) with the draft.
+The [original-campaign prompt](CLAUDE_DESIGN_PROMPT.md) retains historical evidence
+and is not the current presentation structure.
 
-Preparare una presentazione di 10–12 minuti per un pubblico tecnico: docenti
-di scientific computing, sviluppatori C++ e chi valuta un portfolio GitHub.
-Autore: **Antonio Arbizzani Tonelli**. Titolo suggerito:
-**«LLM Resource Allocation: dal modello verificato al parallelismo misurato»**.
+## Main narrative
 
-La storia parte da una domanda concreta: come assegnare modelli e GPU
-eterogenee rispettando costo, domanda e qualità del servizio, e come rendere
-veloce il software che prende questa decisione? Il paper fornisce formulazione
-e algoritmi; il contributo personale è trasformarli in un sistema controllabile,
-riproducibile e misurato. Evitare di attribuire all'autore nuovi algoritmi GH/AGH
-o il problema scientifico originale.
+Open with the allocation problem: choose model deployments, GPU types and routing
+fractions while respecting demand, a resource budget and service-level constraints.
+Then introduce the software question: how much CPU time does the allocator need,
+and which work can run concurrently without changing an individual solve?
 
-Il repository consegnato è la fonte del progetto. Usare [RESULTS.md](RESULTS.md)
-per numeri e limiti, [MODEL.md](MODEL.md) per la formulazione,
-[ARCHITECTURE.md](ARCHITECTURE.md) per il software,
-[EXPERIMENTS.md](EXPERIMENTS.md) per la riproducibilità,
-[STAGE2_RESULTS.md](STAGE2_RESULTS.md) per adattamento e rifiuti numerici e
-[VALIDATION.md](VALIDATION.md) per i controlli finali.
-I risultati del paper e le misure del progetto devono avere attribuzioni visibili
-diverse. Non importare numeri da documenti o conversazioni non consegnati.
+Develop the main story in this order, allowing a topic to span more than one slide
+in a future deck:
 
-## Sequenza proposta
+1. **Allocation problem.** Explain the decisions and the constraints in plain
+   English before introducing algorithm names.
+2. **Model.** Explain Stage-1 deployment and routing, the modeled cost components,
+   and GH/AGH as alternatives to the P_DM MILP. Give Stage 2 a short scope statement:
+   deployment stays fixed while routing and unmet demand adapt.
+3. **Implementations.** Make Python/Pyomo, C++20 and OpenMP visible. Python provides
+   the scientific reference and independent validator. Pyomo constructs MILP/LP
+   models for a configured solver. Serial C++20 implements Stage-1 GH/AGH. OpenMP
+   distributes independent allocation cases across CPU threads.
+4. **Verification.** Explain why completion, independent feasibility, objective
+   agreement and solver termination are separate evidence. Use the bounded
+   cross-language suite as a concrete example.
+5. **Runtime benchmarks.** Present the same-WSL Python/C++ measurements with separate
+   core and complete-invocation boundaries. Keep the implementation differences
+   beside the ratios they qualify.
+6. **OpenMP.** Show the throughput of a fixed batch against its own one-thread
+   control. Each allocation solve retains serial arithmetic and acceptance order.
+7. **Limits and next work.** State what the local evidence supports and which
+   scientific and engineering questions remain open. MPI remains future work.
 
-| Slide | Messaggio e contenuto | Visuale suggerita |
+Native scaling can follow the runtime section if it helps the audience. Full
+solver-quality comparisons and detailed Stage-2 campaigns belong in optional
+appendices. Their inclusion must not crowd out the allocation problem,
+implementation boundaries or interpretation of the performance measurements.
+
+## Attribution and scope
+
+Attribute the formulation and GH/AGH algorithms to Cheng and Nguyen,
+[arXiv:2604.07472 v2](https://arxiv.org/abs/2604.07472v2), with
+[v1](https://arxiv.org/abs/2604.07472v1) supplying the explicit operational LP.
+The project contributes its implementation, explicit unit conventions, independent
+validation, native port and recorded experiments. It does not introduce GH/AGH or
+claim numerical replication of the paper's tables.
+
+Experiments execute allocation software on **CPU**. GPU capacity and latency are
+**modeled inputs**. Modeled USD costs are outputs of the allocation model, not
+observed cloud bills. OpenMP measures independent-case campaign throughput, not
+GPU inference or parallel execution of one GH/AGH solve.
+
+Use [MODEL.md](MODEL.md), [ARCHITECTURE.md](ARCHITECTURE.md) and
+[VALIDATION.md](VALIDATION.md) for the scientific and implementation boundaries.
+Current coherent units remain separate from historical literal-unit fixtures.
+Native Stage 2 and MPI remain future work.
+
+## Evidence for the main story
+
+The reviewed public reference is
+[`80a9625ab62a3c5c70ede7a9dae97a61158e250a`](https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation/commit/80a9625ab62a3c5c70ede7a9dae97a61158e250a).
+Its numerical payload matches extension checkpoint
+`543ad4e640100a4c2a69febf17fe885bd452861e`. Include the reference commit, source path
+and exact row or key with each numerical claim. The draft and
+[design-guidance source table](CLAUDE_DESIGN_EXTENSION_PROMPT.md#claim-to-source-table)
+provide the detailed mapping.
+
+| Topic | Retained evidence | Source selection |
 |---|---|---|
-| 1. Il costo di una decisione sbagliata | Domanda variabile, modelli diversi, GPU diverse: un'assegnazione economica deve comunque rispettare i vincoli. Presentare autore e domanda del progetto. | Schema semplice: workload → allocatore → modelli/GPU, con costo e SLO come due criteri. |
-| 2. Due tempi decisionali | Stage 1 sceglie deployment e routing; Stage 2 mantiene il deployment e adatta routing/domanda non servita. Le latenze GPU sono coefficienti del modello; il programma misurato gira su CPU. | Due pannelli con elementi fissi e variabili evidenziati. |
-| 3. Il primo risultato è poter controllare il risultato | Una risposta del solver o una conclusione dell'euristica non basta: decisioni, vincoli, costo ricalcolato e stato del solver restano distinti. | Pipeline breve: input → algoritmo → decisione → validatore indipendente. |
-| 4. Una convenzione dimensionale esplicita | Mostrare perché ore, secondi, millisecondi, concorrenza KV e dati residenti hanno confini espliciti. Le convenzioni storiche restano identificate. | Un solo esempio di conversione e un riquadro con le unità; evitare una pagina di formule. |
-| 5. Costo e servizio: guardare le componenti | Otto casi sintetici condivisi: GH rental 9 USD, AGH 8 USD. Riduzione **11,1% della componente C1** e domanda interamente servita; guadagno sul totale nominale soltanto 0,087–0,278%. | Due barre C1 9/8, con etichetta «USD per orizzonte sintetico». Riquadro separato con il piccolo guadagno totale. |
-| 6. Il solver cambia anche la lettura del confronto | Sei optima piccoli per backend; nessun optimum dimostrato sui casi maggiori. Sul nominale 10×10×10 Gurobi trova un incumbent 724,0209 USD contro 1274,7587 di HiGHS; AGH vale 1150,0550. | Tre barre per lo stesso caso, etichettate «incumbent accettato»/«euristica», e una nota sulla domanda servita. |
-| 7. Dal riferimento Python a C++ | Sedici confronti completi sulle istanze maggiori verificano **185.832 valori identici bit per bit**. AGH Python termina con MemoryError a 256×4×4 e 128×8×8: quei tempi C++ hanno verifica della decisione finale, senza parità dell'intero algoritmo. | Due colonne Python/C++ collegate dalle stesse decisioni; due marcatori distinti per gli endpoint con verifica supplementare. |
-| 8. Il costo della crescita | Mediane AGH C++: **2,889 s a 128×4×4**, **7,156 s a 256×4×4**, **7,471 s a 128×8×8**, cinque campioni per punto. Aumentare query e alternative cambia due dimensioni diverse del problema. | Usare [query_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/query_scaling.png) e [menu_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/menu_scaling.png), mantenendo i marcatori di verifica. |
-| 9. Parallelizzare le prove indipendenti | Nella nuova campagna, 32 casi misti, scheduling dinamico e otto thread osservati: **4,20× mediano sul core**, **2,27× sull'invocazione**, **52,5% di efficienza**, 18 round. Batch maggiori non garantiscono speedup maggiore. | Usare [openmp_core_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/openmp_core_scaling.png) e [openmp_process_scaling.png](../benchmarks/performance_2026-10-13/analysis/plots/openmp_process_scaling.png). Tenere distinti timer e campagne storiche. |
-| 10. Stage 2: misurare anche il confine di fattibilità | **40 job completati**, **37 sorgenti accettate**, **1.850 LP tentati**: 646 accettati, 1.000 infeasible, 204 rifiuti sull'obiettivo. Altri 150 scenari sono saltati dopo tre sorgenti P_DM rifiutate. Nessuna griglia ha 50/50 risultati accettati. | Usare [outcomes.png](../benchmarks/stage2_stress_2026-10-13/plots/outcomes.png). I 150 non tentati vanno in un riquadro separato, fuori dal denominatore 1.850. |
-| 11. Adattare senza ricostruire: due vantaggi misurati | Stage 2 recupera **256/1.344 fallimenti del routing iniziale = 19,05%**. Nei **390 scenari con entrambi i routing validi**, la somma C4+C5 diminuisce del **5,86%**. Deployment fisso; cambiano routing e domanda non servita. | Usare [recovery_and_cost.png](../benchmarks/stage2_stress_2026-10-13/plots/recovery_and_cost.png). Etichette: «griglia sintetica deterministica» e «confronto appaiato su 390 scenari». |
-| 12. Una soluzione ottima del solver può restare rifiutata | I 204 casi passano i vincoli ma falliscono la soglia assoluta di accordo **1e-8 USD**. Differenze di **1–3 ULP**, massimo relativo **3,40e-16**, coerenti con arrotondamento floating point. Le tolleranze rimangono invariate e i risultati esclusi dalle metriche. | Usare [objective_roundoff.png](../benchmarks/stage2_stress_2026-10-13/plots/objective_roundoff.png). Un esempio a 76 milioni di USD modellati rende visibile il limite di una soglia solo assoluta. |
-| 13. Cosa rende il progetto riutilizzabile | Codice Python/C++20/OpenMP, decisioni verificabili, risultati completi anche quando rifiutati, hash e replay senza solver. Restano aperti politica numerica alle grandi scale, calibrazione del paper, solver nativi C++/Stage 2 e MPI. | Mappa minima del repository e link GitHub finale. Attribuire il modello e GH/AGH al paper, e l'implementazione, verifica e misure al progetto. |
+| Cross-language checks | 63/63 checks pass. 3,023 compared final numeric values have zero bitwise differences. This is bounded synthetic verification. | [Serial parity](../benchmarks/portfolio/raw/serial/parity.json), `passed`, `total`, and sums of `cases[*].compared_numeric_values` and `bitwise_difference_count`. |
+| Matched runtime | AGH 16×4×4/load200: Python/C++ ratio of medians 120.5437 core, 95% CI [109.7530, 131.2151], and 99.7005 invocation, CI [93.2556, 107.2592]. Ten separate paired rounds per boundary. | [WP1 analysis](../benchmarks/matched_runtime_2026-10-14/analysis/analysis.json), `rows` with `case=16x4x4_load200_agh`, separately `boundary=core` and `invocation`. |
+| OpenMP | Fixed 32-case mixed GH/AGH batch, 30 paired core rounds. Eight-thread speedup 4.0223, 95% CI [3.7636, 4.4243], efficiency 50.28%. | [WP2 analysis](../benchmarks/openmp_diagnostics_2026-10-14/analysis/extension.json), `settings` key `8_cores_close_dynamic_1_False_None`, against `1_cores_close_dynamic_1_False_None`. |
 
-Per dodici slide spostare 6 in appendice; per dieci unire anche 3–4 e 7–8.
-Le slide principali devono spiegare
-una decisione o un risultato ciascuna; dettagli di solver, tolleranze e
-compilazione vanno nelle note del relatore o in appendice.
+The matched core timer covers a fresh public solve, traces and independent
+validation. It excludes startup, parsing, projection, output and destruction.
+Python validates input and constructs `PdmProblemData` inside its public call.
+C++ receives a prepared coefficient lattice before its timer. The ratios compare
+these implementations, including their different preparation and trace costs.
+They do not isolate a programming-language effect.
 
-## Numeri utilizzabili e formulazione corretta
+Complete invocation measures a separate Linux subprocess from startup through
+exit. Keep a ratio of medians distinct from a median of paired ratios. Preserve
+[the environment and conditions](EXTENSION_ENVIRONMENT.md). The newer 30-round
+OpenMP results remain separate from the earlier 18-round results in
+[PERFORMANCE.md](PERFORMANCE.md).
 
-- **11,1%**: riduzione della componente di rental GPU C1, `(9−8)/9`, in
-  otto istanze sintetiche. Non è il risparmio totale e non è una misura di
-  fatturazione reale.
-- **4,20× / 2,27× / 52,5%**: mediane della nuova campagna, 32 casi misti,
-  scheduling dinamico, otto thread osservati e 18 round. Il solve individuale
-  resta seriale. I vecchi 5,16× / 1,73× appartengono a un altro batch e ad
-  altri riassunti temporali: non costruire una combinazione di massimi diversi.
-- **185.832 valori**: sedici confronti completi Python/C++; gli endpoint con
-  MemoryError hanno invece verifica supplementare della decisione finale.
-- **19,05%**: recuperi scientificamente accettati tra i 1.344 fallimenti del
-  routing iniziale. Non è una probabilità reale né la quota su tutti i 1.850 LP.
-- **5,8574%**: `(somma C4+C5 congelato − somma C4+C5 adattato) / somma congelata`
-  sui 390 scenari utilizzabili da entrambe le decisioni. Le somme sono dominate
-  dal carico sintetico elevato; non è un risparmio tipico o una bolletta cloud.
-- **646 / 1.000 / 204**: esiti dei 1.850 LP tentati. I 204 rifiuti numerici
-  sono diversi dalle infeasibilità; non diventano successi perché il solver
-  dichiara un optimum. I 150 scenari saltati sono un'altra categoria.
-- **72/72 contro 69/72**: accettazione di tutti i tentativi misurati HiGHS
-  contro Gurobi. Tre risultati Gurobi sono scartati per disaccordo obiettivo
-  pur passando i vincoli. Non trasformare una percentuale di accettazione in
-  accuratezza di predizione.
+## Optional technical appendices
 
-I valori precisi e tutte le impostazioni sono in
-[summary.json](../benchmarks/portfolio/summary.json),
-[indicators.csv](../benchmarks/portfolio/indicators.csv),
-[analisi Stage 2](../benchmarks/stage2_stress_2026-10-13/analysis/analysis.json),
-[diagnostica numerica](../benchmarks/stage2_stress_2026-10-13/analysis/numerical_diagnostics.json)
-e nei relativi manifest.
-I grafici disponibili sono scientifici, costruiti dalle misure registrate.
-Claude Design può adattare tipografia e disposizione, preservando etichette,
-unità, valori, assi e attribuzioni.
+Keep the following Stage-2 evidence sets separate even when they share an appendix:
 
-## Indicazioni visive e note del relatore
+| Evidence set | Usable / attempted LPs | Recovery / frozen failures | Cost cohort |
+|---|---:|---:|---|
+| Original 13 October, standard absolute-only objective agreement | 646/1,850 | 256/1,344 | 5.857419% paired summed C4+C5 reduction over 390 usable pairs |
+| Retrospective replay, optional relative objective tolerance 1e-12 | 850/1,850 | 344/1,344 | 5.957974% [5.745418%, 6.063490%] over 506 usable pairs |
+| New 14 October solves, explicit relative objective tolerance 1e-12 | 3,246/6,800 | Separate load-specific denominators | Separate load-specific pairs and intervals |
 
-Usare un fondo chiaro, un colore per il riferimento seriale e uno per il
-parallelismo. Limitare le formule alla chiusura della domanda, alle percentuali
-di vantaggio e al significato di speedup/efficienza. Mettere sotto ogni grafico
-«dati sintetici del progetto» oppure la citazione del paper quando la visuale
-mostra dati degli autori. Le GPU devono apparire come risorse modellate, senza
-foto che suggeriscano un cluster sperimentale reale.
+Sources: [original report](STAGE2_RESULTS.md),
+[policy analysis](../benchmarks/stage2_policy_2026-10-14/analysis.json),
+`old_policy` and `selected_policy`, and
+[new-campaign analysis](../benchmarks/stage2_robustness_2026-10-14/analysis.json),
+`by_load`. The replay solves no LP and repairs no decision. The default remains
+absolute 1e-8 USD and relative zero. Constraint tolerances and Stage-1 acceptance
+remain unchanged.
 
-Il racconto deve rendere evidente il metodo di lavoro: rendere esplicite le
-ambiguità; verificare un riferimento; portare senza alterare decisioni;
-profilare; scegliere una granularità utile; conservare anche risultati
-negativi. Chi guarda il GitHub deve poter seguire questa catena attraverso
-codice, comandi e risultati consegnati.
+Cost reduction is `(sum frozen C4+C5 - sum adapted C4+C5) / sum frozen C4+C5`
+over identical scenarios where both decisions are usable. Infeasible baselines
+receive no savings value. The original and retrospective cost cohorts differ,
+so their pooled reductions do not estimate a causal benefit of changing policy.
+Accepted method cohorts also differ and support no general ranking. These are
+conditional synthetic-grid results, not measured cloud savings.
 
-Per Stage 2 usare la [campagna consegnata](STAGE2_RESULTS.md); il
-[JSON dell'esempio](../benchmarks/stage2/reference.json) resta una verifica
-didattica da appendice, non la fonte dei nuovi indicatori. Non attribuire al progetto gli esperimenti del paper con 500
-scenari, un cluster GPU, nuove euristiche, risultati MPI o la riproduzione
-numerica completa degli autori. Il lavoro originale rimane attribuito a
-Cheng e Nguyen:
-[paper v2](https://arxiv.org/abs/2604.07472v2) e
-[paper v1](https://arxiv.org/abs/2604.07472v1).
+Other optional material includes native scaling, full solver rows and rejected
+incumbents, larger-instance parity limits, timer/statistical details and
+source/replay provenance. Use [KEY_NUMBERS.md](KEY_NUMBERS.md) and
+[EXTENSION_REPORT.md](EXTENSION_REPORT.md) without pooling campaigns or hiding
+failures.
 
-La [nuova analisi delle prestazioni](PERFORMANCE.md) aggiunge misure del 13
-ottobre: nove dimensioni, 18 punti GH/AGH C++, cinque campioni per punto e
-batch OpenMP da 32/64/128 casi con 18 round. Per le slide sul costo della
-crescita usare `query_scaling.png` e `menu_scaling.png`; per il parallelismo
-usare `openmp_core_scaling.png` e `openmp_process_scaling.png` nella cartella
-`benchmarks/performance_2026-10-13/analysis/plots`.
+## Design and review
 
-Numeri utilizzabili: AGH C++ mediano **2,889 s a 128x4x4**, **7,156 s a
-256x4x4**, **7,471 s a 128x8x8**. Lo speedup OpenMP mediano migliore osservato
-è **4,20x per il calcolo**, **2,27x per l'intera invocazione**, efficienza
-**52,5%**: 32 casi misti, scheduling dinamico, otto thread osservati.
-Mostrare il confronto statico/dinamico sullo stesso batch; non affermare che
-batch più grandi aumentino sempre lo speedup.
+Use natural English, readable type, a light background and restrained colors.
+Prefer a simple allocation diagram and a small number of well-labeled evidence
+figures. Avoid imagery that implies a measured GPU cluster.
 
-Un risultato da raccontare è il limite del riferimento: AGH Python termina
-con MemoryError nei casi 256x4x4 e 128x8x8. I tempi nativi di quei casi hanno
-validazione indipendente della decisione finale e dell'obiettivo, senza parità
-dell'intero algoritmo Python. Nei grafici questi punti sono distinti; non
-inventare un tempo Python o un rapporto di accelerazione per il run fallito.
-Sedici confronti completi verificano 185.832 valori numerici identici bit per bit.
-
-La parte di stress Stage 2 della [campagna notturna](NIGHTLY_CAMPAIGN.md) è ora
-eseguita e documentata. Il run principale riparte da zero con alimentazione
-da rete e impiega circa 11 minuti di wall time dei worker; il precedente avvio
-a batteria è escluso. Non presentare «40/40 job» come «2.000 LP validati».
-
-Nelle note della slide numerica distinguere le tre sorgenti P_DM rifiutate:
-16×4×4 ad alto carico viola l'error SLO; 32×4×4 passa i vincoli ma fallisce
-l'accordo sull'obiettivo; 16×8×8 viola il bilancio della domanda. Tutti gli otto
-solve P_DM terminano al limite con incumbent, senza dimostrare ottimalità.
-Un'eventuale revisione delle tolleranze sarà un esperimento separato.
-
-In appendice conservare il risultato negativo del parallelismo interno del
-validatore: [validation_grain.png](../benchmarks/portfolio/plots/validation_grain.png).
-Serve a spiegare perché il parallelismo di produzione resta sui casi indipendenti.
+Every chart needs an identifiable source, campaign, units, estimator, denominator
+and acceptance scope. Keep timer boundaries and material limitations beside the
+result. Put full details and exact row selectors in notes or a source table.
+A future rendered presentation requires a separate request and visual review of
+every page. The current text draft makes no claim to completed visual validation.
