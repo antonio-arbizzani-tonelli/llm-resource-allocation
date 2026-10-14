@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "cpp/build/release/pacs_matched_runtime",
+    "gh",
+    "benchmarks/matched_runtime_2026-10-14/inputs/8x4x4_load1_gh.txt"
+  ],
+  "cwd": "repository root",
+  "started_utc": "2026-10-14T01:36:55.843670+00:00",
+  "status": "completed",
+  "process_wall_seconds": 0.03281497000011768,
+  "exit_code": 0,
+  "finished_utc": "2026-10-14T01:36:55.941282+00:00",
+  "stdout_sha256": "6c515c079c1e13a0aa75a42135733b5c1d0fa13adc4d143de127ac63c8656f5f",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

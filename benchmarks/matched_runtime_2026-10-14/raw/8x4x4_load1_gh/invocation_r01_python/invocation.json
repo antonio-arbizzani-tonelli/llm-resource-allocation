@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "python",
+    "scripts/run_matched_runtime.py",
+    "worker",
+    "--input-json",
+    "benchmarks/matched_runtime_2026-10-14/inputs/8x4x4_load1_gh.json",
+    "--input-numeric",
+    "benchmarks/matched_runtime_2026-10-14/inputs/8x4x4_load1_gh.txt"
+  ],
+  "cwd": "repository root",
+  "started_utc": "2026-10-14T01:30:07.782963+00:00",
+  "status": "completed",
+  "process_wall_seconds": 1.7371810170000117,
+  "exit_code": 0,
+  "finished_utc": "2026-10-14T01:30:09.578947+00:00",
+  "stdout_sha256": "9c1c8875100a94e5cc140904552f795ee079cd1b46fced904f28f31759ac2b18",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

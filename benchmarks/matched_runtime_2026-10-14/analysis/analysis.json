@@ -1,0 +1,979 @@
+{
+  "classification": "synthetic CPU allocation implementation performance; not GPU inference",
+  "state": "completed",
+  "case_count": 12,
+  "rows": [
+    {
+      "case": "4x2x2_load1_gh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 1.0,
+      "method": "gh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.006953872499991576,
+        "q1_seconds": 0.006532265500027279,
+        "q3_seconds": 0.008123923250082044,
+        "iqr_seconds": 0.0015916577500547646,
+        "minimum_seconds": 0.005903974999910133
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.00010816,
+        "q1_seconds": 0.00010289675000000001,
+        "q3_seconds": 0.00011686449999999999,
+        "iqr_seconds": 1.3967749999999982e-05,
+        "minimum_seconds": 9.554e-05
+      },
+      "ratio": {
+        "ratio_of_medians": 64.29246024400496,
+        "ci95_low": 60.17542458063308,
+        "ci95_high": 76.29513781756314,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load1_gh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 1.0,
+      "method": "gh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.8767255324999041,
+        "q1_seconds": 1.713640365499998,
+        "q3_seconds": 2.027969784999925,
+        "iqr_seconds": 0.3143294194999271,
+        "minimum_seconds": 1.5335567519998676
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.028098336000027757,
+        "q1_seconds": 0.021933149250003225,
+        "q3_seconds": 0.03313173550009196,
+        "iqr_seconds": 0.011198586250088738,
+        "minimum_seconds": 0.01595780399998148
+      },
+      "ratio": {
+        "ratio_of_medians": 66.79134068643958,
+        "ci95_low": 56.15612690865836,
+        "ci95_high": 86.90144111134163,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load1_agh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 1.0,
+      "method": "agh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.17435965399999986,
+        "q1_seconds": 0.1623896562499283,
+        "q3_seconds": 0.20035458050014654,
+        "iqr_seconds": 0.037964924250218246,
+        "minimum_seconds": 0.15670171499982644
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.0020895295,
+        "q1_seconds": 0.001968006,
+        "q3_seconds": 0.0022855180000000003,
+        "iqr_seconds": 0.00031751200000000026,
+        "minimum_seconds": 0.00174922
+      },
+      "ratio": {
+        "ratio_of_medians": 83.44445675449899,
+        "ci95_low": 72.44725088121176,
+        "ci95_high": 97.07027060637508,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load1_agh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 1.0,
+      "method": "agh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.8393175720000272,
+        "q1_seconds": 1.7121635110000284,
+        "q3_seconds": 2.1775335612499305,
+        "iqr_seconds": 0.4653700502499021,
+        "minimum_seconds": 1.6095595259999982
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.026922902000137583,
+        "q1_seconds": 0.024789023750031447,
+        "q3_seconds": 0.02968933849996347,
+        "iqr_seconds": 0.004900314749932022,
+        "minimum_seconds": 0.019637944000010066
+      },
+      "ratio": {
+        "ratio_of_medians": 68.31795368829957,
+        "ci95_low": 64.24108248835867,
+        "ci95_high": 79.1444668257546,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load200_gh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 200.0,
+      "method": "gh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.006072846499989737,
+        "q1_seconds": 0.00583875275000878,
+        "q3_seconds": 0.008703428999979224,
+        "iqr_seconds": 0.0028646762499704437,
+        "minimum_seconds": 0.005357954000032805
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.000110288,
+        "q1_seconds": 0.00010189075,
+        "q3_seconds": 0.000164106,
+        "iqr_seconds": 6.221524999999999e-05,
+        "minimum_seconds": 9.7384e-05
+      },
+      "ratio": {
+        "ratio_of_medians": 55.06352912365568,
+        "ci95_low": 37.89584152354579,
+        "ci95_high": 79.11243661127553,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load200_gh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 200.0,
+      "method": "gh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.6583234565000282,
+        "q1_seconds": 1.5160296495000694,
+        "q3_seconds": 1.7564278062500307,
+        "iqr_seconds": 0.24039815674996134,
+        "minimum_seconds": 1.3784252499999639
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.024454753500066317,
+        "q1_seconds": 0.02033721224989904,
+        "q3_seconds": 0.02777719849993332,
+        "iqr_seconds": 0.007439986250034281,
+        "minimum_seconds": 0.015913907000026484
+      },
+      "ratio": {
+        "ratio_of_medians": 67.81190644573584,
+        "ci95_low": 57.95284913188333,
+        "ci95_high": 83.67062093855169,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load200_agh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 200.0,
+      "method": "agh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.18608991050001578,
+        "q1_seconds": 0.1701232342500134,
+        "q3_seconds": 0.20075439300001108,
+        "iqr_seconds": 0.030631158749997667,
+        "minimum_seconds": 0.15133552699990105
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.0020162845,
+        "q1_seconds": 0.0018685479999999998,
+        "q3_seconds": 0.00224660425,
+        "iqr_seconds": 0.0003780562500000002,
+        "minimum_seconds": 0.00174822
+      },
+      "ratio": {
+        "ratio_of_medians": 92.29347867328038,
+        "ci95_low": 82.9859322772342,
+        "ci95_high": 103.61963995809081,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "4x2x2_load200_agh",
+      "shape": [
+        4,
+        2,
+        2
+      ],
+      "load": 200.0,
+      "method": "agh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.8457149705001257,
+        "q1_seconds": 1.6850871660000308,
+        "q3_seconds": 2.055192344499858,
+        "iqr_seconds": 0.37010517849982705,
+        "minimum_seconds": 1.5818914980000045
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.023745624500065787,
+        "q1_seconds": 0.019903756499914493,
+        "q3_seconds": 0.02832904150000104,
+        "iqr_seconds": 0.008425285000086546,
+        "minimum_seconds": 0.018248910000011165
+      },
+      "ratio": {
+        "ratio_of_medians": 77.72863461624318,
+        "ci95_low": 64.2211252814282,
+        "ci95_high": 94.71523211541025,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load1_gh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "gh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.051163065500020366,
+        "q1_seconds": 0.0455726160000296,
+        "q3_seconds": 0.05707438400003184,
+        "iqr_seconds": 0.011501768000002244,
+        "minimum_seconds": 0.04475935599998593
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.000584794,
+        "q1_seconds": 0.0005482122499999999,
+        "q3_seconds": 0.0007499345,
+        "iqr_seconds": 0.00020172225000000008,
+        "minimum_seconds": 0.000502846
+      },
+      "ratio": {
+        "ratio_of_medians": 87.48903973026461,
+        "ci95_low": 66.82556625201332,
+        "ci95_high": 94.50282960517947,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load1_gh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "gh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.8147441180000214,
+        "q1_seconds": 1.6449508589999766,
+        "q3_seconds": 2.1637783482499913,
+        "iqr_seconds": 0.5188274892500147,
+        "minimum_seconds": 1.4921151700000337
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.027832331000013255,
+        "q1_seconds": 0.024004800999961162,
+        "q3_seconds": 0.03153042249991245,
+        "iqr_seconds": 0.007525621499951285,
+        "minimum_seconds": 0.01714143200001672
+      },
+      "ratio": {
+        "ratio_of_medians": 65.20273555237458,
+        "ci95_low": 58.156711402817706,
+        "ci95_high": 75.63877660531344,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load1_agh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "agh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 2.041370056000005,
+        "q1_seconds": 1.9845429257499632,
+        "q3_seconds": 2.5206264395000204,
+        "iqr_seconds": 0.5360835137500573,
+        "minimum_seconds": 1.9120517210000116
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.019171493499999998,
+        "q1_seconds": 0.018495644,
+        "q3_seconds": 0.020632393750000002,
+        "iqr_seconds": 0.0021367497500000034,
+        "minimum_seconds": 0.017339543
+      },
+      "ratio": {
+        "ratio_of_medians": 106.4794485625236,
+        "ci95_low": 91.44043203118814,
+        "ci95_high": 133.5047910293833,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load1_agh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "agh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 4.071326399500094,
+        "q1_seconds": 3.797543777499982,
+        "q3_seconds": 4.700284363250091,
+        "iqr_seconds": 0.9027405857501094,
+        "minimum_seconds": 3.3758382979999624
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.05317927949994328,
+        "q1_seconds": 0.04755860725003913,
+        "q3_seconds": 0.05581910949990743,
+        "iqr_seconds": 0.008260502249868296,
+        "minimum_seconds": 0.04343315400001302
+      },
+      "ratio": {
+        "ratio_of_medians": 76.55850996447661,
+        "ci95_low": 73.06700107941536,
+        "ci95_high": 89.82846023536312,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load200_gh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "gh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.057480580000003556,
+        "q1_seconds": 0.05140876125005889,
+        "q3_seconds": 0.06784532799997578,
+        "iqr_seconds": 0.016436566749916892,
+        "minimum_seconds": 0.043675430999996934
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.0006332435000000001,
+        "q1_seconds": 0.0005917907500000001,
+        "q3_seconds": 0.00069921175,
+        "iqr_seconds": 0.0001074209999999999,
+        "minimum_seconds": 0.000511576
+      },
+      "ratio": {
+        "ratio_of_medians": 90.77168577332976,
+        "ci95_low": 77.8561156030926,
+        "ci95_high": 107.89903803116918,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load200_gh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "gh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.8938020000000506,
+        "q1_seconds": 1.7111292455000182,
+        "q3_seconds": 2.3793718012501017,
+        "iqr_seconds": 0.6682425557500835,
+        "minimum_seconds": 1.6194221350000362
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.02627626399998917,
+        "q1_seconds": 0.024410677499986377,
+        "q3_seconds": 0.030501771000018607,
+        "iqr_seconds": 0.00609109350003223,
+        "minimum_seconds": 0.020776857999976528
+      },
+      "ratio": {
+        "ratio_of_medians": 72.07272692955252,
+        "ci95_low": 61.29683682052542,
+        "ci95_high": 104.21891216743845,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load200_agh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "agh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 2.246206149000045,
+        "q1_seconds": 2.0315565745001436,
+        "q3_seconds": 2.2968501332499613,
+        "iqr_seconds": 0.26529355874981775,
+        "minimum_seconds": 1.8665356709999514
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.0204781775,
+        "q1_seconds": 0.018937093,
+        "q3_seconds": 0.0205922675,
+        "iqr_seconds": 0.001655174500000002,
+        "minimum_seconds": 0.017724107
+      },
+      "ratio": {
+        "ratio_of_medians": 109.68779565466923,
+        "ci95_low": 99.95275166765786,
+        "ci95_high": 118.86223029433432,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "8x4x4_load200_agh",
+      "shape": [
+        8,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "agh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 4.305268133499965,
+        "q1_seconds": 3.7715935744999456,
+        "q3_seconds": 4.665879258749939,
+        "iqr_seconds": 0.8942856842499936,
+        "minimum_seconds": 3.466383800000017
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.05374734399998715,
+        "q1_seconds": 0.049128110749933285,
+        "q3_seconds": 0.05830460524998671,
+        "iqr_seconds": 0.009176494500053423,
+        "minimum_seconds": 0.04097432100002152
+      },
+      "ratio": {
+        "ratio_of_medians": 80.101969941082,
+        "ci95_low": 68.7199898894257,
+        "ci95_high": 93.6145553756151,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load1_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "gh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.15784854200001064,
+        "q1_seconds": 0.13352064300005395,
+        "q3_seconds": 0.19388254950001738,
+        "iqr_seconds": 0.060361906499963425,
+        "minimum_seconds": 0.12193579000006594
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.0015147049999999999,
+        "q1_seconds": 0.0014435255000000001,
+        "q3_seconds": 0.001669173,
+        "iqr_seconds": 0.00022564749999999978,
+        "minimum_seconds": 0.001387688
+      },
+      "ratio": {
+        "ratio_of_medians": 104.2107486276276,
+        "ci95_low": 85.03476134028222,
+        "ci95_high": 132.46880283377865,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load1_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "gh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.7393316584999639,
+        "q1_seconds": 1.6731829242499998,
+        "q3_seconds": 2.4507196980000003,
+        "iqr_seconds": 0.7775367737500005,
+        "minimum_seconds": 1.6252825619999953
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.029821765500059882,
+        "q1_seconds": 0.02842198599984158,
+        "q3_seconds": 0.03061335499995721,
+        "iqr_seconds": 0.0021913690001156283,
+        "minimum_seconds": 0.022173244000043724
+      },
+      "ratio": {
+        "ratio_of_medians": 58.32423497852504,
+        "ci95_low": 55.880161761264844,
+        "ci95_high": 88.2104431836035,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load1_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "agh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 8.109422636499971,
+        "q1_seconds": 7.370791719499948,
+        "q3_seconds": 8.815246571249986,
+        "iqr_seconds": 1.444454851750038,
+        "minimum_seconds": 6.932888252999987
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.072547496,
+        "q1_seconds": 0.06741043925000001,
+        "q3_seconds": 0.07489485725,
+        "iqr_seconds": 0.007484417999999993,
+        "minimum_seconds": 0.058753398
+      },
+      "ratio": {
+        "ratio_of_medians": 111.78087575207242,
+        "ci95_low": 99.26430886695098,
+        "ci95_high": 126.15697182158301,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load1_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 1.0,
+      "method": "agh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 9.850354533000086,
+        "q1_seconds": 9.418038377750008,
+        "q3_seconds": 10.276261762749925,
+        "iqr_seconds": 0.858223384999917,
+        "minimum_seconds": 8.772957258999895
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.102339445000041,
+        "q1_seconds": 0.09517262449986674,
+        "q3_seconds": 0.1058228032499926,
+        "iqr_seconds": 0.01065017875012586,
+        "minimum_seconds": 0.09018796800000928
+      },
+      "ratio": {
+        "ratio_of_medians": 96.25178769531279,
+        "ci95_low": 91.53763559675596,
+        "ci95_high": 101.56440659260346,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load200_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "gh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 0.15887289149998196,
+        "q1_seconds": 0.14121928624997793,
+        "q3_seconds": 0.17816306125001802,
+        "iqr_seconds": 0.03694377500004009,
+        "minimum_seconds": 0.12311251899996023
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.0016482975000000001,
+        "q1_seconds": 0.00150638875,
+        "q3_seconds": 0.001702196,
+        "iqr_seconds": 0.00019580724999999997,
+        "minimum_seconds": 0.001368597
+      },
+      "ratio": {
+        "ratio_of_medians": 96.38605379185611,
+        "ci95_low": 91.2704602220136,
+        "ci95_high": 109.96298201409184,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load200_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "gh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 1.9622474120000106,
+        "q1_seconds": 1.7789314172499928,
+        "q3_seconds": 2.0894547469999907,
+        "iqr_seconds": 0.31052332974999786,
+        "minimum_seconds": 1.718643381999982
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.030875906500057226,
+        "q1_seconds": 0.026007037500079377,
+        "q3_seconds": 0.03335113024996872,
+        "iqr_seconds": 0.007344092749889342,
+        "minimum_seconds": 0.023563632000104917
+      },
+      "ratio": {
+        "ratio_of_medians": 63.55270612042998,
+        "ci95_low": 55.3821850217319,
+        "ci95_high": 79.3387527750932,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load200_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "agh",
+      "boundary": "core",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 8.425023945999953,
+        "q1_seconds": 8.035937973500012,
+        "q3_seconds": 8.868387504999987,
+        "iqr_seconds": 0.8324495314999751,
+        "minimum_seconds": 7.411134987999958
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.069891862,
+        "q1_seconds": 0.066127986,
+        "q3_seconds": 0.0756093955,
+        "iqr_seconds": 0.009481409499999996,
+        "minimum_seconds": 0.06112462
+      },
+      "ratio": {
+        "ratio_of_medians": 120.54370430136707,
+        "ci95_low": 109.75298728439094,
+        "ci95_high": 131.21508934449548,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    },
+    {
+      "case": "16x4x4_load200_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "load": 200.0,
+      "method": "agh",
+      "boundary": "invocation",
+      "planned_paired_rounds": 10,
+      "complete_paired_rounds": 10,
+      "independently_feasible": true,
+      "claim": "C++ faster on this workload",
+      "python": {
+        "count": 10,
+        "median_seconds": 9.883959819499978,
+        "q1_seconds": 9.292609712749965,
+        "q3_seconds": 10.461497497999972,
+        "iqr_seconds": 1.168887785250007,
+        "minimum_seconds": 8.727405794999981
+      },
+      "cpp": {
+        "count": 10,
+        "median_seconds": 0.09913654949997408,
+        "q1_seconds": 0.09090520624999954,
+        "q3_seconds": 0.10579157099988379,
+        "iqr_seconds": 0.014886364749884251,
+        "minimum_seconds": 0.08537426800000958
+      },
+      "ratio": {
+        "ratio_of_medians": 99.70046233556437,
+        "ci95_low": 93.2556239592348,
+        "ci95_high": 107.2591698415109,
+        "paired_round_count": 10,
+        "resamples": 10000,
+        "seed": 20261014,
+        "method": "paired-round percentile bootstrap; ratio of sample medians"
+      }
+    }
+  ],
+  "failure_count": 0,
+  "verified_sample_count": 480,
+  "timer_boundaries": {
+    "core": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+    "invocation": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded"
+  },
+  "limitations": [
+    "Ratios compare these implementations including their different trace/input-check costs, not pure languages.",
+    "Bootstrap resamples paired rounds; ten conditional observations cannot describe every system effect.",
+    "Core samples and invocation samples are distinct solves with separately retained evidence.",
+    "Scientific completion, independent feasibility and measured runtime are separate statuses."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "g++",
+    "-std=c++20",
+    "-O2",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-ffp-contract=off",
+    "-Icpp/include",
+    "cpp/src/core.cpp",
+    "cpp/src/gh.cpp",
+    "cpp/src/agh.cpp",
+    "cpp/src/io.cpp",
+    "cpp/experiments/matched_runtime_main.cpp",
+    "-o",
+    "cpp/build/release/pacs_matched_runtime"
+  ],
+  "cwd": "repository root",
+  "exit_code": 0,
+  "started_utc": "2026-10-14T01:24:22.508015+00:00",
+  "finished_utc": "2026-10-14T01:25:01.886053+00:00"
+}
