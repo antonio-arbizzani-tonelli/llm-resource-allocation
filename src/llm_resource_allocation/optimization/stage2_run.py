@@ -7,6 +7,8 @@ The optimized objective is C4 plus versioned C5; reported cost also includes C3
 
 from dataclasses import dataclass
 from enum import Enum
+from math import isfinite
+from numbers import Real
 from types import MappingProxyType
 from typing import Mapping
 
@@ -307,15 +309,25 @@ def run_stage2(
     solver_config: SolverConfig | None = None,
     normalization_tolerances: SolutionNormalizationTolerances | None = None,
     validation_tolerances: Stage2ValidationTolerances | None = None,
+    *,
+    objective_relative_tolerance: float = 0.0,
 ) -> Stage2RunRecord:
     """Build, solve, transport, validate, and compare one Stage-2 LP result.
 
     Compare solver and independently recomputed C4+C5 using the separate
-    objective-comparison tolerance (D-0025); retain typed post-solve failures.
+    objective-comparison tolerance; relative agreement is opt-in and defaults
+    to zero. It changes classification only, retaining typed post-solve failures.
     """
 
     if not isinstance(problem_data, Stage2ProblemData):
         raise TypeError("problem_data must be a Stage2ProblemData")
+    if (
+        isinstance(objective_relative_tolerance, bool)
+        or not isinstance(objective_relative_tolerance, Real)
+        or not isfinite(float(objective_relative_tolerance))
+        or objective_relative_tolerance < 0.0
+    ):
+        raise ValueError("objective_relative_tolerance must be finite and non-negative")
     selected_solver_config = SolverConfig() if solver_config is None else solver_config
     if not isinstance(selected_solver_config, SolverConfig):
         raise TypeError("solver_config must be SolverConfig or None")
@@ -418,6 +430,7 @@ def run_stage2(
     objective_comparison = ObjectiveComparison(
         solver_result.objective_value,
         breakdown.operational_objective,
+        relative_tolerance=objective_relative_tolerance,
     )
     if not objective_comparison.agrees:
         status = Stage2RunStatus.OBJECTIVE_INCONSISTENT
