@@ -1,0 +1,70 @@
+{
+  "classification": "EXPLICIT_UTF8_FUNCTION_AST_PROVENANCE_CLARIFICATION",
+  "scope": "Resolves a false-positive display-string difference caused by a private audit using platform-default text decoding. Explicit UTF-8 parsing confirms the original plot proof's unchanged-function-AST claim. No measured sources, observations, numerical analysis, or original plot proof are replaced.",
+  "frozen_helper": "source_snapshot.zip:scripts/run_instance_scaling.py",
+  "frozen_helper_sha256": "21b5215ae3f799b466ab479d6eb67ca5681edf6d72d58c49ac1ea160ae4c133d",
+  "current_helper": "scripts/run_instance_scaling.py",
+  "current_helper_sha256": "6452f777a33085d24b09f8de10d84124a3052e765a195fa636a05626256aed39",
+  "confirmed_claim": {
+    "artifact": "plot_presentation_verification.json",
+    "artifact_sha256": "9804e72ac240158cf67bd24dd3278494d3ffb324bc2ce72c4e6591bff30c975a",
+    "field": "unchanged_function_asts",
+    "member_specifically_rechecked": "derived_analysis",
+    "conclusion": "All previously claimed functions, including derived_analysis, are literally AST-identical when both frozen and current source bytes are parsed as UTF-8. Both display strings contain U+00B2. Only analyze has an actual function AST change."
+  },
+  "explicit_utf8_changed_constant_pairs": [],
+  "platform_default_decoding_diagnostic": {
+    "locale_encoding": "cp1252",
+    "python_utf8_mode": 0,
+    "constant_pairs": [
+      {
+        "frozen_utf8": "weak (R\u00b2 < 0.8)",
+        "current_decoded_with_platform_default": "weak (R\u00c2\u00b2 < 0.8)"
+      },
+      {
+        "frozen_utf8": "R\u00b2 >= 0.8 on this tested grid",
+        "current_decoded_with_platform_default": "R\u00c2\u00b2 >= 0.8 on this tested grid"
+      }
+    ],
+    "normalization": {
+      "function": "derived_analysis",
+      "from_code_points": "U+00C2 U+00B2",
+      "to_code_point": "U+00B2",
+      "constant_count": 2
+    },
+    "conclusion": "Normalizing only these two incorrectly decoded display-string Constants reproduces the correct function AST. This is an audit-decoding diagnostic, not a source correction."
+  },
+  "frozen_function_ast_sha256": "850aab4b5a6b26c5eca6be1c7ef156a44a21a33d288478bc7a842cbeb6b1ca8d",
+  "current_function_ast_sha256": "850aab4b5a6b26c5eca6be1c7ef156a44a21a33d288478bc7a842cbeb6b1ca8d",
+  "normalized_default_decoded_function_ast_sha256": "850aab4b5a6b26c5eca6be1c7ef156a44a21a33d288478bc7a842cbeb6b1ca8d",
+  "explicit_utf8_function_asts_identical": true,
+  "other_prior_claimed_function_asts_identical": true,
+  "unchanged_function_ast_sha256": {
+    "matrix_specifications": "dfe269c491b393335a8355107761cdaf9fa5dca795946be79a7240f578b53e4e",
+    "fingerprints": "bebd8ebee496e980cbe87632068850b27847881d9139cae402ba6f5702a37796",
+    "input_cohorts": "029aa8e3eac475219abee2d4b41b1eec4affce92f3e466ffb9fc8e8941d97fc7",
+    "prepare": "3f70e2a5cffac9262c03d5b8ae7eee52d394f6c4af0d5f126cb41f499790e168",
+    "verify_prepared": "9c9e27943192d0f68005b3af8789750f0286c351c769c8cea742543ede9d2673",
+    "retain_invocation": "844dd9d8203b1b4e0c96f76cf045d2e2ac2f0ff2986fe98494ff1370e3657717",
+    "retained_stdout": "526490bfe369b292c736d7f348ee7c565e34629382784573984d0cb15460d752",
+    "validate_native": "1b03e3612ea409ca7c15afd8638a4e2bf1db32facf0010516083eaa39fd30270",
+    "budgeted_timeout": "78e54bfe0cba3632779ee8176de6ca5689517b22312a2bed1adbb9f36ff03adc",
+    "projected_pending_work": "f235f25f0125ccfe6981191aee30d262faf4545334344aa1b8fdeef07b7e3c66",
+    "run": "12ef3d870de8439e6540fd32e8c07be44c501a75afab8bbd0d74423ad4ab2da2",
+    "ordinary_log_fit": "9b69f395b5f8157868f60cc8044a8a47676395d5a3c6e466d4e52f602110e9ac",
+    "clustered_log_fit": "3d44493090a1ce89923021bb2fe3de1cb51a9997ba04a6dbea9a87f77389336a",
+    "derived_analysis": "850aab4b5a6b26c5eca6be1c7ef156a44a21a33d288478bc7a842cbeb6b1ca8d",
+    "replay": "7d2a3fcf851452b92297ee1c73975a6dd81a978f7248039ee3759510ab83ac15",
+    "main": "c8c5acf9c5344e60700447a80dd676e4c51cafd6a7da8f791e49e43a729dfafc"
+  },
+  "only_actual_function_ast_change": "analyze",
+  "arithmetic_thresholds_and_numeric_constants_unchanged": true,
+  "solver_algorithm_or_campaign_executed": false,
+  "preserved_artifact_sha256": {
+    "source_snapshot.zip": "d40f62f15dc6d967d4ab6bc098af6e6da6062a63121dc073158d1c7b43b17514",
+    "analysis/analysis.json": "b47cbcb6d84422bf368990b0b2eeaf40eff336a67ba2d03ed7b894ffc6b62e48",
+    "status.json": "a1de045c2f73c45dc568a70e2244cd5d8e0f4edccfcb858e00ffba40731a0c22",
+    "plot_presentation_verification.json": "9804e72ac240158cf67bd24dd3278494d3ffb324bc2ce72c4e6591bff30c975a"
+  },
+  "inventory_scope": "This clarification is a new sidecar outside the original 1,337-file evidence inventory. The final release inventory covers it separately."
+}

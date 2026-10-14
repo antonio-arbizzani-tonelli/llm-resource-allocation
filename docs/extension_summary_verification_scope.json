@@ -1,0 +1,14 @@
+{
+  "classification": "HISTORICAL_INITIAL_SUPPLEMENT_VERIFICATION_SCOPE",
+  "historical_verification": "docs/extension_summary_verification.json",
+  "historical_output_path": "docs/extension_numbers.json",
+  "retained_verified_artifact": "benchmarks/matched_runtime_2026-10-14/extension_numbers_initial.json",
+  "retained_raw_sha256": "fd2770a2f2220f3510cb4bf262b10b098e5180551dade2dc6373354d70508d3d",
+  "retained_raw_sha256_verified": true,
+  "transport_placement": "Supplemental artifact outside the original 1552-file WP1 inventory; benchmark byte-preserving Git/export rules retain the original Windows CRLF digest.",
+  "scope": "Initial WP1 paired-ratio supplement and the earlier WP3 analysis included by the recorded historical argv.",
+  "historical_observed_fields_argv_and_hashes_unchanged": true,
+  "current_summary_path": "docs/extension_numbers.json",
+  "current_aggregate_verification_record": "docs/extension_summary_final_verification.json",
+  "current_aggregate_verification": "The WP2-WP6 refreshed output has a distinct fresh verification; the historical record validates only the retained initial output."
+}

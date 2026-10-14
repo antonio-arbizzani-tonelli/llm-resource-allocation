@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "Please cite this software and separately cite Cheng and Nguyen's scientific formulation and GH/AGH algorithms."
+type: software
+title: "LLM Resource Allocation: verified Python and C++ reference"
+authors:
+  - family-names: "Arbizzani Tonelli"
+    given-names: "Antonio"
+repository-code: "https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation"
+url: "https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation"
+version: "0.1.0"
+license: MIT
+abstract: >-
+  Independently implemented and validated Python reference for heterogeneous
+  LLM resource allocation, Pyomo deterministic MILP and Stage-2 LP, serial
+  C++20 GH/AGH and OpenMP independent-case campaigns. Synthetic CPU planning
+  evidence, not GPU-serving measurements or reproduction of paper tables.
+references:
+  - type: article
+    title: "Scalable Joint Resource Allocation for SLO-Constrained LLM Inference in Heterogeneous GPU Clouds"
+    authors:
+      - family-names: Cheng
+      - family-names: Nguyen
+    url: "https://arxiv.org/abs/2604.07472v2"
+    year: 2026
+    version: "arXiv:2604.07472v2"
+  - type: article
+    title: "Fast Heterogeneous Serving: Scalable Mixed-Scale LLM Allocation for SLO-Constrained Inference"
+    authors:
+      - family-names: Cheng
+      - family-names: Nguyen
+    url: "https://arxiv.org/abs/2604.07472v1"
+    year: 2026
+    version: "arXiv:2604.07472v1"

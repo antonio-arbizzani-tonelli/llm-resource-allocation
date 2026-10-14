@@ -15,7 +15,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = "configs/publication.json"
 MANIFEST_PATH = "release-manifest.json"
-TEXT_SUFFIXES = {".py", ".ps1", ".md", ".toml", ".json", ".yml", ".yaml", ".cpp", ".hpp", ".txt", ".sh", ".csv"}
+TEXT_SUFFIXES = {".py", ".ps1", ".md", ".toml", ".json", ".yml", ".yaml", ".cpp", ".hpp", ".txt", ".sh", ".csv", ".cff"}
 
 
 def relative_file(value: str) -> str:
@@ -54,7 +54,7 @@ def prepare_files(root: Path, config_path: Path) -> tuple[dict[str, bytes], dict
             standalone = {**specification, "files": [{"path": item} for item in paths]}
             payload = (json.dumps(standalone, indent=2, ensure_ascii=False) + "\n").encode()
         elif PurePosixPath(path).parts[0] != "benchmarks" and (
-            source.suffix.lower() in TEXT_SUFFIXES or source.name in ("Makefile", ".gitignore", ".gitattributes")
+            source.suffix.lower() in TEXT_SUFFIXES or source.name in ("Makefile", ".gitignore", ".gitattributes", "LICENSE")
         ):
             payload = original.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
         else:

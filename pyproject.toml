@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Verified Python and C++ allocation for heterogeneous LLM workloads"
 readme = "README.md"
 requires-python = ">=3.13"
-license = {text = "Research use; license not yet selected"}
+license = {text = "MIT"}
 authors = [{name = "Antonio Arbizzani Tonelli"}]
 dependencies = [
     "highspy==1.14.0",

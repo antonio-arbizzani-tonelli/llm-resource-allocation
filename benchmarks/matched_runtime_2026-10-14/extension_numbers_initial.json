@@ -1,0 +1,2363 @@
+{
+  "format_version": 1,
+  "classification": "supplemental derivation from retained synthetic CPU extension evidence",
+  "scientific_attribution": "Formulation and GH/AGH: Cheng and Nguyen, arXiv:2604.07472; software is an independent implementation.",
+  "wp1": {
+    "observed_campaign_state": "completed",
+    "method_shape_load_points": 12,
+    "timer_boundary_rows": 24,
+    "verified_samples": 480,
+    "planned_samples": 480,
+    "recorded_campaign_elapsed_seconds": 1317.7259,
+    "verification": {
+      "verified_manifest_files": 1552,
+      "verified_prepared_sources": 91,
+      "verified_accepted_raw_samples": 480,
+      "manifest_sha256": "aa93f8968817075009714210fc0c6e13ae23960ebdac1eccf7098c9c4462bbf8",
+      "prepared_sha256": "ab91b7ba53d6a886371f928b4a2eb25fa53268c8f2c02210f3d582cc9db237ce",
+      "source_scope": "exact prepared source SHA-256 inventory; frozen ZIP or explicitly supplied snapshot root",
+      "source_provenance": {
+        "kind": "frozen_source_zip",
+        "path": "benchmarks/matched_runtime_2026-10-14/source_snapshot.zip",
+        "sha256": "10b741781c4c29bc9af0bdd66edaa6408060d8644b6d1297486d149653bea55d",
+        "verified_entries": 91,
+        "additional_snapshot_outside_original_manifest": true,
+        "scope": "exact prepared source bytes; ZIP provenance is recorded separately without rewriting the original WP1 manifest"
+      }
+    },
+    "rows": [
+      {
+        "case": "4x2x2_load1_gh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 1.0,
+        "method": "gh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 64.29246024400496,
+          "ci95_low": 60.17542458063308,
+          "ci95_high": 76.29513781756314,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.006953872499991576,
+          "q1_seconds": 0.006532265500027279,
+          "q3_seconds": 0.008123923250082044,
+          "iqr_seconds": 0.0015916577500547646,
+          "minimum_seconds": 0.005903974999910133
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.00010816,
+          "q1_seconds": 0.00010289675000000001,
+          "q3_seconds": 0.00011686449999999999,
+          "iqr_seconds": 1.3967749999999982e-05,
+          "minimum_seconds": 9.554e-05
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            34.14655559025326,
+            67.47391668440059,
+            62.77854520934432,
+            80.60717067767555,
+            69.1180319563558,
+            63.81598824018635,
+            57.5733566063379,
+            60.09229792431465,
+            77.53814353894533,
+            121.6336733108861
+          ],
+          "median_ratio": 65.64495246229347,
+          "q1_ratio": 60.76385974557207,
+          "q3_ratio": 75.43311564329795,
+          "iqr_ratio": 14.669255897725883,
+          "ci95_median_low": 60.09229792431465,
+          "ci95_median_high": 77.53814353894533,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load1_gh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 1.0,
+        "method": "gh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 66.79134068643958,
+          "ci95_low": 56.15612690865836,
+          "ci95_high": 86.90144111134163,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.8767255324999041,
+          "q1_seconds": 1.713640365499998,
+          "q3_seconds": 2.027969784999925,
+          "iqr_seconds": 0.3143294194999271,
+          "minimum_seconds": 1.5335567519998676
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.028098336000027757,
+          "q1_seconds": 0.021933149250003225,
+          "q3_seconds": 0.03313173550009196,
+          "iqr_seconds": 0.011198586250088738,
+          "minimum_seconds": 0.01595780399998148
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            75.09807381680544,
+            82.07145344059752,
+            71.34136518947548,
+            57.37083011888012,
+            49.50890582436085,
+            55.71563395356023,
+            96.10073867316878,
+            105.63806098321892,
+            59.11352523319524,
+            63.66026546372635
+          ],
+          "median_ratio": 67.50081532660091,
+          "q1_ratio": 57.8065038974589,
+          "q3_ratio": 80.3281085346495,
+          "iqr_ratio": 22.5216046371906,
+          "ci95_median_low": 57.37083011888012,
+          "ci95_median_high": 83.72105193132214,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load1_agh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 1.0,
+        "method": "agh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 83.44445675449899,
+          "ci95_low": 72.44725088121176,
+          "ci95_high": 97.07027060637508,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.17435965399999986,
+          "q1_seconds": 0.1623896562499283,
+          "q3_seconds": 0.20035458050014654,
+          "iqr_seconds": 0.037964924250218246,
+          "minimum_seconds": 0.15670171499982644
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.0020895295,
+          "q1_seconds": 0.001968006,
+          "q3_seconds": 0.0022855180000000003,
+          "iqr_seconds": 0.00031751200000000026,
+          "minimum_seconds": 0.00174922
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            73.5550335858716,
+            91.71996547032198,
+            92.16728764667842,
+            90.69652685244198,
+            78.80091139305539,
+            69.71645555019137,
+            68.05424954391836,
+            85.04569962578036,
+            85.34685182422852,
+            124.10298149891292
+          ],
+          "median_ratio": 85.19627572500444,
+          "q1_ratio": 74.86650303766754,
+          "q3_ratio": 91.46410581585198,
+          "iqr_ratio": 16.597602778184438,
+          "ci95_median_low": 73.5550335858716,
+          "ci95_median_high": 91.71996547032198,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load1_agh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 1.0,
+        "method": "agh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 68.31795368829957,
+          "ci95_low": 64.24108248835867,
+          "ci95_high": 79.1444668257546,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.8393175720000272,
+          "q1_seconds": 1.7121635110000284,
+          "q3_seconds": 2.1775335612499305,
+          "iqr_seconds": 0.4653700502499021,
+          "minimum_seconds": 1.6095595259999982
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.026922902000137583,
+          "q1_seconds": 0.024789023750031447,
+          "q3_seconds": 0.02968933849996347,
+          "iqr_seconds": 0.004900314749932022,
+          "minimum_seconds": 0.019637944000010066
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            89.08677930152133,
+            81.96171279433189,
+            66.45190063102791,
+            69.73279916596539,
+            79.1444668257546,
+            77.61652538773673,
+            61.7274572974234,
+            72.49356399863498,
+            66.60115903193064,
+            108.70657987042463
+          ],
+          "median_ratio": 75.05504469318586,
+          "q1_ratio": 67.38406906543932,
+          "q3_ratio": 81.25740130218756,
+          "iqr_ratio": 13.87333223674824,
+          "ci95_median_low": 66.60115903193064,
+          "ci95_median_high": 84.11562306363797,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load200_gh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 200.0,
+        "method": "gh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 55.06352912365568,
+          "ci95_low": 37.89584152354579,
+          "ci95_high": 79.11243661127553,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.006072846499989737,
+          "q1_seconds": 0.00583875275000878,
+          "q3_seconds": 0.008703428999979224,
+          "iqr_seconds": 0.0028646762499704437,
+          "minimum_seconds": 0.005357954000032805
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.000110288,
+          "q1_seconds": 0.00010189075,
+          "q3_seconds": 0.000164106,
+          "iqr_seconds": 6.221524999999999e-05,
+          "minimum_seconds": 9.7384e-05
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            61.59800914556426,
+            61.60011245671607,
+            52.32376953157036,
+            27.562556345597645,
+            101.23213627080284,
+            58.01129348201752,
+            58.27954896093098,
+            50.009625598746474,
+            58.17732892334629,
+            47.3642388451016
+          ],
+          "median_ratio": 58.09431120268191,
+          "q1_ratio": 50.58816158195245,
+          "q3_ratio": 60.76839409940594,
+          "iqr_ratio": 10.18023251745349,
+          "ci95_median_low": 49.84400418833599,
+          "ci95_median_high": 61.59800914556426,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load200_gh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 200.0,
+        "method": "gh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 67.81190644573584,
+          "ci95_low": 57.95284913188333,
+          "ci95_high": 83.67062093855169,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.6583234565000282,
+          "q1_seconds": 1.5160296495000694,
+          "q3_seconds": 1.7564278062500307,
+          "iqr_seconds": 0.24039815674996134,
+          "minimum_seconds": 1.3784252499999639
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.024454753500066317,
+          "q1_seconds": 0.02033721224989904,
+          "q3_seconds": 0.02777719849993332,
+          "iqr_seconds": 0.007439986250034281,
+          "minimum_seconds": 0.015913907000026484
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            65.7573782526582,
+            87.91161020343259,
+            50.07458739088436,
+            69.36697577105468,
+            51.35781929661895,
+            69.39057357552302,
+            68.86973735908796,
+            84.38952099551088,
+            87.80869347883238,
+            85.04180169253137
+          ],
+          "median_ratio": 69.37877467328886,
+          "q1_ratio": 66.53546802926564,
+          "q3_ratio": 84.87873151827624,
+          "iqr_ratio": 18.343263489010596,
+          "ci95_median_low": 60.36239753383681,
+          "ci95_median_high": 86.09910723717164,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load200_agh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 200.0,
+        "method": "agh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 92.29347867328038,
+          "ci95_low": 82.9859322772342,
+          "ci95_high": 103.61963995809081,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.18608991050001578,
+          "q1_seconds": 0.1701232342500134,
+          "q3_seconds": 0.20075439300001108,
+          "iqr_seconds": 0.030631158749997667,
+          "minimum_seconds": 0.15133552699990105
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.0020162845,
+          "q1_seconds": 0.0018685479999999998,
+          "q3_seconds": 0.00224660425,
+          "iqr_seconds": 0.0003780562500000002,
+          "minimum_seconds": 0.00174822
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            98.23451915272614,
+            115.06640582993974,
+            82.9859322772342,
+            85.10762333526947,
+            99.45134071157322,
+            93.19253951441208,
+            85.42435131833143,
+            79.50791635182743,
+            87.33684963397457,
+            78.73172380106413
+          ],
+          "median_ratio": 86.380600476153,
+          "q1_ratio": 83.51635504174301,
+          "q3_ratio": 96.97402424314762,
+          "iqr_ratio": 13.457669201404613,
+          "ci95_median_low": 82.30776984354844,
+          "ci95_median_high": 98.23451915272614,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "4x2x2_load200_agh",
+        "shape": [
+          4,
+          2,
+          2
+        ],
+        "load": 200.0,
+        "method": "agh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 77.72863461624318,
+          "ci95_low": 64.2211252814282,
+          "ci95_high": 94.71523211541025,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.8457149705001257,
+          "q1_seconds": 1.6850871660000308,
+          "q3_seconds": 2.055192344499858,
+          "iqr_seconds": 0.37010517849982705,
+          "minimum_seconds": 1.5818914980000045
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.023745624500065787,
+          "q1_seconds": 0.019903756499914493,
+          "q3_seconds": 0.02832904150000104,
+          "iqr_seconds": 0.008425285000086546,
+          "minimum_seconds": 0.018248910000011165
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            79.36186701834737,
+            61.93577856961474,
+            60.52758253168109,
+            61.907768161453525,
+            84.63755228237864,
+            71.90210709545461,
+            97.01485057371326,
+            91.92039749216872,
+            96.4419874153573,
+            73.77402693326448
+          ],
+          "median_ratio": 76.56794697580592,
+          "q1_ratio": 64.4273607010747,
+          "q3_ratio": 90.0996861897212,
+          "iqr_ratio": 25.672325488646493,
+          "ci95_median_low": 61.93577856961474,
+          "ci95_median_high": 91.92039749216872,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load1_gh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "gh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 87.48903973026461,
+          "ci95_low": 66.82556625201332,
+          "ci95_high": 94.50282960517947,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.051163065500020366,
+          "q1_seconds": 0.0455726160000296,
+          "q3_seconds": 0.05707438400003184,
+          "iqr_seconds": 0.011501768000002244,
+          "minimum_seconds": 0.04475935599998593
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.000584794,
+          "q1_seconds": 0.0005482122499999999,
+          "q3_seconds": 0.0007499345,
+          "iqr_seconds": 0.00020172225000000008,
+          "minimum_seconds": 0.000502846
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            87.13277901446017,
+            81.70658225719677,
+            80.96175138335416,
+            91.13505062504862,
+            90.19228948810371,
+            111.92488359193757,
+            81.99450094359338,
+            45.34892942893454,
+            93.15170374046677,
+            65.95999888926153
+          ],
+          "median_ratio": 84.56363997902677,
+          "q1_ratio": 81.1479591018148,
+          "q3_ratio": 90.8993603408124,
+          "iqr_ratio": 9.751401238997587,
+          "ci95_median_low": 73.83329057322915,
+          "ci95_median_high": 91.67199661428523,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load1_gh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "gh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 65.20273555237458,
+          "ci95_low": 58.156711402817706,
+          "ci95_high": 75.63877660531344,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.8147441180000214,
+          "q1_seconds": 1.6449508589999766,
+          "q3_seconds": 2.1637783482499913,
+          "iqr_seconds": 0.5188274892500147,
+          "minimum_seconds": 1.4921151700000337
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.027832331000013255,
+          "q1_seconds": 0.024004800999961162,
+          "q3_seconds": 0.03153042249991245,
+          "iqr_seconds": 0.007525621499951285,
+          "minimum_seconds": 0.01714143200001672
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            94.1699312518575,
+            64.08782359730131,
+            75.51637515357963,
+            64.2257418253465,
+            78.43581654886678,
+            65.97589024132036,
+            91.06032488319434,
+            70.50964518822735,
+            55.63930914568753,
+            75.63877660531344
+          ],
+          "median_ratio": 73.0130101709035,
+          "q1_ratio": 64.66327892933997,
+          "q3_ratio": 77.73655656297845,
+          "iqr_ratio": 13.073277633638483,
+          "ci95_median_low": 64.2257418253465,
+          "ci95_median_high": 83.28835001838698,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load1_agh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "agh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 106.4794485625236,
+          "ci95_low": 91.44043203118814,
+          "ci95_high": 133.5047910293833,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 2.041370056000005,
+          "q1_seconds": 1.9845429257499632,
+          "q3_seconds": 2.5206264395000204,
+          "iqr_seconds": 0.5360835137500573,
+          "minimum_seconds": 1.9120517210000116
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.019171493499999998,
+          "q1_seconds": 0.018495644,
+          "q3_seconds": 0.020632393750000002,
+          "iqr_seconds": 0.0021367497500000034,
+          "minimum_seconds": 0.017339543
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            129.23510471970334,
+            53.593702841201065,
+            98.01090880018756,
+            108.42433185333844,
+            104.74151353747507,
+            103.84272756302765,
+            108.69943733526947,
+            96.81839796919488,
+            123.22216340995799,
+            161.99181005494432
+          ],
+          "median_ratio": 106.58292269540675,
+          "q1_ratio": 99.46886349089759,
+          "q3_ratio": 119.59148189128585,
+          "iqr_ratio": 20.122618400388262,
+          "ci95_median_low": 98.01090880018756,
+          "ci95_median_high": 123.22216340995799,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load1_agh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "agh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 76.55850996447661,
+          "ci95_low": 73.06700107941536,
+          "ci95_high": 89.82846023536312,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 4.071326399500094,
+          "q1_seconds": 3.797543777499982,
+          "q3_seconds": 4.700284363250091,
+          "iqr_seconds": 0.9027405857501094,
+          "minimum_seconds": 3.3758382979999624
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.05317927949994328,
+          "q1_seconds": 0.04755860725003913,
+          "q3_seconds": 0.05581910949990743,
+          "iqr_seconds": 0.008260502249868296,
+          "minimum_seconds": 0.04343315400001302
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            100.76412703924747,
+            76.82152419487193,
+            123.99991360887243,
+            80.27806402489333,
+            87.13471923706906,
+            77.72491719111513,
+            71.47549975605035,
+            80.22256146213476,
+            86.93768992818174,
+            75.22386163425867
+          ],
+          "median_ratio": 80.25031274351404,
+          "q1_ratio": 77.04737244393273,
+          "q3_ratio": 87.08546190984723,
+          "iqr_ratio": 10.038089465914496,
+          "ci95_median_low": 76.47438941268689,
+          "ci95_median_high": 93.8509084837146,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load200_gh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "gh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 90.77168577332976,
+          "ci95_low": 77.8561156030926,
+          "ci95_high": 107.89903803116918,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.057480580000003556,
+          "q1_seconds": 0.05140876125005889,
+          "q3_seconds": 0.06784532799997578,
+          "iqr_seconds": 0.016436566749916892,
+          "minimum_seconds": 0.043675430999996934
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.0006332435000000001,
+          "q1_seconds": 0.0005917907500000001,
+          "q3_seconds": 0.00069921175,
+          "iqr_seconds": 0.0001074209999999999,
+          "minimum_seconds": 0.000511576
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            94.9834043865936,
+            50.18201757425439,
+            97.94971319635879,
+            77.92337981629878,
+            91.77162923988729,
+            81.87131053836042,
+            96.31424161841535,
+            86.24889212602724,
+            108.9701242571585,
+            108.58532758069533
+          ],
+          "median_ratio": 93.37751681324045,
+          "q1_ratio": 82.96570593527713,
+          "q3_ratio": 97.54084530187293,
+          "iqr_ratio": 14.575139366595806,
+          "ci95_median_low": 81.87131053836042,
+          "ci95_median_high": 102.44978459955534,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load200_gh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "gh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 72.07272692955252,
+          "ci95_low": 61.29683682052542,
+          "ci95_high": 104.21891216743845,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.8938020000000506,
+          "q1_seconds": 1.7111292455000182,
+          "q3_seconds": 2.3793718012501017,
+          "iqr_seconds": 0.6682425557500835,
+          "minimum_seconds": 1.6194221350000362
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.02627626399998917,
+          "q1_seconds": 0.024410677499986377,
+          "q3_seconds": 0.030501771000018607,
+          "iqr_seconds": 0.00609109350003223,
+          "minimum_seconds": 0.020776857999976528
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            80.39951123174797,
+            145.37295404211437,
+            117.83135091374278,
+            65.48973181727602,
+            77.9435531109596,
+            69.72179144528016,
+            30.774665160576784,
+            70.27257415133143,
+            75.18146814368222,
+            53.56342016681763
+          ],
+          "median_ratio": 72.72702114750683,
+          "q1_ratio": 66.54774672427706,
+          "q3_ratio": 79.78552170155088,
+          "iqr_ratio": 13.237774977273816,
+          "ci95_median_low": 61.64260580604889,
+          "ci95_median_high": 97.88745201235119,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load200_agh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "agh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 109.68779565466923,
+          "ci95_low": 99.95275166765786,
+          "ci95_high": 118.86223029433432,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 2.246206149000045,
+          "q1_seconds": 2.0315565745001436,
+          "q3_seconds": 2.2968501332499613,
+          "iqr_seconds": 0.26529355874981775,
+          "minimum_seconds": 1.8665356709999514
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.0204781775,
+          "q1_seconds": 0.018937093,
+          "q3_seconds": 0.0205922675,
+          "iqr_seconds": 0.001655174500000002,
+          "minimum_seconds": 0.017724107
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            101.05734714185006,
+            120.41707465452971,
+            83.54012733071849,
+            111.18057979091846,
+            100.7981762062069,
+            114.3107845151353,
+            122.19835131600824,
+            102.40715241508838,
+            108.00080464737191,
+            99.95275166765786
+          ],
+          "median_ratio": 105.20397853123015,
+          "q1_ratio": 100.8629689401177,
+          "q3_ratio": 113.52823333408108,
+          "iqr_ratio": 12.665264393963383,
+          "ci95_median_low": 100.50504940475396,
+          "ci95_median_high": 115.79882722272409,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "8x4x4_load200_agh",
+        "shape": [
+          8,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "agh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 80.101969941082,
+          "ci95_low": 68.7199898894257,
+          "ci95_high": 93.6145553756151,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 4.305268133499965,
+          "q1_seconds": 3.7715935744999456,
+          "q3_seconds": 4.665879258749939,
+          "iqr_seconds": 0.8942856842499936,
+          "minimum_seconds": 3.466383800000017
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.05374734399998715,
+          "q1_seconds": 0.049128110749933285,
+          "q3_seconds": 0.05830460524998671,
+          "iqr_seconds": 0.009176494500053423,
+          "minimum_seconds": 0.04097432100002152
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            101.2136154339516,
+            78.6011470195971,
+            124.64494821231709,
+            99.72095932560731,
+            84.59893209696376,
+            73.71182714805735,
+            76.10601035840476,
+            67.00784903718278,
+            62.64145253816232,
+            80.32322197961608
+          ],
+          "median_ratio": 79.4621844996066,
+          "q1_ratio": 74.31037295064421,
+          "q3_ratio": 95.94045251844642,
+          "iqr_ratio": 21.630079567802213,
+          "ci95_median_low": 72.80449802838993,
+          "ci95_median_high": 99.72095932560731,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load1_gh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "gh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 104.2107486276276,
+          "ci95_low": 85.03476134028222,
+          "ci95_high": 132.46880283377865,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.15784854200001064,
+          "q1_seconds": 0.13352064300005395,
+          "q3_seconds": 0.19388254950001738,
+          "iqr_seconds": 0.060361906499963425,
+          "minimum_seconds": 0.12193579000006594
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.0015147049999999999,
+          "q1_seconds": 0.0014435255000000001,
+          "q3_seconds": 0.001669173,
+          "iqr_seconds": 0.00022564749999999978,
+          "minimum_seconds": 0.001387688
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            86.74699026641625,
+            132.46880283377865,
+            104.45749545731985,
+            49.12676425909352,
+            87.62172179686489,
+            146.01727477654566,
+            85.64804938785578,
+            129.08979218290906,
+            101.16679748829313,
+            81.02271643144618
+          ],
+          "median_ratio": 94.39425964257902,
+          "q1_ratio": 85.9227846074959,
+          "q3_ratio": 122.93171800151177,
+          "iqr_ratio": 37.00893339401587,
+          "ci95_median_low": 83.88485334893122,
+          "ci95_median_high": 129.08979218290906,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load1_gh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "gh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 58.32423497852504,
+          "ci95_low": 55.880161761264844,
+          "ci95_high": 88.2104431836035,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.7393316584999639,
+          "q1_seconds": 1.6731829242499998,
+          "q3_seconds": 2.4507196980000003,
+          "iqr_seconds": 0.7775367737500005,
+          "minimum_seconds": 1.6252825619999953
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.029821765500059882,
+          "q1_seconds": 0.02842198599984158,
+          "q3_seconds": 0.03061335499995721,
+          "iqr_seconds": 0.0021913690001156283,
+          "minimum_seconds": 0.022173244000043724
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            73.2992683432695,
+            84.30996582619196,
+            87.22810644288484,
+            57.92153587342127,
+            57.37760881902115,
+            55.571972467159085,
+            56.188194925928165,
+            64.9499712020317,
+            67.42762808721034,
+            104.55725183705243
+          ],
+          "median_ratio": 66.18879964462101,
+          "q1_ratio": 57.51359058262118,
+          "q3_ratio": 81.55729145546134,
+          "iqr_ratio": 24.043700872840162,
+          "ci95_median_low": 57.05486539967472,
+          "ci95_median_high": 84.30996582619196,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load1_agh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "agh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 111.78087575207242,
+          "ci95_low": 99.26430886695098,
+          "ci95_high": 126.15697182158301,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 8.109422636499971,
+          "q1_seconds": 7.370791719499948,
+          "q3_seconds": 8.815246571249986,
+          "iqr_seconds": 1.444454851750038,
+          "minimum_seconds": 6.932888252999987
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.072547496,
+          "q1_seconds": 0.06741043925000001,
+          "q3_seconds": 0.07489485725,
+          "iqr_seconds": 0.007484417999999993,
+          "minimum_seconds": 0.058753398
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            120.3740919120974,
+            113.03263282431244,
+            131.1575262747685,
+            92.52813525922886,
+            111.11080912053639,
+            112.43729093950324,
+            99.26430886695098,
+            113.22025479037325,
+            108.59633557971262,
+            137.54286684662895
+          ],
+          "median_ratio": 112.73496188190785,
+          "q1_ratio": 109.22495396491856,
+          "q3_ratio": 118.58563263166636,
+          "iqr_ratio": 9.360678666747802,
+          "ci95_median_low": 105.18755899374369,
+          "ci95_median_high": 122.18889053257087,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load1_agh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 1.0,
+        "method": "agh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 96.25178769531279,
+          "ci95_low": 91.53763559675596,
+          "ci95_high": 101.56440659260346,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 9.850354533000086,
+          "q1_seconds": 9.418038377750008,
+          "q3_seconds": 10.276261762749925,
+          "iqr_seconds": 0.858223384999917,
+          "minimum_seconds": 8.772957258999895
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.102339445000041,
+          "q1_seconds": 0.09517262449986674,
+          "q3_seconds": 0.1058228032499926,
+          "iqr_seconds": 0.01065017875012586,
+          "minimum_seconds": 0.09018796800000928
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            97.0614905422449,
+            96.64950160407648,
+            97.85199666165923,
+            103.13256690193126,
+            117.96219132512343,
+            88.21493557623765,
+            104.33725173849224,
+            90.70359707273057,
+            100.72076247106688,
+            96.33235588198887
+          ],
+          "median_ratio": 97.45674360195207,
+          "q1_ratio": 96.41164231251078,
+          "q3_ratio": 102.52961579421516,
+          "iqr_ratio": 6.117973481704382,
+          "ci95_median_low": 93.88254380748774,
+          "ci95_median_high": 103.13256690193126,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load200_gh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "gh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 96.38605379185611,
+          "ci95_low": 91.2704602220136,
+          "ci95_high": 109.96298201409184,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.15887289149998196,
+          "q1_seconds": 0.14121928624997793,
+          "q3_seconds": 0.17816306125001802,
+          "iqr_seconds": 0.03694377500004009,
+          "minimum_seconds": 0.12311251899996023
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.0016482975000000001,
+          "q1_seconds": 0.00150638875,
+          "q3_seconds": 0.001702196,
+          "iqr_seconds": 0.00019580724999999997,
+          "minimum_seconds": 0.001368597
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            90.61057088805472,
+            102.34463009034478,
+            116.74534006028001,
+            91.2704602220136,
+            95.00225110434843,
+            117.20773965890233,
+            109.96298201409184,
+            96.91453570860706,
+            89.95527463523611,
+            98.36726968250117
+          ],
+          "median_ratio": 97.64090269555412,
+          "q1_ratio": 92.20340794259731,
+          "q3_ratio": 108.05839403315507,
+          "iqr_ratio": 15.854986090557759,
+          "ci95_median_low": 91.2704602220136,
+          "ci95_median_high": 109.96298201409184,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load200_gh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "gh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 63.55270612042998,
+          "ci95_low": 55.3821850217319,
+          "ci95_high": 79.3387527750932,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 1.9622474120000106,
+          "q1_seconds": 1.7789314172499928,
+          "q3_seconds": 2.0894547469999907,
+          "iqr_seconds": 0.31052332974999786,
+          "minimum_seconds": 1.718643381999982
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.030875906500057226,
+          "q1_seconds": 0.026007037500079377,
+          "q3_seconds": 0.03335113024996872,
+          "iqr_seconds": 0.007344092749889342,
+          "minimum_seconds": 0.023563632000104917
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            54.096241032445164,
+            60.09426144694897,
+            82.44615580292438,
+            82.45592535150551,
+            80.91103889837734,
+            80.25014393879485,
+            52.013158397641035,
+            67.82420499183687,
+            73.8068597825788,
+            56.61969564620905
+          ],
+          "median_ratio": 70.81553238720784,
+          "q1_ratio": 57.488337096394034,
+          "q3_ratio": 80.74581515848172,
+          "iqr_ratio": 23.257478062087685,
+          "ci95_median_low": 56.61969564620905,
+          "ci95_median_high": 80.91103889837734,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load200_agh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "agh",
+        "boundary": "core",
+        "timer_scope": "public fresh-result solve on constructed input; validation/traces included; startup/parsing/projection/output/destruction excluded; same-process warmup excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 120.54370430136707,
+          "ci95_low": 109.75298728439094,
+          "ci95_high": 131.21508934449548,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 8.425023945999953,
+          "q1_seconds": 8.035937973500012,
+          "q3_seconds": 8.868387504999987,
+          "iqr_seconds": 0.8324495314999751,
+          "minimum_seconds": 7.411134987999958
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.069891862,
+          "q1_seconds": 0.066127986,
+          "q3_seconds": 0.0756093955,
+          "iqr_seconds": 0.009481409499999996,
+          "minimum_seconds": 0.06112462
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            133.12369493686833,
+            127.3708220408496,
+            121.5616212720581,
+            113.69857212514161,
+            121.62906857557134,
+            113.11108002768958,
+            104.45651501153456,
+            111.17790246597663,
+            142.6390287088904,
+            114.09728056304901
+          ],
+          "median_ratio": 117.82945091755356,
+          "q1_ratio": 113.25795305205259,
+          "q3_ratio": 125.93538367453004,
+          "iqr_ratio": 12.677430622477459,
+          "ci95_median_low": 112.63759151451282,
+          "ci95_median_high": 127.3708220408496,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      },
+      {
+        "case": "16x4x4_load200_agh",
+        "shape": [
+          16,
+          4,
+          4
+        ],
+        "load": 200.0,
+        "method": "agh",
+        "boundary": "invocation",
+        "timer_scope": "single-solve Linux subprocess startup through exit; same final-decision schema; no in-process warmup; external preflight excluded",
+        "complete_paired_rounds": 10,
+        "planned_paired_rounds": 10,
+        "round_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "primary_ratio_of_medians": {
+          "estimand": "median Python duration / median C++ duration",
+          "source_result_unchanged": true,
+          "ratio_of_medians": 99.70046233556437,
+          "ci95_low": 93.2556239592348,
+          "ci95_high": 107.2591698415109,
+          "paired_round_count": 10,
+          "resamples": 10000,
+          "seed": 20261014,
+          "method": "paired-round percentile bootstrap; ratio of sample medians"
+        },
+        "python_duration_summary": {
+          "count": 10,
+          "median_seconds": 9.883959819499978,
+          "q1_seconds": 9.292609712749965,
+          "q3_seconds": 10.461497497999972,
+          "iqr_seconds": 1.168887785250007,
+          "minimum_seconds": 8.727405794999981
+        },
+        "cpp_duration_summary": {
+          "count": 10,
+          "median_seconds": 0.09913654949997408,
+          "q1_seconds": 0.09090520624999954,
+          "q3_seconds": 0.10579157099988379,
+          "iqr_seconds": 0.014886364749884251,
+          "minimum_seconds": 0.08537426800000958
+        },
+        "supplemental_paired_ratio_distribution": {
+          "estimand": "median of per-round Python/C++ duration ratios",
+          "paired_round_count": 10,
+          "paired_ratios": [
+            102.2252488887987,
+            90.52051623088008,
+            107.2591698415109,
+            106.74876576112909,
+            93.90378249225418,
+            102.60489473702002,
+            109.58107336839417,
+            98.68021040109741,
+            90.04577355524283,
+            116.71373553839793
+          ],
+          "median_ratio": 102.41507181290936,
+          "q1_ratio": 95.09788946946499,
+          "q3_ratio": 107.13156882141544,
+          "iqr_ratio": 12.033679351950454,
+          "ci95_median_low": 93.90378249225418,
+          "ci95_median_high": 108.16491956476163,
+          "bootstrap_seed": 20261014,
+          "bootstrap_resamples": 10000,
+          "bootstrap_method": "percentile bootstrap of paired-round ratios; whole pairs resampled",
+          "quartile_method": "R type 7 linear interpolation"
+        }
+      }
+    ],
+    "source_analysis_sha256": "b9fbfc260725e66198aabfe9283acc74e8de831d11a0f8f0d74379cfd7a65580",
+    "limitations": [
+      "The two ratio estimands are distinct and neither replaces the historical primary result.",
+      "Paired ratios use the same round index; bootstrap units are complete measurement pairs.",
+      "These local CPU implementation ratios include implementation-specific input checks and rich traces.",
+      "Conditional ten-pair bootstrap intervals do not capture all thermal/systematic effects."
+    ]
+  },
+  "additional_analyses": {
+    "wp2": {
+      "included": false,
+      "availability": "analysis not supplied"
+    },
+    "wp3": {
+      "included": true,
+      "source": "benchmarks/stage2_policy_2026-10-14/analysis.json",
+      "source_sha256": "8c459d517792bb7c4e2302fca0efe10ae0f23577c21e1c746748fd8488e5a067",
+      "observed_status_fields": {
+        "classification": "SYNTHETIC_SOLVER_FREE_POLICY_REPLAY"
+      },
+      "analysis": {
+        "classification": "SYNTHETIC_SOLVER_FREE_POLICY_REPLAY",
+        "python": "3.13.16",
+        "historical_archive_sha256": "b4f85dee87b6f248180b31a3e7877bab0c2bdbe019dc08908615b2906decf5b7",
+        "historical_archive_entry_count": 2027,
+        "replay_verification": {
+          "frozen_source_files": 198,
+          "stage1_reports": 40,
+          "accepted_sources": 37,
+          "frozen_reports": 1850,
+          "operational_reports": 850
+        },
+        "stage1_rejected_sources_unchanged": [
+          {
+            "job": "stress_16x4x4_L100000_p_dm_s37",
+            "shape": [
+              16,
+              4,
+              4
+            ],
+            "load": 100000.0,
+            "violated_families": [
+              "error_slo_eq_8j"
+            ],
+            "skipped_scenarios": 50
+          },
+          {
+            "job": "stress_32x4x4_L100000_p_dm_s37",
+            "shape": [
+              32,
+              4,
+              4
+            ],
+            "load": 100000.0,
+            "violated_families": [],
+            "skipped_scenarios": 50
+          },
+          {
+            "job": "stress_16x8x8_L100000_p_dm_s37",
+            "shape": [
+              16,
+              8,
+              8
+            ],
+            "load": 100000.0,
+            "violated_families": [
+              "demand_balance_eq_8b"
+            ],
+            "skipped_scenarios": 50
+          }
+        ],
+        "absolute_tolerance_default_unchanged": 1e-08,
+        "relative_tolerance_default_unchanged": 0.0,
+        "selected_relative_tolerance": 1e-12,
+        "cohort_limit": "three AGH seeds, one GH/P_DM source; no matched method ranking",
+        "old_policy": {
+          "relative_tolerance": 0.0,
+          "attempted": 1850,
+          "usable": 646,
+          "newly_usable": 0,
+          "frozen_failures": 1344,
+          "recovered": 256,
+          "recovery_fraction": 0.19047619047619047,
+          "paired_scenarios": 390,
+          "paired_source_grids": 33,
+          "paired_baseline_cost_sum_usd": 10547532668.8,
+          "paired_adapted_cost_sum_usd": 9929719445.119999,
+          "paired_reduction_fraction": 0.05857419389726236,
+          "source_cluster_bootstrap": {
+            "unit": "source_grid",
+            "units": 33,
+            "replicates": 10000,
+            "seed": 20261014,
+            "ci95": [
+              0.05178352254345063,
+              0.061179067422411304
+            ],
+            "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+          },
+          "scenario_pair_bootstrap_sensitivity": {
+            "unit": "scenario_pair",
+            "units": 390,
+            "replicates": 10000,
+            "seed": 20261014,
+            "ci95": [
+              0.05676455399556152,
+              0.05992429860914847
+            ],
+            "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+          }
+        },
+        "selected_policy": {
+          "relative_tolerance": 1e-12,
+          "attempted": 1850,
+          "usable": 850,
+          "newly_usable": 204,
+          "frozen_failures": 1344,
+          "recovered": 344,
+          "recovery_fraction": 0.25595238095238093,
+          "paired_scenarios": 506,
+          "paired_source_grids": 37,
+          "paired_baseline_cost_sum_usd": 31993767868.8,
+          "paired_adapted_cost_sum_usd": 30087587355.52,
+          "paired_reduction_fraction": 0.05957974443950651,
+          "source_cluster_bootstrap": {
+            "unit": "source_grid",
+            "units": 37,
+            "replicates": 10000,
+            "seed": 20261014,
+            "ci95": [
+              0.05745418176046431,
+              0.060634898998714507
+            ],
+            "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+          },
+          "scenario_pair_bootstrap_sensitivity": {
+            "unit": "scenario_pair",
+            "units": 506,
+            "replicates": 10000,
+            "seed": 20261014,
+            "ci95": [
+              0.059052939302523276,
+              0.06003278797979598
+            ],
+            "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+          }
+        },
+        "sensitivity": [
+          {
+            "relative_tolerance": 0.0,
+            "attempted": 1850,
+            "usable": 646,
+            "newly_usable": 0,
+            "frozen_failures": 1344,
+            "recovered": 256,
+            "recovery_fraction": 0.19047619047619047,
+            "paired_scenarios": 390,
+            "paired_source_grids": 33,
+            "paired_baseline_cost_sum_usd": 10547532668.8,
+            "paired_adapted_cost_sum_usd": 9929719445.119999,
+            "paired_reduction_fraction": 0.05857419389726236
+          },
+          {
+            "relative_tolerance": 1e-12,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          },
+          {
+            "relative_tolerance": 1e-11,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          },
+          {
+            "relative_tolerance": 1e-10,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          },
+          {
+            "relative_tolerance": 1e-09,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          },
+          {
+            "relative_tolerance": 1e-08,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          },
+          {
+            "relative_tolerance": 1e-07,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          },
+          {
+            "relative_tolerance": 1e-06,
+            "attempted": 1850,
+            "usable": 850,
+            "newly_usable": 204,
+            "frozen_failures": 1344,
+            "recovered": 344,
+            "recovery_fraction": 0.25595238095238093,
+            "paired_scenarios": 506,
+            "paired_source_grids": 37,
+            "paired_baseline_cost_sum_usd": 31993767868.8,
+            "paired_adapted_cost_sum_usd": 30087587355.52,
+            "paired_reduction_fraction": 0.05957974443950651
+          }
+        ],
+        "by_load": {
+          "200.0": {
+            "old": {
+              "relative_tolerance": 0.0,
+              "attempted": 1000,
+              "usable": 520,
+              "newly_usable": 0,
+              "frozen_failures": 680,
+              "recovered": 200,
+              "recovery_fraction": 0.29411764705882354,
+              "paired_scenarios": 320,
+              "paired_source_grids": 20,
+              "paired_baseline_cost_sum_usd": 141260580.8,
+              "paired_adapted_cost_sum_usd": 133158441.92,
+              "paired_reduction_fraction": 0.05735597881670333,
+              "source_cluster_bootstrap": {
+                "unit": "source_grid",
+                "units": 20,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.05213657923061314,
+                  0.06016269094603282
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              },
+              "scenario_pair_bootstrap_sensitivity": {
+                "unit": "scenario_pair",
+                "units": 320,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.056152204593704395,
+                  0.0584059275932225
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              }
+            },
+            "new": {
+              "relative_tolerance": 1e-12,
+              "attempted": 1000,
+              "usable": 520,
+              "newly_usable": 0,
+              "frozen_failures": 680,
+              "recovered": 200,
+              "recovery_fraction": 0.29411764705882354,
+              "paired_scenarios": 320,
+              "paired_source_grids": 20,
+              "paired_baseline_cost_sum_usd": 141260580.8,
+              "paired_adapted_cost_sum_usd": 133158441.92,
+              "paired_reduction_fraction": 0.05735597881670333,
+              "source_cluster_bootstrap": {
+                "unit": "source_grid",
+                "units": 20,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.05213657923061314,
+                  0.06016269094603282
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              },
+              "scenario_pair_bootstrap_sensitivity": {
+                "unit": "scenario_pair",
+                "units": 320,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.056152204593704395,
+                  0.0584059275932225
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              }
+            }
+          },
+          "100000.0": {
+            "old": {
+              "relative_tolerance": 0.0,
+              "attempted": 850,
+              "usable": 126,
+              "newly_usable": 0,
+              "frozen_failures": 664,
+              "recovered": 56,
+              "recovery_fraction": 0.08433734939759036,
+              "paired_scenarios": 70,
+              "paired_source_grids": 13,
+              "paired_baseline_cost_sum_usd": 10406272088.0,
+              "paired_adapted_cost_sum_usd": 9796561003.199999,
+              "paired_reduction_fraction": 0.058590730632835354,
+              "source_cluster_bootstrap": {
+                "unit": "source_grid",
+                "units": 13,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.05207096433497468,
+                  0.061221269171040926
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              },
+              "scenario_pair_bootstrap_sensitivity": {
+                "unit": "scenario_pair",
+                "units": 70,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.05680479814181736,
+                  0.05995624527372482
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              }
+            },
+            "new": {
+              "relative_tolerance": 1e-12,
+              "attempted": 850,
+              "usable": 330,
+              "newly_usable": 204,
+              "frozen_failures": 664,
+              "recovered": 144,
+              "recovery_fraction": 0.21686746987951808,
+              "paired_scenarios": 186,
+              "paired_source_grids": 17,
+              "paired_baseline_cost_sum_usd": 31852507288.0,
+              "paired_adapted_cost_sum_usd": 29954428913.6,
+              "paired_reduction_fraction": 0.05958960647079349,
+              "source_cluster_bootstrap": {
+                "unit": "source_grid",
+                "units": 17,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.057663214641209215,
+                  0.06064831352407332
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              },
+              "scenario_pair_bootstrap_sensitivity": {
+                "unit": "scenario_pair",
+                "units": 186,
+                "replicates": 10000,
+                "seed": 20261014,
+                "ci95": [
+                  0.05902704772424889,
+                  0.06004581429148501
+                ],
+                "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+              }
+            }
+          }
+        },
+        "source_hashes": {
+          "scripts/replay_stage2_policy.py": "5eb78406ff118d498355fd88b8355ade2063682141a5889319fd7e0af3fa1994",
+          "src/llm_resource_allocation/validation/objective_comparison.py": "53d094a718263567840a2ab0c4e93983da4e0fe2e0373484b16f6587067bc39e",
+          "src/llm_resource_allocation/optimization/stage2_run.py": "541540ba47c98281b1f513704c046c8835fd607eebe52da25589a186533a65a5"
+        },
+        "maximum_recorded_relative_difference": 1.1072651812353402e-15,
+        "mutation_check": {
+          "relative_error": 1.999996000008e-06,
+          "selected_policy_rejects": true
+        }
+      }
+    },
+    "wp4": {
+      "included": false,
+      "availability": "analysis not supplied"
+    },
+    "wp5": {
+      "included": false,
+      "availability": "analysis not supplied"
+    },
+    "wp6": {
+      "included": false,
+      "availability": "analysis not supplied"
+    }
+  },
+  "replay": "python scripts/summarize_extension_results.py --wp1 benchmarks/matched_runtime_2026-10-14 --output docs/extension_numbers.json --wp3 benchmarks/stage2_policy_2026-10-14/analysis.json"
+}

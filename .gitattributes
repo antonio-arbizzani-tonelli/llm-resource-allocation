@@ -1,6 +1,8 @@
 * text=auto
 .gitignore text eol=lf
 .gitattributes text eol=lf
+CITATION.cff text eol=lf
+LICENSE text eol=lf
 *.py text eol=lf
 *.ps1 text eol=lf
 *.md text eol=lf

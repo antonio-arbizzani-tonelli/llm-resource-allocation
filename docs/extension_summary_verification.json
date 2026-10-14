@@ -1,0 +1,31 @@
+{
+  "classification": "unmeasured postprocessing verification; no allocation solve executed",
+  "wsl_generation_python": "3.13.16",
+  "windows_replay_python": "3.14.3",
+  "windows_platform": "Windows-11-10.0.26200-SP0",
+  "windows_postprocessing_wall_seconds": 25.42912799998885,
+  "wsl_postprocessing_wall_seconds": null,
+  "wsl_elapsed_limitation": "Caller did not retain a reliable start timer; drvfs I/O stalls were observed.",
+  "portable_argv": [
+    "python",
+    "scripts/summarize_extension_results.py",
+    "--wp1",
+    "benchmarks/matched_runtime_2026-10-14",
+    "--output",
+    "docs/extension_numbers.json",
+    "--wp3",
+    "benchmarks/stage2_policy_2026-10-14/analysis.json"
+  ],
+  "exit_code": 0,
+  "wp1_data_and_statistics_equal": true,
+  "whole_output_bytes_equal": false,
+  "wsl_output_sha256": "f9074cca2e1a4bd510b84d6e45ec5185c8d776da2f559df2e0d91929e81172d2",
+  "windows_output_sha256": "fd2770a2f2220f3510cb4bf262b10b098e5180551dade2dc6373354d70508d3d",
+  "source_snapshot_sha256": "10b741781c4c29bc9af0bdd66edaa6408060d8644b6d1297486d149653bea55d",
+  "verified_original_wp1_files": 1552,
+  "verified_accepted_samples": 480,
+  "stdout": "{\"output\": \"docs/extension_numbers.json\", \"wp1_verified_samples\": 480, \"supplemental_ratio_rows\": 24}",
+  "whole_json_value_equal": true,
+  "byte_difference_scope": "Platform newline encoding only: WSL LF versus Windows CRLF.",
+  "newline_normalized_output_sha256": "f9074cca2e1a4bd510b84d6e45ec5185c8d776da2f559df2e0d91929e81172d2"
+}

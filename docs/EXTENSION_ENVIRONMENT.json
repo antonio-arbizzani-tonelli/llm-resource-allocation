@@ -1,0 +1,50 @@
+{
+  "classification": "Observed local extension environment; limitations are retained",
+  "observation_utc": "2026-10-14T02:50:29Z",
+  "host_processor": {
+    "source": "Windows Win32_Processor, read-only CIM query",
+    "name": "13th Gen Intel(R) Core(TM) i7-13620H",
+    "physical_cores": 10,
+    "logical_processors": 16,
+    "specified_performance_cores": 6,
+    "specified_efficient_cores": 4,
+    "specification_source": "https://www.intel.com/content/www/us/en/products/sku/232130/intel-core-i713620h-processor-24m-cache-up-to-4-90-ghz/specifications.html",
+    "specification_scope": "Vendor hardware specification; no physical-to-guest affinity mapping was observed",
+    "reported_max_clock_speed_mhz": 2400,
+    "clock_scope": "Firmware/CIM metadata, not a measured runtime or turbo frequency"
+  },
+  "guest": {
+    "kernel": "Linux 6.6.87.2-microsoft-standard-WSL2 x86_64 GNU/Linux",
+    "distribution": "Ubuntu",
+    "logical_cpus": 16,
+    "lscpu_cores": 8,
+    "lscpu_threads_per_core": 2,
+    "memory_total_kib": 7975104,
+    "topology_limit": "The virtual topology cannot identify physical P/E cores or physical SMT siblings"
+  },
+  "software": {
+    "python": "3.13.16",
+    "gcc": "13.3.0",
+    "pyomo": "6.10.0",
+    "highspy": "1.14.0",
+    "gurobipy": "13.0.3",
+    "matplotlib": "3.11.2"
+  },
+  "solver_selection": {
+    "new_campaign_backend": "HiGHS",
+    "gurobi_skipped": "WSL has only a restricted license; the available Windows academic license is incompatible with the WSL host"
+  },
+  "power": {
+    "host_plan": "Windows Balanced",
+    "observed_ac_line_status": 1,
+    "observed_battery_percent": 99,
+    "observation_policy": "Process-scoped sleep inhibition; AC/battery sampled every 30 seconds",
+    "governor": "unavailable in WSL sysfs",
+    "runtime_frequency": "unavailable in WSL sysfs",
+    "temperature_throttling": "unavailable in WSL sysfs"
+  },
+  "perf_stat": "executable unavailable in the measured WSL environment",
+  "closed_apps": "Not independently verified; no applications forcibly closed",
+  "interference_control": "One measured campaign at a time; builds, tests and other campaigns held during timing; normal desktop/background activity not controlled",
+  "scope": "Synthetic CPU allocation software; GPU latency and capacity are model coefficients"
+}
