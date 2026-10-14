@@ -1,0 +1,2074 @@
+{
+  "format_version": 1,
+  "prepared_utc": "2026-10-14T05:31:17.833604+00:00",
+  "cases": [
+    {
+      "name": "16x4x4_instance11_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance11_gh.json",
+      "numeric": "inputs/16x4x4_instance11_gh.txt",
+      "json_sha256": "4f7f4dc76d8fa333bea6176d5de14a66e756c2f28bced5181a91bfa8caa555f5",
+      "numeric_sha256": "05428750d3892dde66450c51f593b57c65e45ca2cd4f83e90b8fb39082d6192c"
+    },
+    {
+      "name": "16x4x4_instance11_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance11_agh.json",
+      "numeric": "inputs/16x4x4_instance11_agh.txt",
+      "json_sha256": "dc7032b07a150260907a2c286ca6d1269c93525c6fbf18172b19bc6c592337f3",
+      "numeric_sha256": "05428750d3892dde66450c51f593b57c65e45ca2cd4f83e90b8fb39082d6192c"
+    },
+    {
+      "name": "16x4x4_instance23_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance23_gh.json",
+      "numeric": "inputs/16x4x4_instance23_gh.txt",
+      "json_sha256": "3c5440480a972fb6cc7df8ed071cd39e8e8495c585bea1898a76fb5f01674ca1",
+      "numeric_sha256": "b7c6f4449cb0950cf1c30710daf9d118587fffc7b85152a8eb7634a3223d80a9"
+    },
+    {
+      "name": "16x4x4_instance23_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance23_agh.json",
+      "numeric": "inputs/16x4x4_instance23_agh.txt",
+      "json_sha256": "1e5ae7892433f6831361ab6dafbc60068746471403f2da4469ea246dacaba97e",
+      "numeric_sha256": "b7c6f4449cb0950cf1c30710daf9d118587fffc7b85152a8eb7634a3223d80a9"
+    },
+    {
+      "name": "16x4x4_instance37_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance37_gh.json",
+      "numeric": "inputs/16x4x4_instance37_gh.txt",
+      "json_sha256": "aa8d94271e40a619092beea33ad7a8a4276e52fb33c89c6fd18eaa893e372eea",
+      "numeric_sha256": "c3285443298a9055b65c77f808db64d74bfefa266b5d5d2cb2d7c5f364e93797"
+    },
+    {
+      "name": "16x4x4_instance37_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance37_agh.json",
+      "numeric": "inputs/16x4x4_instance37_agh.txt",
+      "json_sha256": "bb1b22496ffb2a13fef7a8d727973d3b52250eb548d76a8f35483d3eb5dfd01a",
+      "numeric_sha256": "c3285443298a9055b65c77f808db64d74bfefa266b5d5d2cb2d7c5f364e93797"
+    },
+    {
+      "name": "16x4x4_instance41_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance41_gh.json",
+      "numeric": "inputs/16x4x4_instance41_gh.txt",
+      "json_sha256": "df71a9b76b26e9d8a0ed8d789d0de1257bbbe6dea2d350edbc2c39975bfad099",
+      "numeric_sha256": "6aace51176db6004b003e531ef639d1bd5c729b26314004e7bcafbafcb6427ab"
+    },
+    {
+      "name": "16x4x4_instance41_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance41_agh.json",
+      "numeric": "inputs/16x4x4_instance41_agh.txt",
+      "json_sha256": "93b444bb787b942fa30fdb8d73b26af3ca8ad1b92b0b6a22313a1fec7c7c2b14",
+      "numeric_sha256": "6aace51176db6004b003e531ef639d1bd5c729b26314004e7bcafbafcb6427ab"
+    },
+    {
+      "name": "16x4x4_instance53_gh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance53_gh.json",
+      "numeric": "inputs/16x4x4_instance53_gh.txt",
+      "json_sha256": "5d28aaad51b87349ba89b197a8aead06acca45a1555e4b2490c863a6a6d0689b",
+      "numeric_sha256": "48cc9dd0165490d1fe8bf855fe944626089a8b52c8f1405844d101d7a345628c"
+    },
+    {
+      "name": "16x4x4_instance53_agh",
+      "shape": [
+        16,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/16x4x4_instance53_agh.json",
+      "numeric": "inputs/16x4x4_instance53_agh.txt",
+      "json_sha256": "7f9b22d7d9b8d9ffd71764199a39dc474a708a418a7d3480e0b709e202f1055b",
+      "numeric_sha256": "48cc9dd0165490d1fe8bf855fe944626089a8b52c8f1405844d101d7a345628c"
+    },
+    {
+      "name": "32x4x4_instance11_gh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance11_gh.json",
+      "numeric": "inputs/32x4x4_instance11_gh.txt",
+      "json_sha256": "60333378f3bd7af49bb378185ca0eec12b0d386e42899d8c4fb3f1c888671606",
+      "numeric_sha256": "2cf1e0250aeabaa1c0743e799e2567ea624e3a95ef4f6c178f99eb3b8d048694"
+    },
+    {
+      "name": "32x4x4_instance11_agh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance11_agh.json",
+      "numeric": "inputs/32x4x4_instance11_agh.txt",
+      "json_sha256": "4e7110d2605d8afa9c4702bb05d1846c9b3d6fced484bb91ee3144bce4b5eb28",
+      "numeric_sha256": "2cf1e0250aeabaa1c0743e799e2567ea624e3a95ef4f6c178f99eb3b8d048694"
+    },
+    {
+      "name": "32x4x4_instance23_gh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance23_gh.json",
+      "numeric": "inputs/32x4x4_instance23_gh.txt",
+      "json_sha256": "a7c20e9b13cbdceb27f4178bce6a2e0b58549fbbeb484b8ce5a51c3f46ff6451",
+      "numeric_sha256": "0cd3379b32434b062aaf6f29e360743c141d8139c243090ed04a963cc9e536ec"
+    },
+    {
+      "name": "32x4x4_instance23_agh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance23_agh.json",
+      "numeric": "inputs/32x4x4_instance23_agh.txt",
+      "json_sha256": "980baab4e7ba8ee46af154c77785e6a58a43a166bab92bdba00098e58f4d65da",
+      "numeric_sha256": "0cd3379b32434b062aaf6f29e360743c141d8139c243090ed04a963cc9e536ec"
+    },
+    {
+      "name": "32x4x4_instance37_gh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance37_gh.json",
+      "numeric": "inputs/32x4x4_instance37_gh.txt",
+      "json_sha256": "566e072dfb8526fa367de3390fdb3d20d26c20ed6a50ae2432f843b55fe9a19a",
+      "numeric_sha256": "6800be99b287082fbdfcfc3da3cc923a3068b2729bda0ee2903a322668c1c1fe"
+    },
+    {
+      "name": "32x4x4_instance37_agh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance37_agh.json",
+      "numeric": "inputs/32x4x4_instance37_agh.txt",
+      "json_sha256": "0e8f65e4ca138e3a0334fc97e8d553396328be7f3b8919f24d329d0e33ce62c5",
+      "numeric_sha256": "6800be99b287082fbdfcfc3da3cc923a3068b2729bda0ee2903a322668c1c1fe"
+    },
+    {
+      "name": "32x4x4_instance41_gh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance41_gh.json",
+      "numeric": "inputs/32x4x4_instance41_gh.txt",
+      "json_sha256": "3a8237293187c6f338fc0f34ffae7f6e32300a0e721a1ae51a8557942e62ba8b",
+      "numeric_sha256": "501e4a59941dbbb892bbf347e310dab35097fcd31da6f8d2a09564ea3b4c9613"
+    },
+    {
+      "name": "32x4x4_instance41_agh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance41_agh.json",
+      "numeric": "inputs/32x4x4_instance41_agh.txt",
+      "json_sha256": "74f07b33291a03346018cbbffb53e15c3b4719cdd0089dfe1d290f7ac1bdd41b",
+      "numeric_sha256": "501e4a59941dbbb892bbf347e310dab35097fcd31da6f8d2a09564ea3b4c9613"
+    },
+    {
+      "name": "32x4x4_instance53_gh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance53_gh.json",
+      "numeric": "inputs/32x4x4_instance53_gh.txt",
+      "json_sha256": "bf6de75e76555252d7a71fd0afea19f563399da3c36d315141c21a338c112354",
+      "numeric_sha256": "10f02938d3a1e4337758df7ca1e9c56301c5785f405806620e7f6a81f2f7ceaa"
+    },
+    {
+      "name": "32x4x4_instance53_agh",
+      "shape": [
+        32,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/32x4x4_instance53_agh.json",
+      "numeric": "inputs/32x4x4_instance53_agh.txt",
+      "json_sha256": "7065edd2e309b2e71cc8cb7131e8bc04e31107dc2b318af241472ca92dce0b95",
+      "numeric_sha256": "10f02938d3a1e4337758df7ca1e9c56301c5785f405806620e7f6a81f2f7ceaa"
+    },
+    {
+      "name": "64x4x4_instance11_gh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance11_gh.json",
+      "numeric": "inputs/64x4x4_instance11_gh.txt",
+      "json_sha256": "2c09374d71005a30857e64847dbd2984757113c4604d1e494937e765e9a047a3",
+      "numeric_sha256": "d30b395b32f7861411407d50bf6fc745156465a98f61efeca6216f682de0788c"
+    },
+    {
+      "name": "64x4x4_instance11_agh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance11_agh.json",
+      "numeric": "inputs/64x4x4_instance11_agh.txt",
+      "json_sha256": "b8a8ae3a3a28c546147874721086372b5f30c519f7d88592cb465f9eb999b33f",
+      "numeric_sha256": "d30b395b32f7861411407d50bf6fc745156465a98f61efeca6216f682de0788c"
+    },
+    {
+      "name": "64x4x4_instance23_gh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance23_gh.json",
+      "numeric": "inputs/64x4x4_instance23_gh.txt",
+      "json_sha256": "77bfeba699c7e2ed248efb86778bbfb8939e9068eb5cdd2dde70fc5b0c869b82",
+      "numeric_sha256": "1b22aece285e89cb228f0d9a381b4ceaa41f46e1fcd1055df9b0c374de6d5920"
+    },
+    {
+      "name": "64x4x4_instance23_agh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance23_agh.json",
+      "numeric": "inputs/64x4x4_instance23_agh.txt",
+      "json_sha256": "eeb97dced367feccbc95f23cfc1ebc353575fbe6f5ea20132aeaa53eea6cba8b",
+      "numeric_sha256": "1b22aece285e89cb228f0d9a381b4ceaa41f46e1fcd1055df9b0c374de6d5920"
+    },
+    {
+      "name": "64x4x4_instance37_gh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance37_gh.json",
+      "numeric": "inputs/64x4x4_instance37_gh.txt",
+      "json_sha256": "e254531c40788862de0d1ddf0d0061ffb63ee57e31f53dd603667f7d9b15291f",
+      "numeric_sha256": "83b190ae0ab7dde9c30ce48fd4d27cc566ed37d90a45d117714910294c99abba"
+    },
+    {
+      "name": "64x4x4_instance37_agh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance37_agh.json",
+      "numeric": "inputs/64x4x4_instance37_agh.txt",
+      "json_sha256": "dff3d46c359051e13e081a888a286dece7f1bf93b717168a845828dfbeba0731",
+      "numeric_sha256": "83b190ae0ab7dde9c30ce48fd4d27cc566ed37d90a45d117714910294c99abba"
+    },
+    {
+      "name": "64x4x4_instance41_gh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance41_gh.json",
+      "numeric": "inputs/64x4x4_instance41_gh.txt",
+      "json_sha256": "f199c1a753640e0fca998a27fb3351da8bee94acb48c18ad65e9304d6f8278fe",
+      "numeric_sha256": "e6f9a160083188e7d214c18b58f917a5c34d1c0dfa5788686eb619014906ebeb"
+    },
+    {
+      "name": "64x4x4_instance41_agh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance41_agh.json",
+      "numeric": "inputs/64x4x4_instance41_agh.txt",
+      "json_sha256": "8786a0f8cdd35af3f8c1dbdc4c032a12a09c6d2451aa39390c53ae3764fa3c0e",
+      "numeric_sha256": "e6f9a160083188e7d214c18b58f917a5c34d1c0dfa5788686eb619014906ebeb"
+    },
+    {
+      "name": "64x4x4_instance53_gh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance53_gh.json",
+      "numeric": "inputs/64x4x4_instance53_gh.txt",
+      "json_sha256": "9e949a83c779d86272ff9b0d2b75a70d4331122cc76aefb8f8390b49203aff43",
+      "numeric_sha256": "8e72742854b878e57d958fefee349e9a10c148d043426740b8de9bfdfee35f97"
+    },
+    {
+      "name": "64x4x4_instance53_agh",
+      "shape": [
+        64,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query",
+        "menu"
+      ],
+      "json": "inputs/64x4x4_instance53_agh.json",
+      "numeric": "inputs/64x4x4_instance53_agh.txt",
+      "json_sha256": "5048ca04ffbfdd18359e9c7e4922547263793657060b1a317697ebff94559d06",
+      "numeric_sha256": "8e72742854b878e57d958fefee349e9a10c148d043426740b8de9bfdfee35f97"
+    },
+    {
+      "name": "128x4x4_instance11_gh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance11_gh.json",
+      "numeric": "inputs/128x4x4_instance11_gh.txt",
+      "json_sha256": "53c88bf0808c77eb192b1c379d6a30d1ae079f9a95050435d24793a90de24951",
+      "numeric_sha256": "c2c04f0334304f182c5113443921a202d06d98cf7c8e34181b181201fc3ad68f"
+    },
+    {
+      "name": "128x4x4_instance11_agh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance11_agh.json",
+      "numeric": "inputs/128x4x4_instance11_agh.txt",
+      "json_sha256": "a3883c9e737793759c61f4b17033881594dff346432ca5ce827d63c18f77cf11",
+      "numeric_sha256": "c2c04f0334304f182c5113443921a202d06d98cf7c8e34181b181201fc3ad68f"
+    },
+    {
+      "name": "128x4x4_instance23_gh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance23_gh.json",
+      "numeric": "inputs/128x4x4_instance23_gh.txt",
+      "json_sha256": "42c4a2e738174dafe494dec43638f546b265ea3fc6fd56f3a5d70cb5e2fc8ff4",
+      "numeric_sha256": "c72551a2ed1cba6895762e80509f168b2a666c93202d81bbe0015a7197fe9a55"
+    },
+    {
+      "name": "128x4x4_instance23_agh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance23_agh.json",
+      "numeric": "inputs/128x4x4_instance23_agh.txt",
+      "json_sha256": "9a362cb0101b3553f669ff350fcd21a5917bc28ad62e72fb6d471e79659345be",
+      "numeric_sha256": "c72551a2ed1cba6895762e80509f168b2a666c93202d81bbe0015a7197fe9a55"
+    },
+    {
+      "name": "128x4x4_instance37_gh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance37_gh.json",
+      "numeric": "inputs/128x4x4_instance37_gh.txt",
+      "json_sha256": "c11578a71d868d44ea39ecf3f3999632edd22547becbc316fd2c079225898b0a",
+      "numeric_sha256": "df890b7e6d90df43d64991338f80bd838c091db9446b2937f9dd279d3dca7b80"
+    },
+    {
+      "name": "128x4x4_instance37_agh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance37_agh.json",
+      "numeric": "inputs/128x4x4_instance37_agh.txt",
+      "json_sha256": "42612558e431632b5717cb937db21a7103740dd1065f24dbb46f7db9df1f589e",
+      "numeric_sha256": "df890b7e6d90df43d64991338f80bd838c091db9446b2937f9dd279d3dca7b80"
+    },
+    {
+      "name": "128x4x4_instance41_gh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance41_gh.json",
+      "numeric": "inputs/128x4x4_instance41_gh.txt",
+      "json_sha256": "7c0abb224ff3a38d5de2c046eeaeaa8fe8abb7cce7dc1735bf2cec46f053f70b",
+      "numeric_sha256": "8fcc827e03dfadee8caf2f751f2165775307dcc21ff1ad26ceea9f23b5f320b1"
+    },
+    {
+      "name": "128x4x4_instance41_agh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance41_agh.json",
+      "numeric": "inputs/128x4x4_instance41_agh.txt",
+      "json_sha256": "998903f0df399be9937fab44e8ac092686350579653d837e96038e9ac84388aa",
+      "numeric_sha256": "8fcc827e03dfadee8caf2f751f2165775307dcc21ff1ad26ceea9f23b5f320b1"
+    },
+    {
+      "name": "128x4x4_instance53_gh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance53_gh.json",
+      "numeric": "inputs/128x4x4_instance53_gh.txt",
+      "json_sha256": "3ef48a96dbccc088787c0292ccfdeb766bad578754d653afbdb64ae2b52bd06c",
+      "numeric_sha256": "c4d44a6d40ec8bb7e6dad8276bb578b0d42185e5cf4b0bfba081c43e61537980"
+    },
+    {
+      "name": "128x4x4_instance53_agh",
+      "shape": [
+        128,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/128x4x4_instance53_agh.json",
+      "numeric": "inputs/128x4x4_instance53_agh.txt",
+      "json_sha256": "e21f4dd9b8fbb822c22c87a15a715457d1e5345067455d42994a16cbb519a0cd",
+      "numeric_sha256": "c4d44a6d40ec8bb7e6dad8276bb578b0d42185e5cf4b0bfba081c43e61537980"
+    },
+    {
+      "name": "256x4x4_instance11_gh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance11_gh.json",
+      "numeric": "inputs/256x4x4_instance11_gh.txt",
+      "json_sha256": "92328e70fe3e6db285eb4bf028f8d3fd21f8ca8bc8fbf2be1c00ab4ca28fa8a1",
+      "numeric_sha256": "22b0e991b5659707640cc42611b53a02acee0292284a2bfd6b2ed831a44a2d81"
+    },
+    {
+      "name": "256x4x4_instance11_agh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance11_agh.json",
+      "numeric": "inputs/256x4x4_instance11_agh.txt",
+      "json_sha256": "54d4f245896ffc3a8293a536e9e47d64ec9f1a53e822c35034407ba7a3b83b4e",
+      "numeric_sha256": "22b0e991b5659707640cc42611b53a02acee0292284a2bfd6b2ed831a44a2d81"
+    },
+    {
+      "name": "256x4x4_instance23_gh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance23_gh.json",
+      "numeric": "inputs/256x4x4_instance23_gh.txt",
+      "json_sha256": "4e919599a9fb233384bfb77b00ff04bf01a3882820684a14d50465e97595c5df",
+      "numeric_sha256": "d5903b90baabc7406f3a436b92b55bbc6d1fb554e3c4c07970f37fe7586354bb"
+    },
+    {
+      "name": "256x4x4_instance23_agh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance23_agh.json",
+      "numeric": "inputs/256x4x4_instance23_agh.txt",
+      "json_sha256": "9f3d0db126f38e963d714bebe35865f64281328712fce3f83fc2d8d4ecae28bd",
+      "numeric_sha256": "d5903b90baabc7406f3a436b92b55bbc6d1fb554e3c4c07970f37fe7586354bb"
+    },
+    {
+      "name": "256x4x4_instance37_gh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance37_gh.json",
+      "numeric": "inputs/256x4x4_instance37_gh.txt",
+      "json_sha256": "d3dd29d8e812af359502004e3fe3dd9bec90ce709bd18c1a9b7eb996c03cbcde",
+      "numeric_sha256": "035ed4570cc0d8ff97c9e7f721cdac0e7ff8d98e4e6432de6b27edcc0a7e5a46"
+    },
+    {
+      "name": "256x4x4_instance37_agh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance37_agh.json",
+      "numeric": "inputs/256x4x4_instance37_agh.txt",
+      "json_sha256": "d567f1a3d0b42d62bb81b84b9d13b489d0829bb6f79f638a6160b4f22942046a",
+      "numeric_sha256": "035ed4570cc0d8ff97c9e7f721cdac0e7ff8d98e4e6432de6b27edcc0a7e5a46"
+    },
+    {
+      "name": "256x4x4_instance41_gh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance41_gh.json",
+      "numeric": "inputs/256x4x4_instance41_gh.txt",
+      "json_sha256": "6919441622c6ec12a57ba9fba07f38253cdf4bc3689061cc74b26f493692f623",
+      "numeric_sha256": "f5ed3fc4f9e0e1bdbc03fcffe963d813283e3ef5da82bddd4f0ce1bf29770bd5"
+    },
+    {
+      "name": "256x4x4_instance41_agh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance41_agh.json",
+      "numeric": "inputs/256x4x4_instance41_agh.txt",
+      "json_sha256": "bc63be5043f9563a453ac1a5145717cb474aa5fb4bc4fef965bf7de671e2542b",
+      "numeric_sha256": "f5ed3fc4f9e0e1bdbc03fcffe963d813283e3ef5da82bddd4f0ce1bf29770bd5"
+    },
+    {
+      "name": "256x4x4_instance53_gh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance53_gh.json",
+      "numeric": "inputs/256x4x4_instance53_gh.txt",
+      "json_sha256": "bed302da7aa67a266451cc7b3e5296eab476ec16d38527aadaeee77b899a142a",
+      "numeric_sha256": "717fe11fbd3937965b3345b5d7cf4fc69403846ba6c73aae20ab87cd2d04c23e"
+    },
+    {
+      "name": "256x4x4_instance53_agh",
+      "shape": [
+        256,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/256x4x4_instance53_agh.json",
+      "numeric": "inputs/256x4x4_instance53_agh.txt",
+      "json_sha256": "e06effbc72bcbdda4c07014e06f78183928841af577800d16bd2f52e5d1f8370",
+      "numeric_sha256": "717fe11fbd3937965b3345b5d7cf4fc69403846ba6c73aae20ab87cd2d04c23e"
+    },
+    {
+      "name": "384x4x4_instance11_gh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance11_gh.json",
+      "numeric": "inputs/384x4x4_instance11_gh.txt",
+      "json_sha256": "8577795e388a2c46c9516446d782f835b01eccda21ede851f7e2ba41aab16038",
+      "numeric_sha256": "3520a8a1a5c67118a85af4961486fde35702ee0557d015b03d6d5364e1170c3a"
+    },
+    {
+      "name": "384x4x4_instance11_agh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance11_agh.json",
+      "numeric": "inputs/384x4x4_instance11_agh.txt",
+      "json_sha256": "0c68ce4baa7f4fc647c97cacbb2e1059544a1a55ea6ab7ee7cb4a4e2c47ec473",
+      "numeric_sha256": "3520a8a1a5c67118a85af4961486fde35702ee0557d015b03d6d5364e1170c3a"
+    },
+    {
+      "name": "384x4x4_instance23_gh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance23_gh.json",
+      "numeric": "inputs/384x4x4_instance23_gh.txt",
+      "json_sha256": "da233b22b344429ea28f964bfdcf372d6dc68ca4ca131c069470292e3bd684f7",
+      "numeric_sha256": "4432b36db4683014b0d684fb20d991092b62fa4232fcfc195f38b8280a559365"
+    },
+    {
+      "name": "384x4x4_instance23_agh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance23_agh.json",
+      "numeric": "inputs/384x4x4_instance23_agh.txt",
+      "json_sha256": "6d7518e4e90db927e2322381af3cbeceb7b0699b98f3b143e0dba91811d8a971",
+      "numeric_sha256": "4432b36db4683014b0d684fb20d991092b62fa4232fcfc195f38b8280a559365"
+    },
+    {
+      "name": "384x4x4_instance37_gh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance37_gh.json",
+      "numeric": "inputs/384x4x4_instance37_gh.txt",
+      "json_sha256": "622cbd1d7d3bee7cbea7e81b7f28fc4ac1f9d19d21582f6f0341acbd5a564b33",
+      "numeric_sha256": "f5b03e971948b339c5044c1f750c6b0c4155ab4c9285aff7397baf7f8e05e044"
+    },
+    {
+      "name": "384x4x4_instance37_agh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance37_agh.json",
+      "numeric": "inputs/384x4x4_instance37_agh.txt",
+      "json_sha256": "f8f6e9724c62e6ad35a006ba8fdcfb9e1f381de2d1aa3f71c022ba040f514f22",
+      "numeric_sha256": "f5b03e971948b339c5044c1f750c6b0c4155ab4c9285aff7397baf7f8e05e044"
+    },
+    {
+      "name": "384x4x4_instance41_gh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance41_gh.json",
+      "numeric": "inputs/384x4x4_instance41_gh.txt",
+      "json_sha256": "bca53e2093c2f001e62608ecdee74f91ced6f4385b0c5e09067693a44329ad3b",
+      "numeric_sha256": "ef83bf1d8c606901c9e1bbc7f81489b7552caf87af1b4bcb01dbd79baa4d25e9"
+    },
+    {
+      "name": "384x4x4_instance41_agh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance41_agh.json",
+      "numeric": "inputs/384x4x4_instance41_agh.txt",
+      "json_sha256": "6f8cd0cebc2e68d79f8d7a6e54e230f998c19ea7637ac4b9107d8c5aeaf1909d",
+      "numeric_sha256": "ef83bf1d8c606901c9e1bbc7f81489b7552caf87af1b4bcb01dbd79baa4d25e9"
+    },
+    {
+      "name": "384x4x4_instance53_gh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance53_gh.json",
+      "numeric": "inputs/384x4x4_instance53_gh.txt",
+      "json_sha256": "691f325faf17b27eb05fd6085b03a9de2277b9ae5b0d083b15e6287f926cfc14",
+      "numeric_sha256": "3b8d80e7acea0b0362250494ca0ff012f238993287502e1fe31cc59950d640ba"
+    },
+    {
+      "name": "384x4x4_instance53_agh",
+      "shape": [
+        384,
+        4,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "query"
+      ],
+      "json": "inputs/384x4x4_instance53_agh.json",
+      "numeric": "inputs/384x4x4_instance53_agh.txt",
+      "json_sha256": "79574106d81473b18c90134d837f91f1f7ce7a1502226aafcaf21e4f4a97e355",
+      "numeric_sha256": "3b8d80e7acea0b0362250494ca0ff012f238993287502e1fe31cc59950d640ba"
+    },
+    {
+      "name": "64x8x4_instance11_gh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance11_gh.json",
+      "numeric": "inputs/64x8x4_instance11_gh.txt",
+      "json_sha256": "6a00e3eec7fb6349ead26c9e7becd0be52e078f4985e88f1701cce55fb02963f",
+      "numeric_sha256": "905aa3777f47adf2de57c5fca295db1d0d52b1582bc34c7623ef723346eb2512"
+    },
+    {
+      "name": "64x8x4_instance11_agh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance11_agh.json",
+      "numeric": "inputs/64x8x4_instance11_agh.txt",
+      "json_sha256": "e104beff9371dc9c6c507904610df6ba03570b992a07262246afa697e93bb41d",
+      "numeric_sha256": "905aa3777f47adf2de57c5fca295db1d0d52b1582bc34c7623ef723346eb2512"
+    },
+    {
+      "name": "64x8x4_instance23_gh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance23_gh.json",
+      "numeric": "inputs/64x8x4_instance23_gh.txt",
+      "json_sha256": "59ce6373c8258d310ecce3c9d96cf32e5ae49f7ad7ed351c35dc7a0c05e116fd",
+      "numeric_sha256": "f0d63d19f635242379c233fd0a3132b32361a9128588ffd366648f75d2da8688"
+    },
+    {
+      "name": "64x8x4_instance23_agh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance23_agh.json",
+      "numeric": "inputs/64x8x4_instance23_agh.txt",
+      "json_sha256": "811a9602858829509279542ab0e7ddb12aa4184d9aec33d57a352caa1a153f87",
+      "numeric_sha256": "f0d63d19f635242379c233fd0a3132b32361a9128588ffd366648f75d2da8688"
+    },
+    {
+      "name": "64x8x4_instance37_gh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance37_gh.json",
+      "numeric": "inputs/64x8x4_instance37_gh.txt",
+      "json_sha256": "18dda895550173ad60dfd1a0e130d68a2f1b58640f1db856d6eb3c46756c92dc",
+      "numeric_sha256": "12dd39f03eadf27e5bf6a287326c631f7a29a8d0a515f276995492ea087fcc58"
+    },
+    {
+      "name": "64x8x4_instance37_agh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance37_agh.json",
+      "numeric": "inputs/64x8x4_instance37_agh.txt",
+      "json_sha256": "97d83649ce0324d41f1f813a90560ced4c42a7f6fa733e4a14440f9fe2939204",
+      "numeric_sha256": "12dd39f03eadf27e5bf6a287326c631f7a29a8d0a515f276995492ea087fcc58"
+    },
+    {
+      "name": "64x8x4_instance41_gh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance41_gh.json",
+      "numeric": "inputs/64x8x4_instance41_gh.txt",
+      "json_sha256": "9a4d25bb8ec9b896be548efcaff06526c75117d9d50b7b4b35e84ad5cdf5960b",
+      "numeric_sha256": "264c3a122b1c41645918c4022fcb3f68a5d52a5005913a88d77bcc4d8267c67d"
+    },
+    {
+      "name": "64x8x4_instance41_agh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance41_agh.json",
+      "numeric": "inputs/64x8x4_instance41_agh.txt",
+      "json_sha256": "ab7b81d01f4392696eaa18dc95241eba1690f651063fc94ae34597422cdbd647",
+      "numeric_sha256": "264c3a122b1c41645918c4022fcb3f68a5d52a5005913a88d77bcc4d8267c67d"
+    },
+    {
+      "name": "64x8x4_instance53_gh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance53_gh.json",
+      "numeric": "inputs/64x8x4_instance53_gh.txt",
+      "json_sha256": "d74bb98fe568f3577ee0fd843bf5b127e79367cb1cbb0c09eaca1307245cf7b7",
+      "numeric_sha256": "c453771cdb189150818ecc084a13750780ffdfab858fc2ec420710b6ad7a790b"
+    },
+    {
+      "name": "64x8x4_instance53_agh",
+      "shape": [
+        64,
+        8,
+        4
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x4_instance53_agh.json",
+      "numeric": "inputs/64x8x4_instance53_agh.txt",
+      "json_sha256": "915d0b17864dd7f27c644bb6ca2433e03567bce2979de0dd16c2940b68746fad",
+      "numeric_sha256": "c453771cdb189150818ecc084a13750780ffdfab858fc2ec420710b6ad7a790b"
+    },
+    {
+      "name": "64x8x8_instance11_gh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance11_gh.json",
+      "numeric": "inputs/64x8x8_instance11_gh.txt",
+      "json_sha256": "30f5fc0e0fb3c4c469a60d7b0f18a3620cb0b9a2c18c548a0797428b26a6d29d",
+      "numeric_sha256": "6c838fd148348b5ead15ca9d26d07686b44fb1fc7ab1c69984415ecf1d971950"
+    },
+    {
+      "name": "64x8x8_instance11_agh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance11_agh.json",
+      "numeric": "inputs/64x8x8_instance11_agh.txt",
+      "json_sha256": "2db18ea525e2d24d616249692a1d5fb00f8735a8a61e421e9151b033ce7fa0f9",
+      "numeric_sha256": "6c838fd148348b5ead15ca9d26d07686b44fb1fc7ab1c69984415ecf1d971950"
+    },
+    {
+      "name": "64x8x8_instance23_gh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance23_gh.json",
+      "numeric": "inputs/64x8x8_instance23_gh.txt",
+      "json_sha256": "25beb677c27c0ff3e906f5cb24d12de6373f0ce247abe508ac3aa26e81e061d9",
+      "numeric_sha256": "454d8aaa58a8aac1eb93fe1ca4f79bc946308cda1b6e7b3ed38a8bafa2c8a9c0"
+    },
+    {
+      "name": "64x8x8_instance23_agh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance23_agh.json",
+      "numeric": "inputs/64x8x8_instance23_agh.txt",
+      "json_sha256": "9faf38f029fbfb71b81ba6b0f45f4e3e7a07aaa236634130b1f34917f4016cfa",
+      "numeric_sha256": "454d8aaa58a8aac1eb93fe1ca4f79bc946308cda1b6e7b3ed38a8bafa2c8a9c0"
+    },
+    {
+      "name": "64x8x8_instance37_gh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance37_gh.json",
+      "numeric": "inputs/64x8x8_instance37_gh.txt",
+      "json_sha256": "02bdd47bda18670a47fbc0d7be14445eeb430af0df11910ceabcc2cc08573627",
+      "numeric_sha256": "94c51818565c614351c4968d8c0839d4676faa0abe7ff1dbdd90a6b358df5862"
+    },
+    {
+      "name": "64x8x8_instance37_agh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance37_agh.json",
+      "numeric": "inputs/64x8x8_instance37_agh.txt",
+      "json_sha256": "cdde697f07e1bc92ebf15f5131758bd153f3bf205931afca24e35fe18b3c5b9d",
+      "numeric_sha256": "94c51818565c614351c4968d8c0839d4676faa0abe7ff1dbdd90a6b358df5862"
+    },
+    {
+      "name": "64x8x8_instance41_gh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance41_gh.json",
+      "numeric": "inputs/64x8x8_instance41_gh.txt",
+      "json_sha256": "380fa06934e8149833038c346734c8a962041e4c195b37587733eb741472bf1c",
+      "numeric_sha256": "0bcdfde106e18f72a5548d96da5c92bf8e0ea01c8eb545b68aa035ae4475679b"
+    },
+    {
+      "name": "64x8x8_instance41_agh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance41_agh.json",
+      "numeric": "inputs/64x8x8_instance41_agh.txt",
+      "json_sha256": "e0d67d138d028c9fff3e6ab6844329dc72e4e3447e58192441245ec6da5231ff",
+      "numeric_sha256": "0bcdfde106e18f72a5548d96da5c92bf8e0ea01c8eb545b68aa035ae4475679b"
+    },
+    {
+      "name": "64x8x8_instance53_gh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance53_gh.json",
+      "numeric": "inputs/64x8x8_instance53_gh.txt",
+      "json_sha256": "603c5f05085477693aa5db96288e0d06455697cc6d01591e1efec7efcc188fc1",
+      "numeric_sha256": "8d70717683d7d50fa0dd970d97c345d0db7b991a3c777e26b2a0ac2d568880c4"
+    },
+    {
+      "name": "64x8x8_instance53_agh",
+      "shape": [
+        64,
+        8,
+        8
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x8x8_instance53_agh.json",
+      "numeric": "inputs/64x8x8_instance53_agh.txt",
+      "json_sha256": "1ff90ff44d67fc8360bdc65d568459a40e3ff568c04a3e594b2911526055f715",
+      "numeric_sha256": "8d70717683d7d50fa0dd970d97c345d0db7b991a3c777e26b2a0ac2d568880c4"
+    },
+    {
+      "name": "64x12x12_instance11_gh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance11_gh.json",
+      "numeric": "inputs/64x12x12_instance11_gh.txt",
+      "json_sha256": "f23a6f6710826663bb0c602d0d93871c62c6d4b3a6747aaae895654a0a1b0a1c",
+      "numeric_sha256": "f02f28cfb384321cfabc8a0f534d45cfed7b2061bbe86774ec0ed780787ac4cc"
+    },
+    {
+      "name": "64x12x12_instance11_agh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 11,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance11_agh.json",
+      "numeric": "inputs/64x12x12_instance11_agh.txt",
+      "json_sha256": "19ce4b56e74f49a80db1cd991d98183b9d5b26363fe54a34a43feec7a3ccdc86",
+      "numeric_sha256": "f02f28cfb384321cfabc8a0f534d45cfed7b2061bbe86774ec0ed780787ac4cc"
+    },
+    {
+      "name": "64x12x12_instance23_gh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance23_gh.json",
+      "numeric": "inputs/64x12x12_instance23_gh.txt",
+      "json_sha256": "4cbd248fccada8f64c1bfa13113f84536c8dc3ebd5defbfc8f90a44175bccfef",
+      "numeric_sha256": "2c7739092fac505df7219abf6f8bc32ff7990c9285bb85d76bdab64f14ad13f7"
+    },
+    {
+      "name": "64x12x12_instance23_agh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 23,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance23_agh.json",
+      "numeric": "inputs/64x12x12_instance23_agh.txt",
+      "json_sha256": "82826549b34796c3ca2ec0e846a42e4cf48e03b2feb8469c74f3c79f05324ba0",
+      "numeric_sha256": "2c7739092fac505df7219abf6f8bc32ff7990c9285bb85d76bdab64f14ad13f7"
+    },
+    {
+      "name": "64x12x12_instance37_gh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance37_gh.json",
+      "numeric": "inputs/64x12x12_instance37_gh.txt",
+      "json_sha256": "16306ca9c727d22318c513e233564c9aeecfa90a623c88bb60caa6d91e533829",
+      "numeric_sha256": "9fb7abba617bcadef40f25c5e57e0a21df9c1eeba21dc9c2420f770935d0bd9e"
+    },
+    {
+      "name": "64x12x12_instance37_agh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 37,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance37_agh.json",
+      "numeric": "inputs/64x12x12_instance37_agh.txt",
+      "json_sha256": "f53eb309fbe10475b8b821dc646f28a005b18d1ec1a4e45003097fb23fd132f7",
+      "numeric_sha256": "9fb7abba617bcadef40f25c5e57e0a21df9c1eeba21dc9c2420f770935d0bd9e"
+    },
+    {
+      "name": "64x12x12_instance41_gh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance41_gh.json",
+      "numeric": "inputs/64x12x12_instance41_gh.txt",
+      "json_sha256": "5f3ea9fa456967739b71ded6d0354dbf13b46618e6b01e5b2a4bb88b22dee726",
+      "numeric_sha256": "b809116e2c2fd5c8171a0fb0d5d5a9681ea90c9aab025be2530933c48e53adfd"
+    },
+    {
+      "name": "64x12x12_instance41_agh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 41,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance41_agh.json",
+      "numeric": "inputs/64x12x12_instance41_agh.txt",
+      "json_sha256": "54ddc3b6cf04374d1b3260efd88b8b58924f666437d3ff80e52a500ecea38ccf",
+      "numeric_sha256": "b809116e2c2fd5c8171a0fb0d5d5a9681ea90c9aab025be2530933c48e53adfd"
+    },
+    {
+      "name": "64x12x12_instance53_gh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "gh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance53_gh.json",
+      "numeric": "inputs/64x12x12_instance53_gh.txt",
+      "json_sha256": "71d532ee504e8ee31eb97af3d95070ff609156889ea0b10aebe0540d8a27335f",
+      "numeric_sha256": "72ce4bfa1fa2caa7efb8580eabec1b58a11a1c3d742cec20bfbed48ad7aaa56b"
+    },
+    {
+      "name": "64x12x12_instance53_agh",
+      "shape": [
+        64,
+        12,
+        12
+      ],
+      "instance_seed": 53,
+      "agh_seed": 37,
+      "load": 200.0,
+      "method": "agh",
+      "beta": 0.8,
+      "families": [
+        "menu"
+      ],
+      "json": "inputs/64x12x12_instance53_agh.json",
+      "numeric": "inputs/64x12x12_instance53_agh.txt",
+      "json_sha256": "7baec83a7054aba197d1373ad44114bf646b23fa6c4e9b5706abb79125af9acf",
+      "numeric_sha256": "72ce4bfa1fa2caa7efb8580eabec1b58a11a1c3d742cec20bfbed48ad7aaa56b"
+    }
+  ],
+  "binary": "cpp/build/release/pacs_matched_runtime",
+  "fingerprints": {
+    "source_sha256": {
+      "src/llm_resource_allocation/__init__.py": "64f2cbc50ed57b5ff70657006f1c77ced84748747ac2b3664bfc6cafadcda312",
+      "src/llm_resource_allocation/algorithms/__init__.py": "c38ffe3c42ec76b2696955bf166eb4d44e7282c8a6b0428190a1032e8f6615d2",
+      "src/llm_resource_allocation/algorithms/_agh_placement_ops.py": "83f46cb2e21f0a79335b096e514ee121cdfa6b9b4df65e428bed40bd7e4e3337",
+      "src/llm_resource_allocation/algorithms/_mechanism_support.py": "d74faccb98c819e145c9b41444fa794be3e13e4fb305a76f70ff07e34cb05cf8",
+      "src/llm_resource_allocation/algorithms/agh.py": "e7dd06d962e52e3633f5c5a6f815313665d2a8fabf26f1f636a2f3627f1a8c45",
+      "src/llm_resource_allocation/algorithms/agh_consolidation.py": "bf4a905a8c6609eb24312acfaa752c0bfcf3abff2f31e157df86ae9c78a9a3da",
+      "src/llm_resource_allocation/algorithms/agh_multistart.py": "ed4fee858dc934dac8ee35e9f883ff922404f5fa2459ce45cfea4e1d1c21663b",
+      "src/llm_resource_allocation/algorithms/agh_ordering.py": "8cae4035bdd94f4ef0e20c114a4f2c4db7c98072ad018df094083b86d15b517b",
+      "src/llm_resource_allocation/algorithms/agh_relocate.py": "168d3f4fbd80a80f57fdcb5de814acfe3e97fbccc62def0de498b46ba74bffa7",
+      "src/llm_resource_allocation/algorithms/agh_relocate_pass.py": "c3c41bd8464afc7886f9a14dfb63494c08c69bd9c046ccc1d425866f86e55c7c",
+      "src/llm_resource_allocation/algorithms/agh_start.py": "c08706d0e8303f6725abcb51e365c7525a6c0e9a6665a85b7cda4dbbb633bafd",
+      "src/llm_resource_allocation/algorithms/gh.py": "42325817950729e878c716ced49583a3a4481b76d1c017add411905fcd8452f6",
+      "src/llm_resource_allocation/algorithms/gh_phase1.py": "64ce05700729cbcc95801ffbe105cfb197f03752bb8106a7d0e460bdbb0619f8",
+      "src/llm_resource_allocation/algorithms/gh_phase2.py": "63d96574e63ae9978500c9763dd3dc60204f81f19336d188e9dd9ad98837e1ce",
+      "src/llm_resource_allocation/algorithms/gh_phase2_commit.py": "3c28ae958737d069382cd4c33376676afc65ec2394116e68c7cfe0de3243ea09",
+      "src/llm_resource_allocation/algorithms/gh_phase2_query.py": "e46b9c3fe0a31d3be05d8396b468f847b5a4ef04a6778775df4c447c96916005",
+      "src/llm_resource_allocation/algorithms/gh_phase2_run.py": "fc9f3b4d1bd2a19180d744b403fa639b7d7717f40873425f6962e47d50ced1e9",
+      "src/llm_resource_allocation/algorithms/m1.py": "dd1297c02544ada2645afb956bf0384fd33cb5f5d4008395233928ec43158475",
+      "src/llm_resource_allocation/algorithms/m2.py": "f6680772e413266ac4263c9f858e390530193cab0d56dc8b370359ab32e37918",
+      "src/llm_resource_allocation/algorithms/m3.py": "9c36d883fac9e37819b692acab159a1d99103a507d5136543bef36b3b3926fb6",
+      "src/llm_resource_allocation/algorithms/phase1.py": "a767254c129ed6b5fa274a1cc657cbf508f6262bed3d102d8b8de92e82bffcd7",
+      "src/llm_resource_allocation/data/__init__.py": "5d91dc15cda435303ed6ef6b4902d66a46434adc788ca03a00e6c722066378a8",
+      "src/llm_resource_allocation/data/azure_trace.py": "3a8c9c253fb71dc89b598a3d63e0b7aa6b67f5b8b828977b00f4bdaed92ed343",
+      "src/llm_resource_allocation/data/scaling_experiment_instances.py": "fd72f7422743f3fe6c1166ff4aa492474b2e88ba600bea923570926e12b49467",
+      "src/llm_resource_allocation/data/stage2_tiny_cases.py": "6ec352ca68552c73942439a4c994f243b97c8ab941fd54b43397efb62d393ad6",
+      "src/llm_resource_allocation/data/synthetic_benchmark_instances.py": "a8e37e70065ea9465c5df05e61cedaa39f962356eae10a1bd866be29573a6671",
+      "src/llm_resource_allocation/data/tiny_instances.py": "dc78688bc71eefd45475d84fdbd99b77ee3844a8479d3ebef472499d1f4e184c",
+      "src/llm_resource_allocation/domain/__init__.py": "27fa6becb7600a7473b924365eab6ef97b735e6a2dcc347a0aeddd219270c94e",
+      "src/llm_resource_allocation/domain/types.py": "dad32dbd56cc61546db67cee6e3e60407c381e515e34a3e59fefcd7eb8d549ec",
+      "src/llm_resource_allocation/domain/units.py": "8d438401aaed56d6de31e7775d58afd76617c4a153bad17fbaeed56e39eca3e8",
+      "src/llm_resource_allocation/domain/validation.py": "8222721e9289d3fa94ecbad34c2252f38afe2a5f530dc952e54fefbde434ab57",
+      "src/llm_resource_allocation/experiments/__init__.py": "059cf3e062e911cd669aae5699dfebdd88325d2eacefe8a79a1700dbe3049778",
+      "src/llm_resource_allocation/experiments/_record_serialization.py": "06ea0be580689243d7d6fe96b519a63845a5f7654b4141026373da7b673f8622",
+      "src/llm_resource_allocation/experiments/azure_replay.py": "deddb40659339444a801cbf0220c258a0bee43c2e8b28485f72c71a17e6129fb",
+      "src/llm_resource_allocation/experiments/bounded_experiment.py": "48813701536cc22bcb9331306305c8c481f4a9d4fd6cb27a0e75b7631c39b7d2",
+      "src/llm_resource_allocation/experiments/scenario_evaluation.py": "d5cdac4ebc773f709968f3cb2e6d0077e612e7bdd940fbca914041622ace4b3f",
+      "src/llm_resource_allocation/experiments/scenario_generation.py": "42b3e68dcdb4251bfc8b7c4fa3019a5c138a10fa75efefc0bb03fd10275fff1e",
+      "src/llm_resource_allocation/experiments/scenario_protocol.py": "2c7ca6d87414904c1a347c65d2a2f422cf92944e46611e1f316c4f590e0cd040",
+      "src/llm_resource_allocation/experiments/stress_grid.py": "127eaf12ec80fc2e8083e6789d663a398cbec861b407720c21820af7cad35449",
+      "src/llm_resource_allocation/experiments/synthetic_benchmark.py": "53e7a76ce8c7f904c2caa9ea685c79810d971ad64b62bbc98a65df58d9fcea40",
+      "src/llm_resource_allocation/experiments/version_comparison.py": "e9f6b8719bb325d5bcd598b23d188849d6f7f0319e8692c1e712c3edbfefcd01",
+      "src/llm_resource_allocation/math/__init__.py": "dde0a0f89b514fa96269662aeb216f1b8efaff0d839b8e0a0ad2feda76c3f72f",
+      "src/llm_resource_allocation/math/budget.py": "634f22578e6bca17cc5770c6e0203c24371d1ccdd99b1a486d553cf9e1bc24b8",
+      "src/llm_resource_allocation/math/compute_capacity.py": "0f14d8a5bf4f4a6bb2270bdb10e28cd30b8b417e7b7b1b5e05f0cf4d8715681c",
+      "src/llm_resource_allocation/math/error.py": "0c8e22caa34b3308347a7791e1d574c5ff044a1d270cdcfa5191022e37e85e63",
+      "src/llm_resource_allocation/math/error_slo.py": "61c5061e216ea1f9a45cabb5aa05cb6a8676c531cbff344dad4a6b9345271945",
+      "src/llm_resource_allocation/math/gpu_memory.py": "860e8042526720b2307c8822b24ed1e6a2eeca4c5c9dd08545d2f8a048e925d3",
+      "src/llm_resource_allocation/math/latency.py": "e9311bee9a1955f27a0c6c6388e80a891ba775ec7498f093609ce0a5012dc55a",
+      "src/llm_resource_allocation/math/mccormick.py": "a294729edaabce3edf4bc0363a4b57d7b14a7932fdde872f251fcf5b3368469b",
+      "src/llm_resource_allocation/math/objective.py": "9058e848a0829a308402ce8ba08bf273ab4af56da03f757aa1b9041be6ad7b16",
+      "src/llm_resource_allocation/math/parallelism.py": "de51669f6742ecea07a22875d5f5ef6ff3626e7ebffe7e3a925822e64702cde7",
+      "src/llm_resource_allocation/math/placement.py": "f1e081fd073b6abcc014eb489316943f642aa1054bf5cc4cd74abaa7ebb31810",
+      "src/llm_resource_allocation/math/processing_delay.py": "7e18bfc63f337dc93441c24b2401561c883a34eab11248b92f804cb3038f14b4",
+      "src/llm_resource_allocation/math/routing.py": "0d8a4eed90a5d0bdd33fbf4afa73f6dced499dd3afe7a0e4532c740718d3240b",
+      "src/llm_resource_allocation/math/storage_capacity.py": "70e478bc188b9c213e742eebc19e3758edc10075429a431df6969ef40715c9b6",
+      "src/llm_resource_allocation/optimization/__init__.py": "aa0d2c05983409b7c22807916a4fd1555038d458b9c8e09df6777ba58ee9066f",
+      "src/llm_resource_allocation/optimization/extraction.py": "25e7494003ae4a1beaf658b74fd4144cb2a89aee43c2c405fdb7e41316806254",
+      "src/llm_resource_allocation/optimization/pdm_run.py": "6ab143a27629d37f85f7a029447bb1f15cc72cd7c4fa2a8e21930b2cddec55f8",
+      "src/llm_resource_allocation/optimization/problem_data.py": "66b7c155cf2a0e39131c9c035ff8f7fd834c0c0a8122111fc0fbb0792ede1af8",
+      "src/llm_resource_allocation/optimization/pyomo_pdm.py": "3a753d69dd09f1fbd6097b4aa8bb0f8d209f51130280cb5b676e8677dfe87678",
+      "src/llm_resource_allocation/optimization/pyomo_stage2.py": "e3b8f295c73278550e5537d5ae4e336eeb94cb3a787dfbffda544f4fe5e1e8c7",
+      "src/llm_resource_allocation/optimization/solver.py": "c0f2362e67fa0266ca0d45d0842c21fa3cf3de259da47312d29d5c22b9f2d401",
+      "src/llm_resource_allocation/optimization/stage2_adapter.py": "5a979152d42c6d857c2507fd3fcf3f27d5d8a522ad0b95c538938438416fad33",
+      "src/llm_resource_allocation/optimization/stage2_extraction.py": "d777f25b9b6da65feb526ad4ed9f5a08e250bf1b442613a4848c16cbc15b76e3",
+      "src/llm_resource_allocation/optimization/stage2_integration.py": "978bcd658e5d0bfb4fd2b034617f309b63a376ffc354ef88b746d5ccb978c244",
+      "src/llm_resource_allocation/optimization/stage2_problem_data.py": "07c6a3a3e3b548214a707d6b9e7d55b4fba5ce0ed13627048ef88279f5cad7b7",
+      "src/llm_resource_allocation/optimization/stage2_run.py": "541540ba47c98281b1f513704c046c8835fd607eebe52da25589a186533a65a5",
+      "src/llm_resource_allocation/validation/__init__.py": "de636eeef55a735860b218269acfaf196b552b00c684a37a3128912692455ebb",
+      "src/llm_resource_allocation/validation/objective_comparison.py": "53d094a718263567840a2ab0c4e93983da4e0fe2e0373484b16f6587067bc39e",
+      "src/llm_resource_allocation/validation/placement.py": "fa9496a10aceaaa94035cacec33a9e4feae85078b24e23d2a509f80c4c5caa9c",
+      "src/llm_resource_allocation/validation/stage2.py": "9e65e9e6e2ca51372c5e2a3948ab6e640170a130f33aa46a6494d9f35e29e751",
+      "src/llm_resource_allocation/validation/tolerances.py": "9babdadb006920954d729a1b96bfd62677b880408cbba83661419ced655792b2",
+      "src/llm_resource_allocation/verification/__init__.py": "b786f218f203a2db1e11a555f894613c2c1c4be396ea590c6fe27a7a385e758b",
+      "src/llm_resource_allocation/verification/tiny_enumeration.py": "855b25d89e119df4ea4c9f18d492d10fbeac4fe4a2a5f68589efa9d63f39511f",
+      "cpp/include/pacs/agh.hpp": "47155bfa0d6230df01a61f13efbaa4fb904894a7406ca477558597fd5eb1727b",
+      "cpp/include/pacs/campaign.hpp": "1689b6646e158c640c3857717a7f315217bdf6da8fa612de0680a74671e03b7b",
+      "cpp/include/pacs/core.hpp": "12655d2a8de371a32718e99b9522ba910c2644227a0850cefe962a11ebb54f42",
+      "cpp/include/pacs/gh.hpp": "a4f3ef55c8304ea50b2da61878bf7e3438779157c3a99e01a494b8dd90be30b1",
+      "cpp/include/pacs/io.hpp": "81f54d9694ca2b2231fd5e1d96cd7b21e9766a9507e9219bf87a70bc057e54cf",
+      "cpp/src/agh.cpp": "0f36787a11f9178d998931b96dcb4ee3a5f6207e7d9960db2652b687bed1d6b9",
+      "cpp/src/campaign.cpp": "45eb23213fc66d0fc1b7a703fd04e495a0a0f866382f41c8bef3824daba44ce2",
+      "cpp/src/campaign_main.cpp": "3d78585535f6e3d38de86644da8c5de48a693356e263689b0bc2a66792ee2bfb",
+      "cpp/src/core.cpp": "d49d16ebbf0d725c64d876c36369bc1db77591d943ffd516c85f8b0b4edab036",
+      "cpp/src/gh.cpp": "1dd1529262c996584282770f94a810303bb23bd9af9ac9404c87207c04738e2e",
+      "cpp/src/io.cpp": "d2f61fddb4ee467559b86f1b82eab7b781b5fec190bcd6e9c08c618993043461",
+      "cpp/src/main.cpp": "e65abb48d7e41d5a456182d5f9ca2bc455c8f3c259774c7479e42cd10e0d6bd1",
+      "cpp/experiments/matched_runtime_main.cpp": "940765f5a06c5056a26b8a2f29e30522bffe2d1dba77dae8f066c92c0cd04982",
+      "scripts/check_cpp_parity.py": "194836b4986d5f7ceaa946b2dcc702065513d8c32433624f8d7e401f7a70d7d4",
+      "scripts/check_openmp_campaign.py": "802a1ed7f9e2a4660f1a65336c2cf08a50421d8ae959e78b583ae817e427c7f9",
+      "scripts/extension_statistics.py": "6d466a381223484794352010db2719903a50de70b61858d7fb0654bf6d3dd0a1",
+      "scripts/run_matched_runtime.py": "f9b15a6c5edc979e7505e36933f4d14129cba43d2cbc6edf455eac56cd327de5",
+      "scripts/extension_instances.py": "fe3ac7e799b4fbb6a857bbc22587b845f1abf7358493c8f0210021bd4a37d14b",
+      "scripts/run_instance_scaling.py": "21b5215ae3f799b466ab479d6eb67ca5681edf6d72d58c49ac1ea160ae4c133d"
+    },
+    "binary_sha256": "2b3183b153fb3f6bd612e820fa8c12963faec2c7cdd42c2ee765cf1621a6001b"
+  },
+  "assumption": "independent uniform [0.9,1.1] input factors; seeded_instance",
+  "plan_sha256": "420d2d066d048267c8d421fd3f2adf6881343386a269a9982984a05fdfca48a4",
+  "input_cohorts": {
+    "16x4x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "05428750d3892dde66450c51f593b57c65e45ca2cd4f83e90b8fb39082d6192c",
+        "23": "b7c6f4449cb0950cf1c30710daf9d118587fffc7b85152a8eb7634a3223d80a9",
+        "37": "c3285443298a9055b65c77f808db64d74bfefa266b5d5d2cb2d7c5f364e93797",
+        "41": "6aace51176db6004b003e531ef639d1bd5c729b26314004e7bcafbafcb6427ab",
+        "53": "48cc9dd0165490d1fe8bf855fe944626089a8b52c8f1405844d101d7a345628c"
+      }
+    },
+    "32x4x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "2cf1e0250aeabaa1c0743e799e2567ea624e3a95ef4f6c178f99eb3b8d048694",
+        "23": "0cd3379b32434b062aaf6f29e360743c141d8139c243090ed04a963cc9e536ec",
+        "37": "6800be99b287082fbdfcfc3da3cc923a3068b2729bda0ee2903a322668c1c1fe",
+        "41": "501e4a59941dbbb892bbf347e310dab35097fcd31da6f8d2a09564ea3b4c9613",
+        "53": "10f02938d3a1e4337758df7ca1e9c56301c5785f405806620e7f6a81f2f7ceaa"
+      }
+    },
+    "64x4x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "d30b395b32f7861411407d50bf6fc745156465a98f61efeca6216f682de0788c",
+        "23": "1b22aece285e89cb228f0d9a381b4ceaa41f46e1fcd1055df9b0c374de6d5920",
+        "37": "83b190ae0ab7dde9c30ce48fd4d27cc566ed37d90a45d117714910294c99abba",
+        "41": "e6f9a160083188e7d214c18b58f917a5c34d1c0dfa5788686eb619014906ebeb",
+        "53": "8e72742854b878e57d958fefee349e9a10c148d043426740b8de9bfdfee35f97"
+      }
+    },
+    "128x4x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "c2c04f0334304f182c5113443921a202d06d98cf7c8e34181b181201fc3ad68f",
+        "23": "c72551a2ed1cba6895762e80509f168b2a666c93202d81bbe0015a7197fe9a55",
+        "37": "df890b7e6d90df43d64991338f80bd838c091db9446b2937f9dd279d3dca7b80",
+        "41": "8fcc827e03dfadee8caf2f751f2165775307dcc21ff1ad26ceea9f23b5f320b1",
+        "53": "c4d44a6d40ec8bb7e6dad8276bb578b0d42185e5cf4b0bfba081c43e61537980"
+      }
+    },
+    "256x4x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "22b0e991b5659707640cc42611b53a02acee0292284a2bfd6b2ed831a44a2d81",
+        "23": "d5903b90baabc7406f3a436b92b55bbc6d1fb554e3c4c07970f37fe7586354bb",
+        "37": "035ed4570cc0d8ff97c9e7f721cdac0e7ff8d98e4e6432de6b27edcc0a7e5a46",
+        "41": "f5ed3fc4f9e0e1bdbc03fcffe963d813283e3ef5da82bddd4f0ce1bf29770bd5",
+        "53": "717fe11fbd3937965b3345b5d7cf4fc69403846ba6c73aae20ab87cd2d04c23e"
+      }
+    },
+    "384x4x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "3520a8a1a5c67118a85af4961486fde35702ee0557d015b03d6d5364e1170c3a",
+        "23": "4432b36db4683014b0d684fb20d991092b62fa4232fcfc195f38b8280a559365",
+        "37": "f5b03e971948b339c5044c1f750c6b0c4155ab4c9285aff7397baf7f8e05e044",
+        "41": "ef83bf1d8c606901c9e1bbc7f81489b7552caf87af1b4bcb01dbd79baa4d25e9",
+        "53": "3b8d80e7acea0b0362250494ca0ff012f238993287502e1fe31cc59950d640ba"
+      }
+    },
+    "64x8x4": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "905aa3777f47adf2de57c5fca295db1d0d52b1582bc34c7623ef723346eb2512",
+        "23": "f0d63d19f635242379c233fd0a3132b32361a9128588ffd366648f75d2da8688",
+        "37": "12dd39f03eadf27e5bf6a287326c631f7a29a8d0a515f276995492ea087fcc58",
+        "41": "264c3a122b1c41645918c4022fcb3f68a5d52a5005913a88d77bcc4d8267c67d",
+        "53": "c453771cdb189150818ecc084a13750780ffdfab858fc2ec420710b6ad7a790b"
+      }
+    },
+    "64x8x8": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "6c838fd148348b5ead15ca9d26d07686b44fb1fc7ab1c69984415ecf1d971950",
+        "23": "454d8aaa58a8aac1eb93fe1ca4f79bc946308cda1b6e7b3ed38a8bafa2c8a9c0",
+        "37": "94c51818565c614351c4968d8c0839d4676faa0abe7ff1dbdd90a6b358df5862",
+        "41": "0bcdfde106e18f72a5548d96da5c92bf8e0ea01c8eb545b68aa035ae4475679b",
+        "53": "8d70717683d7d50fa0dd970d97c345d0db7b991a3c777e26b2a0ac2d568880c4"
+      }
+    },
+    "64x12x12": {
+      "instance_seeds": [
+        11,
+        23,
+        37,
+        41,
+        53
+      ],
+      "distinct_numeric_inputs": 5,
+      "numeric_sha256_by_seed": {
+        "11": "f02f28cfb384321cfabc8a0f534d45cfed7b2061bbe86774ec0ed780787ac4cc",
+        "23": "2c7739092fac505df7219abf6f8bc32ff7990c9285bb85d76bdab64f14ad13f7",
+        "37": "9fb7abba617bcadef40f25c5e57e0a21df9c1eeba21dc9c2420f770935d0bd9e",
+        "41": "b809116e2c2fd5c8171a0fb0d5d5a9681ea90c9aab025be2530933c48e53adfd",
+        "53": "72ce4bfa1fa2caa7efb8580eabec1b58a11a1c3d742cec20bfbed48ad7aaa56b"
+      }
+    }
+  },
+  "distinct_instance_count": 45,
+  "native_method_instance_points": 90
+}

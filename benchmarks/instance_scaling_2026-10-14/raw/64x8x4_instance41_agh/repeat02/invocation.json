@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "cpp/build/release/pacs_matched_runtime",
+    "agh",
+    "benchmarks/instance_scaling_2026-10-14/inputs/64x8x4_instance41_agh.txt"
+  ],
+  "cwd": "repository root",
+  "started_utc": "2026-10-14T05:58:01.593381+00:00",
+  "status": "completed",
+  "process_wall_seconds": 1.8470580549999909,
+  "exit_code": 0,
+  "finished_utc": "2026-10-14T05:58:03.463470+00:00",
+  "stdout_sha256": "4fa8ebabd3017c731f914a153988c3029c22594ab8ef42d83e32c19985bca845",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "directory": "raw/64x8x4_instance41_agh/repeat02",
+  "stdout_path": "stdout.json.gz",
+  "stdout_uncompressed_sha256": "5c1a57bc4033847aa59deca0c0b1b44f996e6facd6043cfabf58aa96493d35aa",
+  "timeout_seconds": 180
+}

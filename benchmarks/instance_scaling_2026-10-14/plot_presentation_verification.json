@@ -1,0 +1,29 @@
+{
+  "scope": "Unmeasured plot labels only: exact tested x-axis levels and hidden minor labels remove overlap.",
+  "measured_helper_sha256": "21b5215ae3f799b466ab479d6eb67ca5681edf6d72d58c49ac1ea160ae4c133d",
+  "presentation_helper_sha256": "6452f777a33085d24b09f8de10d84124a3052e765a195fa636a05626256aed39",
+  "unchanged_function_asts": [
+    "matrix_specifications",
+    "fingerprints",
+    "input_cohorts",
+    "prepare",
+    "verify_prepared",
+    "retain_invocation",
+    "retained_stdout",
+    "validate_native",
+    "budgeted_timeout",
+    "projected_pending_work",
+    "run",
+    "ordinary_log_fit",
+    "clustered_log_fit",
+    "derived_analysis",
+    "replay",
+    "main"
+  ],
+  "analysis_json_sha256_unchanged": "b47cbcb6d84422bf368990b0b2eeaf40eff336a67ba2d03ed7b894ffc6b62e48",
+  "status_sha256_unchanged": "a1de045c2f73c45dc568a70e2244cd5d8e0f4edccfcb858e00ffba40731a0c22",
+  "scientific_decisions_and_timing_values_unchanged": true,
+  "plot_regeneration_seconds": 4.461263899996993,
+  "platform": "win32",
+  "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]"
+}

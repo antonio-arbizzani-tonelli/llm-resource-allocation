@@ -1,0 +1,14 @@
+{
+  "initial_started_utc": "2026-10-14T05:32:47.151309+00:00",
+  "finished_utc": "2026-10-14T06:00:16.157673+00:00",
+  "wall_seconds_including_checkpoint_interruption": 1649.006364,
+  "verified_samples": 270,
+  "native_warm_points": 90,
+  "full_python_reference_points": 20,
+  "retained_failed_worker_attempts": 0,
+  "coordinator_checkpoint_interruptions": 1,
+  "retained_measurements_discarded_duplicated_or_imputed": 0,
+  "verified_frozen_source_entries": 93,
+  "source_snapshot_sha256": "d40f62f15dc6d967d4ab6bc098af6e6da6062a63121dc073158d1c7b43b17514",
+  "scope": "WSL timed workers and native unmeasured analysis; total wall time includes the documented checkpoint recovery and resume."
+}

@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "python",
+    "scripts/run_matched_runtime.py",
+    "worker",
+    "--input-json",
+    "benchmarks/instance_scaling_2026-10-14/inputs/16x4x4_instance41_gh.json",
+    "--input-numeric",
+    "benchmarks/instance_scaling_2026-10-14/inputs/16x4x4_instance41_gh.txt",
+    "--evidence"
+  ],
+  "cwd": "repository root",
+  "started_utc": "2026-10-14T05:33:13.073287+00:00",
+  "status": "completed",
+  "process_wall_seconds": 2.152345963000002,
+  "exit_code": 0,
+  "finished_utc": "2026-10-14T05:33:15.259464+00:00",
+  "stdout_sha256": "f6f85bae13f4858aa56cb5012a6e9a8f94d934b51fc6aaa0a0c275dd3e1d9fd1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "directory": "raw/16x4x4_instance41_gh/python_reference",
+  "stdout_path": "stdout.json.gz",
+  "stdout_uncompressed_sha256": "735fbc69f7f51e2dd7595b5f2d8e0905392648b3346fda1ad7d8d9c691aa9d0f",
+  "timeout_seconds": 180
+}

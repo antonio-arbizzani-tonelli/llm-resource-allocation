@@ -1,0 +1,10 @@
+{
+  "replay_passed": true,
+  "verified_files": 1337,
+  "independent_native_validations": 360,
+  "analysis_json_sha256_unchanged": "b47cbcb6d84422bf368990b0b2eeaf40eff336a67ba2d03ed7b894ffc6b62e48",
+  "replay_seconds": 72.26584029999503,
+  "scope": "Final replay after plot-label clarification; no compiler, binary or solver execution required.",
+  "platform": "win32",
+  "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]"
+}

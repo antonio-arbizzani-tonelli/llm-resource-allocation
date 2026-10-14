@@ -1,0 +1,23 @@
+{
+  "interruption": "Windows live Get-Content held the destination during WSL atomic replacement; PermissionError at checkpoint write after the worker completed.",
+  "source_and_binary_and_inputs_verified_unchanged": true,
+  "original_checkpoint_samples": 218,
+  "recovered_checkpoint_samples": 219,
+  "new_producer_record_keys": [
+    "256x4x4_instance11_gh/repeat02"
+  ],
+  "all_retained_sample_hashes_and_warm_bitwise_projections_verified": true,
+  "new_record_independent_validation_reproduced": true,
+  "scientific_decisions_or_timing_values_modified": false,
+  "complete_producer_temporary_checkpoint_bytes_promoted": true,
+  "original_checkpoint_sha256": {
+    "status.json": "dbb08f13e653e4de8a81f8274849ace95a23af2ee6db90ee221589f164d603ff",
+    "status.json.partial": "b08577bab4855b64075a81ec9100cb00ed7814e1d143bc0b1d79fb9afbc83746"
+  },
+  "completed_partial_checkpoint_sha256": "b08577bab4855b64075a81ec9100cb00ed7814e1d143bc0b1d79fb9afbc83746",
+  "wall_seconds_since_initial_start_before_resume": 1319.110781,
+  "resume_wall_budget_seconds": 9420,
+  "scope": "Checkpoint persistence recovery only; no worker observation discarded, duplicated, repaired, or imputed. Monitoring uses subprocess output after resume.",
+  "recovery_platform": "win32",
+  "recovery_python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]"
+}
