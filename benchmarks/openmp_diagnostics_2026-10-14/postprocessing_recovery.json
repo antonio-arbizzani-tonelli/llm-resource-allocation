@@ -1,0 +1,13 @@
+{
+  "classification": "POSTPROCESSING_RECOVERY_ONLY",
+  "producer_exit": 1,
+  "interruption_boundary": "final artifact inventory after analyze, execution complete rounds=30, and evidence packaging",
+  "cause": "parent SIGINT after prolonged drvfs I/O in final inventory",
+  "measured_job_interrupted": false,
+  "measured_raw_or_scientific_inputs_changed": false,
+  "postprocessing_platform": "Windows native Python on NTFS",
+  "postprocessing_python": "3.14.3",
+  "retained_original_archive_sha256": "67daff41dae59161e50b84665e41622617d4bfb22a801355f5deac9771a7db45",
+  "retained_original_manifest_sha256": "0ee078e801953168e99025288bb8c2e02db381f7c1466aab0ecede047d77531b",
+  "scope": "inventory, metadata portability, derived statistics and archive replay only; no timed executable or solver rerun"
+}

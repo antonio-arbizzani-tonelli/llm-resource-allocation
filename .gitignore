@@ -17,3 +17,8 @@ data/external/azure_2024/*.partial
 /guide_lettura/
 /docs/presentation/
 /docs/presentation_drafts/
+
+# New extension campaigns ship verified archives; replay may unpack these.
+/benchmarks/openmp_diagnostics_2026-10-14/raw/
+/benchmarks/openmp_diagnostics_2026-10-14/golden/
+/benchmarks/stage2_robustness_2026-10-14/raw/

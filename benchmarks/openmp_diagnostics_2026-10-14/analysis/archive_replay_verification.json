@@ -1,0 +1,22 @@
+{
+  "classification": "FRESH_ARCHIVE_ONLY_POSTPROCESSING_REPLAY",
+  "postprocessing_python": "3.14.3",
+  "elapsed_seconds": 64.87917539999762,
+  "timed_binary_present": false,
+  "solver_or_measured_executable_called": false,
+  "raw_and_golden_initially_absent": true,
+  "automatic_unpack_verified": true,
+  "unchanged_derived_artifacts_sha256": {
+    "analysis/extension.json": "ec5384b83e093ab40b691bf4021f55eef9d82e01bcf68673feca7339c349fd5b",
+    "analysis/thread_statistics.csv": "ca89211b0847606e3f44fb1990c4b5050a3d95c462ae04d855671525d8b318b9",
+    "analysis/same_team_controls.csv": "b3482ef1ccf8ad55a7c7880838667ae31c26fe388476ebdc67224411b5ab9ca5",
+    "analysis/decomposition.csv": "9f6300005fd6ed35ec5a43c6d6500760c4f6d1421877263018de72b28209c235",
+    "README.md": "7a8971762f56b1ad0196a6c134b51ed92b7c11fc01d0ea5444dd6f6ea537da2b"
+  },
+  "planned_observations": 6030,
+  "attempted_observations": 6030,
+  "valid_observations": 6030,
+  "failed_observations": 0,
+  "timing_and_scientific_outputs_unchanged": true,
+  "inventory_note": "The fresh replay also matched the prior artifact inventory; its digest is omitted here because the current inventory additionally includes this verification record."
+}
