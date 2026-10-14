@@ -1,0 +1,21 @@
+{
+  "classification": "unmeasured archive publication, outside all solver and algorithm timers",
+  "python": "3.14.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "elapsed_seconds": 17.040260900001158,
+  "exit_code": 0,
+  "scientific_summary_values_unchanged": true,
+  "excluded_sha_pointer_fields": [
+    "manifest_sha256",
+    "checkpoint_sha256",
+    "evidence_sha256"
+  ],
+  "publication": {
+    "original_files": 159,
+    "archived_files": 149,
+    "archive_sha256": "280773b7d334c7a0b0f5d630ccd8064b46f76e9be502157a6a67abfddefc34dd",
+    "source_and_input_bytes_unchanged": true
+  },
+  "command": "python tmp/wp6_finalize_publication.py (local driver for extension_solver_quality.publish_campaign)",
+  "public_replay": "python scripts/extension_solver_quality.py summarize --output benchmarks/solver_quality_2026-10-14"
+}

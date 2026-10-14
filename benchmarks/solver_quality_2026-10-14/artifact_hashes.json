@@ -1,0 +1,20 @@
+{
+  "analysis.json": "dd6a5acaec76ba97597815f74cca934246963fb8dfb2ac130544de39a4d7d557",
+  "archive_replay_final_verification.json": "502f5d2a061909bdcdbb291dba2a6d91aa9e5dc709e5ab5190219ce7b71ecc53",
+  "archive_replay_verification.json": "1504bd788cee402775cfaafe50f10a768a5e3f199c113ee0f92ee7924f62c547",
+  "checkpoint.json": "e240257b6e7f43e03d18fcdb5488a9b7a18acfde0dea4c368872444733b2e520",
+  "evidence.zip": "280773b7d334c7a0b0f5d630ccd8064b46f76e9be502157a6a67abfddefc34dd",
+  "evidence_manifest.json": "b7cdb6b566bea1b6c21cc4b5bee58c0cf36a95c19b58e09b196eb2dcae11202b",
+  "execution_summary.json": "d32a783181942ecf44506dbdfe80af21dee40a8f04fca483fd86b37b73e80bd7",
+  "host_power_observations.jsonl": "c6536e18a93ae51e1a9cebfeb3bc6751b07a555e6e429890a3703d457bad8de2",
+  "manifest.json": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+  "PLAN.md": "329de596ad4979d367be7461b9942a9e3b1b3da03b1500a977f1381b027e5175",
+  "plot_presentation_verification.json": "b6b95258c255267a367e0673b0abff57bd440184920abd983a9224b7ebb9f920",
+  "postprocessing_verification.json": "c36ec58a0f4f1bd66a31ac1e9f27071ba61bb2664a561401d02bda8f1815faa7",
+  "provenance.json": "b4ed3a487e81e03071070dc9c9d24bf56f97db0a10eb2dad5274990ebb83da75",
+  "README.md": "70c4ba8b61dc618f52dd677c5a7e416ff27cea923a75dfb97e967c69a46956c1",
+  "REPORT.md": "80666063241761bf3a52814a5ee5e944be5c3818a74ad553e33d83a5f9593a70",
+  "runs.csv": "798e1a53135f85f3bd0159fba0c8be3b65ba900ed2c1086c0bafc8d73e5d01f6",
+  "solver_quality.png": "541f58215c0f545bfabb2274c96365c97441fb3e709957c0532143c80c2c77bb",
+  "solver_quality.svg": "3ed028eca8a4b87bec8a5751b67dc50ba7ce60951f40ecfbfd829ba6feb5b6a3"
+}

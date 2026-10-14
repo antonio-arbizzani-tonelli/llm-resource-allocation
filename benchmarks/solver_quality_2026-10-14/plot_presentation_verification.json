@@ -1,0 +1,63 @@
+{
+  "classification": "PRESENTATION_ONLY_CURRENT_RENDERER_AFTER_FROZEN_NUMERICAL_REPLAY",
+  "frozen_measured_script": "evidence.zip:snapshot/scripts/extension_solver_quality.py",
+  "frozen_measured_script_sha256": "01166d1b921fbd2ef3475276f21e65564b85b5f9571937b1fc0bb75429b1f0a7",
+  "renderer_script": "scripts/extension_solver_quality.py",
+  "renderer_script_sha256": "dda62bd00e6ea3bf9b203bbb267acb2cee431b802d74e977252b6c5161a95e61",
+  "python_version": "3.14.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "unchanged_numerical_artifacts_sha256": {
+    "analysis.json": "dd6a5acaec76ba97597815f74cca934246963fb8dfb2ac130544de39a4d7d557",
+    "runs.csv": "798e1a53135f85f3bd0159fba0c8be3b65ba900ed2c1086c0bafc8d73e5d01f6",
+    "REPORT.md": "80666063241761bf3a52814a5ee5e944be5c3818a74ad553e33d83a5f9593a70"
+  },
+  "unchanged_function_ast_sha256": {
+    "attempted_counts": "dbf3f5ae008e062ee05121a7fa84acb0eaa2fd1e8f49986f9d4bc0965e91d151",
+    "bootstrap_median": "7e047a7943e3cad74792afd862553ffb947abb894222462912eddd06e15667d5",
+    "campaign_jobs": "2deac521503de935fc2921f08095b18dd442713f49f2bf8c044814e82f4cef08",
+    "decode_instance": "ba92154ca900d6822078c0606c125923e0770cda34cf0a2ba10f1e1de93ce547",
+    "decode_placement": "9cf58aee09fa055eb63db2f82c77ef0f57ddc950c328bea767ae94909228dc05",
+    "encoded": "f0e44b4d957d4e35ae23d38db3f01f6c4c4442401b403cdacf7bf6593ff96fc6",
+    "environment_record": "8cfeb75aecac08fb143af7860df467eee265ba2dacafee47180b2bb1059d979c",
+    "inventory": "b47069d5bb95ca3069a67a96880acc402f7d2307115e00ce47f75b09d9c34005",
+    "load_input": "a23b711d939eb58f80c02e54389d047b377f8f403a99df91b2243c6b564f150d",
+    "load_json": "fe0743cf14b6c81c664f34929316a535272685cf1206401186c2a5cf7d992bbf",
+    "measured_root_prefix": "311c100146777d98c34572d56490f2d0cc16e149d0e3e44011ae394312fb558c",
+    "package_campaign": "d93638fe86321120a8588d127689c7155169ee7deeb550d496a6d382c8e61a17",
+    "plain": "56e313e546cff372eac4a91feef13d713e5cd0ef5be655f760d74bff5761d849",
+    "prepare": "a450ea55a8bbcdcfd7601fdea1baac5b66a8fbcb5c8e29a25ad4c4895ec59e06",
+    "publish_campaign": "35bcc46f0d67a59a797b6b04c821cadc9e38b57b4c5d2caaef7c98ed580f172a",
+    "redact_metadata": "b75e44d4eb66075221b643e44ab05d31433ca3667b8b934cd4d02aff5688e9f9",
+    "replay_row": "03c3f94f9b150c499c34bf0720692f267d3e2b512f3faa6fc3f31ce6a9052cc6",
+    "run_campaign": "01777c5d2f7f9a347d5b98560a0f528e24df4a9b805d82b70ffaab3a94abb282",
+    "run_worker": "8a951b3f13feba9ebc8d855c440b7e2d4a2e6a34d48a0d9c8f1e36d5049d3882",
+    "runtime_estimate": "b479ef1a6911770d704b72f6e7b1f0bac5cdb688e2cad25f49eee02d09b26e6f",
+    "safe_path": "ede617d568a549b5d2da3988dca528c47ebd643a331c9c762fa524851b454efa",
+    "save_evidence": "179fb2266032a0b4c19eccc1c4fbc3c0e847c26845c38dcfe97e905c5ebe7cf7",
+    "save_json": "674d5e4bc9d8e5aa658131d8e1fde769f9dbc586e0c419add164e2aaf5790975",
+    "seal_interrupted_attempts": "518a7076305edf7c7d81d0b6080dc82857f24bb8686e0fdad049bf154001a7c1",
+    "sha256": "2682ee1b7a7086108f6aa2e1d98d2ec26f821b2edb29fdbaaf0133c481b3ee9b",
+    "summarize": "821f8d5d52d57f78a31becc47bad94cd1d495834343ebca35085a499566007fb",
+    "summarize_rows": "d4b2b88070f19077f12cd307c1d84aae5a260962de0d05a5b6a87787c80142c1",
+    "unpack_campaign": "e3f2bcfb444bbc98c5f06f41af8af8acc76fdc1319fb569c4875785d4d6c3d2d",
+    "unpack_mapping": "9c06aff6f8475eb2b6132d2a7e05cfef28338bbcfc3b84a18111f26c30867158",
+    "verify_attempt": "f27b1d3c1bba21c019d3e91f3072507209a620f3ed939b930df705834dfaa534",
+    "verify_inventory": "b2f652650f308685b70ce7c1693ac43836e3db3b993b2af624c9211dc399e377",
+    "verify_prepared": "550cf724164dd0fbf686f82fd7c42b19a35f502f27581e1157142822ccda308e"
+  },
+  "only_function_ast_changes_allowed": [
+    "plot_results",
+    "main"
+  ],
+  "frozen_archive_sha256": "280773b7d334c7a0b0f5d630ccd8064b46f76e9be502157a6a67abfddefc34dd",
+  "frozen_archive_unchanged": true,
+  "prior_archive_replay_verification_sha256": "1504bd788cee402775cfaafe50f10a768a5e3f199c113ee0f92ee7924f62c547",
+  "prior_archive_replay_verification_unchanged": true,
+  "major_tick_values": [
+    20,
+    120,
+    600
+  ],
+  "minor_tick_labels": "hidden",
+  "solver_or_algorithm_executed": false
+}

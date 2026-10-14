@@ -1,0 +1,181 @@
+{
+  "classification": "FRESH_ARCHIVE_ONLY_WP6_REPLAY_WITHOUT_OPTIONAL_DEPENDENCIES",
+  "postprocessing_platform": "Windows-11-10.0.26200-SP0",
+  "postprocessing_python": "3.14.3",
+  "venv_creation_command": [
+    "<Windows-Python-3.14>",
+    "-I",
+    "-B",
+    "-m",
+    "venv",
+    "--without-pip",
+    "<fresh-tree>/.venv"
+  ],
+  "replay_command": [
+    "<fresh-tree>/.venv/Scripts/python.exe",
+    "-I",
+    "-B",
+    "scripts/extension_solver_quality.py",
+    "summarize",
+    "--output",
+    "benchmarks/solver_quality_2026-10-14"
+  ],
+  "replay_command_working_directory": "fresh tree containing only delivered campaign and launcher",
+  "dependency_probes": {
+    "replay_parent": {
+      "python": "3.14.3",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "executable_basename": "python.exe",
+      "optional_modules": {
+        "pyomo": false,
+        "highspy": false,
+        "gurobipy": false,
+        "matplotlib": false,
+        "pip": false
+      }
+    },
+    "replay_child": {
+      "python": "3.14.3",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "executable_basename": "python.exe",
+      "optional_modules": {
+        "pyomo": false,
+        "highspy": false,
+        "gurobipy": false,
+        "matplotlib": false,
+        "pip": false
+      }
+    }
+  },
+  "dependency_proof_scope": "launcher and frozen-child use the same fresh interpreter; PYTHONPATH/PYTHONHOME removed, user-site disabled; optional modules absent",
+  "total_proof_seconds": 5.957572100000107,
+  "numerical_replay_seconds": 4.837591400006204,
+  "raw_inputs_snapshot_initially_absent": true,
+  "current_src_present": false,
+  "measured_binary_present": false,
+  "solver_called": false,
+  "automatic_archive_unpack_verified": true,
+  "archive_sha256": "280773b7d334c7a0b0f5d630ccd8064b46f76e9be502157a6a67abfddefc34dd",
+  "evidence_manifest_sha256": "b7cdb6b566bea1b6c21cc4b5bee58c0cf36a95c19b58e09b196eb2dcae11202b",
+  "manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+  "checkpoint_sha256": "e240257b6e7f43e03d18fcdb5488a9b7a18acfde0dea4c368872444733b2e520",
+  "launcher_sha256": "01166d1b921fbd2ef3475276f21e65564b85b5f9571937b1fc0bb75429b1f0a7",
+  "frozen_source_sha256": {
+    "src/llm_resource_allocation/__init__.py": "64f2cbc50ed57b5ff70657006f1c77ced84748747ac2b3664bfc6cafadcda312",
+    "src/llm_resource_allocation/algorithms/__init__.py": "c38ffe3c42ec76b2696955bf166eb4d44e7282c8a6b0428190a1032e8f6615d2",
+    "src/llm_resource_allocation/algorithms/_agh_placement_ops.py": "83f46cb2e21f0a79335b096e514ee121cdfa6b9b4df65e428bed40bd7e4e3337",
+    "src/llm_resource_allocation/algorithms/_mechanism_support.py": "d74faccb98c819e145c9b41444fa794be3e13e4fb305a76f70ff07e34cb05cf8",
+    "src/llm_resource_allocation/algorithms/agh.py": "e7dd06d962e52e3633f5c5a6f815313665d2a8fabf26f1f636a2f3627f1a8c45",
+    "src/llm_resource_allocation/algorithms/agh_consolidation.py": "bf4a905a8c6609eb24312acfaa752c0bfcf3abff2f31e157df86ae9c78a9a3da",
+    "src/llm_resource_allocation/algorithms/agh_multistart.py": "ed4fee858dc934dac8ee35e9f883ff922404f5fa2459ce45cfea4e1d1c21663b",
+    "src/llm_resource_allocation/algorithms/agh_ordering.py": "8cae4035bdd94f4ef0e20c114a4f2c4db7c98072ad018df094083b86d15b517b",
+    "src/llm_resource_allocation/algorithms/agh_relocate.py": "168d3f4fbd80a80f57fdcb5de814acfe3e97fbccc62def0de498b46ba74bffa7",
+    "src/llm_resource_allocation/algorithms/agh_relocate_pass.py": "c3c41bd8464afc7886f9a14dfb63494c08c69bd9c046ccc1d425866f86e55c7c",
+    "src/llm_resource_allocation/algorithms/agh_start.py": "c08706d0e8303f6725abcb51e365c7525a6c0e9a6665a85b7cda4dbbb633bafd",
+    "src/llm_resource_allocation/algorithms/gh.py": "42325817950729e878c716ced49583a3a4481b76d1c017add411905fcd8452f6",
+    "src/llm_resource_allocation/algorithms/gh_phase1.py": "64ce05700729cbcc95801ffbe105cfb197f03752bb8106a7d0e460bdbb0619f8",
+    "src/llm_resource_allocation/algorithms/gh_phase2.py": "63d96574e63ae9978500c9763dd3dc60204f81f19336d188e9dd9ad98837e1ce",
+    "src/llm_resource_allocation/algorithms/gh_phase2_commit.py": "3c28ae958737d069382cd4c33376676afc65ec2394116e68c7cfe0de3243ea09",
+    "src/llm_resource_allocation/algorithms/gh_phase2_query.py": "e46b9c3fe0a31d3be05d8396b468f847b5a4ef04a6778775df4c447c96916005",
+    "src/llm_resource_allocation/algorithms/gh_phase2_run.py": "fc9f3b4d1bd2a19180d744b403fa639b7d7717f40873425f6962e47d50ced1e9",
+    "src/llm_resource_allocation/algorithms/m1.py": "dd1297c02544ada2645afb956bf0384fd33cb5f5d4008395233928ec43158475",
+    "src/llm_resource_allocation/algorithms/m2.py": "f6680772e413266ac4263c9f858e390530193cab0d56dc8b370359ab32e37918",
+    "src/llm_resource_allocation/algorithms/m3.py": "9c36d883fac9e37819b692acab159a1d99103a507d5136543bef36b3b3926fb6",
+    "src/llm_resource_allocation/algorithms/phase1.py": "a767254c129ed6b5fa274a1cc657cbf508f6262bed3d102d8b8de92e82bffcd7",
+    "src/llm_resource_allocation/data/__init__.py": "5d91dc15cda435303ed6ef6b4902d66a46434adc788ca03a00e6c722066378a8",
+    "src/llm_resource_allocation/data/azure_trace.py": "3a8c9c253fb71dc89b598a3d63e0b7aa6b67f5b8b828977b00f4bdaed92ed343",
+    "src/llm_resource_allocation/data/scaling_experiment_instances.py": "fd72f7422743f3fe6c1166ff4aa492474b2e88ba600bea923570926e12b49467",
+    "src/llm_resource_allocation/data/stage2_tiny_cases.py": "6ec352ca68552c73942439a4c994f243b97c8ab941fd54b43397efb62d393ad6",
+    "src/llm_resource_allocation/data/synthetic_benchmark_instances.py": "a8e37e70065ea9465c5df05e61cedaa39f962356eae10a1bd866be29573a6671",
+    "src/llm_resource_allocation/data/tiny_instances.py": "dc78688bc71eefd45475d84fdbd99b77ee3844a8479d3ebef472499d1f4e184c",
+    "src/llm_resource_allocation/domain/__init__.py": "27fa6becb7600a7473b924365eab6ef97b735e6a2dcc347a0aeddd219270c94e",
+    "src/llm_resource_allocation/domain/types.py": "dad32dbd56cc61546db67cee6e3e60407c381e515e34a3e59fefcd7eb8d549ec",
+    "src/llm_resource_allocation/domain/units.py": "8d438401aaed56d6de31e7775d58afd76617c4a153bad17fbaeed56e39eca3e8",
+    "src/llm_resource_allocation/domain/validation.py": "8222721e9289d3fa94ecbad34c2252f38afe2a5f530dc952e54fefbde434ab57",
+    "src/llm_resource_allocation/experiments/__init__.py": "059cf3e062e911cd669aae5699dfebdd88325d2eacefe8a79a1700dbe3049778",
+    "src/llm_resource_allocation/experiments/_record_serialization.py": "06ea0be580689243d7d6fe96b519a63845a5f7654b4141026373da7b673f8622",
+    "src/llm_resource_allocation/experiments/azure_replay.py": "deddb40659339444a801cbf0220c258a0bee43c2e8b28485f72c71a17e6129fb",
+    "src/llm_resource_allocation/experiments/bounded_experiment.py": "48813701536cc22bcb9331306305c8c481f4a9d4fd6cb27a0e75b7631c39b7d2",
+    "src/llm_resource_allocation/experiments/scenario_evaluation.py": "d5cdac4ebc773f709968f3cb2e6d0077e612e7bdd940fbca914041622ace4b3f",
+    "src/llm_resource_allocation/experiments/scenario_generation.py": "42b3e68dcdb4251bfc8b7c4fa3019a5c138a10fa75efefc0bb03fd10275fff1e",
+    "src/llm_resource_allocation/experiments/scenario_protocol.py": "2c7ca6d87414904c1a347c65d2a2f422cf92944e46611e1f316c4f590e0cd040",
+    "src/llm_resource_allocation/experiments/stress_grid.py": "127eaf12ec80fc2e8083e6789d663a398cbec861b407720c21820af7cad35449",
+    "src/llm_resource_allocation/experiments/synthetic_benchmark.py": "53e7a76ce8c7f904c2caa9ea685c79810d971ad64b62bbc98a65df58d9fcea40",
+    "src/llm_resource_allocation/experiments/version_comparison.py": "e9f6b8719bb325d5bcd598b23d188849d6f7f0319e8692c1e712c3edbfefcd01",
+    "src/llm_resource_allocation/math/__init__.py": "dde0a0f89b514fa96269662aeb216f1b8efaff0d839b8e0a0ad2feda76c3f72f",
+    "src/llm_resource_allocation/math/budget.py": "634f22578e6bca17cc5770c6e0203c24371d1ccdd99b1a486d553cf9e1bc24b8",
+    "src/llm_resource_allocation/math/compute_capacity.py": "0f14d8a5bf4f4a6bb2270bdb10e28cd30b8b417e7b7b1b5e05f0cf4d8715681c",
+    "src/llm_resource_allocation/math/error.py": "0c8e22caa34b3308347a7791e1d574c5ff044a1d270cdcfa5191022e37e85e63",
+    "src/llm_resource_allocation/math/error_slo.py": "61c5061e216ea1f9a45cabb5aa05cb6a8676c531cbff344dad4a6b9345271945",
+    "src/llm_resource_allocation/math/gpu_memory.py": "860e8042526720b2307c8822b24ed1e6a2eeca4c5c9dd08545d2f8a048e925d3",
+    "src/llm_resource_allocation/math/latency.py": "e9311bee9a1955f27a0c6c6388e80a891ba775ec7498f093609ce0a5012dc55a",
+    "src/llm_resource_allocation/math/mccormick.py": "a294729edaabce3edf4bc0363a4b57d7b14a7932fdde872f251fcf5b3368469b",
+    "src/llm_resource_allocation/math/objective.py": "9058e848a0829a308402ce8ba08bf273ab4af56da03f757aa1b9041be6ad7b16",
+    "src/llm_resource_allocation/math/parallelism.py": "de51669f6742ecea07a22875d5f5ef6ff3626e7ebffe7e3a925822e64702cde7",
+    "src/llm_resource_allocation/math/placement.py": "f1e081fd073b6abcc014eb489316943f642aa1054bf5cc4cd74abaa7ebb31810",
+    "src/llm_resource_allocation/math/processing_delay.py": "7e18bfc63f337dc93441c24b2401561c883a34eab11248b92f804cb3038f14b4",
+    "src/llm_resource_allocation/math/routing.py": "0d8a4eed90a5d0bdd33fbf4afa73f6dced499dd3afe7a0e4532c740718d3240b",
+    "src/llm_resource_allocation/math/storage_capacity.py": "70e478bc188b9c213e742eebc19e3758edc10075429a431df6969ef40715c9b6",
+    "src/llm_resource_allocation/optimization/__init__.py": "aa0d2c05983409b7c22807916a4fd1555038d458b9c8e09df6777ba58ee9066f",
+    "src/llm_resource_allocation/optimization/extraction.py": "25e7494003ae4a1beaf658b74fd4144cb2a89aee43c2c405fdb7e41316806254",
+    "src/llm_resource_allocation/optimization/pdm_run.py": "6ab143a27629d37f85f7a029447bb1f15cc72cd7c4fa2a8e21930b2cddec55f8",
+    "src/llm_resource_allocation/optimization/problem_data.py": "66b7c155cf2a0e39131c9c035ff8f7fd834c0c0a8122111fc0fbb0792ede1af8",
+    "src/llm_resource_allocation/optimization/pyomo_pdm.py": "3a753d69dd09f1fbd6097b4aa8bb0f8d209f51130280cb5b676e8677dfe87678",
+    "src/llm_resource_allocation/optimization/pyomo_stage2.py": "e3b8f295c73278550e5537d5ae4e336eeb94cb3a787dfbffda544f4fe5e1e8c7",
+    "src/llm_resource_allocation/optimization/solver.py": "c0f2362e67fa0266ca0d45d0842c21fa3cf3de259da47312d29d5c22b9f2d401",
+    "src/llm_resource_allocation/optimization/stage2_adapter.py": "5a979152d42c6d857c2507fd3fcf3f27d5d8a522ad0b95c538938438416fad33",
+    "src/llm_resource_allocation/optimization/stage2_extraction.py": "d777f25b9b6da65feb526ad4ed9f5a08e250bf1b442613a4848c16cbc15b76e3",
+    "src/llm_resource_allocation/optimization/stage2_integration.py": "978bcd658e5d0bfb4fd2b034617f309b63a376ffc354ef88b746d5ccb978c244",
+    "src/llm_resource_allocation/optimization/stage2_problem_data.py": "07c6a3a3e3b548214a707d6b9e7d55b4fba5ce0ed13627048ef88279f5cad7b7",
+    "src/llm_resource_allocation/optimization/stage2_run.py": "541540ba47c98281b1f513704c046c8835fd607eebe52da25589a186533a65a5",
+    "src/llm_resource_allocation/validation/__init__.py": "de636eeef55a735860b218269acfaf196b552b00c684a37a3128912692455ebb",
+    "src/llm_resource_allocation/validation/objective_comparison.py": "53d094a718263567840a2ab0c4e93983da4e0fe2e0373484b16f6587067bc39e",
+    "src/llm_resource_allocation/validation/placement.py": "fa9496a10aceaaa94035cacec33a9e4feae85078b24e23d2a509f80c4c5caa9c",
+    "src/llm_resource_allocation/validation/stage2.py": "9e65e9e6e2ca51372c5e2a3948ab6e640170a130f33aa46a6494d9f35e29e751",
+    "src/llm_resource_allocation/validation/tolerances.py": "9babdadb006920954d729a1b96bfd62677b880408cbba83661419ced655792b2",
+    "src/llm_resource_allocation/verification/__init__.py": "b786f218f203a2db1e11a555f894613c2c1c4be396ea590c6fe27a7a385e758b",
+    "src/llm_resource_allocation/verification/tiny_enumeration.py": "855b25d89e119df4ea4c9f18d492d10fbeac4fe4a2a5f68589efa9d63f39511f",
+    "scripts/extension_solver_quality.py": "01166d1b921fbd2ef3475276f21e65564b85b5f9571937b1fc0bb75429b1f0a7"
+  },
+  "frozen_inputs": {
+    "10x10x10_L1": {
+      "path": "inputs/10x10x10_L1.json.gz",
+      "sha256": "49315fd717fff2eb8d32a51d57d2483abae39c2497544b0c0f994a4ac854d82b"
+    },
+    "10x10x10_L200": {
+      "path": "inputs/10x10x10_L200.json.gz",
+      "sha256": "bc02406a8560b4b664174978e8cd97523e4c74ef9b8f00c5225660fe6f60c96e"
+    },
+    "10x10x10_L100000": {
+      "path": "inputs/10x10x10_L100000.json.gz",
+      "sha256": "602bba743edc43108b5e851883f8b0b5b4844953787cd3bdaf94ff035526922a"
+    },
+    "6x6x10_L100000": {
+      "path": "inputs/6x6x10_L100000.json.gz",
+      "sha256": "2099ea47e748712d57b0114871f39a38cd72e902258ea227f4d3ce41e0fc8b91"
+    },
+    "warmup": {
+      "path": "inputs/warmup.json.gz",
+      "sha256": "dcaef30ec04e85e39e1d3a82101a921cfe7f3acde3d39b5dfcb0e706ee4e72ac"
+    }
+  },
+  "analysis_json_byte_identical": true,
+  "timing_and_scientific_outputs_unchanged": true,
+  "unchanged_derived_artifacts_sha256": {
+    "analysis.json": "dd6a5acaec76ba97597815f74cca934246963fb8dfb2ac130544de39a4d7d557",
+    "runs.csv": "798e1a53135f85f3bd0159fba0c8be3b65ba900ed2c1086c0bafc8d73e5d01f6",
+    "REPORT.md": "80666063241761bf3a52814a5ee5e944be5c3818a74ad553e33d83a5f9593a70"
+  },
+  "inventory_note": "inventory digest omitted to avoid self-reference when adding this verification metadata",
+  "replay_stdout": "Replayed 23 completed jobs; independently accepted 18/20 attempted unique measured jobs. Worker calls including retries: 20; completed measured rows: 20.",
+  "headline_counts": {
+    "planned_measured_jobs": 20,
+    "attempted_unique_measured_jobs": 20,
+    "attempted_measured_worker_calls": 20,
+    "completed_measurement_rows": 20,
+    "accepted_measurement_rows": 18,
+    "verified_completed_jobs": 23,
+    "measured_jobs_without_completed_result": 0
+  },
+  "retained_worker_failures": 0
+}

@@ -22,3 +22,6 @@ data/external/azure_2024/*.partial
 /benchmarks/openmp_diagnostics_2026-10-14/raw/
 /benchmarks/openmp_diagnostics_2026-10-14/golden/
 /benchmarks/stage2_robustness_2026-10-14/raw/
+/benchmarks/solver_quality_2026-10-14/raw/
+/benchmarks/solver_quality_2026-10-14/inputs/
+/benchmarks/solver_quality_2026-10-14/snapshot/

@@ -1,0 +1,14 @@
+{
+  "classification": "observed WSL campaign wall time, including excluded warmups and evidence I/O",
+  "started_utc": "2026-10-14T06:15:23.028069+00:00",
+  "elapsed_seconds": 3225.756829929,
+  "planned_estimated_seconds": 5110,
+  "native_limit_sum_seconds": 2960,
+  "completed_worker_calls": 23,
+  "completed_measurement_rows": 20,
+  "excluded_completed_warmups": 3,
+  "attempted_measured_worker_calls": 20,
+  "worker_failures": 0,
+  "independently_accepted_measurement_rows": 18,
+  "scientific_scope": "four synthetic coherent V2 CPU-planning inputs; fresh independent cold limit cells"
+}

@@ -1,0 +1,881 @@
+{
+  "attempts": [
+    {
+      "job_id": "warmup_highs",
+      "directory": "raw/warmup_highs/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "821ecc0e1d9bcdda1d341c394b75375f1bdddbb11e58bec22749bf36bfdcd6f1",
+        "result.json": "5cff793226d684f821d4bc09da8cdf6aa3e3cff04017d9bfed7677f669979418",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "warmup_highs",
+        "--destination",
+        "raw/warmup_highs/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "dcaef30ec04e85e39e1d3a82101a921cfe7f3acde3d39b5dfcb0e706ee4e72ac",
+      "returncode": 0
+    },
+    {
+      "job_id": "warmup_gh",
+      "directory": "raw/warmup_gh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "aa5ac71093406cc700c4cc2a8ab603743e649d1116d38330a5cb605837b05d29",
+        "result.json": "312f094326e4966976287350aac10712a9c8c2b30bf2a06bc04de919d635f14c",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "warmup_gh",
+        "--destination",
+        "raw/warmup_gh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "dcaef30ec04e85e39e1d3a82101a921cfe7f3acde3d39b5dfcb0e706ee4e72ac",
+      "returncode": 0
+    },
+    {
+      "job_id": "warmup_agh",
+      "directory": "raw/warmup_agh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "faa4efde48a172f5397582de668f781ebfd0c8ccf68bd6593bca9c69f79141f6",
+        "result.json": "e6becca51e6baabb10c6dad2423e246ce7d7b35dd73f757c876f4befca5c9a53",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "warmup_agh",
+        "--destination",
+        "raw/warmup_agh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "dcaef30ec04e85e39e1d3a82101a921cfe7f3acde3d39b5dfcb0e706ee4e72ac",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L1_gh",
+      "directory": "raw/10x10x10_L1_gh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "d55d54585ccbb855ad0bd1d0b69d6c34ea62147221749f1cc64ce9dd358dd007",
+        "result.json": "f0293dfe0e3b15a5c1881b35b1eec6b772855d35850081b5425f9fa05f6769c3",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L1_gh",
+        "--destination",
+        "raw/10x10x10_L1_gh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "49315fd717fff2eb8d32a51d57d2483abae39c2497544b0c0f994a4ac854d82b",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L1_agh",
+      "directory": "raw/10x10x10_L1_agh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "5d9ac3b0ca8c48689a82ff4ca2231a42d444fc9e5af0dfe150510ac9dc2b7728",
+        "result.json": "3c34144f1af46885729c2dc54fe34ece87b6471b0663dfec1f246de8c72d43a5",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L1_agh",
+        "--destination",
+        "raw/10x10x10_L1_agh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "49315fd717fff2eb8d32a51d57d2483abae39c2497544b0c0f994a4ac854d82b",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L200_agh",
+      "directory": "raw/10x10x10_L200_agh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "ff807eac3c291e9e0d31018f2b328306cfe1dd7db837385019e858b612fa7d2b",
+        "result.json": "ade4477a5008365351aee664ed4eb85c31fcd5fa0a46a6ad79e37d94bf7bcda4",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L200_agh",
+        "--destination",
+        "raw/10x10x10_L200_agh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "bc02406a8560b4b664174978e8cd97523e4c74ef9b8f00c5225660fe6f60c96e",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L200_gh",
+      "directory": "raw/10x10x10_L200_gh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "69048ce99459c823bfa68a8f6965ac3f8534f90338ac81580d27e3953ff350bb",
+        "result.json": "732c03b1210b375f4790f11772a93ac476f2ee8757055e59c822762248558b61",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L200_gh",
+        "--destination",
+        "raw/10x10x10_L200_gh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "bc02406a8560b4b664174978e8cd97523e4c74ef9b8f00c5225660fe6f60c96e",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L100000_gh",
+      "directory": "raw/10x10x10_L100000_gh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "db481d6aa27e3fca9f365c54f241784645ab154f1a6a53058fb49e69d56fd65a",
+        "result.json": "fa47ce3f8769ba16d8c4ec87c0e11c87b8ed13014637698a18f4848ab50721fe",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L100000_gh",
+        "--destination",
+        "raw/10x10x10_L100000_gh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "602bba743edc43108b5e851883f8b0b5b4844953787cd3bdaf94ff035526922a",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L100000_agh",
+      "directory": "raw/10x10x10_L100000_agh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "fc33015f99b35f3c54b1109e8ccc94fcccc8d2d5f6d4bd510d59a10555db976d",
+        "result.json": "e420e7f0d5ddea9de8f9562900854d5a6bd78d3c714d7c970992b479120dca0d",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L100000_agh",
+        "--destination",
+        "raw/10x10x10_L100000_agh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "602bba743edc43108b5e851883f8b0b5b4844953787cd3bdaf94ff035526922a",
+      "returncode": 0
+    },
+    {
+      "job_id": "6x6x10_L100000_agh",
+      "directory": "raw/6x6x10_L100000_agh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "d7cbe2e34155a6353fe55087da050b9f26f7ee13b8ca33ed7b522da0f4cd1917",
+        "result.json": "33c43a31630767e0bb693084b1a97b71bdb72d20f4331599bfa7a637501716c1",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "6x6x10_L100000_agh",
+        "--destination",
+        "raw/6x6x10_L100000_agh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "2099ea47e748712d57b0114871f39a38cd72e902258ea227f4d3ce41e0fc8b91",
+      "returncode": 0
+    },
+    {
+      "job_id": "6x6x10_L100000_gh",
+      "directory": "raw/6x6x10_L100000_gh/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "dd1c2f133aff011873be1253a3bdb3a186caeff37e16efe29ebe11be7844177a",
+        "result.json": "d71f0002bfd34b7e684c206243072e67695e160133dafae70ae4f0e9d831d6e3",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "6x6x10_L100000_gh",
+        "--destination",
+        "raw/6x6x10_L100000_gh/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "2099ea47e748712d57b0114871f39a38cd72e902258ea227f4d3ce41e0fc8b91",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L1_highs_20",
+      "directory": "raw/10x10x10_L1_highs_20/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "4e647a36e4854fe2d3dbe7a7d188a123617b5e8e1964ec29711cfb1ab689fba9",
+        "result.json": "8dec40f32c530b04e5cce2a6faafe1236eb7f88f41773e7aeeb906fe85b01c36",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L1_highs_20",
+        "--destination",
+        "raw/10x10x10_L1_highs_20/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "49315fd717fff2eb8d32a51d57d2483abae39c2497544b0c0f994a4ac854d82b",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L200_highs_20",
+      "directory": "raw/10x10x10_L200_highs_20/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "7751bf216a1e33496c0877f0674e059492b7ff2f239e410eaa417e6857cf7ebc",
+        "result.json": "b2c9c7ea8683f43be702cba4d67531246a4884be8ec8badeb159b4b5884a03ff",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L200_highs_20",
+        "--destination",
+        "raw/10x10x10_L200_highs_20/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "bc02406a8560b4b664174978e8cd97523e4c74ef9b8f00c5225660fe6f60c96e",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L100000_highs_20",
+      "directory": "raw/10x10x10_L100000_highs_20/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "de32756b2c56e9f9a366ff5b2d4bb85132642b19be5f6618c55b3deb31649b73",
+        "result.json": "6441f6aad5313e0b4b1830697ff9a9242684d6a7a08aac49c2bae469abf76a1a",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L100000_highs_20",
+        "--destination",
+        "raw/10x10x10_L100000_highs_20/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "602bba743edc43108b5e851883f8b0b5b4844953787cd3bdaf94ff035526922a",
+      "returncode": 0
+    },
+    {
+      "job_id": "6x6x10_L100000_highs_20",
+      "directory": "raw/6x6x10_L100000_highs_20/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "a294d49703ce7302f165b98a73f90fd88d3290f1df838a8e4b822ddc74841844",
+        "result.json": "82f732ad51778b84ed40c029298c1294c57b0742afa67a26579ad9a071c99be1",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "6x6x10_L100000_highs_20",
+        "--destination",
+        "raw/6x6x10_L100000_highs_20/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "2099ea47e748712d57b0114871f39a38cd72e902258ea227f4d3ce41e0fc8b91",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L1_highs_120",
+      "directory": "raw/10x10x10_L1_highs_120/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "5c2f07f6e6abf5d45233ad6796fa9e20e956f591555f2816980da05bd92db81a",
+        "result.json": "c81b1aea1c48f3d2b130a52534b9fb78ca3134d0860d10101fecf79f79262040",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L1_highs_120",
+        "--destination",
+        "raw/10x10x10_L1_highs_120/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "49315fd717fff2eb8d32a51d57d2483abae39c2497544b0c0f994a4ac854d82b",
+      "returncode": 0
+    },
+    {
+      "job_id": "6x6x10_L100000_highs_120",
+      "directory": "raw/6x6x10_L100000_highs_120/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "a7dcec6b20eedfa3209fed279532d3cbe4b5bb7ff1ad9c157d3cd550c350f762",
+        "result.json": "a384f96eea3763edc2e1b6842f854294ab0e6110f079448def29d17266350419",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "6x6x10_L100000_highs_120",
+        "--destination",
+        "raw/6x6x10_L100000_highs_120/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "2099ea47e748712d57b0114871f39a38cd72e902258ea227f4d3ce41e0fc8b91",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L100000_highs_120",
+      "directory": "raw/10x10x10_L100000_highs_120/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "7fe8b3a99f407015e75a3c60c94fa094577f2c0176fdaae617cd92b24e39e16c",
+        "result.json": "010a34860a2e50f51460f0394311ad04f3bf1bbe28251f3107b1e141d85798f8",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L100000_highs_120",
+        "--destination",
+        "raw/10x10x10_L100000_highs_120/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "602bba743edc43108b5e851883f8b0b5b4844953787cd3bdaf94ff035526922a",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L200_highs_120",
+      "directory": "raw/10x10x10_L200_highs_120/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "5b7f7bb7022eec05bcca7459733d1045c4e5f5a77e909cf7c20fef3f021b2a3c",
+        "result.json": "8f0c685e479ab7bda340a3d36f146cbf2237bebd57bf27d782aa019dfd9ced23",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L200_highs_120",
+        "--destination",
+        "raw/10x10x10_L200_highs_120/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "bc02406a8560b4b664174978e8cd97523e4c74ef9b8f00c5225660fe6f60c96e",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L100000_highs_600",
+      "directory": "raw/10x10x10_L100000_highs_600/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "6f2432c1639093195cc9772bf37418e276c11fba651e72eb77b1136232faad64",
+        "result.json": "9716816d1bcd57ffdd56d01a359701a11fe103d89d82bd78f50240901eeb4a7d",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L100000_highs_600",
+        "--destination",
+        "raw/10x10x10_L100000_highs_600/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "602bba743edc43108b5e851883f8b0b5b4844953787cd3bdaf94ff035526922a",
+      "returncode": 0
+    },
+    {
+      "job_id": "6x6x10_L100000_highs_600",
+      "directory": "raw/6x6x10_L100000_highs_600/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "cc2388d0c0c686e9825f77f7347be804a4f9a23fc8100bb8786cf98b261030f0",
+        "result.json": "4648168c985ba0ef916a983a393876e216888c41d30139dcd9ba05afd92fc6cf",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "6x6x10_L100000_highs_600",
+        "--destination",
+        "raw/6x6x10_L100000_highs_600/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "2099ea47e748712d57b0114871f39a38cd72e902258ea227f4d3ce41e0fc8b91",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L1_highs_600",
+      "directory": "raw/10x10x10_L1_highs_600/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "cfc897150fc6f18cddbb99b49c82d1986840c05ee9ffdb85980852e9af0b3d39",
+        "result.json": "05f80ecb0624f6dd5895f9234a5f357bd9700f42ba76f2c7be4aa6f43a1bcdce",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L1_highs_600",
+        "--destination",
+        "raw/10x10x10_L1_highs_600/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "49315fd717fff2eb8d32a51d57d2483abae39c2497544b0c0f994a4ac854d82b",
+      "returncode": 0
+    },
+    {
+      "job_id": "10x10x10_L200_highs_600",
+      "directory": "raw/10x10x10_L200_highs_600/attempt_01",
+      "status": "complete",
+      "sha256": {
+        "evidence.json.gz": "2a66e9474005784a4970481d8d64c637a2ea07b26d49c1258bd0b85576136e42",
+        "result.json": "b2961146aa8c32f8383f1b3310ee785053a1126a8cce9f2ab3fb4d510eb9221e",
+        "worker.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invocation_index": 0,
+      "command": [
+        "python",
+        "-B",
+        "snapshot/scripts/extension_solver_quality.py",
+        "worker",
+        "--output",
+        ".",
+        "--job-id",
+        "10x10x10_L200_highs_600",
+        "--destination",
+        "raw/10x10x10_L200_highs_600/attempt_01"
+      ],
+      "command_working_directory": "campaign root",
+      "source_manifest_sha256": "8a1b5c1836ccc7df0d8d897422f0331d18f2e5af1a3448b47b76deb49784881c",
+      "input_sha256": "bc02406a8560b4b664174978e8cd97523e4c74ef9b8f00c5225660fe6f60c96e",
+      "returncode": 0
+    }
+  ],
+  "complete": true,
+  "invocations": [
+    {
+      "started_utc": "2026-10-14T06:15:23.028069+00:00",
+      "environment": {
+        "python_version": "3.13.16",
+        "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+        "packages": {
+          "pyomo": "6.10.0",
+          "highspy": "1.14.0",
+          "gurobipy": "13.0.3"
+        },
+        "cpu_topology": {
+          "lscpu": [
+            {
+              "field": "Architecture:",
+              "data": "x86_64"
+            },
+            {
+              "field": "CPU op-mode(s):",
+              "data": "32-bit, 64-bit"
+            },
+            {
+              "field": "Address sizes:",
+              "data": "39 bits physical, 48 bits virtual"
+            },
+            {
+              "field": "Byte Order:",
+              "data": "Little Endian"
+            },
+            {
+              "field": "CPU(s):",
+              "data": "16"
+            },
+            {
+              "field": "On-line CPU(s) list:",
+              "data": "0-15"
+            },
+            {
+              "field": "Vendor ID:",
+              "data": "GenuineIntel"
+            },
+            {
+              "field": "Model name:",
+              "data": "13th Gen Intel(R) Core(TM) i7-13620H"
+            },
+            {
+              "field": "CPU family:",
+              "data": "6"
+            },
+            {
+              "field": "Model:",
+              "data": "186"
+            },
+            {
+              "field": "Thread(s) per core:",
+              "data": "2"
+            },
+            {
+              "field": "Core(s) per socket:",
+              "data": "8"
+            },
+            {
+              "field": "Socket(s):",
+              "data": "1"
+            },
+            {
+              "field": "Stepping:",
+              "data": "2"
+            },
+            {
+              "field": "BogoMIPS:",
+              "data": "5836.79"
+            },
+            {
+              "field": "Flags:",
+              "data": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities"
+            },
+            {
+              "field": "Virtualization:",
+              "data": "VT-x"
+            },
+            {
+              "field": "Hypervisor vendor:",
+              "data": "Microsoft"
+            },
+            {
+              "field": "Virtualization type:",
+              "data": "full"
+            },
+            {
+              "field": "L1d cache:",
+              "data": "384 KiB (8 instances)"
+            },
+            {
+              "field": "L1i cache:",
+              "data": "256 KiB (8 instances)"
+            },
+            {
+              "field": "L2 cache:",
+              "data": "10 MiB (8 instances)"
+            },
+            {
+              "field": "L3 cache:",
+              "data": "24 MiB (1 instance)"
+            },
+            {
+              "field": "NUMA node(s):",
+              "data": "1"
+            },
+            {
+              "field": "NUMA node0 CPU(s):",
+              "data": "0-15"
+            },
+            {
+              "field": "Vulnerability Gather data sampling:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Itlb multihit:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability L1tf:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Mds:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Meltdown:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Mmio stale data:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Reg file data sampling:",
+              "data": "Vulnerable: No microcode"
+            },
+            {
+              "field": "Vulnerability Retbleed:",
+              "data": "Mitigation; Enhanced IBRS"
+            },
+            {
+              "field": "Vulnerability Spec rstack overflow:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Spec store bypass:",
+              "data": "Mitigation; Speculative Store Bypass disabled via prctl"
+            },
+            {
+              "field": "Vulnerability Spectre v1:",
+              "data": "Mitigation; usercopy/swapgs barriers and __user pointer sanitization"
+            },
+            {
+              "field": "Vulnerability Spectre v2:",
+              "data": "Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S"
+            },
+            {
+              "field": "Vulnerability Srbds:",
+              "data": "Not affected"
+            },
+            {
+              "field": "Vulnerability Tsx async abort:",
+              "data": "Not affected"
+            }
+          ]
+        },
+        "runtime_executable": {
+          "filename": "python",
+          "sha256": "47bf2894b1cfb09b4adf27f6edf8c507dccb3b9052793f5d80177b5a1bc6c81b"
+        },
+        "native_package_artifacts": {
+          "pyomo": [
+            {
+              "distribution_member": "pyomo/contrib/appsi/cmodel/appsi_cmodel.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 1355000,
+              "sha256": "bde7d70f60f76826f4a5e723d4bfd9d5328ed54f2a9f6ae467d255add22b6765"
+            }
+          ],
+          "highspy": [
+            {
+              "distribution_member": "highspy/_core.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 6323872,
+              "sha256": "5d8696562e4e17edbebb0bc718876bcfff73c0d1b89489488f963fbbfbef0b19"
+            }
+          ],
+          "gurobipy": [
+            {
+              "distribution_member": "gurobipy/.libs/libgurobi130.so",
+              "bytes": 49627968,
+              "sha256": "8e87fca221fdffc922331c8619426031b3e72dfd419446422f88af0cb0e98f9c"
+            },
+            {
+              "distribution_member": "gurobipy/_attrutil.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 151720,
+              "sha256": "45004bc90d73e099f37836b41e960423713e4fcd51f9eaa74f078f29efb792de"
+            },
+            {
+              "distribution_member": "gurobipy/_batch.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 129312,
+              "sha256": "7457682d80a61389227521f35735a64823d63cdbcb22096cb12c0d6b4d38b5d6"
+            },
+            {
+              "distribution_member": "gurobipy/_core.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 1450640,
+              "sha256": "2ad257ff1823714ddec8d917d3f8d4dd8e1b8f473d1d4905753e1a082fb32267"
+            },
+            {
+              "distribution_member": "gurobipy/_exception.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 71728,
+              "sha256": "5b87ad4c56938b15969d77e4458b13317674927cf4e3f56ae43371322c96c00f"
+            },
+            {
+              "distribution_member": "gurobipy/_helpers.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 123584,
+              "sha256": "e7dde875c0e9534e49489c999b28494237e6294a83a599dc9eebf947fbb419e4"
+            },
+            {
+              "distribution_member": "gurobipy/_lowlevel.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 240320,
+              "sha256": "dc7cce54affa0d88f162b1eb4be7f387ec310b27cf7e8c9c385ef9d462018921"
+            },
+            {
+              "distribution_member": "gurobipy/_matrixapi.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 1931920,
+              "sha256": "75840fa84c1b6b2ea7e7b810b8356f8f104e853c847c63187ad26e8fc9eab057"
+            },
+            {
+              "distribution_member": "gurobipy/_model.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 1820480,
+              "sha256": "152ad8d878a2178682715484201284996aea6039b89e3ffb6181ae13cfc9a43f"
+            },
+            {
+              "distribution_member": "gurobipy/_modelutil.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 211136,
+              "sha256": "cfc337f719d26a3fe2cac41313a9c65d31808e753fb96275b087c9113017f4d8"
+            },
+            {
+              "distribution_member": "gurobipy/_util.cpython-313-x86_64-linux-gnu.so",
+              "bytes": 147496,
+              "sha256": "bc9f44931fdb8f28a288936eea7ed70ad983577aee3e75eb530eea31fd4eecac"
+            }
+          ]
+        },
+        "cpu_governors": "not exposed by this execution environment",
+        "operator_observations": "Windows Balanced, AC observed, governor unavailable, closed apps unverified, no concurrent campaigns or tests"
+      },
+      "completed_jobs": 23,
+      "elapsed_seconds": 3225.756829929
+    }
+  ]
+}
