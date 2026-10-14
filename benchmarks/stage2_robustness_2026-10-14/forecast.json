@@ -1,0 +1,14 @@
+{
+  "classification": "PRE_EXECUTION_PLANNING_ESTIMATE",
+  "basis": "Historical 40-source Stage-2 campaign: 659.52 s; scale to 144 sources with explicit backend/input-variation allowance",
+  "historical_elapsed_seconds": 659.52,
+  "historical_sources": 40,
+  "planned_sources": 144,
+  "maximum_operational_attempts": 7200,
+  "extrapolated_seconds": 2374.272,
+  "conservative_estimated_seconds": 5400,
+  "gate_seconds": 10800,
+  "gate_passed": true,
+  "limitations": "An empirical estimate, not a worst-case guarantee; new HiGHS/seed/shape behavior can differ. Native limits alone permit a much longer worst case. Coordinator checkpoints partial coverage at its three-hour budget.",
+  "fallback": "If a revised forecast exceeds three hours before launch, use the two smaller predeclared shapes; never replace completed wider-scope evidence"
+}

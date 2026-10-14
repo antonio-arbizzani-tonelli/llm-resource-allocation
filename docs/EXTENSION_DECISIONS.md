@@ -21,3 +21,20 @@ in the 204 historical rejection cases. Sweep `1e-12` through `1e-6` explicitly.
 This finite roundoff evidence is not a general solver-error guarantee.
 An injected relative objective error of at least `1e-6` remains rejected under
 the selected policy. Historical classifications are not rewritten.
+
+## D-0106 — Distinct synthetic instance seeds and shared cohorts
+
+**Provenance:** ASSUMED extension input distribution, separately configurable.
+`scripts/extension_instances.py` leaves the original factory unchanged.
+An explicit local `Random(instance_seed)` draws independent uniform factors
+in `[0.9,1.1]` for each query's arrivals/input/output token counts and each
+route's compute/communication delay. Token counts are rounded to integers
+and constrained positive. All other approved coherent coefficients persist.
+The amplitude argument is configurable; no factor depends on solve outcomes.
+
+Instance seeds and AGH ordering seeds are distinct. Each Stage-2 method uses
+the exact same prepared instance for an instance seed/shape/load cell. Failed
+Stage-1 sources retain zero operational attempts and their rejected evidence.
+Bootstrap whole shared-input groups for method comparisons, not independent
+copies of the same input. Scalability resamples whole seed grids across sizes.
+No inference about recovered author data or real GPU/cloud variability follows.

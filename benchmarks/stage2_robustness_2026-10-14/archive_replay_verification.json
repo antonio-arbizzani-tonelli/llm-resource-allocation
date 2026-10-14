@@ -1,0 +1,17 @@
+{
+  "archive_only_initial_state": true,
+  "timed_binary_required": false,
+  "solver_required": false,
+  "verified_archive_entries": 7233,
+  "measured_source_snapshot_sha256_verified": true,
+  "independent_validation_counts": {
+    "sources": 144,
+    "frozen": 6800,
+    "operational": 3246
+  },
+  "analysis_json_values_reproduced": true,
+  "fresh_replay_seconds": 246.1337058999925,
+  "postprocessing_platform": "win32",
+  "postprocessing_python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "command": "python scripts/run_stage2_extension.py --output benchmarks/stage2_robustness_2026-10-14 --replay"
+}

@@ -1,0 +1,651 @@
+{
+  "classification": "ASSUMED_SYNTHETIC_MATCHED_INSTANCE_STAGE2_EXTENSION",
+  "planned_sources": 144,
+  "completed_sources": 144,
+  "accepted_sources": 136,
+  "attempted_lps": 6800,
+  "status_counts": {
+    "success": 3246,
+    "solver_no_usable_solution": 3554
+  },
+  "accepted_input_intersection": [
+    "16x4x4_L20000_i11",
+    "16x4x4_L20000_i23",
+    "16x4x4_L20000_i37",
+    "16x4x4_L2000_i11",
+    "16x4x4_L2000_i23",
+    "16x4x4_L2000_i37",
+    "16x4x4_L200_i11",
+    "16x4x4_L200_i23",
+    "16x4x4_L200_i37",
+    "16x8x8_L100000_i11",
+    "16x8x8_L100000_i37",
+    "16x8x8_L20000_i11",
+    "16x8x8_L20000_i23",
+    "16x8x8_L20000_i37",
+    "16x8x8_L2000_i11",
+    "16x8x8_L2000_i23",
+    "16x8x8_L2000_i37",
+    "16x8x8_L200_i11",
+    "16x8x8_L200_i23",
+    "16x8x8_L200_i37",
+    "32x4x4_L100000_i11",
+    "32x4x4_L20000_i11",
+    "32x4x4_L20000_i37",
+    "32x4x4_L2000_i11",
+    "32x4x4_L2000_i23",
+    "32x4x4_L2000_i37",
+    "32x4x4_L200_i11",
+    "32x4x4_L200_i23",
+    "32x4x4_L200_i37",
+    "8x4x4_L100000_i11",
+    "8x4x4_L100000_i37",
+    "8x4x4_L20000_i11",
+    "8x4x4_L20000_i23",
+    "8x4x4_L20000_i37",
+    "8x4x4_L2000_i11",
+    "8x4x4_L2000_i23",
+    "8x4x4_L2000_i37",
+    "8x4x4_L200_i11",
+    "8x4x4_L200_i23",
+    "8x4x4_L200_i37"
+  ],
+  "matched_input_count": 40,
+  "source_input_count": 48,
+  "replay_verification": {
+    "sources": 144,
+    "frozen": 6800,
+    "operational": 3246
+  },
+  "ranking_policy": "no unmatched method rankings; conditional feasibility/cost denominators remain explicit",
+  "by_load": {
+    "200.0": {
+      "relative_tolerance": 1e-12,
+      "attempted": 1800,
+      "usable": 870,
+      "newly_usable": 0,
+      "frozen_failures": 1260,
+      "recovered": 330,
+      "recovery_fraction": 0.2619047619047619,
+      "paired_scenarios": 540,
+      "paired_source_grids": 12,
+      "paired_baseline_cost_sum_usd": 245271418.4046234,
+      "paired_adapted_cost_sum_usd": 233141545.51983064,
+      "paired_reduction_fraction": 0.04945489761380242,
+      "source_cluster_bootstrap": {
+        "unit": "source_grid",
+        "units": 12,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.04640838272063797,
+          0.051770306464910466
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      },
+      "scenario_pair_bootstrap_sensitivity": {
+        "unit": "scenario_pair",
+        "units": 540,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.04721198288706953,
+          0.0515964135702878
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      }
+    },
+    "2000.0": {
+      "relative_tolerance": 1e-12,
+      "attempted": 1800,
+      "usable": 820,
+      "newly_usable": 0,
+      "frozen_failures": 1260,
+      "recovered": 280,
+      "recovery_fraction": 0.2222222222222222,
+      "paired_scenarios": 540,
+      "paired_source_grids": 12,
+      "paired_baseline_cost_sum_usd": 2465206737.994228,
+      "paired_adapted_cost_sum_usd": 2343831977.146301,
+      "paired_reduction_fraction": 0.04923512457485879,
+      "source_cluster_bootstrap": {
+        "unit": "source_grid",
+        "units": 12,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.04628602848205589,
+          0.05146725078776872
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      },
+      "scenario_pair_bootstrap_sensitivity": {
+        "unit": "scenario_pair",
+        "units": 540,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.04695679228366088,
+          0.051408261646161524
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      }
+    },
+    "20000.0": {
+      "relative_tolerance": 1e-12,
+      "attempted": 1750,
+      "usable": 930,
+      "newly_usable": 229,
+      "frozen_failures": 1220,
+      "recovered": 400,
+      "recovery_fraction": 0.32786885245901637,
+      "paired_scenarios": 530,
+      "paired_source_grids": 12,
+      "paired_baseline_cost_sum_usd": 23540824672.330147,
+      "paired_adapted_cost_sum_usd": 22327001031.850876,
+      "paired_reduction_fraction": 0.0515624944059839,
+      "source_cluster_bootstrap": {
+        "unit": "source_grid",
+        "units": 12,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.04726027206906497,
+          0.05526150021129388
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      },
+      "scenario_pair_bootstrap_sensitivity": {
+        "unit": "scenario_pair",
+        "units": 530,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.04954079138184782,
+          0.05349777187163775
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      }
+    },
+    "100000.0": {
+      "relative_tolerance": 1e-12,
+      "attempted": 1450,
+      "usable": 626,
+      "newly_usable": 375,
+      "frozen_failures": 1135,
+      "recovered": 311,
+      "recovery_fraction": 0.2740088105726872,
+      "paired_scenarios": 315,
+      "paired_source_grids": 12,
+      "paired_baseline_cost_sum_usd": 54410418562.23513,
+      "paired_adapted_cost_sum_usd": 51454023509.52141,
+      "paired_reduction_fraction": 0.05433509116148722,
+      "source_cluster_bootstrap": {
+        "unit": "source_grid",
+        "units": 12,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.049830662945300745,
+          0.05865710056327765
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      },
+      "scenario_pair_bootstrap_sensitivity": {
+        "unit": "scenario_pair",
+        "units": 315,
+        "replicates": 10000,
+        "seed": 20261014,
+        "ci95": [
+          0.052113381922385835,
+          0.05631719610703755
+        ],
+        "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+      }
+    }
+  },
+  "by_method_on_matched_inputs": {
+    "gh": {
+      "200.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 600,
+        "usable": 300,
+        "newly_usable": 0,
+        "frozen_failures": 390,
+        "recovered": 90,
+        "recovery_fraction": 0.23076923076923078,
+        "paired_scenarios": 210,
+        "paired_source_grids": 12,
+        "paired_baseline_cost_sum_usd": 100131912.38966517,
+        "paired_adapted_cost_sum_usd": 94066975.9472688,
+        "paired_reduction_fraction": 0.06056946579422713,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 12,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.060392033463033984,
+            0.06078718330774379
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 210,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.060521792888690175,
+            0.06061805592700678
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "2000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 600,
+        "usable": 300,
+        "newly_usable": 0,
+        "frozen_failures": 390,
+        "recovered": 90,
+        "recovery_fraction": 0.23076923076923078,
+        "paired_scenarios": 210,
+        "paired_source_grids": 12,
+        "paired_baseline_cost_sum_usd": 1001319123.8966516,
+        "paired_adapted_cost_sum_usd": 940631743.472688,
+        "paired_reduction_fraction": 0.06060743171247705,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 12,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06042969894415251,
+            0.060825775997066775
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 210,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06055945951199545,
+            0.06065598804650933
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "20000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 550,
+        "usable": 270,
+        "newly_usable": 62,
+        "frozen_failures": 360,
+        "recovered": 80,
+        "recovery_fraction": 0.2222222222222222,
+        "paired_scenarios": 190,
+        "paired_source_grids": 11,
+        "paired_baseline_cost_sum_usd": 8302273366.145943,
+        "paired_adapted_cost_sum_usd": 7798887098.8476,
+        "paired_reduction_fraction": 0.06063234069730749,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 11,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06041913621566928,
+            0.06088641902471349
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 190,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0605741194308767,
+            0.060690004208022987
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "100000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 250,
+        "usable": 98,
+        "newly_usable": 54,
+        "frozen_failures": 186,
+        "recovered": 34,
+        "recovery_fraction": 0.1827956989247312,
+        "paired_scenarios": 64,
+        "paired_source_grids": 5,
+        "paired_baseline_cost_sum_usd": 10341017326.922783,
+        "paired_adapted_cost_sum_usd": 9717156845.574778,
+        "paired_reduction_fraction": 0.06032873378171293,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 5,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.05961842690652543,
+            0.06112207968091325
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 64,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.060042629174387685,
+            0.06064136727655754
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      }
+    },
+    "agh": {
+      "200.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 600,
+        "usable": 300,
+        "newly_usable": 0,
+        "frozen_failures": 390,
+        "recovered": 90,
+        "recovery_fraction": 0.23076923076923078,
+        "paired_scenarios": 210,
+        "paired_source_grids": 12,
+        "paired_baseline_cost_sum_usd": 100131912.38966517,
+        "paired_adapted_cost_sum_usd": 94066975.9472688,
+        "paired_reduction_fraction": 0.06056946579422713,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 12,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.060392033463033984,
+            0.06078718330774379
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 210,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.060521792888690175,
+            0.06061805592700678
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "2000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 600,
+        "usable": 300,
+        "newly_usable": 0,
+        "frozen_failures": 390,
+        "recovered": 90,
+        "recovery_fraction": 0.23076923076923078,
+        "paired_scenarios": 210,
+        "paired_source_grids": 12,
+        "paired_baseline_cost_sum_usd": 1001319123.8966516,
+        "paired_adapted_cost_sum_usd": 940631743.472688,
+        "paired_reduction_fraction": 0.06060743171247705,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 12,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06042969894415251,
+            0.060825775997066775
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 210,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06055945951199545,
+            0.06065598804650933
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "20000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 550,
+        "usable": 270,
+        "newly_usable": 62,
+        "frozen_failures": 360,
+        "recovered": 80,
+        "recovery_fraction": 0.2222222222222222,
+        "paired_scenarios": 190,
+        "paired_source_grids": 11,
+        "paired_baseline_cost_sum_usd": 8302273366.145943,
+        "paired_adapted_cost_sum_usd": 7798887098.8476,
+        "paired_reduction_fraction": 0.06063234069730749,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 11,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06041913621566928,
+            0.06088641902471349
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 190,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0605741194308767,
+            0.060690004208022987
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "100000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 250,
+        "usable": 94,
+        "newly_usable": 53,
+        "frozen_failures": 187,
+        "recovered": 31,
+        "recovery_fraction": 0.1657754010695187,
+        "paired_scenarios": 63,
+        "paired_source_grids": 5,
+        "paired_baseline_cost_sum_usd": 9822873065.086164,
+        "paired_adapted_cost_sum_usd": 9229158278.91702,
+        "paired_reduction_fraction": 0.06044207048540698,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 5,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.05983388598898081,
+            0.06112207968091325
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 63,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.06018790666991921,
+            0.06070305644708145
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      }
+    },
+    "p_dm": {
+      "200.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 600,
+        "usable": 270,
+        "newly_usable": 0,
+        "frozen_failures": 480,
+        "recovered": 150,
+        "recovery_fraction": 0.3125,
+        "paired_scenarios": 120,
+        "paired_source_grids": 12,
+        "paired_baseline_cost_sum_usd": 45007593.62529306,
+        "paired_adapted_cost_sum_usd": 45007593.62529306,
+        "paired_reduction_fraction": 0.0,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 12,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0,
+            1.9656121253107354e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 120,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0,
+            1.76948981211036e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "2000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 600,
+        "usable": 220,
+        "newly_usable": 0,
+        "frozen_failures": 480,
+        "recovered": 100,
+        "recovery_fraction": 0.20833333333333334,
+        "paired_scenarios": 120,
+        "paired_source_grids": 12,
+        "paired_baseline_cost_sum_usd": 462568490.2009246,
+        "paired_adapted_cost_sum_usd": 462568490.20092463,
+        "paired_reduction_fraction": -1.2885582575998707e-16,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 12,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            -4.2570870618699423e-16,
+            1.9134188646627953e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 120,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            -2.698333041997104e-16,
+            0.0
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "20000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 550,
+        "usable": 330,
+        "newly_usable": 53,
+        "frozen_failures": 440,
+        "recovered": 220,
+        "recovery_fraction": 0.5,
+        "paired_scenarios": 110,
+        "paired_source_grids": 11,
+        "paired_baseline_cost_sum_usd": 3514442194.3971133,
+        "paired_adapted_cost_sum_usd": 3514442194.397113,
+        "paired_reduction_fraction": 1.356793288457898e-16,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 11,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            -1.4107086832128995e-16,
+            4.437934760892464e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 110,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0,
+            2.8658964474358165e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      },
+      "100000.0": {
+        "relative_tolerance": 1e-12,
+        "attempted": 250,
+        "usable": 168,
+        "newly_usable": 89,
+        "frozen_failures": 205,
+        "recovered": 123,
+        "recovery_fraction": 0.6,
+        "paired_scenarios": 45,
+        "paired_source_grids": 5,
+        "paired_baseline_cost_sum_usd": 5407332938.964882,
+        "paired_adapted_cost_sum_usd": 5407332938.964881,
+        "paired_reduction_fraction": 1.7636685722348189e-16,
+        "source_cluster_bootstrap": {
+          "unit": "source_grid",
+          "units": 5,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0,
+            3.1413335622799815e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        },
+        "scenario_pair_bootstrap_sensitivity": {
+          "unit": "scenario_pair",
+          "units": 45,
+          "replicates": 10000,
+          "seed": 20261014,
+          "ci95": [
+            0.0,
+            2.0877184324432014e-16
+          ],
+          "interpretation": "conditional synthetic sensitivity; no real-world probability inference"
+        }
+      }
+    }
+  },
+  "infeasibility_certificate_counts": {
+    "error_slo": 3460,
+    "compute_capacity": 160
+  }
+}

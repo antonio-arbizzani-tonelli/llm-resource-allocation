@@ -1,0 +1,50 @@
+{
+  "original_archive_sha256": "80c6a415e33954f44a76a8017d46dd274a38550682f6a6d4b460d27927be46fb",
+  "original_manifest_sha256": "564d28a0a4d7630db46205a76caef5dd7497b5620e6af8c81fa4ced4f31cb471",
+  "original_archive_bytes": 180575293,
+  "verified_entry_count": 7233,
+  "all_entry_bytes_sha256_equal_to_original": true,
+  "analysis_json_values_unchanged": true,
+  "scientific_producer_functions_ast_unchanged": [
+    "certificates",
+    "historical_diagnosis",
+    "planned_jobs",
+    "current_sources",
+    "run_job",
+    "run_campaign",
+    "replay_operational_attempt",
+    "make_plots"
+  ],
+  "measured_source_snapshot_sha256": "231b51e9c73aa333b3f26a899bfc6a70848576448542c403778f7d8d20bd9dfe",
+  "postprocessing_helper_sha256": "3ecf3a795ad2e5fc6b0e37eb317a51bd91c32703b5c504097d82d5dc8df1cd2e",
+  "archive_parts": [
+    {
+      "path": "evidence-part-001.zip",
+      "bytes": 60115865,
+      "sha256": "db36eddb1d857af7ab0d4a1a85e9d56b2eb61c7c353bd1dde4b63cb658214407",
+      "file_count": 2424
+    },
+    {
+      "path": "evidence-part-002.zip",
+      "bytes": 57409619,
+      "sha256": "85787f8d9dacea16e8753ade38d7a55f87dfd6ea0d19098da9d4953df29a552e",
+      "file_count": 1304
+    },
+    {
+      "path": "evidence-part-003.zip",
+      "bytes": 60377639,
+      "sha256": "b8540e330220dceda65cb532aade8b2106e9017fb99fa86560dd6d478dd1071b",
+      "file_count": 3015
+    },
+    {
+      "path": "evidence-part-004.zip",
+      "bytes": 5050821,
+      "sha256": "ee2a62c64a783ea72ceedca63252aef3778931f8b5883f25d952ee550ae83bdd",
+      "file_count": 490
+    }
+  ],
+  "postprocessing_seconds": 21.185686600001645,
+  "postprocessing_platform": "win32",
+  "postprocessing_python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+  "scope": "Unmeasured archive transport and report clarification after all 144 timed sources; original data retained privately; no numerical observations changed."
+}
