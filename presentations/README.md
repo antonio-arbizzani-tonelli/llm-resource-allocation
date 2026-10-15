@@ -8,14 +8,18 @@ by Antonio Arbizzani Tonelli:
 - [Read the evidence guide](../docs/PRESENTATION_BRIEF.md) for implementation
   boundaries, timing definitions and the separate Stage-2 cohorts.
 
-Both files were supplied on 15 October 2026 and are published byte for byte,
-without editing the slides. Each has 21 positions, including **a blank slide/page
-10**, leaving 20 content pages. It falls between native scaling and OpenMP
-diagnostics; the [extension report](../docs/EXTENSION_REPORT.md) retains the
-complete OpenMP throughput evidence. In the supplied PDF, chart labels `1,000`
-on page 17 and `850` on page 18 wrap vertically. The
-[original Stage-2 report](../docs/STAGE2_RESULTS.md) retains the rejection
-breakdown; the evidence guide separates the original and replay denominators.
+The corrected files were supplied on 15 October 2026 and replace the earlier
+delivery at commit
+[`26ab90c`](https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation/commit/26ab90ce09ad3c5f011ac92200eb716806a0bc90).
+Both now have **21 content slides/pages**: position 10 contains the OpenMP
+throughput plot and its experimental conditions. The other 20 PowerPoint slides
+and their notes are unchanged; PDF text outside page 10 is unchanged. The supplied
+files are published byte for byte, without editing their contents.
+
+In the supplied PDF, chart labels `1,000` on page 17 and `850` on page 18 still
+wrap vertically. The [original Stage-2 report](../docs/STAGE2_RESULTS.md) retains
+the rejection breakdown; the evidence guide separates the original and replay
+denominators.
 
 ## Scope and sources
 
@@ -29,12 +33,12 @@ MPI and native Stage 2 remain future work.
 Appendix A8 and PowerPoint speaker notes identify artifacts, selectors and public
 source commit
 [`80a9625ab62a3c5c70ede7a9dae97a61158e250a`](https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation/commit/80a9625ab62a3c5c70ede7a9dae97a61158e250a).
-The numerical payload is unchanged in this publication. The source table still
-lists position 10, whose supplied slide is blank. Current
+The numerical payload is unchanged in this publication. Position 10 now matches
+the OpenMP entry in the source table. Current
 [key numbers](../docs/KEY_NUMBERS.md), [results](../docs/RESULTS.md) and
 [extension report](../docs/EXTENSION_REPORT.md) provide the full evidence and
-limitations. The blank slide and wrapped labels remain delivery issues; this
-publication does not add or reconstruct any chart.
+limitations. The wrapped labels remain a delivery issue. The supplied OpenMP
+chart uses existing measurements; this replacement adds no experimental result.
 
 The deck's 3,572-file manifest count describes its pinned source publication;
 the regenerated manifest describes this delivery. A slide-20 note cites an
@@ -50,8 +54,8 @@ of the paper's tables.
 
 | File | Bytes | SHA-256 |
 |---|---:|---|
-| `llm-resource-allocation.pdf` | 5,943,311 | `39da177f5445202a2b0b47848078ab8940e44ee920fca3369195ff9878ff5e75` |
-| `llm-resource-allocation.pptx` | 450,558 | `888cd876eaacad279ff7842924b513517e6bc6bcb99caaa7ddb58eb85498d1e8` |
+| `llm-resource-allocation.pdf` | 6,386,280 | `8b9f149d685957503a1f086fb16d0293238bbf8b1759b870807fd646cb1fef73` |
+| `llm-resource-allocation.pptx` | 664,797 | `a8b278f9055947649db75e2b7a68827849e559463ce532c4c5b1e9508cdd901f` |
 
 The [publication review](../docs/PUBLICATION_REVIEW.md) records the repository
 baseline and delivery checks. The release manifest also identifies both files.

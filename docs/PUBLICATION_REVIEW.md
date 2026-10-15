@@ -3,11 +3,11 @@
 ## Public baseline
 
 The reference is public default branch `main` at
-[`5ab0cfe7db63ec9782de7a21b6c55a6625c55cc3`](https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation/commit/5ab0cfe7db63ec9782de7a21b6c55a6625c55cc3),
+[`26ab90ce09ad3c5f011ac92200eb716806a0bc90`](https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation/commit/26ab90ce09ad3c5f011ac92200eb716806a0bc90),
 verified against the live remote on 15 October 2026. The isolated publication
 checkout was clean and matched this commit before the update. It includes the
-recent shorter README; that revision and the earlier English results reports
-are retained.
+recent shorter README and the first supplied presentation delivery. The README
+and earlier English results reports are retained.
 
 The supplied slides identify source commit
 [`80a9625ab62a3c5c70ede7a9dae97a61158e250a`](https://github.com/antonio-arbizzani-tonelli/llm-resource-allocation/commit/80a9625ab62a3c5c70ede7a9dae97a61158e250a),
@@ -23,18 +23,26 @@ a separate historical result.
 
 ## Delivered material
 
-The supplied [PDF and PowerPoint files](../presentations/README.md) are copied
-unchanged into `presentations/`. Their recorded SHA-256 hashes match the supplied
-originals. Both have 21 positions, including a blank slide/page 10, leaving 20
-content pages. The blank position interrupts the OpenMP narrative; the source
-appendix still refers to it. The PDF also wraps chart counts `1,000` and `850`
-vertically on pages 17 and 18. These supplied layout issues are documented and
-remain unresolved; no chart or slide has been reconstructed.
+The corrected [PDF and PowerPoint files](../presentations/README.md) replace
+the earlier copies in `presentations/`. Their recorded SHA-256 hashes match the
+newly supplied originals. Both now have 21 content slides/pages: position 10
+contains the OpenMP throughput plot, with 32 independent GH/AGH cases, 30 paired
+core rounds and the eight-thread speedup/efficiency headline.
 
-The README now links the actual files. The former brief becomes a
-[presentation evidence guide](PRESENTATION_BRIEF.md). Preparation-only design
-instructions and the obsolete text draft are removed from the publication.
-Earlier local HTML/PDF drafts remain separate historical development material.
+Comparison with the previous delivery finds changes only to slide 10, its notes,
+its image/relationship and package metadata in the PPTX; all other slide, note
+and existing media parts are byte-identical. PDF text changes only on page 10.
+Pixel comparisons find small rasterization differences on pages 1, 2 and 7
+(at most 0.0024% of pixels at the checked scale), with no visible content or
+layout change; the remaining 17 pages render identically at that scale.
+
+The supplied PDF still wraps chart counts `1,000` and `850` vertically on pages
+17 and 18. This layout issue remains documented and unresolved; the files are
+published without modification. The README continues to link the actual files,
+and the [presentation evidence guide](PRESENTATION_BRIEF.md) and integrity table
+now describe the corrected delivery. Preparation-only design instructions and
+the obsolete text draft remain absent from the publication. Earlier local
+HTML/PDF drafts remain separate historical development material.
 
 ## Evidence review
 
@@ -64,9 +72,11 @@ profiling remain separate scientific work.
 
 ## Publication checks
 
-- All PDF pages are rendered and visually inspected. The PPTX package and
-  slide text are inspected; its 20 nonblank slides agree with PDF text.
-  An independent PowerPoint application render is not performed.
+- All 21 PDF pages are rendered and compared with the preceding delivery.
+  The corrected page 10 and the three pages with small rasterization differences
+  are visually inspected. PPTX parts, slide text and the new OpenMP chart are
+  checked against retained artifacts. An independent PowerPoint application
+  render is not performed.
 - Relative Markdown links and anchors are checked from exported destinations;
   pinned repository sources are resolved against Git objects.
 - A fresh export and the isolated publication checkout pass the prescribed
