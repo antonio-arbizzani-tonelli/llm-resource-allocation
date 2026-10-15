@@ -8,11 +8,12 @@ introduces the allocation problem, the two-stage model, the Python
 reference, the C++20 implementation, cross-language verification and CPU
 benchmarks. Technical appendices retain units, solver comparisons and the three
 separate Stage-2 evaluations. The [presentation files guide](../presentations/README.md)
-records the supplied files and their checksums. Both corrected formats contain
-21 content slides/pages, including the OpenMP throughput plot at position 10.
-The other 20 PowerPoint slides and notes are unchanged from the first delivery;
-PDF text outside page 10 is unchanged. The supplied files are preserved byte for
-byte, and the reports below retain the complete OpenMP evidence.
+records the supplied files and their checksums. Both formats contain 21 content
+slides/pages, including the OpenMP throughput plot at position 10. The latest
+revision improves chart-label layout on slides 17 and 18 without changing any
+text or numerical value; the other 19 PowerPoint slides, all notes and media
+remain unchanged. The supplied files are preserved byte for byte, and the reports
+below retain the complete evidence.
 
 ## Scope
 

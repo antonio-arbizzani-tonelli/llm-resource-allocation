@@ -16805,13 +16805,13 @@
     },
     {
       "path": "docs/PRESENTATION_BRIEF.md",
-      "bytes": 6630,
-      "sha256": "3652a296dfc3fa1e9d0ce957a8cceec61d34c1c6f91f4076faffcf39f110bdae"
+      "bytes": 6678,
+      "sha256": "a5d8ce1204a454c137ba5b63f07e046a7894b74a10d4c5a746bb13c2fa63a3d2"
     },
     {
       "path": "docs/PUBLICATION_REVIEW.md",
-      "bytes": 5561,
-      "sha256": "fa9f3f4192f89e6921fea6377bea8c4f6d13e157ee49d5e23327deadc53e0edc"
+      "bytes": 5505,
+      "sha256": "6d9e7aeb4e1023de58c5d7383fd16a691579f3ee446b996efd6a64511b3ad426"
     },
     {
       "path": "docs/RESULTS.md",
@@ -16875,18 +16875,18 @@
     },
     {
       "path": "presentations/README.md",
-      "bytes": 3335,
-      "sha256": "a754bdb72a2fd9aa0f30e0777e8f9446f6f59a4ef20e16f07386fa624681d288"
+      "bytes": 3304,
+      "sha256": "a4d6ba7dfe35e3b1f5157796817e6ded90613c7830172a991daf6b97c51ee2f8"
     },
     {
       "path": "presentations/llm-resource-allocation.pdf",
-      "bytes": 6386280,
-      "sha256": "8b9f149d685957503a1f086fb16d0293238bbf8b1759b870807fd646cb1fef73"
+      "bytes": 6396217,
+      "sha256": "772ffdd8c84f64c337558bc6e93595051e8aad351c0832338b484d5585cc576c"
     },
     {
       "path": "presentations/llm-resource-allocation.pptx",
-      "bytes": 664797,
-      "sha256": "a8b278f9055947649db75e2b7a68827849e559463ce532c4c5b1e9508cdd901f"
+      "bytes": 664705,
+      "sha256": "8546a2ae56880af925f2dce871406ad27a5d792d06df0db2240db60ca00aa6a1"
     },
     {
       "path": "pyproject.toml",
