@@ -5,8 +5,8 @@
   "files": [
     {
       "path": ".gitattributes",
-      "bytes": 415,
-      "sha256": "3ce2b410dd5f4bb3fe82fc8f8983d805824f6b92c12e13ef08920f58a3299a2b"
+      "bytes": 429,
+      "sha256": "102c238997cf8b0fb88cafa44385a9afc838840f3817f7a50443e58904d007ca"
     },
     {
       "path": ".github/workflows/portfolio.yml",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5847,
-      "sha256": "1b338cc6fd70c318879904a10c077811046032d48fa64d11e001f25a7a9887f9"
+      "bytes": 5914,
+      "sha256": "5dfd89269fe78071b248f221871adf7e43cda2cd9ee9448d4d293a0d6c92a895"
     },
     {
       "path": "benchmarks/backend_comparison/manifest.json",
@@ -16560,8 +16560,8 @@
     },
     {
       "path": "configs/publication.json",
-      "bytes": 391927,
-      "sha256": "1e606812da8662a2a94f7ba3daf6b5aee948fcd58ae52d3a2ff3cf184559905d"
+      "bytes": 391941,
+      "sha256": "8f600f3c2becc6f6a6552b7289e65ebed7a6590e03d3892a21bdbabe7de5e043"
     },
     {
       "path": "configs/quick_benchmark.json",
@@ -16754,16 +16754,6 @@
       "sha256": "a1524353ebeef1ce25e89135ea272362423dba980cb50b3e7564a5d00260ec79"
     },
     {
-      "path": "docs/CLAUDE_DESIGN_EXTENSION_PROMPT.md",
-      "bytes": 15151,
-      "sha256": "fa638a8d56798ad427b0bbae40f6b9e2b4ceb64d9ca4bc16c69ab9021f0a3cbd"
-    },
-    {
-      "path": "docs/CLAUDE_DESIGN_PROMPT.md",
-      "bytes": 6589,
-      "sha256": "9489f6339bed09d18342e5214de6a4c8c13ad04b792409f3d7738d13690f1a65"
-    },
-    {
       "path": "docs/EXPERIMENTS.md",
       "bytes": 4967,
       "sha256": "07697c09533cdcabdc938779191afde86fee491b0c5a7210fa61ce43011e9959"
@@ -16785,8 +16775,8 @@
     },
     {
       "path": "docs/EXTENSION_REPORT.md",
-      "bytes": 50415,
-      "sha256": "5125752ea1f04f2dfba8cebe03c9e29e043e8e669859659287033a63a5929204"
+      "bytes": 50503,
+      "sha256": "80c333126ba8bd33c8dc60ba8ec1b5cb4fd53ffdafb74897406b8b96da49c4d9"
     },
     {
       "path": "docs/GITHUB_PREPARATION.md",
@@ -16815,18 +16805,13 @@
     },
     {
       "path": "docs/PRESENTATION_BRIEF.md",
-      "bytes": 8933,
-      "sha256": "d1e10078ac1ce0d65009a87a5a7b0b9e6326da18e7268b199a6224ea10bbfab9"
-    },
-    {
-      "path": "docs/PRESENTATION_DRAFT.md",
-      "bytes": 27577,
-      "sha256": "717b12f9c8cec1a5b13b431e1300c5a4571c4437d36b811052bf249dac0ca7e8"
+      "bytes": 6538,
+      "sha256": "5cc2132257dbb88fe03b3f9d8dc6b5b33de71673ce0b773b33c0c43f2937e743"
     },
     {
       "path": "docs/PUBLICATION_REVIEW.md",
-      "bytes": 5536,
-      "sha256": "fbb97722cae97f6d189788103a1740e98688b24632dd3e27a6105dc7a5f5aa73"
+      "bytes": 4857,
+      "sha256": "bebb8ade186aabe8f60660a632345c01b329d09f4d57faa3e7a8c0642aba1fa9"
     },
     {
       "path": "docs/RESULTS.md",
@@ -16887,6 +16872,21 @@
       "path": "examples/stage2_quickstart.py",
       "bytes": 5635,
       "sha256": "ffc2de396021bf81ef1d41ca6f385b4ee8e87c2e0d4e1990d607272115af6946"
+    },
+    {
+      "path": "presentations/README.md",
+      "bytes": 3126,
+      "sha256": "672c4d6eb1ccf87d34579cff6cf7ec0ab4b12c81cb5b9bc87abda7ffebf1a85d"
+    },
+    {
+      "path": "presentations/llm-resource-allocation.pdf",
+      "bytes": 5943311,
+      "sha256": "39da177f5445202a2b0b47848078ab8940e44ee920fca3369195ff9878ff5e75"
+    },
+    {
+      "path": "presentations/llm-resource-allocation.pptx",
+      "bytes": 450558,
+      "sha256": "888cd876eaacad279ff7842924b513517e6bc6bcb99caaa7ddb58eb85498d1e8"
     },
     {
       "path": "pyproject.toml",

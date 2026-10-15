@@ -788,10 +788,11 @@ proof retains its earlier scope and is not rewritten.
 
 A later publication update integrated the extension into the principal development
 folder, preserving its editorial publication mappings and canonical model documents.
-The [new Claude Design prompt](CLAUDE_DESIGN_EXTENSION_PROMPT.md) selects a 12-slide
-Italian narrative and pins numerical sources to the checkpoint above. Its addition
-extended the publication allowlist to 3,569 files without changing experimental
-observations, source snapshots or numerical defaults.
+That integration's documentation update extended the publication allowlist to
+3,569 files without changing experimental observations, source snapshots or
+numerical defaults. The subsequently supplied PDF and PowerPoint presentation
+are now available in [presentations/](../presentations/README.md), with their
+source checkpoint, integrity hashes and known delivery issues documented there.
 
 These records describe the numerical checkpoint and its later publication. They do
 not certify subsequently edited documentation or a current release manifest. No

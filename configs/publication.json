@@ -10060,12 +10060,6 @@
       "path": "docs/ARCHITECTURE.md"
     },
     {
-      "path": "docs/CLAUDE_DESIGN_EXTENSION_PROMPT.md"
-    },
-    {
-      "path": "docs/CLAUDE_DESIGN_PROMPT.md"
-    },
-    {
       "path": "docs/EXPERIMENTS.md"
     },
     {
@@ -10097,9 +10091,6 @@
     },
     {
       "path": "docs/PRESENTATION_BRIEF.md"
-    },
-    {
-      "path": "docs/PRESENTATION_DRAFT.md"
     },
     {
       "path": "docs/PUBLICATION_REVIEW.md"
@@ -10139,6 +10130,15 @@
     },
     {
       "path": "examples/stage2_quickstart.py"
+    },
+    {
+      "path": "presentations/README.md"
+    },
+    {
+      "path": "presentations/llm-resource-allocation.pdf"
+    },
+    {
+      "path": "presentations/llm-resource-allocation.pptx"
     },
     {
       "path": "pyproject.toml"

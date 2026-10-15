@@ -97,7 +97,7 @@ The serial C++ binary needs neither Python nor a solver. The
 
 - [Extension report](docs/EXTENSION_REPORT.md): methods, controlled studies and negative results.
 - [Experiment guide](docs/EXPERIMENTS.md) and [verification](docs/VALIDATION.md): reproduction and recorded checks.
-- [Presentation draft](docs/PRESENTATION_DRAFT.md): narrative, visuals, sources and Claude Design prompt.
+- Presentation: [PDF](presentations/llm-resource-allocation.pdf), [PowerPoint](presentations/llm-resource-allocation.pptx) and [evidence guide](docs/PRESENTATION_BRIEF.md).
 - [Publication guide](docs/GITHUB_PREPARATION.md): export workflow, [allowlist](configs/publication.json) and [SHA-256 manifest](release-manifest.json). Verify an unmodified published checkout with `python scripts/prepare_release.py --check`.
 
 The evidence establishes bounded synthetic correctness and CPU performance.

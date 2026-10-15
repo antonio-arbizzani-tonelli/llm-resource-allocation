@@ -17,6 +17,7 @@ LICENSE text eol=lf
 *.csv text eol=lf
 Makefile text eol=lf
 *.pdf binary
+*.pptx binary
 *.png binary
 *.jpg binary
 *.gz binary
